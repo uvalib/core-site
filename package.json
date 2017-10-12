@@ -1,0 +1,21 @@
+{
+  "name": "core-site",
+  "version": "1.0.0",
+  "description": "## Prerequisites",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "bower install; polymer build;",
+    "deploy": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/es6-unbundled/ www14.lib.virginia.edu:/wwwstatic"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uvalib/core-site.git"
+  },
+  "author": "Doug Chestnut <dougchestnut@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uvalib/core-site/issues"
+  },
+  "homepage": "https://github.com/uvalib/core-site#readme"
+}
