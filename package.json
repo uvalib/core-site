@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/uvalib/core-site/issues"
   },
-  "homepage": "https://github.com/uvalib/core-site#readme"
+  "homepage": "https://github.com/uvalib/core-site#readme",
+  "dependencies": {
+    "make-dir": "^1.1.0",
+    "node-squarespace-jsont": "^0.1.23",
+    "request": "^2.83.0"
+  }
 }
