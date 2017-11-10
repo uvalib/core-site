@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/uvalib/core-site#readme",
   "dependencies": {
+    "bower": "^1.8.2",
     "make-dir": "^1.1.0",
     "mustache": "^2.3.0",
+    "polymer-cli": "^1.5.7",
     "request": "^2.83.0",
     "sanitize-filename": "^1.6.1"
   }
