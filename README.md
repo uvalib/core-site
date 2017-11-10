@@ -1,4 +1,4 @@
-# NEWS
+# UVA Library Web App
 
 ## Prerequisites
 
@@ -10,9 +10,13 @@ Install [polymer-cli](https://github.com/Polymer/polymer-cli):
 
 ### Setup
 
-    git clone https://github.com/polymer/news.git
-    cd news
-    bower install
+    git clone https://github.com/uvalib/core-site.git
+    cd core-site
+    npm install
+
+### Import pages from Library API
+
+    ./import-pages.js
 
 ## Start the development server
 
@@ -20,7 +24,7 @@ Install [polymer-cli](https://github.com/Polymer/polymer-cli):
 
 ## Build
 
-    polymer build
+    npm run build
 
 ## Test the build
 
