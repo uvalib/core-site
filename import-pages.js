@@ -9,13 +9,28 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
   var pages = JSON.parse(body);
 
   // create the pages
-  fs.readFile('page-template.html', 'utf8', function(err, jsont){
+  fs.readFile('page-template.html', 'utf8', function(err, pageTemplate){
     pages.forEach(page => {
+      // Add leading slash to path if missing
       if (!page.path.startsWith('/')) page.path = "/"+page.path;
+      // Pull filename from path or use index.html
+      if (page.path.endsWith('.html')) {
+        var tmp = page.path.split('/');
+        page.filename = tmp.pop();
+        page.path = tmp.join('/');
+      } else {
+        page.filename = "index.html";
+      }
+      // rid of ending slash
+      page.path = page.path.replace(/\/$/, "");
+
       makeDir("data/pages"+page.path).then(path => {
         var tmpfilename = sanitize(page.title).replace(/\s/g,'_')+".html";
+        //temp write to flat directory
         fs.writeFile("data/pages/"+tmpfilename,
-                     mustache.render( jsont, page ), function(){});
+                     mustache.render( pageTemplate, page ), function(){});
+        fs.writeFile("data/pages"+page.path+"/"+page.filename,
+                     mustache.render( pageTemplate, page ), function(){});
       });
     });
   });
