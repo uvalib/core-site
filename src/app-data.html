@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="page-data">
+<dom-module id="app-data">
 
   <script>
 
@@ -8,9 +8,9 @@
 
     let textarea = document.createElement('textarea');
 
-    class PageData extends Polymer.Element {
+    class AppData extends Polymer.Element {
 
-      static get is() { return 'page-data'; }
+      static get is() { return 'app-data'; }
 
       static get properties() { return {
 
@@ -176,12 +176,11 @@
       refresh() {
           // Try at most 3 times to get the pages.
           this._fetchPages(this.pages, this.offline, 3);
-
       }
 
     }
 
-    customElements.define(PageData.is, PageData);
+    customElements.define(AppData.is, AppData);
 
   })();
 

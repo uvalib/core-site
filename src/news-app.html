@@ -12,10 +12,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/helpers/helpers.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
-<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 
-<link rel="import" href="news-data.html">
-<link rel="import" href="page-data.html">
+<link rel="import" href="app-data.html">
 
 <link rel="import" href="news-nav.html">
 
@@ -50,11 +48,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         /* use this value for the viewport height instead of "vh" unit */
         --viewport-height: 600px;
-      }
-
-      iron-pages {
-        max-width: 1440px;
-        margin: 0 auto;
       }
 
       footer {
@@ -98,29 +91,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         tail="{{subroute}}"></app-route>
 
     <!--
-      page-data provides a page given a path.
+      app-data provides a page given a path.
     -->
-    <page-data
+    <app-data
         id="data"
         path="/preservation/reports-presentations/"
-        page="{{page}}"
+        page="{{article}}"
         loading="{{loading}}"
         offline="[[offline]]"
-        failure="{{failure}}"></page-data>
-
-    <!--
-      news-data provides the list of categories and the articles for the category.
-    -->
-    <news-data
-        id="data"
-        categories="{{categoriesFoo}}"
-        category-name="[[categoryName]]"
-        category="{{category}}"
-        article-id="[[articleId]]"
-        article="{{article}}"
-        loading="{{loading}}"
-        offline="[[offline]]"
-        failure="{{failure}}"></news-data>
+        failure="{{failure}}"></app-data>
 
     <news-nav
         id="nav"
@@ -132,18 +111,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       [[articleHeadline]]
     </news-nav>
 
-    <iron-pages role="main" selected="[[page]]" attr-for-selected="name" fallback-selection="path-warning">
-      <!-- list view of articles in a category -->
-      <news-list
-          id="list"
-          name="list"
-          route="[[subroute]]"
-          category-name="{{categoryName}}"
-          category="[[category]]"
-          loading="[[loading]]"
-          offline="[[offline]]"
-          failure="[[failure]]"></news-list>
-      <!-- article view -->
+
       <news-article
           name="article"
           route="{{subroute}}"
@@ -154,17 +122,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           loading="[[loading]]"
           offline="[[offline]]"
           failure="[[failure]]"></news-article>
-      <!-- invalid top level paths -->
-      <news-path-warning name="path-warning"></news-path-warning>
 
-    </iron-pages>
 
     <uvalib-footer></uvalib-footer>
-<!--
-    <footer>
-      <a href="https://www.polymer-project.org/1.0/toolbox/">Made by Polymer</a>
-    </footer>
--->
 
   </template>
 
@@ -268,9 +228,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         let href;
 
         switch(page) {
-          case 'list':
-            href = 'news-list.html';
-          break;
           case 'article':
             href = 'news-article.html';
           break;
