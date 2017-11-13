@@ -15,6 +15,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 
 <link rel="import" href="news-data.html">
+<link rel="import" href="page-data.html">
+
 <link rel="import" href="news-nav.html">
 
 <dom-module id="news-app">
@@ -96,11 +98,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         tail="{{subroute}}"></app-route>
 
     <!--
+      page-data provides a page given a path.
+    -->
+    <page-data
+        id="data"
+        path="/preservation/reports-presentations/"
+        page="{{page}}"
+        loading="{{loading}}"
+        offline="[[offline]]"
+        failure="{{failure}}"></page-data>
+
+    <!--
       news-data provides the list of categories and the articles for the category.
     -->
     <news-data
         id="data"
-        categories="{{categories}}"
+        categories="{{categoriesFoo}}"
         category-name="[[categoryName]]"
         category="{{category}}"
         article-id="[[articleId]]"

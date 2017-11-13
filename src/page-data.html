@@ -1,0 +1,190 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="page-data">
+
+  <script>
+
+  (function() {
+
+    let textarea = document.createElement('textarea');
+
+    class PageData extends Polymer.Element {
+
+      static get is() { return 'page-data'; }
+
+      static get properties() { return {
+
+        path: String,
+
+        offline: Boolean,
+
+        loading: {
+          type: Boolean,
+          readOnly: true,
+          notify: true
+        },
+
+        pages: {
+          type: Object,
+          notify: true,
+          value: {name:'pages',title:'Pages'}
+        },
+
+        page: {
+          type: Object,
+          computed: '_computePage(pages.items, path)',
+          notify: true
+        },
+
+        failure: {
+          type: Boolean,
+          readOnly: true,
+          notify: true
+        }
+
+      }}
+
+      static get observers() { return [
+        '_fetchPages(pages,offline)',
+        '_fetchPage(page, offline)'
+      ]}
+
+      _computePage(pagesItems, path){
+        if (!pagesItems || !path) { return null; }
+        for (let i=0; i< pagesItems.length; ++i) {
+          let page = pagesItems[i];
+          if (page.path === path) {
+            return page;
+          }
+        }
+        return null;
+      }
+
+      _fetchPage(page, offline) {
+        // Don't fail if we become offline but already have a cached version, or if there's
+        // nothing to fetch, or if already loading.
+        if ((offline && page && page.html) || !page || this.loading) {
+          this._setFailure(false);
+          return;
+        }
+        this._fetch('data/pages' + page.path + 'index.html',
+          (response) => {
+            this.set('page.html', this._formatHTML(response));
+          },
+          1 /* attempts */, true /* isRaw */);
+      }
+
+      _fetchPages(pages, offline, attempts) {
+        // Don't fail if we become offline but already have a cached version, or if there's
+        // nothing to fetch, or if already loading.
+        if ((offline && pages && pages.items) || !pages || this.loading) {
+          this._setFailure(false);
+          return;
+        }
+        this._fetch('data/pages.json',
+          (response) => {
+            this.set('pages.items', this._parseCategoryItems(response));
+          },
+          attempts || 1 /* attempts */);
+      }
+
+      _parseCategoryItems(response) {
+        let items = [];
+
+        for (let i = 0, item; item = response[i]; ++i) {
+          items.push({
+            headline: this._unescapeText(item.title),
+            path: item.link,
+            id: item.id,
+            placeholder: item.placeholder,
+            category: item.category,
+            author: item.author,
+            summary: this._trimRight(item.summary, 100),
+            readTime: Math.max(2, Math.round(item.contentLength / 3000)) + ' min read'
+          });
+        }
+
+        return items;
+      }
+
+      _unescapeText(text) {
+        textarea.innerHTML = text;
+        return textarea.textContent;
+      }
+
+      _trimRight(text, maxLength) {
+        let breakIdx = text.indexOf(' ', maxLength);
+        return breakIdx === -1 ? text : text.substr(0, breakIdx) + '...';
+      }
+
+      _formatHTML(html) {
+        let template = document.createElement('template');
+        template.innerHTML = html;
+
+        // Remove h1, .kicker, and .date from content.
+        // let h1 = template.content.querySelector('h1');
+        // h1 && h1.remove();
+        // let kicker = template.content.querySelector('.kicker');
+        // kicker && kicker.remove();
+        // let date = template.content.querySelector('.date');
+        // date && date.remove();
+
+        // Remove the first image if it's the same as the item image.
+        // let image = template.content.querySelector('img');
+        // if (image && this._isSameImageSrc(image.src, this.article.imageUrl)) {
+        //   image.remove();
+        // }
+
+        // Remove width/height attributes from all images.
+        let images = template.content.querySelectorAll('img');
+        for (let i = 0; i < images.length; ++i) {
+          let img = images[i];
+          img.removeAttribute('width');
+          img.removeAttribute('height');
+        }
+
+        return template.content.querySelector('.content').innerHTML;
+      }
+
+      _fetch(url, callback, attempts, isRaw) {
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', (e) => {
+          this._setLoading(false);
+          if (isRaw) {
+            callback(e.target.responseText);
+          } else {
+            callback(JSON.parse(e.target.responseText));
+          }
+        });
+        xhr.addEventListener('error', (e) => {
+          // Flaky connections might fail fetching resources
+          if (attempts > 1) {
+            this._fetchDebouncer = Polymer.Debouncer.debounce(this._fetchDebouncer,
+              Polymer.Async.timeOut.after(200), this._fetch.bind(this, url, callback, attempts - 1));
+          } else {
+            this._setLoading(false);
+            this._setFailure(true);
+          }
+        });
+
+        this._setLoading(true);
+        this._setFailure(false);
+        xhr.open('GET', url);
+        xhr.send();
+      }
+
+      refresh() {
+          // Try at most 3 times to get the pages.
+          this._fetchPages(this.pages, this.offline, 3);
+
+      }
+
+    }
+
+    customElements.define(PageData.is, PageData);
+
+  })();
+
+  </script>
+
+</dom-module>
