@@ -95,11 +95,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     -->
     <app-data
         id="data"
-        path="/preservation/reports-presentations/"
+        path="{{route.path}}"
         page="{{article}}"
         loading="{{loading}}"
         offline="[[offline]]"
         failure="{{failure}}"></app-data>
+
+<h2>{{route.path}}</h2>
+<h3>{{subroute}}</h2>
 
     <news-nav
         id="nav"
@@ -232,7 +235,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             href = 'news-article.html';
           break;
           default:
-            href = 'news-path-warning.html';
+            href = 'news-article.html'
+//            href = 'news-path-warning.html';
           break;
         }
         let cb = this._pageLoaded.bind(this, Boolean(oldPage));
