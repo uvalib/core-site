@@ -67,7 +67,7 @@
           this._setFailure(false);
           return;
         }
-        this._fetch('data/pages' + page.path + 'index.html',
+        this._fetch('data/pages' + page.path + '/index.html',
           (response) => {
             this.set('page.html', this._formatHTML(response));
           },

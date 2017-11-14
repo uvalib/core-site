@@ -27,8 +27,8 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
       makeDir("data/pages"+page.path).then(path => {
         var tmpfilename = sanitize(page.title).replace(/\s/g,'_')+".html";
         //temp write to flat directory
-        fs.writeFile("data/pages/"+tmpfilename,
-                     mustache.render( pageTemplate, page ), function(){});
+//        fs.writeFile("data/pages/"+tmpfilename,
+//                     mustache.render( pageTemplate, page ), function(){});
         fs.writeFile("data/pages"+page.path+"/"+page.filename,
                      mustache.render( pageTemplate, page ), function(){});
       });
@@ -39,6 +39,7 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
   var sitemap = [];
   pages.forEach(page => {
     var tmpfilename = sanitize(page.title).replace(/\s/g,'_');
+    page.path = page.path.replace(/\/$/,'');
     sitemap.push(
       {
         "title": page.title,

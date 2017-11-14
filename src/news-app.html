@@ -101,9 +101,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         offline="[[offline]]"
         failure="{{failure}}"></app-data>
 
-<h2>{{route.path}}</h2>
-<h3>{{subroute}}</h2>
-
     <news-nav
         id="nav"
         app-title="[[appTitle]]"
@@ -215,9 +212,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           return;
         }
         if (!page) {
-          // set default route if route path is empty
-          this.set('route.path', 'list/pages');
-          return;
+//          // set default route if route path is empty
+//          this.set('route.path', 'list/pages');
+//          return;
         }
         this.page = page;
         // Scroll to the top of the page on every *route* change. Use `Polymer.AppLayout.scroll`
