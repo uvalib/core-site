@@ -1,2 +1,2 @@
 RewriteEngine on
-RewriteRule "^rawAPI/(.*)$" "http://drupal.lib.virginia.edu/$1" [P]
+RewriteRule "^rawAPI/(.*)$" "https://drupal.lib.virginia.edu/$1" [P]
