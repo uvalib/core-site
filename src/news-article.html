@@ -79,7 +79,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: 300px;
       }
 
-      news-side-list {
+      app-side-bar {
         margin-bottom: 32px;
       }
 
@@ -166,12 +166,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </article>
 
       <aside>
-        <news-side-list class="fade-in" items="[[_slice(category.items, 0, 3)]]">
-          [[article.sidebar]]
-        </news-side-list>
-        <news-side-list class="fade-in" featured items="[[_slice(category.items, 3, 9)]]">
-          Top Stories
-        </news-side-list>
+        <app-side-bar class="fade-in" uuid="[[article.sidebar]]">
+        </app-side-bar>
       </aside>
 
     </div>
@@ -226,7 +222,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         },
 
         _routeData: Object
-
       }}
 
       static get observers() { return [

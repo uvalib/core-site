@@ -1,4 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/uvalib-models/uvalib-models.html">
+
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
 
 <dom-module id="app-side-bar">
 
@@ -49,6 +52,16 @@
 
     </style>
 
+    <uvalib-models path="blocks" item="{{_item}}" uuid="[[uuid]]"></uvalib-models>
+    <h3>[[_item.title]]</h3>
+    <div id="content">
+      <marked-element markdown="[[_item.body]]">
+        <div slot="markdown-html"></div>
+      </marked-element>
+    </div>
+
+
+<!--
     <h3>
       <slot></slot>
     </h3>
@@ -60,6 +73,8 @@
         </a>
       </template>
     </dom-repeat>
+-->
+
   </template>
 
   <script>
@@ -70,7 +85,8 @@
 
       static get properties() { return {
 
-        items: Array
+        uuid: String,
+        _item: Object
 
       }}
 
