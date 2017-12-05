@@ -13,7 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 
 <link rel="import" href="news-article-cover.html">
-<link rel="import" href="news-side-list.html">
+<link rel="import" href="app-side-bar.html">
 
 <dom-module id="news-article">
 
@@ -166,19 +166,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </article>
 
       <aside>
-        <a href="#" class="share-link" aria-label="Send by email">
-          <iron-icon icon="mail"></iron-icon> Email
-        </a>
-        <a href="#" class="share-link" aria-label="Share on social networks">
-          <iron-icon icon="share"></iron-icon> Share
-        </a>
         <news-side-list class="fade-in" items="[[_slice(category.items, 0, 3)]]">
-          Most Read
+          [[article.sidebar]]
         </news-side-list>
         <news-side-list class="fade-in" featured items="[[_slice(category.items, 3, 9)]]">
           Top Stories
         </news-side-list>
       </aside>
+
     </div>
 
     <news-network-warning
@@ -204,12 +199,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         previousArticle: {
           type: Object,
-          computed: '_computePreviousArticle(category.items, article)'
+//          computed: '_computePreviousArticle(category.items, article)'
         },
 
         nextArticle: {
           type: Object,
-          computed: '_computeNextArticle(category.items, article)'
+//          computed: '_computeNextArticle(category.items, article)'
         },
 
         loading: Boolean,
@@ -424,20 +419,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _return(value) {
         return value;
-      }
-
-      _computePreviousArticle(categoryItems, article) {
-        if (categoryItems) {
-          const i = categoryItems.indexOf(article);
-          return i > 0 ? categoryItems[i-1] : null;
-        }
-      }
-
-      _computeNextArticle(categoryItems, article) {
-        if (categoryItems) {
-          const i = categoryItems.indexOf(article);
-          return (i > -1 && i < categoryItems.length-1) ? categoryItems[i+1] : null;
-        }
       }
 
     }

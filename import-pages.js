@@ -43,7 +43,7 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
   var sitemap = [];
   pages.forEach(page => {
     var tmpfilename = sanitize(page.title).replace(/\s/g,'_');
-    
+
     sitemap.push(
       {
         "title": page.title,
@@ -53,6 +53,8 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
         "id": tmpfilename,
         "link": page.path,
         "path": page.path,
+        "sidebar": page.sidebar,
+        "subnav": page.subnav,
         "imgSrc": "images/experience-virtual-reality-art-in-your.jpg",
         "placeholder": "",
         "summary": page.title,

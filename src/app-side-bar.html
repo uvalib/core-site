@@ -1,0 +1,83 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="app-side-bar">
+
+  <template>
+
+    <style>
+
+      :host {
+        display: block;
+      }
+
+      h3 {
+        @apply --app-sub-section-headline;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        margin: 20px 0;
+      }
+
+      .category {
+        display: none;
+      }
+
+      :host([featured]) > a {
+        padding-bottom: 24px;
+        border-bottom: var(--app-border-style);
+      }
+
+      :host([featured]) > a:last-of-type {
+        border-bottom: none;
+      }
+
+      :host([featured]) .category {
+        display: inline-block;
+        padding: 6px 20px 7px 20px;
+        border: var(--app-border-style);
+        font-weight: bold;
+        font-size: 11px;
+      }
+
+      :host([featured]) .headline {
+        display: block;
+        margin: 20px 0;
+      }
+
+    </style>
+
+    <h3>
+      <slot></slot>
+    </h3>
+    <dom-repeat items="[[items]]">
+      <template>
+        <a href$="[[item.href]]">
+          <div class="category">[[item.category]]</div>
+          <span class="headline">[[item.headline]]</span>
+        </a>
+      </template>
+    </dom-repeat>
+  </template>
+
+  <script>
+
+    class AppSideBar extends Polymer.Element {
+
+      static get is() { return 'app-side-bar'; }
+
+      static get properties() { return {
+
+        items: Array
+
+      }}
+
+    }
+
+    customElements.define(AppSideBar.is, AppSideBar);
+
+  </script>
+
+</dom-module>

@@ -11,8 +11,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 
-<link rel="import" href="news-img.html">
-
 <dom-module id="news-list-item">
 
   <template>
@@ -29,10 +27,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-decoration: none;
         color: inherit;
         overflow: hidden;
-      }
-
-      news-img {
-        height: 150px;
       }
 
       h2 {
@@ -74,13 +68,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         white-space: nowrap;
       }
 
-      /* mobile */
-      @media (max-width: 767px) {
-        news-img {
-          display: none;
-        }
-      }
-
       /* desktop */
       @media (min-width: 768px) {
         :host([horizontal]) {
@@ -98,11 +85,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           @apply --layout-horizontal;
         }
 
-        :host([horizontal]) news-img {
-          min-width: 150px;
-          margin-right: 24px;
-        }
-
         :host([horizontal]) .category {
           display: none;
         }
@@ -111,7 +93,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <a href$="[[item.href]]">
-      <news-img src="[[item.imageUrl]]" alt="[[item.headline]]"></news-img>
       <div class="headline">
         <div class="category" hidden$="[[!item.category]]">[[item.category]]</div>
         <h2>[[item.headline]]</h2>

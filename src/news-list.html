@@ -14,7 +14,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="news-list-featured-item.html">
 <link rel="import" href="news-list-item.html">
-<link rel="import" href="news-side-list.html">
 
 <dom-module id="news-list">
 
@@ -61,16 +60,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       h3 {
         @apply --app-sub-section-headline;
         margin: 24px 0;
-      }
-
-      news-side-list {
-        margin-bottom: 32px;
-      }
-
-      .ad-container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 24px;
       }
 
       /* mobile */
@@ -168,14 +157,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </ul>
       </div>
 
-      <aside>
-        <news-side-list class="fade-in" items="[[_slice(category.items, 0, 3)]]">
-          Most Read
-        </news-side-list>
-        <news-side-list class="fade-in" featured items="[[_slice(category.items, 3, 9)]]">
-          More Top Stories
-        </news-side-list>
-      </aside>
     </div>
 
     <news-network-warning
