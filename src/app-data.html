@@ -53,7 +53,7 @@
         if (!pagesItems) { return null; }
         for (let i=0; i< pagesItems.length; ++i) {
           let page = pagesItems[i];
-          if (page.path === path) {
+          if (page.path === path || page.path === path+'/') {
             return page;
           }
         }
