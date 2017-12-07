@@ -137,12 +137,19 @@
         // }
 
         // Remove width/height attributes from all images.
+        //let images = template.content.querySelectorAll('img');
+        //for (let i = 0; i < images.length; ++i) {
+        //  let img = images[i];
+        //  img.removeAttribute('width');
+        //  img.removeAttribute('height');
+        //}
+
+        // Make replace img elements with uvalib-img Elements
         let images = template.content.querySelectorAll('img');
-        for (let i = 0; i < images.length; ++i) {
-          let img = images[i];
-          img.removeAttribute('width');
-          img.removeAttribute('height');
-        }
+        images.forEach( (img)=>{
+          var uvalibImg = document.createElement('uvalib-image');
+          //img.replaceWith(uvalibImg);
+        });
 
         return template.content.querySelector('.content').innerHTML;
       }
