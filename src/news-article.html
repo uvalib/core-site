@@ -12,7 +12,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 
-<link rel="import" href="news-article-cover.html">
 <link rel="import" href="app-side-bar.html">
 
 <dom-module id="news-article">
@@ -160,9 +159,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="container" fade-in$="[[!loading]]" hidden$="[[failure]]">
       <article class="flex">
-        <news-article-cover id="cover0" class="fade-in"></news-article-cover>
-        <news-article-cover id="cover1" class="preview-cover"></news-article-cover>
-        <news-article-cover id="cover2" class="preview-cover"></news-article-cover>
         <div id="content" class="fade-in"></div>
       </article>
 
@@ -232,11 +228,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       connectedCallback() {
         super.connectedCallback();
-        this._currentArticleCover = this.$.cover0;
-        this._previousArticleCover = this.$.cover1;
-        this._nextArticleCover = this.$.cover2;
+//        this._currentArticleCover = this.$.cover0;
+//        this._previousArticleCover = this.$.cover1;
+//        this._nextArticleCover = this.$.cover2;
 
-        this._currentArticleCover.article = this.article;
+//        this._currentArticleCover.article = this.article;
 
         Polymer.RenderStatus.afterNextRender(this, this._installListeners);
       }

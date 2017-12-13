@@ -81,7 +81,8 @@
           this._setFailure(false);
           return;
         }
-        this._fetch('data/pages.json',
+//        this._fetch('data/pages.json',
+        this._fetch('https://api.devhub.virginia.edu/v1/library/web',
           (response) => {
             this.set('pages.items', this._parseCategoryItems(response));
           },
@@ -94,14 +95,14 @@
         for (let i = 0, item; item = response[i]; ++i) {
           items.push({
             headline: this._unescapeText(item.title),
-            path: item.link,
-            id: item.id,
-            placeholder: item.placeholder,
+            path: item.path,
+//            id: item.id,
+//            placeholder: item.placeholder,
             sidebar: item.sidebar,
             category: item.category,
-            author: item.author,
-            summary: this._trimRight(item.summary, 100),
-            readTime: Math.max(2, Math.round(item.contentLength / 3000)) + ' min read'
+//            author: item.author,
+//            summary: this._trimRight(item.summary, 100),
+//            readTime: Math.max(2, Math.round(item.contentLength / 3000)) + ' min read'
           });
         }
 
