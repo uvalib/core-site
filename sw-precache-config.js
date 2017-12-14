@@ -43,6 +43,16 @@ module.exports = {
           name: 'data-json-cache'
         }
       }
+    },
+    {
+      urlPattern: /^https:\/\/api\.devhub\.virginia\.edu/,
+      handler: 'fastest',
+      options: {
+        cache: {
+          maxEntries: 500,
+          name: 'data-api-cache'
+        }
+      }
     }
   ]
 };
