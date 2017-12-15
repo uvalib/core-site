@@ -13,6 +13,7 @@ Install [polymer-cli](https://github.com/Polymer/polymer-cli):
     git clone https://github.com/uvalib/core-site.git
     cd core-site
     npm install
+    bower install
 
 ### Import pages from Library API
 
