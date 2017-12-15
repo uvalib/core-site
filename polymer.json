@@ -1,6 +1,6 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/news-app.html",
+  "shell": "src/uvalib-app.html",
   "fragments": [
     "src/news-list.html",
     "src/news-article.html",
