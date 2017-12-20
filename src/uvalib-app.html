@@ -15,6 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/helpers/helpers.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/uvalib-theme/uvalib-theme.html">
 
 <link rel="import" href="app-data.html">
 
@@ -23,63 +24,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="uvalib-app">
 
   <template>
+    <custom-style>
+      <style is="custom-style" include="uvalib-theme">
 
-    <style>
-
-      :host {
-        display: block;
-        position: relative;
-        min-height: 100vh;
-        padding-bottom: 64px;
-
-        --app-border-style: 1px solid #CCC;
-        --app-transparent-border-style: 1px solid rgba(255, 255, 255, 0.5);
-        --app-button-border-style: 2px solid #222;
-        --app-cover-text-color: #FFF;
-        --app-nav-background-color: #222;
-        --app-nav-text-color: #FFF;
-        --app-nav-deselected-text-color: #CCC;
-        --app-nav-selected-background-color: #555;
-
-        --app-sub-section-headline: {
-          border-top: var(--app-border-style);
-          border-bottom: var(--app-border-style);
-          font-size: 13px;
-          padding: 8px;
-          text-align: center;
-        };
-
-        /* use this value for the viewport height instead of "vh" unit */
-        --viewport-height: 600px;
-      }
-
-      footer {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        padding-bottom: 24px;
-        text-align: center;
-      }
-
-      footer a {
-        text-decoration: none;
-        font-size: 13px;
-        color: #757575;
-      }
-
-      footer a:hover {
-        text-decoration: underline;
-      }
-
-      /* desktop */
-      @media (min-width: 768px) {
         :host {
-          margin: 0px;
-        }
-      }
+          display: block;
+          position: relative;
+          min-height: 100vh;
+          padding-bottom: 64px;
 
-    </style>
+          --app-border-style: 1px solid #CCC;
+          --app-transparent-border-style: 1px solid rgba(255, 255, 255, 0.5);
+          --app-button-border-style: 2px solid #222;
+          --app-cover-text-color: #FFF;
+          --app-nav-background-color: #222;
+          --app-nav-text-color: #FFF;
+          --app-nav-deselected-text-color: #CCC;
+          --app-nav-selected-background-color: #555;
+
+          --app-sub-section-headline: {
+            border-top: var(--app-border-style);
+            border-bottom: var(--app-border-style);
+            font-size: 13px;
+            padding: 8px;
+            text-align: center;
+          };
+
+          /* use this value for the viewport height instead of "vh" unit */
+          --viewport-height: 600px;
+        }
+
+        /* desktop */
+        @media (min-width: 768px) {
+          :host {
+            margin: 0px;
+          }
+        }
+
+      </style>
+    </custom-style>
 
     <uvalib-analytics site-id="23"></uvalib-analytics>
 
