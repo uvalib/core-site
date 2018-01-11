@@ -1,2 +1,3 @@
 RewriteEngine on
+RewriteCond %{REQUEST_METHOD}  =GET
 RewriteRule "^rawAPI/(.*)$" "https://drupal.lib.virginia.edu/$1" [P]
