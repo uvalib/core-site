@@ -98,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </news-nav>
 
 
-      <news-article
+      <uvalib-article
           name="article"
           route="{{subroute}}"
           category-name="{{categoryName}}"
@@ -107,7 +107,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           article="[[article]]"
           loading="[[loading]]"
           offline="[[offline]]"
-          failure="[[failure]]"></news-article>
+          failure="[[failure]]"></uvalib-article>
 
 
     <uvalib-footer></uvalib-footer>
@@ -215,10 +215,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         switch(page) {
           case 'article':
-            href = 'news-article.html';
+            href = 'uvalib-article.html';
           break;
           default:
-            href = 'news-article.html'
+            href = 'uvalib-article.html'
 //            href = 'news-path-warning.html';
           break;
         }
