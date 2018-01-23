@@ -26,13 +26,8 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
         page.path += "/";
       }
 
-      console.log(page.path);
-
       makeDir("data/pages"+page.path).then(path => {
         var tmpfilename = sanitize(page.title).replace(/\s/g,'_')+".html";
-        //temp write to flat directory
-//        fs.writeFile("data/pages/"+tmpfilename,
-//                     mustache.render( pageTemplate, page ), function(){});
         fs.writeFile("data/pages"+page.path+page.filename,
                      mustache.render( pageTemplate, page ), function(){});
       });
@@ -47,15 +42,15 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
     sitemap.push(
       {
         "title": page.title,
-        "time": "Tue, 19 Apr 2016 18:50:00 +0000",
-        "author": "Jeff Nusz",
+        "time": "",
+        "author": "",
         "category": "Pages",
         "id": tmpfilename,
         "link": page.path,
         "path": page.path,
         "sidebar": page.sidebar,
         "subnav": page.subnav,
-        "imgSrc": "images/experience-virtual-reality-art-in-your.jpg",
+        "imgSrc": "",
         "placeholder": "",
         "summary": page.title,
         "contentLength": 3584

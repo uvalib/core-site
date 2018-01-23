@@ -1,0 +1,726 @@
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'html' -->
+<!-- FILE NAME SUGGESTIONS:
+   * html--sites--default--files--2017-10--TL-Newsletter-Sept-2017.pdf.html.twig
+   * html--sites--default--files--2017-10.html.twig
+   * html--sites--default--files.html.twig
+   * html--sites--default.html.twig
+   * html--sites.html.twig
+   x html.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/layout/html.html.twig' -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/core/misc/favicon.ico" type="image/vnd.microsoft.icon" />
+
+    <title>Page not found | drupal.lib.virginia.edu</title>
+    <link rel="stylesheet" href="/sites/default/files/css/css_5td0Umn1-blIFMhPTv7UxTSMu7ktk24rQErrByqrQN8.css?oz47yq" media="all" />
+<link rel="stylesheet" href="/sites/default/files/css/css_HR_ipD6kyBPC5018EaL_yGEj_81gdus6xeYq9sOaTe4.css?oz47yq" media="all" />
+<link rel="stylesheet" href="/sites/default/files/css/css_Z5jMg7P_bjcW9iUzujI7oaechMyxQTUqZhHJ_aYSq04.css?oz47yq" media="print" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+
+  </head>
+  <body class="layout-one-sidebar layout-sidebar-first path-sites">
+        <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'page' -->
+<!-- FILE NAME SUGGESTIONS:
+   * page--sites--default--files--2017-10--TL-Newsletter-Sept-2017.pdf.html.twig
+   * page--sites--default--files--2017-10.html.twig
+   * page--sites--default--files.html.twig
+   * page--sites--default.html.twig
+   * page--sites.html.twig
+   x page.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/page.html.twig' -->
+<div id="page-wrapper">
+  <div id="page">
+    <header id="header" class="header" role="banner" aria-label="Site header">
+      <div class="section layout-container clearfix">
+        
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   * region--secondary-menu.html.twig
+   x region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+  <div class="region region-secondary-menu">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--uvalib-account-menu.html.twig
+   * block--system-menu-block--account.html.twig
+   x block--system-menu-block.html.twig
+   * block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/block--system-menu-block.html.twig' -->
+<nav role="navigation" aria-labelledby="block-uvalib-account-menu-menu" id="block-uvalib-account-menu" class="block block-menu navigation menu--account">
+            
+  <h2 class="visually-hidden" id="block-uvalib-account-menu-menu">User account menu</h2>
+  
+
+      <div class="content">
+        <div class="menu-toggle-target menu-toggle-target-show" id="show-block-uvalib-account-menu"></div>
+    <div class="menu-toggle-target" id="hide-block-uvalib-account-menu"></div>
+    <a class="menu-toggle" href="#show-block-uvalib-account-menu">Show &mdash; User account menu</a>
+    <a class="menu-toggle menu-toggle--hide" href="#hide-block-uvalib-account-menu">Hide &mdash; User account menu</a>
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'menu__account' -->
+<!-- FILE NAME SUGGESTIONS:
+   * menu--account.html.twig
+   x menu.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/navigation/menu.html.twig' -->
+
+              <ul class="clearfix menu">
+                    <li class="menu-item">
+        <a href="/user/login" data-drupal-link-system-path="user/login">Log in</a>
+              </li>
+        </ul>
+  
+
+
+<!-- END OUTPUT from 'core/themes/classy/templates/navigation/menu.html.twig' -->
+
+
+  </div>
+</nav>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/block--system-menu-block.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+
+
+        
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   x region--header.html.twig
+   * region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/region--header.html.twig' -->
+  <div class="clearfix region region-header">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--uvalib-branding.html.twig
+   x block--system-branding-block.html.twig
+   * block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/block--system-branding-block.html.twig' -->
+<div id="block-uvalib-branding" class="clearfix site-branding block block-system block-system-branding-block">
+  
+    
+        <a href="/" title="Home" rel="home" class="site-branding__logo">
+      <img src="/themes/uvalib/logo.svg" alt="Home" />
+    </a>
+        <div class="site-branding__text">
+              <div class="site-branding__name">
+          <a href="/" title="Home" rel="home">drupal.lib.virginia.edu</a>
+        </div>
+                </div>
+  </div>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/block--system-branding-block.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/region--header.html.twig' -->
+
+
+        
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   * region--primary-menu.html.twig
+   x region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+  <div class="region region-primary-menu">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--uvalib-main-menu.html.twig
+   * block--system-menu-block--main.html.twig
+   x block--system-menu-block.html.twig
+   * block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/block--system-menu-block.html.twig' -->
+<nav role="navigation" aria-labelledby="block-uvalib-main-menu-menu" id="block-uvalib-main-menu" class="block block-menu navigation menu--main">
+            
+  <h2 class="visually-hidden" id="block-uvalib-main-menu-menu">Main navigation</h2>
+  
+
+      <div class="content">
+        <div class="menu-toggle-target menu-toggle-target-show" id="show-block-uvalib-main-menu"></div>
+    <div class="menu-toggle-target" id="hide-block-uvalib-main-menu"></div>
+    <a class="menu-toggle" href="#show-block-uvalib-main-menu">Show &mdash; Main navigation</a>
+    <a class="menu-toggle menu-toggle--hide" href="#hide-block-uvalib-main-menu">Hide &mdash; Main navigation</a>
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'menu__main' -->
+<!-- FILE NAME SUGGESTIONS:
+   * menu--main.html.twig
+   x menu.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/navigation/menu.html.twig' -->
+
+              <ul class="clearfix menu">
+                    <li class="menu-item">
+        <a href="/" data-drupal-link-system-path="&lt;front&gt;">Home</a>
+              </li>
+                <li class="menu-item">
+        <a href="/research" data-drupal-link-system-path="node/898">Research</a>
+              </li>
+                <li class="menu-item">
+        <a href="/demo-events" data-drupal-link-system-path="demo-events">Demo: Events</a>
+              </li>
+        </ul>
+  
+
+
+<!-- END OUTPUT from 'core/themes/classy/templates/navigation/menu.html.twig' -->
+
+
+  </div>
+</nav>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/block--system-menu-block.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+
+
+      </div>
+    </header>
+          <div class="highlighted">
+        <aside class="layout-container section clearfix" role="complementary">
+          
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   * region--highlighted.html.twig
+   x region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+  <div class="region region-highlighted">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--uvalib-messages.html.twig
+   x block--system-messages-block.html.twig
+   * block--system.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/stable/templates/block/block--system-messages-block.html.twig' -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'status_messages' -->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/status-messages.html.twig' -->
+
+  
+<!-- END OUTPUT from 'core/themes/bartik/templates/status-messages.html.twig' -->
+
+
+
+<!-- END OUTPUT from 'core/themes/stable/templates/block/block--system-messages-block.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+
+
+        </aside>
+      </div>
+            <div id="main-wrapper" class="layout-main-wrapper layout-container clearfix">
+      <div id="main" class="layout-main clearfix">
+        
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   * region--breadcrumb.html.twig
+   x region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+  <div class="region region-breadcrumb">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--uvalib-breadcrumbs.html.twig
+   * block--system-breadcrumb-block.html.twig
+   * block--system.html.twig
+   x block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/block.html.twig' -->
+<div id="block-uvalib-breadcrumbs" class="block block-system block-system-breadcrumb-block">
+  
+    
+      <div class="content">
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'breadcrumb' -->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/navigation/breadcrumb.html.twig' -->
+  <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
+    <ol>
+          <li>
+                  <a href="/">Home</a>
+              </li>
+        </ol>
+  </nav>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/navigation/breadcrumb.html.twig' -->
+
+
+    </div>
+  </div>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/block.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+
+
+        <main id="content" class="column main-content" role="main">
+          <section class="section">
+            <a id="main-content" tabindex="-1"></a>
+            
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   * region--content.html.twig
+   x region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+  <div class="region region-content">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--uvalib-page-title.html.twig
+   * block--page-title-block.html.twig
+   * block--core.html.twig
+   x block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/block.html.twig' -->
+<div id="block-uvalib-page-title" class="block block-core block-page-title-block">
+  
+    
+      <div class="content">
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'page_title' -->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/page-title.html.twig' -->
+
+  <h1 class="title page-title">Page not found</h1>
+
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/page-title.html.twig' -->
+
+
+    </div>
+  </div>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/block.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--uvalib-content.html.twig
+   * block--system-main-block.html.twig
+   * block--system.html.twig
+   x block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/block.html.twig' -->
+<div id="block-uvalib-content" class="block block-system block-system-main-block">
+  
+    
+      <div class="content">
+      The requested page could not be found.
+    </div>
+  </div>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/block.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--twocolumncardforsubjectguides-3.html.twig
+   * block--block-content--7cb7ab5d-6961-4e61-83ac-97edb5357acc.html.twig
+   * block--block-content.html.twig
+   * block--block-content.html.twig
+   x block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/block.html.twig' -->
+<div id="block-twocolumncardforsubjectguides-3" class="block block-block-content block-block-content7cb7ab5d-6961-4e61-83ac-97edb5357acc">
+  
+      <h2>Two Column card for Subject Guides</h2>
+    
+      <div class="content">
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'layout__onecol' -->
+<!-- FILE NAME SUGGESTIONS:
+   x layout--onecol.html.twig
+   x layout--onecol.html.twig
+   * layout.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/modules/layout_discovery/layouts/onecol/layout--onecol.html.twig' -->
+  <div class="layout layout--onecol">
+    <div class="layout__region layout__region--content">
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--block-content--field-card-title--two-column-card.html.twig
+   * field--block-content--field-card-title.html.twig
+   * field--block-content--two-column-card.html.twig
+   * field--field-card-title.html.twig
+   x field--text.html.twig
+   * field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/field/field--text.html.twig' -->
+
+  <div class="clearfix text-formatted field field--name-field-card-title field--type-text field--label-above">
+    <div class="field__label">Card title</div>
+              <div class="field__item">Subject Guides</div>
+          </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/field/field--text.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--block-content--field-left-panel-two-column-card--two-column-card.html.twig
+   * field--block-content--field-left-panel-two-column-card.html.twig
+   * field--block-content--two-column-card.html.twig
+   * field--field-left-panel-two-column-card.html.twig
+   x field--text-long.html.twig
+   * field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/field/field--text-long.html.twig' -->
+
+  <div class="clearfix text-formatted field field--name-field-left-panel-two-column-card field--type-text-long field--label-above">
+    <div class="field__label">Left panel - two column card</div>
+              <div class="field__item"><p>Doing research in history, or architecture, or biomedical engineering? Looking for videos, newspapers, or census data? Whatever your subject or research need, we have a guide describing the many resources available to you through the U.Va. Libraries.</p>
+</div>
+          </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/field/field--text-long.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--block-content--field-right-panel-two-column-car--two-column-card.html.twig
+   * field--block-content--field-right-panel-two-column-car.html.twig
+   * field--block-content--two-column-card.html.twig
+   * field--field-right-panel-two-column-car.html.twig
+   x field--text-long.html.twig
+   * field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/field/field--text-long.html.twig' -->
+
+  <div class="clearfix text-formatted field field--name-field-right-panel-two-column-car field--type-text-long field--label-above">
+    <div class="field__label">Right panel - two column card</div>
+              <div class="field__item"><p>POPULAR GUIDES Education Commerce (McIntire) Psychology English Images Newspapers See more →</p>
+</div>
+          </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/field/field--text-long.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--block-content--field-two-column-card-bottom-lin--two-column-card.html.twig
+   * field--block-content--field-two-column-card-bottom-lin.html.twig
+   * field--block-content--two-column-card.html.twig
+   * field--field-two-column-card-bottom-lin.html.twig
+   x field--text.html.twig
+   * field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/field/field--text.html.twig' -->
+
+  <div class="clearfix text-formatted field field--name-field-two-column-card-bottom-lin field--type-text field--label-above">
+    <div class="field__label">Two column card - bottom link</div>
+              <div class="field__item">Browse all subject guides →</div>
+          </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/field/field--text.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   * field--block-content--field-two-column-card-image--two-column-card.html.twig
+   * field--block-content--field-two-column-card-image.html.twig
+   * field--block-content--two-column-card.html.twig
+   * field--field-two-column-card-image.html.twig
+   * field--image.html.twig
+   x field.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/field/field.html.twig' -->
+
+  <div class="field field--name-field-two-column-card-image field--type-image field--label-above">
+    <div class="field__label">Two column card - image</div>
+              <div class="field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image_formatter' -->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/field/image-formatter.html.twig' -->
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image' -->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/field/image.html.twig' -->
+<img src="/sites/default/files/2017-10/2columncardplaceholder_0.png" width="1030" height="258" alt="2 column placeholder" typeof="foaf:Image" />
+
+<!-- END OUTPUT from 'core/themes/classy/templates/field/image.html.twig' -->
+
+
+
+<!-- END OUTPUT from 'core/themes/classy/templates/field/image-formatter.html.twig' -->
+
+</div>
+          </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/field/field.html.twig' -->
+
+
+    </div>
+  </div>
+
+<!-- END OUTPUT from 'core/modules/layout_discovery/layouts/onecol/layout--onecol.html.twig' -->
+
+
+    </div>
+  </div>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/block.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+
+
+          </section>
+        </main>
+                  <div id="sidebar-first" class="column sidebar">
+            <aside class="section" role="complementary">
+              
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   * region--sidebar-first.html.twig
+   x region.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+  <div class="region region-sidebar-first">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--uvalib-powered.html.twig
+   * block--system-powered-by-block.html.twig
+   * block--system.html.twig
+   x block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/block.html.twig' -->
+<div id="block-uvalib-powered" role="complementary" class="block block-system block-system-powered-by-block">
+  
+    
+      <div class="content">
+      <span>Powered by <a href="https://www.drupal.org">Drupal</a></span>
+    </div>
+  </div>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/block.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   * block--uvalib-search.html.twig
+   x block--search-form-block.html.twig
+   * block--search.html.twig
+   * block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/block--search-form-block.html.twig' -->
+<div class="search-block-form block block-search container-inline" data-drupal-selector="search-block-form" id="block-uvalib-search" role="search">
+  
+      <h2>Search</h2>
+    
+    <div class="content container-inline">
+        
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'form' -->
+<!-- FILE NAME SUGGESTIONS:
+   x form--search-block-form.html.twig
+   * form.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/bartik/templates/form--search-block-form.html.twig' -->
+<form action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8" class="search-form search-block-form">
+  
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'form_element' -->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/form/form-element.html.twig' -->
+<div class="js-form-item form-item js-form-type-search form-type-search js-form-item-keys form-item-keys form-no-label">
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'form_element_label' -->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/form/form-element-label.html.twig' -->
+<label for="edit-keys" class="visually-hidden">Search</label>
+<!-- END OUTPUT from 'core/themes/classy/templates/form/form-element-label.html.twig' -->
+
+
+        
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'input__search' -->
+<!-- FILE NAME SUGGESTIONS:
+   * input--search.html.twig
+   x input.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/form/input.html.twig' -->
+<input title="Enter the terms you wish to search for." data-drupal-selector="edit-keys" type="search" id="edit-keys" name="keys" value="" size="15" maxlength="128" class="form-search" />
+
+<!-- END OUTPUT from 'core/themes/classy/templates/form/input.html.twig' -->
+
+
+        </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/form/form-element.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'container' -->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/form/container.html.twig' -->
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'input__submit' -->
+<!-- FILE NAME SUGGESTIONS:
+   * input--submit.html.twig
+   x input.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/themes/classy/templates/form/input.html.twig' -->
+<input class="search-form__submit button js-form-submit form-submit" data-drupal-selector="edit-submit" type="submit" id="edit-submit" value="Search" />
+
+<!-- END OUTPUT from 'core/themes/classy/templates/form/input.html.twig' -->
+
+</div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/form/container.html.twig' -->
+
+
+</form>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/form--search-block-form.html.twig' -->
+
+
+  
+  </div>
+</div>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/block--search-form-block.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/layout/region.html.twig' -->
+
+
+            </aside>
+          </div>
+                      </div>
+    </div>
+        <footer class="site-footer">
+      <div class="layout-container">
+                      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- END OUTPUT from 'core/themes/bartik/templates/page.html.twig' -->
+
+
+    
+    
+  </body>
+</html>
+
+<!-- END OUTPUT from 'core/themes/classy/templates/layout/html.html.twig' -->
+

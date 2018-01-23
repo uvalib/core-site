@@ -11,7 +11,9 @@
     "src/**/*",
     "images/**/*",
     "data/*",
-    "data/**/*"
+    "data/**/*",
+    "files/*",
+    "files/**/*"
   ],
   "extraDependencies": [
     ".htaccess",
