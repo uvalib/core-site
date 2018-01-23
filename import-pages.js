@@ -11,6 +11,10 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
   // create the pages
   fs.readFile('page-template.html', 'utf8', function(err, pageTemplate){
     pages.forEach(page => {
+      if (page.body) {
+        page.body = page.body.replace(/\/sites\/default\/files\//g, '/files/');
+      }
+
       // Add leading slash to path if missing
       if (!page.path.startsWith('/')) page.path = "/"+page.path;
       // Pull filename from path or use index.html
