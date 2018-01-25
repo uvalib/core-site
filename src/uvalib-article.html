@@ -170,16 +170,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
               article: Object,
 
-              previousArticle: {
-                type: Object,
-      //          computed: '_computePreviousArticle(category.items, article)'
-              },
-
-              nextArticle: {
-                type: Object,
-      //          computed: '_computeNextArticle(category.items, article)'
-              },
-
               loading: Boolean,
 
               offline: Boolean,
@@ -204,7 +194,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       static get observers() { return [
-        '_loadArticle(article.html)',
+        '_loadArticle(article.headline,article.html)',
         '_articleChanged(article)'
       ]}
 
@@ -229,113 +219,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.addEventListener('touchend', this._touchend.bind(this));
       }
 
-      _touchstart(event) {
-        if (this._isDesktopWidth()) {
-          return;
-        }
-
-        // Save start coordinates
-        if (!this._touchDir) {
-          this._startX = event.changedTouches[0].clientX;
-          this._startY = event.changedTouches[0].clientY;
-        }
-
-        if (this.previousArticle) {
-          this._previousArticleCover.article = this.previousArticle;
-        }
-        if (this.nextArticle) {
-          this._nextArticleCover.article = this.nextArticle;
-        }
-      }
-
-      _touchmove(event) {
-        if (this._isDesktopWidth()) {
-          return;
-        }
-
-        // Is touchmove mostly horizontal or vertical?
-        if (!this._touchDir) {
-          const absX = Math.abs(event.changedTouches[0].clientX - this._startX);
-          const absY = Math.abs(event.changedTouches[0].clientY - this._startY);
-          this._touchDir = absX > absY ? 'x' : 'y';
-        }
-
-        if (this._touchDir === 'x') {
-          // Prevent vertically scrolling when swiping
-          event.preventDefault();
-
-          let dx = Math.round(event.changedTouches[0].clientX - this._startX);
-
-          // Don't translate past the current image if there's no adjacent image in that direction
-          if ((!this.previousArticle && dx > 0) || (!this.nextArticle && dx < 0)) {
-            dx = 0;
-          }
-
-          if (this.previousArticle) {
-            this._translate(this._previousArticleCover, dx - this.offsetWidth, window.pageYOffset);
-          }
-          if (this.nextArticle) {
-            this._translate(this._nextArticleCover, dx + this.offsetWidth, window.pageYOffset);
-          }
-        }
-      }
-
-      _touchend(event) {
-        if (this._isDesktopWidth()) {
-          return;
-        }
-
-        // Don't finish swiping if there are still active touches.
-        if (event.touches.length) {
-          return;
-        }
-
-        if (this._touchDir === 'x') {
-          let dx = Math.round(event.changedTouches[0].clientX - this._startX);
-
-          // Don't translate past the current image if there's no adjacent image in that direction
-          if ((!this.previousArticle && dx > 0) || (!this.nextArticle && dx < 0)) {
-            dx = 0;
-          }
-
-          if (dx > 0) {
-            if (dx > 100) {
-              this._translate(this._previousArticleCover, 0, window.pageYOffset, true /* transition */);
-              window.setTimeout(() => {
-                this.set('_routeData.id', this.previousArticle.id);
-                Polymer.AppLayout.scroll({ top: 0 });
-                this._previousArticleCover = this._swapCurrentArticleCovers(this._previousArticleCover);
-                this._resetElementStyles(this._nextArticleCover);
-              }, 200);
-            } else {
-              this._translate(this._previousArticleCover, -this.offsetWidth, window.pageYOffset, true /* transition */);
-              window.setTimeout(() => {
-                this._resetElementStyles(this._previousArticleCover);
-                this._resetElementStyles(this._nextArticleCover);
-              }, 200);
-            }
-          } else if (dx < 0) {
-            if (dx < -100) {
-              this._translate(this._nextArticleCover, 0, window.pageYOffset, true /* transition */);
-              window.setTimeout(() => {
-                this.set('_routeData.id', this.nextArticle.id);
-                Polymer.AppLayout.scroll({ top: 0 });
-                this._nextArticleCover = this._swapCurrentArticleCovers(this._nextArticleCover);
-                this._resetElementStyles(this._previousArticleCover);
-              }, 200);
-            } else {
-              this._translate(this._nextArticleCover, this.offsetWidth, window.pageYOffset, true /* transition */);
-              window.setTimeout(() => {
-                this._resetElementStyles(this._previousArticleCover);
-                this._resetElementStyles(this._nextArticleCover);
-              }, 200);
-            }
-          }
-        }
-
-        // Reset touch direction
-        this._touchDir = null;
-      }
 
       _translate(elem, x, y, transition) {
         elem.style.display = 'block';
@@ -366,14 +249,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return this._desktopMediaQuery.matches;
       }
 
-      _loadArticle(html) {
+      _loadArticle(title,html) {
         // If this._currentArticleCover isn't defined here, then it hasn't been stamped yet, and
         // the template already has the `fade-in` class.
         if (this._currentArticleCover) {
           this._currentArticleCover.classList.add('fade-in');
         }
 
-        this.$.content.innerHTML = html;
+        this.$.content.innerHTML = "<h1>"+title+"</h1>"+html;
         //ShadyCSS.styleSubtree(this.$.content);
       }
 
