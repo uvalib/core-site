@@ -30,6 +30,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <style is="custom-style" include="uvalib-theme iron-flex iron-flex-alignment">
         :host {
           display: block;
+          @apply --layout-horizontal;
+          @apply --layout-center-justified;
         }
 
         [hidden] {
@@ -37,6 +39,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
 
         .container {
+          max-width: var(--uvalib-display-width-max);
+          @apply --layout-flex;
           display: flex;
           margin: 0 40px;
         }
