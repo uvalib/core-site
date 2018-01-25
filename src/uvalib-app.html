@@ -243,6 +243,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               // Load pre-caching Service Worker
               if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('service-worker.js', {scope: '/'});
+
+                // Check to see if the service worker controlling the page at initial load
+                // has become redundant, since this implies there's a new service worker with fresh content.
+                if (navigator.serviceWorker.controller) {
+                  navigator.serviceWorker.controller.onstatechange = function(event) {
+                    if (event.target.state === 'redundant') {
+                      //window.showToast('Site updated. Refresh this page to see the latest content.');
+                      if (!this._updateSnackbar) {
+                        this._updateSnackbar = document.createElement('news-snackbar');
+                        this.root.appendChild(this._updateSnackbar);
+                      }
+                      this._updateSnackbar.textContent = 'Site updated. Refresh this page to see the latest content.';
+                      this._updateSnackbar.open();
+                    }
+                  };
+                }
+
               }
             });
           });
