@@ -18,7 +18,8 @@
   "extraDependencies": [
     ".htaccess",
     "manifest.json",
-    "bower_components/webcomponentsjs/*"
+    "bower_components/webcomponentsjs/*",
+    "bower_components/uvalib-header/uvalib-simple-header.html"
   ],
   "lint": {
     "rules": ["polymer-2-hybrid"]
