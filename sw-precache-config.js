@@ -19,7 +19,7 @@ module.exports = {
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 500,
+          maxEntries: 400,
           name: 'data-images-cache'
         }
       }
@@ -29,7 +29,7 @@ module.exports = {
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 500,
+          maxEntries: 400,
           name: 'data-pages-cache'
         }
       }
@@ -39,7 +39,7 @@ module.exports = {
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 500,
+          maxEntries: 400,
           name: 'data-json-cache'
         }
       }
@@ -49,7 +49,7 @@ module.exports = {
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 500,
+          maxEntries: 400,
           name: 'data-api-cache'
         }
       }
