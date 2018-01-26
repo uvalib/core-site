@@ -249,7 +249,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 if (navigator.serviceWorker.controller) {
                   navigator.serviceWorker.controller.onstatechange = function(event) {
                     if (event.target.state === 'redundant') {
-                      //window.showToast('Site updated. Refresh this page to see the latest content.');
                       if (!this._updateSnackbar) {
                         this._updateSnackbar = document.createElement('news-snackbar');
                         this.root.appendChild(this._updateSnackbar);
