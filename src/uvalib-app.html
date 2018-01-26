@@ -87,7 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         offline="[[offline]]"
         failure="{{failure}}"></app-data>
 
-    <uvalib-header lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
+    <uvalib-header></uvalib-header>
 
     <uvalib-article
           name="article"
@@ -101,7 +101,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           failure="[[failure]]"></uvalib-article>
 
 
-    <uvalib-footer lazy-load-complete="[[lazyLoadComplete]]"></uvalib-footer>
+    <uvalib-footer></uvalib-footer>
 
   </template>
 
@@ -198,7 +198,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // with `behavior: 'silent'` to disable header scroll effects during the scroll.
         Polymer.AppLayout.scroll({ top: 0, behavior: 'silent' });
         // Close the drawer - in case the *route* change came from a link in the drawer.
-        this.$.nav.closeDrawer();
+//        this.$.nav.closeDrawer();
       }
 
       _pageChanged(page, oldPage) {
