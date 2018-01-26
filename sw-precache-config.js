@@ -19,18 +19,18 @@ module.exports = {
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 200,
+          maxEntries: 500,
           name: 'data-images-cache'
         }
       }
     },
     {
-      urlPattern: /\/data\/articles\/.*/,
+      urlPattern: /\/data\/pages\/.*/,
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 100,
-          name: 'data-articles-cache'
+          maxEntries: 500,
+          name: 'data-pages-cache'
         }
       }
     },
@@ -39,7 +39,7 @@ module.exports = {
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 10,
+          maxEntries: 500,
           name: 'data-json-cache'
         }
       }
