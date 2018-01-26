@@ -235,8 +235,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _ensureLazyLoaded() {
         // load lazy resources after render and set `loadComplete` when done.
         if (!this.loadComplete) {
-          Polymer.RenderStatus.afterNextRender(this, () => {
-            Polymer.importHref(this.resolveUrl('lazy-resources.html'), () => {
+          Polymer.RenderStatus.afterNextRender(this, function(){
+            Polymer.importHref(this.resolveUrl('lazy-resources.html'), function(){
               this._notifyNetworkStatus();
               this.loadComplete = true;
 
@@ -261,8 +261,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
 
               }
-            });
-          });
+            }.bind(this));
+          }.bind(this));
         }
       }
 

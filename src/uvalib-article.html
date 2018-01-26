@@ -214,11 +214,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _installListeners() {
         this._desktopMediaQuery = window.matchMedia('(min-width: 768px)');
-        this.addEventListener('touchstart', this._touchstart.bind(this));
-        this.addEventListener('touchmove', this._touchmove.bind(this));
-        this.addEventListener('touchend', this._touchend.bind(this));
       }
-
 
       _translate(elem, x, y, transition) {
         elem.style.display = 'block';
