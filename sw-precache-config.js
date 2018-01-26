@@ -45,7 +45,7 @@ module.exports = {
       }
     },
     {
-      urlPattern: /^https:\/\/api\.devhub\.virginia\.edu/,
+      urlPattern: /^https:\/\/api\.devhub\.virginia\.edu\/.*/,
       handler: 'fastest',
       options: {
         cache: {
