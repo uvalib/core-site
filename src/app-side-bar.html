@@ -53,28 +53,12 @@
     </style>
 
     <uva-library path="web/blocks" item="{{_item}}" uuid="[[uuid]]"></uva-library>
-<!--    <uvalib-models path="blocks" item="{{_item}}" uuid="[[uuid]]"></uvalib-models> -->
-    <!--<h3>[[_item.title]]</h3>-->
-    <div id="content">
+
+    <div id="content" on-click="_click">
       <marked-element markdown="[[_item.body]]">
         <div slot="markdown-html"></div>
       </marked-element>
     </div>
-
-
-<!--
-    <h3>
-      <slot></slot>
-    </h3>
-    <dom-repeat items="[[items]]">
-      <template>
-        <a href$="[[item.href]]">
-          <div class="category">[[item.category]]</div>
-          <span class="headline">[[item.headline]]</span>
-        </a>
-      </template>
-    </dom-repeat>
--->
 
   </template>
 
@@ -84,12 +68,20 @@
 
       static get is() { return 'app-side-bar'; }
 
-      static get properties() { return {
+      static get properties() {
+        return {
+          uuid: String,
+          _item: Object
+        }
+      }
 
-        uuid: String,
-        _item: Object
-
-      }}
+      _click(e) {
+        var target = e.target
+        if (target.tagName.toLowerCase() === "a" && target.getAttribute('href')[0]==="#") {
+          e.preventDefault();
+          this.dispatchEvent(new CustomEvent('click-hash-link',{bubbles: true, composed: true, detail: {anchor:target.getAttribute('href')}}));
+        }
+      }
 
     }
 
