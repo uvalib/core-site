@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "postinstall": "node -e \"require('fs').writeFileSync('bower_components/font-roboto/roboto.html', '')\""
+  }
+}
