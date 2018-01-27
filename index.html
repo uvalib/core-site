@@ -15,9 +15,6 @@
 
     body {
       margin: 0;
-      background-color: #FAFAFA;
-      color: #383838;
-      font-family: Georgia;
       min-height: 100vh;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
@@ -59,6 +56,11 @@
 <body>
 
   <uvalib-app unresolved app-title="UVA Library"></uvalib-app>
+  <noscript>
+    <div style="background-color: #ffffff; text: #000;">
+        JavaScript must be enabled in order for you to use our website. However, it seems JavaScript is either disabled or not supported by your browser.
+    </div>
+  </noscript>
 
   <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="src/uvalib-app.html">
