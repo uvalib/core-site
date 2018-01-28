@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "bower install; ./import-pages.js; ./import-files.js; polymer build;",
-    "deploy": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/unbundled-custom/ www14.lib.virginia.edu:/wwwstatic"
+    "deploy": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/es6-unbundled/ www14.lib.virginia.edu:/wwwstatic"
   },
   "repository": {
     "type": "git",
