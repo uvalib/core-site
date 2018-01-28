@@ -283,7 +283,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _hashClick(e){
-        this.shadowRoot.querySelector(e.detail.anchor).scrollIntoView();
+        this.shadowRoot.querySelector(e.detail.anchor).scrollIntoView({behavior:"smooth", block: "center", inline: "nearest"});
       }
     }
 
