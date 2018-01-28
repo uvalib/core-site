@@ -25,6 +25,13 @@
   },
   "builds": [
     {
+      "name": "unbundled-custom",
+      "bundle": false,
+      "js": {"compile":true, "minify": true},
+      "css": {"minify": true},
+      "html": {"minify": true}
+    },
+    {
       "preset": "es5-bundled"
     },
     {
