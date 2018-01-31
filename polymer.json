@@ -18,7 +18,8 @@
     ".htaccess",
     "manifest.json",
     "bower_components/webcomponentsjs/*",
-    "bower_components/uvalib-header/uvalib-simple-header.html"
+    "bower_components/uvalib-header/uvalib-simple-header.html",
+    "fonts/*"
   ],
   "lint": {
     "rules": ["polymer-2-hybrid"]
