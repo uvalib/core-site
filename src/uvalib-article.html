@@ -252,10 +252,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           this._currentArticleCover.classList.add('fade-in');
         }
 
-        if (this.route.prefix==="/" && this.route.path==="") {
-          this.$.content.innerHTML = html;
-        } else {
-          this.$.content.innerHTML = "<h1>"+title+"</h1>"+html;
+        if (title && html) {
+          if (this.route.prefix==="/" && this.route.path==="") {
+            this.$.content.innerHTML = html;
+          } else {
+            this.$.content.innerHTML = "<h1>"+title+"</h1>"+html;
+          }
         }
         //ShadyCSS.styleSubtree(this.$.content);
       }

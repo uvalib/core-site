@@ -40,6 +40,12 @@
           type: Boolean,
           readOnly: true,
           notify: true
+        },
+
+        notFound: {
+          type: Boolean,
+          readOnly: true,
+          notify: true
         }
 
       }}
@@ -57,6 +63,8 @@
             return page;
           }
         }
+        this._setNotFound(true);
+        console.log('not found');
         return null;
       }
 

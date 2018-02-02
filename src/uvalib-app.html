@@ -80,7 +80,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         page="{{article}}"
         loading="{{loading}}"
         offline="[[offline]]"
-        failure="{{failure}}"></app-data>
+        failure="{{failure}}"
+        not-found="{{notFound}}"></app-data>
 
     <uvalib-header library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
 
@@ -140,11 +141,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         failure: Boolean,
 
+        notFound: Boolean,
+
         lazyLoadComplete: Boolean
 
       }}
 
       static get observers() { return [
+        '_notFound(notFound)',
         '_routePageChanged(routeData.page, isAttached)',
         '_updateArticleHeadline(article.headline)',
         '_updateDocumentTitle(page, category.title, articleHeadline, appTitle)'
@@ -177,6 +181,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       connectedCallback() {
         super.connectedCallback();
         this.isAttached = true;
+      }
+
+      _notFound(notFound){
+        if (notFound) {
+          window.location.replace("https://www.library.virginia.edu"+this.route.path);
+        }
       }
 
       _routePageChanged(page, isAttached) {
