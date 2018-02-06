@@ -19,27 +19,15 @@
     "manifest.json",
     "bower_components/webcomponentsjs/*",
     "bower_components/uvalib-header/uvalib-simple-header.html",
-    "fonts/*"
+    "fonts/*",
+    "SkipTo.min.js"
   ],
   "lint": {
     "rules": ["polymer-2-hybrid"]
   },
   "builds": [
     {
-      "name": "unbundled-custom",
-      "bundle": false,
-      "js": {"compile":true, "minify": true},
-      "css": {"minify": true},
-      "html": {"minify": true}
-    },
-    {
-      "preset": "es5-bundled"
-    },
-    {
       "preset": "es6-unbundled"
-    },
-    {
-      "preset": "es6-bundled"
     }
   ]
 }

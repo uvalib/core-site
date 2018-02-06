@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "bower install; ./import-pages.js; ./import-files.js; polymer build;",
+    "build": "bower install; ./import-pages.js; ./import-files.js; polymer build; cp bower_components/bwt-datatable/src/* build/es6-unbundled/bower_components/bwt-datatable/src/",
     "deploy": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/es6-unbundled/ www14.lib.virginia.edu:/wwwstatic"
   },
   "repository": {
@@ -25,6 +25,7 @@
     "node-wget": "^0.4.2",
     "polymer-cli": "^1.5.7",
     "request": "^2.83.0",
-    "sanitize-filename": "^1.6.1"
+    "sanitize-filename": "^1.6.1",
+    "webp-converter": "^2.1.6"
   }
 }
