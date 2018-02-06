@@ -19,7 +19,8 @@
     "manifest.json",
     "bower_components/webcomponentsjs/*",
     "bower_components/uvalib-header/uvalib-simple-header.html",
-    "fonts/*"
+    "fonts/*",
+    "SkipTo.min.js"
   ],
   "lint": {
     "rules": ["polymer-2-hybrid"]
