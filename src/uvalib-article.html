@@ -127,7 +127,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         pattern="/:category/:id"
         data="{{_routeData}}"></app-route>
 
-    <div class="container" fade-in$="[[!loading]]" hidden$="[[failure]]" on-click-hash-link="_hashClick">
+    <div role="main" class="container" fade-in$="[[!loading]]" hidden$="[[failure]]" on-click-hash-link="_hashClick">
       <article class="flex">
         <div id="content" class="fade-in"></div>
       </article>

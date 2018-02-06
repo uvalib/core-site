@@ -63,6 +63,22 @@
   </noscript>
 
   <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="text/javascript">
+    var SkipToConfig = {
+    	"settings": {
+    		"skipTo": {
+    			"headings"     : "h1, h2, h3, h4",
+    			"main"         : "main, [role=main]",
+    			"landmarks"    : "[role=navigation], [role=search]",
+    			"sections"     : "nav",
+    			"accesskey"    : "0",
+    			"wrap"         : "true",
+    			"visibility"   : "onfocus"
+    		}
+    	}
+    };
+  </script>
+  <script src="SkipTo.min.js"></script>
   <link rel="import" href="src/uvalib-app.html">
 
 </body>
