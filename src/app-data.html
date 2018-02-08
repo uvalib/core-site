@@ -57,15 +57,17 @@
 
       _computePage(pagesItems, path){
         if (!pagesItems) { return null; }
+        var notFound = null;
         for (let i=0; i< pagesItems.length; ++i) {
           let page = pagesItems[i];
-          if (page.path === path || page.path === path+'/') {
+          if (page.path === path || page.path+'/' === path || page.path === path+'/') {
             return page;
           }
+          if (page.path === "/404") notFound = page;
         }
         this._setNotFound(true);
         console.log('not found');
-        return null;
+        return notFound;
       }
 
       _fetchPage(page, offline) {
