@@ -1,8 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/uva-models/uva-library.html">
 
-<link rel="import" href="../bower_components/marked-element/marked-element.html">
-
 <dom-module id="app-side-bar">
 
   <template>
@@ -55,9 +53,7 @@
     <uva-library path="web/blocks" item="{{_item}}" uuid="[[uuid]]"></uva-library>
 
     <div id="content" on-click="_click">
-      <marked-element markdown="[[_item.body]]">
-        <div slot="markdown-html"></div>
-      </marked-element>
+
     </div>
 
   </template>
@@ -71,7 +67,10 @@
       static get properties() {
         return {
           uuid: String,
-          _item: Object
+          _item: {
+            type: Object,
+            observer: '_update'
+          }
         }
       }
 
@@ -82,7 +81,9 @@
           this.dispatchEvent(new CustomEvent('click-hash-link',{bubbles: true, composed: true, detail: {anchor:target.getAttribute('href')}}));
         }
       }
-
+      _update() {
+        this.$.content.innerHTML = this._item.body
+      }
     }
 
     customElements.define(AppSideBar.is, AppSideBar);

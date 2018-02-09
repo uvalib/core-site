@@ -1,8 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/uva-models/uva-library.html">
 
-<link rel="import" href="../bower_components/marked-element/marked-element.html">
-
 <dom-module id="app-sub-nav">
 
   <template>
@@ -54,28 +52,10 @@
     </style>
 
     <uva-library path="web/blocks" item="{{_item}}" uuid="[[uuid]]"></uva-library>
-<!--    <uvalib-models path="blocks" item="{{_item}}" uuid="[[uuid]]"></uvalib-models> -->
-    <!--<h3>[[_item.title]]</h3>-->
+
     <div id="content">
-      <marked-element markdown="[[_item.body]]">
-        <div slot="markdown-html"></div>
-      </marked-element>
+
     </div>
-
-
-<!--
-    <h3>
-      <slot></slot>
-    </h3>
-    <dom-repeat items="[[items]]">
-      <template>
-        <a href$="[[item.href]]">
-          <div class="category">[[item.category]]</div>
-          <span class="headline">[[item.headline]]</span>
-        </a>
-      </template>
-    </dom-repeat>
--->
 
   </template>
 
@@ -86,12 +66,16 @@
       static get is() { return 'app-sub-nav'; }
 
       static get properties() { return {
-
         uuid: String,
-        _item: Object
+        _item: {
+          type: Object,
+          observer: '_update'
+        }
 
       }}
-
+      _update() {
+        this.$.content.innerHTML = this._item.body
+      }
     }
 
     customElements.define(AppSubNav.is, AppSubNav);
