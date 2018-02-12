@@ -137,11 +137,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <template is="dom-if" if="[[_or( article.sidebar, article.subnav)]]">
         <aside>
           <template is="dom-if" if="[[article.subnav]]">
-            <app-sub-nav class="fade-in" uuid="[[article.subnav]]">
-            </app-sub-nav>
+            <app-sub-nav small-screen$="[[smallScreen]]" medium-screen$="[[mediumScreen]]" large-screen$="[[largeScreen]]" class="fade-in" uuid="[[article.subnav]]"></app-sub-nav>
           </template>
           <template is="dom-if" if="[[article.sidebar]]">
-            <app-side-bar class="fade-in" uuid="[[article.sidebar]]">
+            <app-side-bar small-screen$="[[smallScreen]]" medium-screen$="[[mediumScreen]]" large-screen$="[[largeScreen]]" class="fade-in" uuid="[[article.sidebar]]">
             </app-side-bar>
           </template>
         </aside>
