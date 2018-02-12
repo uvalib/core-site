@@ -1,6 +1,7 @@
 #!/bin/bash
 rm -rf bower_components
 git pull
+npm install
 bower install
 cd bower_components; rm -rf uvalib-theme; git clone https://github.com/uvalib-components/uvalib-theme.git
 cd ..
