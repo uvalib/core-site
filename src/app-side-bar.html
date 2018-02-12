@@ -1,54 +1,56 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/uva-models/uva-library.html">
+<link rel="import" href="../bower_components/uvalib-theme/uvalib-theme.html">
 
 <dom-module id="app-side-bar">
 
   <template>
+    <custom-style>
+      <style include="uvalib-theme">
 
-    <style>
+        :host {
+          display: block;
+        }
 
-      :host {
-        display: block;
-      }
+        h3 {
+          @apply --app-sub-section-headline;
+        }
 
-      h3 {
-        @apply --app-sub-section-headline;
-      }
+        a {
+          text-decoration: none;
+          color: inherit;
+          display: block;
+          margin: 20px 0;
+        }
 
-      a {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        margin: 20px 0;
-      }
+        .category {
+          display: none;
+        }
 
-      .category {
-        display: none;
-      }
+        :host([featured]) > a {
+          padding-bottom: 24px;
+          border-bottom: var(--app-border-style);
+        }
 
-      :host([featured]) > a {
-        padding-bottom: 24px;
-        border-bottom: var(--app-border-style);
-      }
+        :host([featured]) > a:last-of-type {
+          border-bottom: none;
+        }
 
-      :host([featured]) > a:last-of-type {
-        border-bottom: none;
-      }
+        :host([featured]) .category {
+          display: inline-block;
+          padding: 6px 20px 7px 20px;
+          border: var(--app-border-style);
+          font-weight: bold;
+          font-size: 11px;
+        }
 
-      :host([featured]) .category {
-        display: inline-block;
-        padding: 6px 20px 7px 20px;
-        border: var(--app-border-style);
-        font-weight: bold;
-        font-size: 11px;
-      }
+        :host([featured]) .headline {
+          display: block;
+          margin: 20px 0;
+        }
 
-      :host([featured]) .headline {
-        display: block;
-        margin: 20px 0;
-      }
-
-    </style>
+      </style>
+    </custom-style>
 
     <uva-library path="web/blocks" item="{{_item}}" uuid="[[uuid]]"></uva-library>
 
