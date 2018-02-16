@@ -160,11 +160,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       ready() {
         // Listen for the skip to navigation events.
-        this.addEventListener('jumpToSearch', this._jumpToSearch);
-        this.addEventListener('jumpToContent', this._jumpToContent); $.main.changeFocusToContent());
-        this.addEventListener('jumpToNavigation', this._jumpToNavigation);
-        this.addEventListener('jumpToHeader', this._jumpToHeader); $.header.focus());
-        this.addEventListener('jumpToFooter', this._jumpToFooter); $.footer.focus());
+//        this.addEventListener('jumpToSearch', this._jumpToSearch);
+//        this.addEventListener('jumpToContent', this._jumpToContent);
+//        //$.main.changeFocusToContent());
+//        this.addEventListener('jumpToNavigation', this._jumpToNavigation);
+//        this.addEventListener('jumpToHeader', this._jumpToHeader); $.header.focus());
+//        this.addEventListener('jumpToFooter', this._jumpToFooter); $.footer.focus());
 
         super.ready();
         // Custom elements polyfill safe way to indicate an element has been upgraded.
