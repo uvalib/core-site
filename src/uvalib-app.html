@@ -87,7 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         failure="{{failure}}"
         not-found="{{notFound}}"></app-data>
 
-    <uvalib-header id="header" library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
+    <uvalib-header id="header" tabindex="-1" library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
 
     <uvalib-article id="content"
           name="article"
@@ -101,7 +101,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           failure="[[failure]]"></uvalib-article>
 
 
-    <uvalib-footer id="footer"></uvalib-footer>
+    <uvalib-footer id="footer" tabindex="-1"></uvalib-footer>
     <uvalib-scroll-top enabled="true" activatewhen="200"></uvalib-scroll-top>
   </template>
 
@@ -162,12 +162,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // Listen for the skip to navigation events.
         this.addEventListener('jumpToSearch', this._jumpToSearch);
         this.addEventListener('jumpToContent', this._jumpToContent);
-        //$.main.changeFocusToContent());
         this.addEventListener('jumpToNavigation', this._jumpToNavigation);
         this.addEventListener('jumpToHeader', this._jumpToHeader);
-        //$.header.focus());
         this.addEventListener('jumpToFooter', this._jumpToFooter);
-        //$.footer.focus());
 
         super.ready();
         // Custom elements polyfill safe way to indicate an element has been upgraded.
@@ -200,16 +197,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.$.header.changeFocusToSearch();
       }
       _jumpToContent(e) {
-        this.$.main.changeFocusToContent();
+        // TODO this focus needs to be adjusted so that something in the article content gets focus.
+        // For example, what on the home page should get the focus.
+        // How do we make this work for each page content so that it is content specific?
+        this.$.content.changeFocusToContent();
       }
       _jumptoNavigation(e) {
         this.$.header.changeFocusToNavigation();
       }
       _jumpToHeader(e) {
-        this.$.header.focus();
+        this.$.header.changeFocusToFirstItem();
       }
       _jumpToFooter(e) {
-        this.$.footer.focus();
+        this.$.footer.changeFocusToFirstItem();
       }
 //      _notFound(notFound){
 //        if (notFound) {
