@@ -15,6 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-theme.html">
 <link rel="import" href="app-data.html">
+<link rel="import" href="../bower_components/uvalib-skip-nav/uvalib-skip-nav.html">
 <link rel="import" href="../bower_components/uvalib-header/uvalib-header.html">
 <link rel="import" href="../bower_components/uvalib-scroll-top/uvalib-scroll-top.html">
 
@@ -62,6 +63,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <uvalib-analytics site-id="23" path="[[route.path]]"></uvalib-analytics>
 
+    <uvalib-skip-nav tabindex="0"></uvalib-skip-nav>
+
     <!--
       app-location and app-route elements provide the state of the URL for the app.
     -->
@@ -84,9 +87,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         failure="{{failure}}"
         not-found="{{notFound}}"></app-data>
 
-    <uvalib-header library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
+    <uvalib-header id="header" library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
 
-    <uvalib-article
+    <uvalib-article id="content"
           name="article"
           route="{{subroute}}"
           category-name="{{categoryName}}"
@@ -98,7 +101,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           failure="[[failure]]"></uvalib-article>
 
 
-    <uvalib-footer></uvalib-footer>
+    <uvalib-footer id="footer"></uvalib-footer>
     <uvalib-scroll-top enabled="true" activatewhen="200"></uvalib-scroll-top>
   </template>
 
@@ -156,6 +159,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ]}
 
       ready() {
+        // Listen for the skip to navigation events.
+        this.addEventListener('jumpToSearch', this._jumpToSearch);
+        this.addEventListener('jumpToContent', this._jumpToContent); $.main.changeFocusToContent());
+        this.addEventListener('jumpToNavigation', this._jumpToNavigation);
+        this.addEventListener('jumpToHeader', this._jumpToHeader); $.header.focus());
+        this.addEventListener('jumpToFooter', this._jumpToFooter); $.footer.focus());
+
         super.ready();
         // Custom elements polyfill safe way to indicate an element has been upgraded.
         this.removeAttribute('unresolved');
@@ -183,7 +193,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         super.connectedCallback();
         this.isAttached = true;
       }
-
+      _jumpToSearch(e) {
+        this.$.header.changeFocusToSearch();
+      }
+      _jumpToContent(e) {
+        this.$.main.changeFocusToContent();
+      }
+      _jumptoNavigation(e) {
+        this.$.header.changeFocusToNavigation();
+      }
+      _jumpToHeader(e) {
+        this.$.header.focus();
+      }
+      _jumpToFooter(e) {
+        this.$.footer.focus();
+      }
 //      _notFound(notFound){
 //        if (notFound) {
 //          window.location.replace("https://www.library.virginia.edu"+this.route.path);

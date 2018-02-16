@@ -213,6 +213,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         Polymer.RenderStatus.afterNextRender(this, this._installListeners);
       }
 
+      changeFocusToContent() {
+        this.querySelector("div[role='main']").focus();
+      }
+      
       _installListeners() {
         this._desktopMediaQuery = window.matchMedia('(min-width: 768px)');
       }
