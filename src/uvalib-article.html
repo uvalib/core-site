@@ -33,7 +33,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         :host {
           display: block;
           @apply --layout-horizontal;
+          /*@apply --layout-wrap;*/
           @apply --layout-center-justified;
+
         }
 
         [hidden] {
@@ -43,8 +45,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         .container {
           max-width: var(--uvalib-display-width-max);
           @apply --layout-flex;
-          display: flex;
-/*          margin: 0 40px; */
+          @apply --layout-horizontal;
+          @apply --layout-wrap;
         }
 
         .container .fade-in {
@@ -56,14 +58,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           transition: opacity 500ms;
         }
 
-        .flex {
-          flex: 1;
+        article {
+          @apply --layout-flex;
         }
-
-        .preview-cover {
-          display: none;
-        }
-
         aside {
           margin-left: 24px;
           width: 300px;
@@ -71,54 +68,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         app-side-bar, app-sub-nav {
           margin-bottom: 32px;
-        }
-
-        /* mobile */
-        @media (max-width: 767px) {
-          .container {
-            display: block;
-          }
-
-          .preview-cover {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1;
-          }
-
-          #content {
-/*            padding: 24px; */
-          }
-
-          aside {
-            margin-left: auto;
-            width: auto;
-            padding: 0 24px;
-          }
-
-          .share-link {
-            display: none;
-          }
-        }
-
-        /* mobile and desktop small */
-        @media (max-width: 1309px) {
-          h1 {
-            font-size: 6vh;
-            line-height: 7vh;
-            max-height: calc(7vh * 7);
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 7;
-            -webkit-box-orient: vertical;
-          }
-
-          :host-context(.fixed-viewport-height) h1 {
-            font-size: calc(var(--viewport-height) * 0.06);
-            line-height: calc(var(--viewport-height) * 0.07);
-            max-height: calc(var(--viewport-height) * 0.49);
-          }
         }
 
       </style>
@@ -130,7 +79,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         data="{{_routeData}}"></app-route>
 
     <div role="main" class="container" fade-in$="[[!loading]]" hidden$="[[failure]]" on-click-hash-link="_hashClick">
-      <article class="flex">
+      <article>
         <div id="content" class="fade-in"></div>
       </article>
 
