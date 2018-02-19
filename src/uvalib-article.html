@@ -78,7 +78,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         pattern="/:category/:id"
         data="{{_routeData}}"></app-route>
 
-    <div id="mainContent" role="main" tabindex="-1" class="container" fade-in$="[[!loading]]" hidden$="[[failure]]" on-click-hash-link="_hashClick">
+    <div role="main" class="container" fade-in$="[[!loading]]" hidden$="[[failure]]" on-click-hash-link="_hashClick">
       <article>
         <div id="content" class="fade-in"></div>
       </article>
@@ -162,8 +162,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         Polymer.RenderStatus.afterNextRender(this, this._installListeners);
       }
 
-      changeFocusToContent() {
-        this.$.mainContent.focus();
+      changeFocusToContentHeading() {
+        this.$.content.querySelector('h1').focus();
       }
 
       _installListeners() {
@@ -210,7 +210,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           if (this.route.prefix==="/" && this.route.path==="") {
             this.$.content.innerHTML = html;
           } else {
-            this.$.content.innerHTML = "<h1>"+title+"</h1>"+html;
+            this.$.content.innerHTML = "<h1 tabindex='-1'>"+title+"</h1>"+html;
           }
         }
         //ShadyCSS.styleSubtree(this.$.content);
