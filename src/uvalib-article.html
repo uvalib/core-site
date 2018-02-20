@@ -138,7 +138,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 notify: true
               },
 
-              _routeData: Object
+              _routeData: Object,
+
+              tabindex: {
+                type: Number,
+                value: -1
+              }
             });
 
       }
@@ -162,8 +167,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         Polymer.RenderStatus.afterNextRender(this, this._installListeners);
       }
 
-      changeFocusToContentHeading() {
-        this.$.content.querySelector('h1').focus();
+      changeFocusToContent() {
+        // For the home page focus should be directed to the banner.
+        // For any other page focus should go to the header.
+        // NOTE for this to work these elements need to have tabindex=-1
+/*        if (this.$.content.querySelector('paper-material')) {
+          this.$.content.querySelector('paper-material').focus();
+        } else {
+          if (this.$.content.querySelector('h1')) {
+            this.$.content.querySelector('h1').focus();
+          }
+        }*/
+        if (this.shadowRoot.querySelector('paper-material')) {
+          this.shadowRoot.querySelector('paper-material').focus();
+        } else {
+          if (this.shadowRoot.querySelector('h1')) {
+            this.shadowRoot.querySelector('h1').focus();
+          }
+        }
       }
 
       _installListeners() {

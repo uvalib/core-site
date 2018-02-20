@@ -87,7 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         failure="{{failure}}"
         not-found="{{notFound}}"></app-data>
 
-    <uvalib-header id="header" tabindex="-1" library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
+    <uvalib-header id="header" library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
 
     <uvalib-article id="content"
           name="article"
@@ -101,7 +101,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           failure="[[failure]]"></uvalib-article>
 
 
-    <uvalib-footer id="footer" tabindex="-1"></uvalib-footer>
+    <uvalib-footer id="footer"></uvalib-footer>
     <uvalib-scroll-top enabled="true" activatewhen="200"></uvalib-scroll-top>
   </template>
 
@@ -197,10 +197,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.$.header.changeFocusToSearch();
       }
       _jumpToContent(e) {
-        // TODO this focus needs to be adjusted so that something in the article content gets focus.
-        // For example, what on the home page should get the focus.
-        // How do we make this work for each page content so that it is content specific?
-        this.$.content.changeFocusToContentHeading();
+        this.$.content.changeFocusToContent();
       }
       _jumptoNavigation(e) {
         this.$.header.changeFocusToNavigation();
