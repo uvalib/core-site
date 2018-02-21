@@ -1,7 +1,6 @@
 // Based on audit.js in the accessibility developer tools node module.
 var page = require('webpage').create(),
     system = require('system'),
-    fs = require('fs'),
     url;
 
 // disabling so we can get the document root from iframes (http -> https)
