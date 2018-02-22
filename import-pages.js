@@ -12,6 +12,7 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
   fs.readFile('page-template.html', 'utf8', function(err, pageTemplate){
     pages.forEach(page => {
       if (page.body) {
+        page.body = page.body.replace(/https:\/\/drupal\.lib\.virginia\.edu\/sites\/default\/files\//g, '/files/');
         page.body = page.body.replace(/\/sites\/default\/files\//g, '/files/');
       }
 
