@@ -26,6 +26,7 @@
     "node-wget": "^0.4.2",
     "polymer-cli": "^1.5.7",
     "request": "^2.83.0",
-    "sanitize-filename": "^1.6.1"
+    "sanitize-filename": "^1.6.1",
+    "webp-converter": "^2.1.6"
   }
 }
