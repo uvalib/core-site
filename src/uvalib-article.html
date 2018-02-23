@@ -77,6 +77,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </style>
     </custom-style>
 
+    <template is="dom-if" if="[[!smallScreen]]">
+      <uvalib-chat></uvalib-chat>
+    </template>
+
     <app-route
         route="{{route}}"
         pattern="/:category/:id"
