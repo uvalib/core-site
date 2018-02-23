@@ -1,4 +1,5 @@
 RewriteEngine on
+RewriteBase /
 
 # TODO: make these feeds static and pull from a static server
 RewriteCond %{REQUEST_METHOD}  =GET
