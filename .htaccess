@@ -1,5 +1,12 @@
 RewriteEngine on
+
+# TODO: make these feeds static and pull from a static server
 RewriteCond %{REQUEST_METHOD}  =GET
 RewriteRule "^rawAPI/(.*)$" "https://drupal.lib.virginia.edu/$1" [P]
+
+# Give Bots the non-js version
+RewriteCond %{HTTP_USER_AGENT} (bot|agent|spider|crawler|extractor) [NC]
+RewriteCond %{HTTP_USER_AGENT} (Googlebot|bingbot|msnbot|facebookexternalhit|Facebot|Twitterbot|Google-Structured-Data-Testing-Tool) [NC]
+RewriteRule "^(.*)" "/data/pages$1" [L,PT]
 
 Header set Access-Control-Allow-Origin "*"
