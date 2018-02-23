@@ -210,27 +210,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _jumpToFooter(e) {
         this.$.footer.changeFocusToFirstItem();
       }
-//      _notFound(notFound){
-//        if (notFound) {
-//          window.location.replace("https://www.library.virginia.edu"+this.route.path);
-//        }
-//      }
 
       _routePageChanged(page, isAttached) {
         if (!isAttached) {
           return;
         }
-//        if (!page) {
-//          // set default route if route path is empty
-//          this.set('route.path', 'list/pages');
-//          return;
-//        }
+
         this.page = page;
         // Scroll to the top of the page on every *route* change. Use `Polymer.AppLayout.scroll`
         // with `behavior: 'silent'` to disable header scroll effects during the scroll.
         Polymer.AppLayout.scroll({ top: 0, behavior: 'silent' });
-        // Close the drawer - in case the *route* change came from a link in the drawer.
-//        this.$.nav.closeDrawer();
+
+        // Close the header menu dialog - in case the *route* change came from a link in the menu.
+        this.$.header.closeMenu();
       }
 
       _pageChanged(page, oldPage) {
