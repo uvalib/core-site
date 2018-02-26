@@ -23,6 +23,8 @@
   },
   "resolutions": {
     "lodash": "^4.17.4",
-    "paper-icon-button": "^2.0.1"
+    "paper-icon-button": "^2.0.1",
+    "polymer": "^2.5.0",
+    "webcomponentsjs": "^1.1.0"
   }
 }
