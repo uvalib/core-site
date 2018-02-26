@@ -65,7 +65,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <uvalib-analytics site-id="23" path="[[route.path]]"></uvalib-analytics>
 
-    <uvalib-skip-nav id="skipNavigation" tabindex="0" onfocus="_showSkipNav()" onblur="_hideSkipNav()"></uvalib-skip-nav>
+    <uvalib-skip-nav id="skipNavigation" tabindex="0"></uvalib-skip-nav>
 
     <!--
       app-location and app-route elements provide the state of the URL for the app.
@@ -196,12 +196,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.isAttached = true;
       }
 
-      _showSkipNav() {
-        this.$.skipNavigation.showJumpNavigation();
-      }
-      _hideSkipNav() {
-        this.$.skipNavigation.hideJumpNavigation();
-      }
       _jumpToSearch(e) {
         this.$.header.changeFocusToSearch();
       }
