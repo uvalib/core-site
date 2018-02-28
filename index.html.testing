@@ -66,16 +66,7 @@
     </div>
   </noscript>
 
-  <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-
-  <!-- Fix for lastpass extention on polyfilled browsers see: https://github.com/uvalib/core-site/commit/403a25445552c3a2bec4d94c6136b2e9783a9635-->
-  <link rel="import" href="src/ce-fix.html">
-
-  <link rel="import" href="bower_components/polymer/lib/utils/settings.html">
-  <script>
-    if (Polymer && Polymer.setPassiveTouchGestures) Polymer.setPassiveTouchGestures(true);
-  </script>
-  <link rel="import" href="src/uvalib-app.html">
+  <script src="js/load-deps.js"></script>
 
 </body>
 </html>
