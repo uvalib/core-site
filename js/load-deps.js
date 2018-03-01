@@ -28,14 +28,19 @@ try {
   // Add some needed polyfills
   head.appendChild( addScript('js/bable-stuff.js') );
   if (window.customElements)
-    head.appendChild( addScript('bower_components/webcomponentsjs/custom-elements-es5-adapter.js') );
+    head.appendChild( addScript('bower_components-compiled/webcomponentsjs/custom-elements-es5-adapter.js') );
 }
 
-head.appendChild( addScript('bower_components/webcomponentsjs/webcomponents-loader.js') );
-head.appendChild( addImport('src/ce-fix.html') );
-head.appendChild( addImport('bower_components/polymer/lib/utils/settings.html') );
-head.appendChild( addScript('js/polymer-settings.js') );
-if (oldBrowser)
-  head.appendChild( addImport('src/uvalib-app.compiled.bundled.html') );
-else
+if (oldBrowser) {
+  head.appendChild( addScript('bower_components-compiled/webcomponentsjs/webcomponents-loader.js') );
+  head.appendChild( addImport('src/ce-fix.html') );
+  head.appendChild( addImport('bower_components-compiled/polymer/lib/utils/settings.html') );
+  head.appendChild( addScript('js/polymer-settings.js') );
+  head.appendChild( addImport('src-compiled/uvalib-app.html') );
+} else {
+  head.appendChild( addScript('bower_components/webcomponentsjs/webcomponents-loader.js') );
+  head.appendChild( addImport('src/ce-fix.html') );
+  head.appendChild( addImport('bower_components/polymer/lib/utils/settings.html') );
+  head.appendChild( addScript('js/polymer-settings.js') );
   head.appendChild( addImport('src/uvalib-app.html') );
+}
