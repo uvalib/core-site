@@ -26,7 +26,13 @@
   },
   "builds": [
     {
-      "preset": "es5-bundled"
+      "name": "es5-unbundled",
+      "js": {"minify": true, "compile": true},
+      "css": {"minify": true},
+      "html": {"minify": true},
+      "addServiceWorker": true,
+      "addPushManifest": true,
+      "insertPrefetchLinks": true
     },
     {
       "preset": "es6-unbundled"
