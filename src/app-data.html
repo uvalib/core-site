@@ -157,12 +157,28 @@ console.log('compute the page!');
         //  img.removeAttribute('height');
         //}
 
-        // Make replace img elements with uvalib-img Elements
-//        let images = template.content.querySelectorAll('img');
-//        images.forEach( (img)=>{
-//          var uvalibImg = document.createElement('uvalib-image');
-//          //img.replaceWith(uvalibImg);
-//        });
+        // Use figure where we have the content to support it
+        let images = template.content.querySelectorAll('img');
+        images.forEach( (img)=>{
+          // see if image has data-caption attribute and turn into a figure it so
+          if (img.hasAttribute('data-caption')) {
+            var fig = document.createElement('figure');
+            fig.setAttribute('role','group');
+            fig.setAttribute('class','caption caption-img align-'+img.getAttribute('data-align'));
+            var newImg = document.createElement('img');
+            newImg.setAttribute('alt',img.getAttribute('alt'));
+            newImg.setAttribute('height',img.getAttribute('height'));
+            newImg.setAttribute('width',img.getAttribute('width'));
+            newImg.setAttribute('src',img.getAttribute('src'));
+            fig.appendChild(newImg);
+            var caption = document.createElement('figcaption');
+            caption.appendChild( document.createTextNode(img.getAttribute('data-caption')) );
+            fig.appendChild(caption);
+            img.replaceWith(fig);
+          }
+          //var uvalibImg = document.createElement('uvalib-im');
+          //img.replaceWith(uvalibImg);
+        });
 
         return template.content.querySelector('.content').innerHTML;
       }
