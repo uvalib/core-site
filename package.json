@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "bower install; ./import-pages.js; ./import-files.js; polymer build; cp bower_components/bwt-datatable/src/* build/es6-unbundled/bower_components/bwt-datatable/src/",
+    "build": "bower install; ./import-pages.js; ./import-files.js; polymer build; ./package-build.sh",
     "deploy": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/es6-unbundled/ www14.lib.virginia.edu:/wwwstatic"
   },
   "repository": {

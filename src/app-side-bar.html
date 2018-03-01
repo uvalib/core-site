@@ -10,9 +10,37 @@
 
         :host {
           display: block;
+          background-color: var(--uvalib-orange-200);
+          padding-bottom: .75em;
+          border-top: 8px solid var(--uvalib-main-rotunda-orange);
+          border-bottom: 8px solid var(--uvalib-main-rotunda-orange);
         }
 
-        h3 {
+        #content ul {
+          list-style: none;
+          margin-left: 0;
+        }
+        #content ul li {
+          font-size: 1.15em;
+          text-indent: -1em;
+        }
+        #content li:first-child {
+          padding-top: .4em;
+        }
+        #content ul li::before {
+          font-family: uvalib-custom-icons;
+          content: "\f0da";
+          padding-right: .75em;
+          position: relative;
+          top: 0.1em;
+        }
+        #content ul li a {
+          color: var(--uvalib-text-grey);
+          display: inline;
+          margin: 0;
+        }
+
+        /*h3 {
           @apply --app-sub-section-headline;
         }
 
@@ -51,7 +79,7 @@
 
         paper-card {
           --paper-card: { margin: 0; }
-        }
+        }*/
 
       </style>
     </custom-style>

@@ -1,6 +1,6 @@
 // Twitters es6-feature-detect
 var str = 'class ಠ_ಠ extends Array {constructor(j = "a", ...c) {const q = (({u: e}) => {return { [`s${c}`]: Symbol(j) };})({});super(j, q, ...c);}}' +
-          'new Promise((f) => {const a = function* (){return "\u{20BB7}".match(/./u)[0].length === 2 || true;};for (let vre of a()) {' +
+          'new Promise((f) => {const a = function* (){return "\u20BB7".match(/./u)[0].length === 2 || true;};for (let vre of a()) {' +
           'const [uw, as, he, re] = [new Set(), new WeakSet(), new Map(), new WeakMap()];break;}f(new Proxy({}, {get: (han, h) => h in han ? han[h] ' +
           ': "42".repeat(0o10)}));}).then(bi => new ಠ_ಠ(bi.rd));';
 
@@ -28,14 +28,17 @@ try {
   // Add some needed polyfills
   head.appendChild( addScript('js/bable-stuff.js') );
   if (window.customElements)
-    head.appendChild( addScript('bower_components/webcomponentsjs/custom-elements-es5-adapter.js') );
+    head.appendChild( addScript('bower_components-compiled/webcomponentsjs/custom-elements-es5-adapter.js') );
 }
 
-head.appendChild( addScript('bower_components/webcomponentsjs/webcomponents-loader.js') );
-head.appendChild( addImport('src/ce-fix.html') );
-head.appendChild( addImport('bower_components/polymer/lib/utils/settings.html') );
-head.appendChild( addScript('js/polymer-settings.js') );
-if (oldBrowser)
-  head.appendChild( addImport('src/uvalib-app.compiled.bundled.html') );
-else
+if (oldBrowser) {
+  head.appendChild( addScript('bower_components-compiled/webcomponentsjs/webcomponents-loader.js') );
+  head.appendChild( addImport('src/ce-fix.html') );
+  head.appendChild( addScript('js/polymer-settings.js') );
+  head.appendChild( addImport('src-compiled/uvalib-app.html') );
+} else {
+  head.appendChild( addScript('bower_components/webcomponentsjs/webcomponents-loader.js') );
+  head.appendChild( addImport('src/ce-fix.html') );
+  head.appendChild( addScript('js/polymer-settings.js') );
   head.appendChild( addImport('src/uvalib-app.html') );
+}
