@@ -34,13 +34,11 @@ try {
 if (oldBrowser) {
   head.appendChild( addScript('bower_components-compiled/webcomponentsjs/webcomponents-loader.js') );
   head.appendChild( addImport('src/ce-fix.html') );
-  head.appendChild( addImport('bower_components-compiled/polymer/lib/utils/settings.html') );
   head.appendChild( addScript('js/polymer-settings.js') );
   head.appendChild( addImport('src-compiled/uvalib-app.html') );
 } else {
   head.appendChild( addScript('bower_components/webcomponentsjs/webcomponents-loader.js') );
   head.appendChild( addImport('src/ce-fix.html') );
-  head.appendChild( addImport('bower_components/polymer/lib/utils/settings.html') );
   head.appendChild( addScript('js/polymer-settings.js') );
   head.appendChild( addImport('src/uvalib-app.html') );
 }
