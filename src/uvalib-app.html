@@ -331,7 +331,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           while (crumb = breadCrumbs.pop()) {
             this._trail += '<li>';
             this._trail += (crumb.path != '') ? '<a href="' + crumb.path + '">' : '';
-            this._trail += '<paper-chip label="'+ crumb.label + '"></paper-chip>';
+            this._trail += crumb.label;
+//            this._trail += '<paper-chip label="'+ crumb.label + '"></paper-chip>';
             this._trail += (crumb.path != '') ? '</a>' : '';
             this._trail += '</li>';
           }
