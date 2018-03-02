@@ -15,6 +15,16 @@
           border-top: 8px solid var(--uvalib-main-rotunda-orange);
           border-bottom: 8px solid var(--uvalib-main-rotunda-orange);
         }
+        :host([super-duper]) {
+          display: block;
+          background-color: var(--uvalib-sidebar-bg);
+          padding-bottom: 0;
+          border-top: none;
+          border-bottom: none;
+        }
+        :host([super-duper]) paper-card {
+          margin: 0;
+        }
 
         #content ul {
           list-style: none;
@@ -39,47 +49,6 @@
           display: inline;
           margin: 0;
         }
-
-        /*h3 {
-          @apply --app-sub-section-headline;
-        }
-
-        a {
-          text-decoration: none;
-          color: inherit;
-          display: block;
-          margin: 20px 0;
-        }
-
-        .category {
-          display: none;
-        }
-
-        :host([featured]) > a {
-          padding-bottom: 24px;
-          border-bottom: var(--app-border-style);
-        }
-
-        :host([featured]) > a:last-of-type {
-          border-bottom: none;
-        }
-
-        :host([featured]) .category {
-          display: inline-block;
-          padding: 6px 20px 7px 20px;
-          border: var(--app-border-style);
-          font-weight: bold;
-          font-size: 11px;
-        }
-
-        :host([featured]) .headline {
-          display: block;
-          margin: 20px 0;
-        }
-
-        paper-card {
-          --paper-card: { margin: 0; }
-        }*/
 
       </style>
     </custom-style>
@@ -116,10 +85,17 @@
           largeScreen:{
             type: Boolean,
             reflectToAttribute: true
+          },
+          superDuper:{
+            type: Boolean,
+            reflectToAttribute: true,
+            computed: '_amISuperDuper(_item)'
           }
         }
       }
-
+      _amISuperDuper(item){
+        return !!(item.superDuper);
+      }
       _click(e) {
         var target = e.target
         if (target.tagName.toLowerCase() === "a" && target.getAttribute('href')[0]==="#") {
