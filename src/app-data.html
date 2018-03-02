@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/uvalib-helper-libs/uvalib-helper-libs.html" />
 
 <dom-module id="app-data">
 
@@ -15,6 +16,12 @@
       static get properties() { return {
 
         path: String,
+
+        breadCrumbs: {
+          type: Array,
+          computed: '_makeBreadCrumbs(path,pages)',
+          notify: true
+        },
 
         offline: Boolean,
 
@@ -47,7 +54,6 @@
           readOnly: true,
           notify: true
         }
-
       }}
 
       static get observers() { return [
@@ -112,6 +118,8 @@ console.log('compute the page!');
             subnav: item.subnav,
             sidebar: item.sidebar,
             category: item.category,
+            parentid: item.parent,
+            id: item.uuid
 //            author: item.author,
 //            summary: this._trimRight(item.summary, 100),
 //            readTime: Math.max(2, Math.round(item.contentLength / 3000)) + ' min read'
@@ -119,6 +127,27 @@ console.log('compute the page!');
         }
 
         return items;
+      }
+
+      _makeBreadCrumbs(pgPath, pgs) {
+        console.log(pgPath);
+        let crumbs = [], parentId;
+        let p = pgPath;
+        do {
+          let parentId = _.result(_.find(pgs, {'path': pgPath}), 'parentid');
+          console.log(parentId);
+          if (parentId) {
+            let parent = _.find(pgs, {'id': parentId});
+            console.log(parent.path);
+            crumbs.push({path: parent.path, label: parent.headline});
+            pgPath = parent.path;
+          }
+        } while (parentId);
+        if (p != '/') {
+          crumbs.push({path: '/', label: 'University of Virginia Library'});
+        }
+        console.log("compute breadcrumbs: %s", crumbs.length);
+        return crumbs;
       }
 
       _unescapeText(text) {

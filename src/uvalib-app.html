@@ -83,6 +83,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-data
         id="data"
         path="{{route.path}}"
+        bread-crumbs="{{breadCrumbs}}"
         page="{{article}}"
         loading="{{loading}}"
         offline="[[offline]]"
@@ -90,6 +91,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         not-found="{{notFound}}"></app-data>
 
     <uvalib-header relative-links id="header" tabindex="-1" library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
+
+    <!-- breadcrumbs -->
+    <div id="breadCrumbs" inner-h-t-m-l="{{_trail}}"></div>
 
     <uvalib-article id="content"
           name="article"
@@ -124,6 +128,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         routeData: Object,
 
+        breadCrumbs: Array,
+
         categories: Array,
 
         categoryName: String,
@@ -149,15 +155,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         notFound: Boolean,
 
-        lazyLoadComplete: Boolean
+        lazyLoadComplete: Boolean,
 
+        _trail: String
       }}
 
       static get observers() { return [
         '_notFound(notFound)',
         '_routePageChanged(routeData.page, isAttached)',
         '_updateArticleHeadline(article.headline)',
-        '_updateDocumentTitle(page, category.title, articleHeadline, appTitle)'
+        '_updateDocumentTitle(page, category.title, articleHeadline, appTitle)',
+        '_formatBreadCrumbs(breadCrumbs)'
       ]}
 
       ready() {
@@ -311,6 +319,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           this._setPageMetadata(categoryTitle, null);
         } else {
           this._setPageMetadata(articleHeadline, this.articleId);
+        }
+      }
+
+      _formatBreadCrumbs(breadCrumbs) {
+        console.log('_formatBreadCrumbs');
+        this._trail = '';
+        let crumb = Object();
+        if (breadCrumbs.length) {
+          this._trail = '<nav aria-label="Breadcrumb" class="breadcrumb"><ol>';
+          while (crumb = breadCrumbs.pop()) {
+            this._trail += '<li><a href="' + crumb.path + '">'+ crumb.label + '</a></li>';
+          }
+          this._trail += '</ol></nav>';
         }
       }
 
