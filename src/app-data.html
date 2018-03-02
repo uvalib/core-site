@@ -19,7 +19,7 @@
 
         breadCrumbs: {
           type: Array,
-          computed: '_makeBreadCrumbs(path,pages)',
+          computed: '_makeBreadCrumbs(path,pages.items)',
           notify: true
         },
 
@@ -140,24 +140,22 @@ console.log('noise');
         return items;
       }
 
-      _makeBreadCrumbs(pgPath, pgs) {
-        console.log(pgPath);
+      _makeBreadCrumbs(path, pages) {
         let crumbs = [], parentId;
-        let p = pgPath;
+        let p = path;
         do {
-          let parentId = _.result(_.find(pgs, {'path': pgPath}), 'parentid');
+          parentId = _.result(_.find(pages, {'path': path}), 'parentid');
           console.log(parentId);
           if (parentId) {
-            let parent = _.find(pgs, {'id': parentId});
+            let parent = _.find(pages, {'id': parentId});
             console.log(parent.path);
             crumbs.push({path: parent.path, label: parent.headline});
-            pgPath = parent.path;
+            path = parent.path;
           }
         } while (parentId);
         if (p != '/') {
           crumbs.push({path: '/', label: 'University of Virginia Library'});
         }
-        console.log("compute breadcrumbs: %s", crumbs.length);
         return crumbs;
       }
 
