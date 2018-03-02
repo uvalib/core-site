@@ -151,8 +151,12 @@ console.log('noise');
           parentId = _.result(_.find(pages, {'path': path}), 'parentid');
           if (parentId) {
             let parent = _.find(pages, {'id': parentId});
-            crumbs.push({path: parent.path, label: parent.headline});
-            path = parent.path;
+            if (parent) {
+              crumbs.push({path: parent.path, label: parent.headline});
+              path = parent.path;
+            } else {
+              parentId = null;
+            }
           }
         } while (parentId);
         // necessary because we don't have parent page references for top level pages
