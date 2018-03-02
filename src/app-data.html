@@ -142,19 +142,20 @@ console.log('noise');
 
       _makeBreadCrumbs(path, pages) {
         let crumbs = [];
-        let title =  _.result(_.find(pages, {'path': path}), 'headline');
-        crumbs.push({path: '', label: title});
+        if (path != '/') {
+          let title =  _.result(_.find(pages, {'path': path}), 'headline');
+          crumbs.push({path: '', label: title});
+        }
         let p = path, parentId;
         do {
           parentId = _.result(_.find(pages, {'path': path}), 'parentid');
-          console.log(parentId);
           if (parentId) {
             let parent = _.find(pages, {'id': parentId});
-            console.log(parent.path);
             crumbs.push({path: parent.path, label: parent.headline});
             path = parent.path;
           }
         } while (parentId);
+        // necessary because we don't have parent page references for top level pages
         if (p != '/') {
           crumbs.push({path: '/', label: 'University of Virginia Library'});
         }

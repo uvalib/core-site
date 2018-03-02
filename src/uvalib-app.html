@@ -326,7 +326,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _breadCrumbsChanged(breadCrumbs,page) {
         this._trail = '';
         let crumb = Object();
-        if (breadCrumbs.length > 1) {
+        if (breadCrumbs.length) {
           this._trail = '<nav aria-label="Breadcrumb" class="breadcrumb"><ol>';
           while (crumb = breadCrumbs.pop()) {
             this._trail += '<li>';
