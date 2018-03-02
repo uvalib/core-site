@@ -202,7 +202,6 @@ console.log('noise');
         let images = template.content.querySelectorAll('img');
         images.forEach( (img)=>{
           // see if image has data-caption attribute and turn into a figure it so
-          if (img.hasAttribute('data-caption')) {
             var fig = document.createElement('figure');
             fig.setAttribute('role','group');
             fig.setAttribute('class','caption caption-img align-'+img.getAttribute('data-align'));
@@ -212,11 +211,13 @@ console.log('noise');
             newImg.setAttribute('width',img.getAttribute('width'));
             newImg.setAttribute('src',img.getAttribute('src'));
             fig.appendChild(newImg);
-            var caption = document.createElement('figcaption');
-            caption.appendChild( document.createTextNode(img.getAttribute('data-caption')) );
+            if (img.hasAttribute('data-caption')) {
+              var caption = document.createElement('figcaption');
+              caption.appendChild( document.createTextNode(img.getAttribute('data-caption')) );
+            }
             fig.appendChild(caption);
             img.replaceWith(fig);
-          }
+
           //var uvalibImg = document.createElement('uvalib-im');
           //img.replaceWith(uvalibImg);
         });
