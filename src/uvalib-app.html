@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/uva-helper-libs/polyfills.html">
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-theme.html">
+<link rel="import" href="../bower_components/paper-chip/paper-chip.html" async>
 <link rel="import" href="../bower_components/app-layout/helpers/helpers.html" async>
 <link rel="import" href="../bower_components/uvalib-header/uvalib-header.html" async>
 <link rel="import" href="../bower_components/app-route/app-location.html" async>
@@ -322,13 +323,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
 
-      _breadCrumbsChanged(breadCrumbs) {
+      _breadCrumbsChanged(breadCrumbs,page) {
         this._trail = '';
         let crumb = Object();
-        if (breadCrumbs.length) {
+        if (breadCrumbs.length > 1) {
           this._trail = '<nav aria-label="Breadcrumb" class="breadcrumb"><ol>';
           while (crumb = breadCrumbs.pop()) {
-            this._trail += '<li><a href="' + crumb.path + '">'+ crumb.label + '</a></li>';
+            this._trail += '<li>';
+            this._trail += (crumb.path != '') ? '<a href="' + crumb.path + '">' : '';
+            this._trail += '<paper-chip label="'+ crumb.label + '"></paper-chip>';
+            this._trail += (crumb.path != '') ? '</a>' : '';
+            this._trail += '</li>';
           }
           this._trail += '</ol></nav>';
         }

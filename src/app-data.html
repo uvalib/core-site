@@ -141,8 +141,10 @@ console.log('noise');
       }
 
       _makeBreadCrumbs(path, pages) {
-        let crumbs = [], parentId;
-        let p = path;
+        let crumbs = [];
+        let title =  _.result(_.find(pages, {'path': path}), 'headline');
+        crumbs.push({path: '', label: title});
+        let p = path, parentId;
         do {
           parentId = _.result(_.find(pages, {'path': path}), 'parentid');
           console.log(parentId);
