@@ -218,8 +218,8 @@ console.log('noise');
             if (img.hasAttribute('data-caption')) {
               var caption = document.createElement('figcaption');
               caption.appendChild( document.createTextNode(img.getAttribute('data-caption')) );
+              fig.appendChild(caption);
             }
-            fig.appendChild(caption);
             img.replaceWith(fig);
 
           //var uvalibImg = document.createElement('uvalib-im');
