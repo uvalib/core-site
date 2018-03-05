@@ -211,8 +211,9 @@ console.log('noise');
             fig.setAttribute('class','caption caption-img align-'+img.getAttribute('data-align'));
             var newImg = document.createElement('img');
             newImg.setAttribute('alt',img.getAttribute('alt'));
-            newImg.setAttribute('height',img.getAttribute('height'));
-            newImg.setAttribute('width',img.getAttribute('width'));
+            if (img.hasAttribute('class')) newImg.setAttribute('class',img.getAttribute('class'));
+            if (img.hasAttribute('height')) newImg.setAttribute('height',img.getAttribute('height'));
+            if (img.hasAttribute('width')) newImg.setAttribute('width',img.getAttribute('width'));
             newImg.setAttribute('src',img.getAttribute('src'));
             fig.appendChild(newImg);
             if (img.hasAttribute('data-caption')) {
