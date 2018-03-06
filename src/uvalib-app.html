@@ -177,8 +177,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.addEventListener('jumpToSearch', this._jumpToSearch);
         this.addEventListener('jumpToContent', this._jumpToContent);
         this.addEventListener('jumpToNavigation', this._jumpToNavigation);
-        this.addEventListener('jumpToHeader', this._jumpToHeader);
-        this.addEventListener('jumpToFooter', this._jumpToFooter);
+//        this.addEventListener('jumpToHeader', this._jumpToHeader);
+//        this.addEventListener('jumpToFooter', this._jumpToFooter);
 
         super.ready();
         // Custom elements polyfill safe way to indicate an element has been upgraded.
@@ -212,9 +212,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.$.header.changeFocusToSearch();
       }
       _jumpToContent(e) {
+        console.log('jump to content');
         this.$.content.changeFocusToContent();
       }
-      _jumptoNavigation(e) {
+      _jumpToNavigation(e) {
         this.$.header.changeFocusToNavigation();
       }
       _jumpToHeader(e) {

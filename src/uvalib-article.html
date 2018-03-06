@@ -180,8 +180,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // For the home page focus should be directed to the banner.
         // For any other page focus should go to the heading.
         // NOTE for this to work these elements need to have tabindex=-1
-        if (this.shadowRoot.querySelector('#banner')) {
-          this.shadowRoot.querySelector('#banner').focus();
+        if (this.shadowRoot.querySelector('uvalib-homepage')) {
+          console.log('banner');
+          this.shadowRoot.querySelector('uvalib-homepage').setBannerFocus();
         } else {
           if (this.shadowRoot.querySelector('h1')) {
             this.shadowRoot.querySelector('h1').focus();
