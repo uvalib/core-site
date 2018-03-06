@@ -59,7 +59,15 @@
 </head>
 <body>
 
-  <uvalib-app unresolved app-title="UVA Library"></uvalib-app>
+  <uvalib-app unresolved app-title="UVA Library">
+    <div slot="libAnswers">
+      <div id="la_widgets" hidden>
+        <div id="s-la-widget-3589"></div>
+        <div id="s-la-widget-3587"></div>
+        <div id="s-la-widget-3588"></div>
+      </div>
+    </div>
+  </uvalib-app>
   <noscript>
     <div style="background-color: #ffffff; text: #000;">
         JavaScript must be enabled in order for you to use our website. However, it seems JavaScript is either disabled or not supported by your browser.
@@ -73,5 +81,10 @@
 
   <link rel="import" href="src/uvalib-app.html">
 
+
+  <!-- Place this script as near to the end of your BODY as possible. -->
+  <script src="https://api2.libanswers.com/1.0/widgets/3589" async></script>
+  <script src="https://api2.libanswers.com/1.0/widgets/3587" async></script>
+  <script src="https://api2.libanswers.com/1.0/widgets/3588" async></script>
 </body>
 </html>

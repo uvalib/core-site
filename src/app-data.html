@@ -66,7 +66,6 @@
         this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
             Polymer.Async.timeOut.after(50),
             () => {
-console.log('noise');
               var match = false;
               if (!pagesItems) { this.page = null; }
               else {
