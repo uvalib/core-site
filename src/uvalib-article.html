@@ -178,15 +178,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       changeFocusToContent() {
         // For the home page focus should be directed to the banner.
-        // For any other page focus should go to the header.
+        // For any other page focus should go to the heading.
         // NOTE for this to work these elements need to have tabindex=-1
-/*        if (this.$.content.querySelector('paper-material')) {
-          this.$.content.querySelector('paper-material').focus();
-        } else {
-          if (this.$.content.querySelector('h1')) {
-            this.$.content.querySelector('h1').focus();
-          }
-        }*/
         if (this.shadowRoot.querySelector('#banner')) {
           this.shadowRoot.querySelector('#banner').focus();
         } else {

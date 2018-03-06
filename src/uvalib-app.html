@@ -169,7 +169,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         '_routePageChanged(routeData.page, isAttached)',
         '_updateArticleHeadline(article.headline)',
         '_updateDocumentTitle(page, category.title, articleHeadline, appTitle)',
-        '_breadCrumbsChanged(breadCrumbs)'
+        '_breadCrumbsChanged(breadCrumbs, page)'
       ]}
 
       ready() {
@@ -326,7 +326,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
 
-      _breadCrumbsChanged(breadCrumbs,page) {
+      _breadCrumbsChanged(breadCrumbs, page) {
         this._trail = '';
         let crumb = Object();
         if (breadCrumbs.length) {
