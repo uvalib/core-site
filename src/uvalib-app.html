@@ -70,8 +70,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!--
       app-location and app-route elements provide the state of the URL for the app.
+url-space-regex="^((?!\/data\/pages\/).)*$"
     -->
-    <app-location route="{{route}}" url-space-regex="^((?!\/data\/pages\/).)*$"></app-location>
+    <app-location route="{{route}}"></app-location>
     <app-route
         route="{{route}}"
         pattern="/:page"
