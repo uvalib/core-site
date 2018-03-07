@@ -25,8 +25,6 @@ try {
 } catch(e) {
   console.log('Your browser does not support ES6!');
   oldBrowser = true;
-  // Add some needed polyfills
-  head.appendChild( addScript('js/bable-stuff.js') );
   if (window.customElements)
     head.appendChild( addScript('bower_components-compiled/webcomponentsjs/custom-elements-es5-adapter.js') );
 }
