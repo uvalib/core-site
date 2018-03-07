@@ -26,6 +26,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="app-side-bar.html">
 <link rel="import" href="app-sub-nav.html">
 
+<script src="../bower_components/iframe-resizer/js/iframeResizer.min.js"></script>
+
 <dom-module id="uvalib-article">
 
   <template>
@@ -36,7 +38,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           @apply --layout-horizontal;
           /*@apply --layout-wrap;*/
           @apply --layout-center-justified;
-
         }
 
         [hidden] {
@@ -76,6 +77,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           margin-bottom: 32px;
         }
 
+        iframe {
+          width: 1px;
+          min-width: 100%;
+          height: 500px;
+        }
       </style>
     </custom-style>
 
@@ -225,13 +231,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _loadArticle(title,html) {
+        // Remove any old iframes if we have them
+        var ifrm = this.shadowRoot.getElementById('ifrm');
+        if (ifrm && ifrm.iFrameResizer) {
+          ifrm.iFrameResizer.close();
+        }
+
         // If this._currentArticleCover isn't defined here, then it hasn't been stamped yet, and
         // the template already has the `fade-in` class.
         if (this._currentArticleCover) {
           this._currentArticleCover.classList.add('fade-in');
         }
 
-        if (title && html) {
+        if (this.article && this.article.iframe && this.article.path) {
+          console.log("loading iframe: /data/pages"+this.article.path);
+          this.$.content.innerHTML = "<h1 tabindex='-1'>"+title+"</h1><iframe id='ifrm' src='/data/pages"+this.article.path+"' scrolling='no' frameBorder='0'></iframe>";
+          iFrameResize({log:true}, this.shadowRoot.getElementById('ifrm'));
+        } else if (title && html) {
           if (this.route.prefix==="/" && this.route.path==="") {
             this.$.content.innerHTML = html;
           } else {

@@ -90,7 +90,7 @@
       _fetchPage(page, offline) {
         // Don't fail if we become offline but already have a cached version, or if there's
         // nothing to fetch, or if already loading.
-        if ((offline && page && page.html) || !page || this.loading) {
+        if ((offline && page && page.html) || !page || this.loading || page.iframe) {
           this._setFailure(false);
           return;
         }
@@ -139,8 +139,8 @@
         let crumbs = [];
         if (path != '/') {
           let title =  _.result(_.find(pages, {'path': path}), 'headline');
-if (title)          
-          crumbs.push({path: '', label: title});
+          if (title)
+            crumbs.push({path: '', label: title});
         }
         let p = path, parentId;
         do {
@@ -148,8 +148,8 @@ if (title)
           if (parentId) {
             let parent = _.find(pages, {'id': parentId});
             if (parent) {
-if (parent.path && parent.headline)
-              crumbs.push({path: parent.path, label: parent.headline});
+              if (parent.path && parent.headline)
+                crumbs.push({path: parent.path, label: parent.headline});
               path = parent.path;
             } else {
               parentId = null;
