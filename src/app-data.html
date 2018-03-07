@@ -123,16 +123,12 @@
           items.push({
             headline: this._unescapeText(item.title),
             path: item.path,
-//            id: item.id,
-//            placeholder: item.placeholder,
             subnav: item.subnav,
             sidebar: item.sidebar,
             category: item.category,
             parentid: item.parent,
+            iframe: item.iframe,
             id: item.uuid
-//            author: item.author,
-//            summary: this._trimRight(item.summary, 100),
-//            readTime: Math.max(2, Math.round(item.contentLength / 3000)) + ' min read'
           });
         }
 
@@ -143,6 +139,7 @@
         let crumbs = [];
         if (path != '/') {
           let title =  _.result(_.find(pages, {'path': path}), 'headline');
+if (title)          
           crumbs.push({path: '', label: title});
         }
         let p = path, parentId;
@@ -151,6 +148,7 @@
           if (parentId) {
             let parent = _.find(pages, {'id': parentId});
             if (parent) {
+if (parent.path && parent.headline)
               crumbs.push({path: parent.path, label: parent.headline});
               path = parent.path;
             } else {
