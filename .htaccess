@@ -24,10 +24,13 @@ RewriteRule ^/charles_smith$  http://avalon.lib.virginia.edu/media_objects/avalo
 RewriteRule ^/civilwarvirginia/?$  http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia
 RewriteRule ^/libraries/?$   http://static.lib.virginia.edu/directory/libraries.html
 
-
 Header set Access-Control-Allow-Origin "*"
 
 Redirect /staff  http://static.lib.virginia.edu/directory/
 Redirect /organization   http://static.lib.virginia.edu/directory/organization.html
 Redirect /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid=40437&sid=297543
-Redirect /support/ http://static.lib.virginia.edu/campaign/ 
+Redirect /support/ http://static.lib.virginia.edu/campaign/
+
+# Redirects from Amber - redesign Spring 18
+Redirect /sitesearch https://www.library.virginia.edu/search
+Redirect /libraries https://www.library.virginia.edu/hours
