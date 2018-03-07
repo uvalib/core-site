@@ -16,6 +16,7 @@ RewriteRule ^(.*)$ data/pages/$1 [L,PT]
 RewriteCond %{HTTP_HOST} =library.virginia.edu
 RewriteRule ^(/.*)$ http://www.library.virginia.edu/$1
 
+RewriteRule ^/givingtohoosday/?$ http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
 RewriteRule ^/give$ http://giving.virginia.edu/uvalibrary
 RewriteRule ^/giving-form/?$ http://giving.virginia.edu/uvalibrary
 RewriteRule ^/mcgregor75/?$  http://explore.lib.virginia.edu/exhibits/show/mcgregor75
