@@ -238,6 +238,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // Close the header menu dialog - in case the *route* change came from a link in the menu.
         if (this.$.header && this.$.header.closeMenu)
           this.$.header.closeMenu();
+
+        // Reset focus
+        document.focus();
       }
 
       _pageChanged(page, oldPage) {
