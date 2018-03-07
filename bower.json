@@ -16,7 +16,8 @@
     "iron-selector": "polymerelements/iron-selector#^2.0.0",
     "paper-icon-button": "polymerelements/paper-icon-button#^2.0.0",
     "uvalib-elements": "uvalib-components/uvalib-elements#master",
-    "promise-polyfill": "^6.0.2"
+    "promise-polyfill": "^6.0.2",
+    "iframe-resizer": "davidjbradshaw/iframe-resizer#^3.5.16"
   },
   "devDependencies": {
     "web-component-tester": "^6.0.0"

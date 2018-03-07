@@ -90,7 +90,7 @@
       _fetchPage(page, offline) {
         // Don't fail if we become offline but already have a cached version, or if there's
         // nothing to fetch, or if already loading.
-        if ((offline && page && page.html) || !page || this.loading) {
+        if ((offline && page && page.html) || !page || this.loading || page.iframe) {
           this._setFailure(false);
           return;
         }
@@ -123,16 +123,12 @@
           items.push({
             headline: this._unescapeText(item.title),
             path: item.path,
-//            id: item.id,
-//            placeholder: item.placeholder,
             subnav: item.subnav,
             sidebar: item.sidebar,
             category: item.category,
             parentid: item.parent,
+            iframe: item.iframe,
             id: item.uuid
-//            author: item.author,
-//            summary: this._trimRight(item.summary, 100),
-//            readTime: Math.max(2, Math.round(item.contentLength / 3000)) + ' min read'
           });
         }
 
@@ -143,7 +139,8 @@
         let crumbs = [];
         if (path != '/') {
           let title =  _.result(_.find(pages, {'path': path}), 'headline');
-          crumbs.push({path: '', label: title});
+          if (title)
+            crumbs.push({path: '', label: title});
         }
         let p = path, parentId;
         do {
@@ -151,7 +148,8 @@
           if (parentId) {
             let parent = _.find(pages, {'id': parentId});
             if (parent) {
-              crumbs.push({path: parent.path, label: parent.headline});
+              if (parent.path && parent.headline)
+                crumbs.push({path: parent.path, label: parent.headline});
               path = parent.path;
             } else {
               parentId = null;
@@ -217,7 +215,8 @@
             fig.appendChild(newImg);
             if (img.hasAttribute('data-caption')) {
               var caption = document.createElement('figcaption');
-              caption.appendChild( document.createTextNode(img.getAttribute('data-caption')) );
+              caption.innerHTML = img.getAttribute('data-caption');
+//              caption.appendChild( document.createTextNode(img.getAttribute('data-caption')) );
               fig.appendChild(caption);
             }
             img.replaceWith(fig);

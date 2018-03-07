@@ -6,6 +6,10 @@ var request = require('request'),
     sanitize = require("sanitize-filename");
 
 request('https://uvalib-api.firebaseio.com/pages.json', function(error, response, body){
+
+  // Some global search and replace here
+  body.replace('U.Va.', 'UVA');
+
   var pages = JSON.parse(body);
 
   // create the pages
@@ -55,6 +59,7 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
         "path": page.path,
         "sidebar": page.sidebar,
         "subnav": page.subnav,
+        "iframe": page.iframe,
         "imgSrc": "",
         "placeholder": "",
         "summary": page.title,
