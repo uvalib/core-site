@@ -27,6 +27,7 @@ RewriteRule ^/libraries/?$   http://static.lib.virginia.edu/directory/libraries.
 
 Header set Access-Control-Allow-Origin "*"
 
+Redirect /givingtohoosday http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
 Redirect /staff  http://static.lib.virginia.edu/directory/
 Redirect /organization   http://static.lib.virginia.edu/directory/organization.html
 Redirect /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid=40437&sid=297543
