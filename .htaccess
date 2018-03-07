@@ -1,6 +1,10 @@
 RewriteEngine on
 RewriteBase /
 
+# disable pwa on wwwstatic
+RewriteCond %{HTTP_HOST} !^www\.library\.virginia\.edu
+RewriteRule ^manifest.json$ - [F,L]
+
 # TODO: make these feeds static and pull from a static server
 RewriteCond %{REQUEST_METHOD}  =GET
 RewriteCond %{HTTP_USER_AGENT} "AmazonAPIGateway"
