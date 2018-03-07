@@ -59,6 +59,7 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
         "path": page.path,
         "sidebar": page.sidebar,
         "subnav": page.subnav,
+        "iframe": page.iframe,
         "imgSrc": "",
         "placeholder": "",
         "summary": page.title,
