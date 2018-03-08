@@ -10,6 +10,9 @@ RewriteCond %{HTTP_HOST} !^www\.library\.virginia\.edu
 RewriteRule ^service-worker.js$ - [F,L]
 RewriteCond %{HTTP_HOST} !^www\.library\.virginia\.edu
 RewriteRule ^/$ - [F,L]
+RewriteCond %{HTTP_HOST} !^www\.library\.virginia\.edu
+RewriteRule ^/robots.txt$ no-robots.txt [L]
+
 
 # TODO: make these feeds static and pull from a static server
 RewriteCond %{REQUEST_METHOD}  =GET
