@@ -32,6 +32,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           display: block;
           position: relative;
           min-height: 100vh;
+          max-width: 100vw;
+          border: 5px solid red;
 
           --app-border-style: 1px solid #CCC;
           --app-transparent-border-style: 1px solid rgba(255, 255, 255, 0.5);
@@ -52,6 +54,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           /* use this value for the viewport height instead of "vh" unit */
           --viewport-height: 600px;
+
+          @apply --layout-vertical;
         }
 
         /* desktop */
@@ -71,7 +75,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!--
       app-location and app-route elements provide the state of the URL for the app.
-url-space-regex="^((?!\/data\/pages\/).)*$"
     -->
     <app-location route="{{route}}"></app-location>
     <app-route
@@ -97,10 +100,7 @@ url-space-regex="^((?!\/data\/pages\/).)*$"
 
     <!-- breadcrumbs -->
     <div id="breadCrumbs" inner-h-t-m-l="{{_trail}}"></div>
-<!--
-    <slot name="libAnswers">
-    </slot>
--->
+
     <uvalib-article id="content"
           name="article"
           route="{{subroute}}"
