@@ -1,14 +1,87 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/uva-models/uva-library.html">
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-theme.html">
-<link rel="import" href="../bower_components/uvalib-theme/uvalib-app-sub-nav.html">
+<!--<link rel="import" href="../bower_components/uvalib-theme/uvalib-app-sub-nav.html">-->
 
 <dom-module id="app-sub-nav">
 
   <template>
 
     <custom-style>
-      <style include="uvalib-theme uvalib-app-sub-nav"></style>
+      <style include="uvalib-theme">
+      :host {
+        display: block;
+      }
+
+      h3 {
+        @apply --app-sub-section-headline;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        margin: 20px 0;
+      }
+
+      .category {
+        display: none;
+      }
+
+      :host([featured]) > a {
+        padding-bottom: 24px;
+        border-bottom: var(--app-border-style);
+      }
+
+      :host([featured]) > a:last-of-type {
+        border-bottom: none;
+      }
+
+      :host([featured]) .category {
+        display: inline-block;
+        padding: 6px 20px 7px 20px;
+        border: var(--app-border-style);
+        font-weight: bold;
+        font-size: 11px;
+      }
+
+      :host([featured]) .headline {
+        display: block;
+        margin: 20px 0;
+      }
+
+      /* Sidebar Navigation (e.g. About Libra Page /libra) */
+        :host {
+          background-color: var(--uvalib-orange-200);
+          padding-bottom: .75em;
+          padding-right: 1em;
+        }
+        #content h4 {
+          padding: .75em;
+          background-color: var(--uvalib-main-rotunda-orange);
+          color: var(--color-white);
+          margin-right: -.7em;
+        }
+        #content ul {
+          list-style: none;
+          margin-left: 0;
+        }
+        #content ul li {
+          font-size: 1.15em;
+          text-indent: -1em;
+        }
+        #content ul li::before {
+          font-family: uvalib-custom-icons;
+          content: "\f0da";
+          padding-right: .75em;
+          position: relative;
+          top: 0.1em;
+        }
+        #content ul li a {
+          display: inline;
+          margin: 0;
+        }
+      </style>
     </custom-style>
 
     <uva-library path="web/blocks" item="{{_item}}" uuid="[[uuid]]"></uva-library>
