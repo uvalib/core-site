@@ -53,7 +53,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           /* use this value for the viewport height instead of "vh" unit */
           --viewport-height: 600px;
 
-  
+
         }
 
         /* desktop */
@@ -322,7 +322,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       // Elements in the app can notify section changes.
       // Response by a11y announcing the section and syncronizing the category.
       _updateDocumentTitle(page, categoryTitle, articleHeadline, appTitle) {
-        document.title = (page === 'list' ? categoryTitle : articleHeadline) + ' - ' + appTitle;
+        if (appTitle && (categoryTitle || articleHeadline))
+          document.title = (page === 'list' ? categoryTitle : articleHeadline) + ' - ' + appTitle;
         if (page === 'list') {
           this._setPageMetadata(categoryTitle, null);
         } else {

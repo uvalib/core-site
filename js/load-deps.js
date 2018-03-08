@@ -10,6 +10,7 @@ var addScript = function(src){
   var script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = src;
+  script.async = false;
   return script;
 }
 
@@ -32,11 +33,9 @@ try {
 if (oldBrowser) {
   head.appendChild( addScript('bower_components-compiled/webcomponentsjs/webcomponents-loader.js') );
   head.appendChild( addImport('src/ce-fix.html') );
-  head.appendChild( addScript('js/polymer-settings.js') );
   head.appendChild( addImport('src-compiled/uvalib-app.html') );
 } else {
   head.appendChild( addScript('bower_components/webcomponentsjs/webcomponents-loader.js') );
   head.appendChild( addImport('src/ce-fix.html') );
-  head.appendChild( addScript('js/polymer-settings.js') );
   head.appendChild( addImport('src/uvalib-app.html') );
 }
