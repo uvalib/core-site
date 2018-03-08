@@ -5,7 +5,7 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} !^www\.library\.virginia\.edu
 RewriteRule ^manifest.json$ - [F,L]
 RewriteCond %{HTTP_HOST} !^www\.library\.virginia\.edu
-RewriteRule ^index.html$ - [F,L]
+RewriteRule ^/$ - [F,L]
 
 # TODO: make these feeds static and pull from a static server
 RewriteCond %{REQUEST_METHOD}  =GET
