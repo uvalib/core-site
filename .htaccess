@@ -23,7 +23,7 @@ RewriteRule "^rawAPI/(.*)$" "https://drupal.lib.virginia.edu/$1" [P]
 RewriteCond %{HTTP_USER_AGENT} (bot|agent|spider|crawler|extractor) [NC]
 RewriteCond %{HTTP_USER_AGENT} (Googlebot|bingbot|msnbot|facebookexternalhit|Facebot|Twitterbot|Google-Structured-Data-Testing-Tool) [NC]
 RewriteCond %{REQUEST_URI} !^/data/pages/.*$
-RewriteRule ^(.*)$ data/pages/$1 [L,PT]
+RewriteRule ^(.*)$ data/pages/$1 [L]
 
 ### Redirect library.virginia.edu/* to www.library.virginia.edu/*
 RewriteCond %{HTTP_HOST} =library.virginia.edu
