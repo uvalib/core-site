@@ -165,6 +165,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }}
 
       static get observers() { return [
+        '_redirects(route.path)',
         '_notFound(notFound)',
         '_routePageChanged(routeData.page, isAttached)',
         '_updateArticleHeadline(article.headline)',
@@ -206,6 +207,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       connectedCallback() {
         super.connectedCallback();
         this.isAttached = true;
+      }
+
+      _redirects(path) {
+        if (path == '/staff' || path.startsWith('/staff/'))
+          window.location.replace("http://static.lib.virginia.edu/directory/");
       }
 
       _jumpToSearch(e) {
