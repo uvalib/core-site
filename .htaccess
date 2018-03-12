@@ -36,17 +36,14 @@ RewriteRule ^/mcgregor75/?$  http://explore.lib.virginia.edu/exhibits/show/mcgre
 RewriteRule ^/JFK/?$ http://static.lib.virginia.edu/JFK/
 RewriteRule ^/charles_smith$  http://avalon.lib.virginia.edu/media_objects/avalon:1938
 RewriteRule ^/civilwarvirginia/?$  http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia
-RewriteRule ^/libraries/?$   http://static.lib.virginia.edu/directory/libraries.html
 
 Header set Access-Control-Allow-Origin "*"
 
-Redirect /givingtohoosday http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
-Redirect /staff  http://static.lib.virginia.edu/directory/
-Redirect /organization   http://static.lib.virginia.edu/directory/organization.html
 Redirect /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid=40437&sid=297543
-Redirect /support/ http://static.lib.virginia.edu/campaign/
-
-# Redirects from Amber - redesign Spring 18
-Redirect /sitesearch https://www.library.virginia.edu/search
-Redirect /site-search https://www.library.virginia.edu/search
+Redirect /givingtohoosday http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
 Redirect /libraries https://www.library.virginia.edu/hours
+Redirect /organization   http://static.lib.virginia.edu/directory/organization.html
+Redirect /site-search https://www.library.virginia.edu/search
+Redirect /sitesearch https://www.library.virginia.edu/search
+Redirect /staff  http://static.lib.virginia.edu/directory/
+Redirect /support/ http://static.lib.virginia.edu/campaign/
