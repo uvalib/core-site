@@ -48,4 +48,5 @@ Redirect /support/ http://static.lib.virginia.edu/campaign/
 
 # Redirects from Amber - redesign Spring 18
 Redirect /sitesearch https://www.library.virginia.edu/search
+Redirect /site-search https://www.library.virginia.edu/search
 Redirect /libraries https://www.library.virginia.edu/hours
