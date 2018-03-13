@@ -30,7 +30,6 @@ RewriteCond %{HTTP_HOST} =library.virginia.edu
 RewriteRule ^(/.*)$ http://www.library.virginia.edu/$1
 
 RewriteRule ^/givingtohoosday/?$ http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
-RewriteRule ^/give$ http://giving.virginia.edu/uvalibrary
 RewriteRule ^/giving-form/?$ http://giving.virginia.edu/uvalibrary
 RewriteRule ^/mcgregor75/?$  http://explore.lib.virginia.edu/exhibits/show/mcgregor75
 RewriteRule ^/JFK/?$ http://static.lib.virginia.edu/JFK/
@@ -40,6 +39,7 @@ RewriteRule ^/civilwarvirginia/?$  http://explore.lib.virginia.edu/exhibits/show
 Header set Access-Control-Allow-Origin "*"
 
 Redirect /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid=40437&sid=297543
+Redirect /give http://giving.virginia.edu/uvalibrary
 Redirect /givingtohoosday http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
 Redirect /libraries https://www.library.virginia.edu/hours
 Redirect /organization   http://static.lib.virginia.edu/directory/organization.html
