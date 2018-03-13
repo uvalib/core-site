@@ -31,6 +31,9 @@
         :host([super-duper]) paper-card {
           margin: 0;
         }
+        :host([small-screen][super-duper]) {
+            background-color: var(--uvalib-main-white);
+        }
 
         #content ul {
           list-style: none;
@@ -54,6 +57,17 @@
           color: var(--uvalib-text-grey);
           display: inline;
           margin: 0;
+        }
+
+        .faq {
+          padding-left: 1em;
+          /* background-color: white; */
+        }
+
+        .sidebarContactInfo {
+          /* background-color: white; */
+          padding-left: 1em;
+          padding-bottom: 1em;
         }
       </style>
     </custom-style>
