@@ -27,7 +27,7 @@ RewriteRule ^(.*)$ data/pages/$1 [L]
 
 ### Redirect library.virginia.edu/* to www.library.virginia.edu/*
 RewriteCond %{HTTP_HOST} =library.virginia.edu
-RewriteRule ^(/.*)$ http://www.library.virginia.edu/$1
+RewriteRule ^(/.*)$ https://www.library.virginia.edu/$1
 
 RewriteRule ^/givingtohoosday/?$ http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
 RewriteRule ^/giving-form/?$ http://giving.virginia.edu/uvalibrary

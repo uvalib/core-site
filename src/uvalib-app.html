@@ -164,7 +164,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }}
 
       static get observers() { return [
-        '_redirects(route.path)',
         '_notFound(notFound)',
         '_routePageChanged(routeData.page, isAttached)',
         '_updateArticleHeadline(article.headline)',
@@ -206,19 +205,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       connectedCallback() {
         super.connectedCallback();
         this.isAttached = true;
-      }
-
-      _redirects(path) {
-        if (path == '/staff' || path.startsWith('/staff/'))
-          window.location.replace("http://static.lib.virginia.edu/directory/");
-        if (path == '/libraries' || path.startsWith('/libraries/'))
-          window.location.replace("/hours");
-        if (path == '/site-search' || path.startsWith('/site-search/'))
-          window.location.replace("/search");
-        if (path == '/give' || path.startsWith('/give/'))
-          window.location.replace("http://giving.virginia.edu/uvalibrary");
-        if (path == '/givingtohoosday' || path.startsWith('/givingtohoosday/'))
-          window.location.replace('http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP');
       }
 
       _jumpToSearch(e) {

@@ -63,28 +63,57 @@
       ]}
 
       _computePage(pagesItems, path){
-        this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
-            Polymer.Async.timeOut.after(50),
-            () => {
-              var match = false;
-              if (!pagesItems) { this.page = null; }
-              else {
-                var notFound = null;
-                for (let i=0; i< pagesItems.length; ++i) {
-                  let page = pagesItems[i];
-                  if (page.path === path || page.path+'/' === path || page.path === path+'/') {
-                    this.page = page;
-                    match = true;
+
+        if (path && !this._redirects(path))
+
+          this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
+              Polymer.Async.timeOut.after(50),
+              () => {
+
+                  var match = false;
+                  if (!pagesItems) { this.page = null; }
+                  else {
+                    var notFound = null;
+                    for (let i=0; i< pagesItems.length; ++i) {
+                      let page = pagesItems[i];
+                      if (page.path === path || page.path+'/' === path || page.path === path+'/') {
+                        this.page = page;
+                        match = true;
+                      }
+                      if (page.path === "/404") notFound = page;
+                    }
+                    if(!match) {
+                      this._setNotFound(true);
+                      console.log('not found');
+                      this.page = notFound;
+                    }
                   }
-                  if (page.path === "/404") notFound = page;
-                }
-                if(!match) {
-                  this._setNotFound(true);
-                  console.log('not found');
-                  this.page = notFound;
-                }
-              }
+
+
             });
+      }
+
+      _redirects(path) {
+        if (path == '/staff' || path.startsWith('/staff/')) {
+          window.location.replace("https://static.lib.virginia.edu/directory/");
+          return true;
+        } else if (path == '/libraries' || path.startsWith('/libraries/')) {
+          window.location.replace("/hours");
+          return true;
+        } else if (path == '/site-search' || path.startsWith('/site-search/')) {
+          window.location.replace("/search");
+          return true;
+        } else if (path == '/give' || path.startsWith('/give/')) {
+          window.location.replace("http://giving.virginia.edu/uvalibrary");
+          return true;
+        } else if (path == '/givingtohoosday' || path.startsWith('/givingtohoosday/')) {
+          window.location.replace('http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP');
+          return true;
+        } else if (path == '/support' || path.startsWith('/support/')) {
+          window.location.replace('https://static.lib.virginia.edu/campaign/');
+          return true;
+        }
+        return false;
       }
 
       _fetchPage(page, offline) {
