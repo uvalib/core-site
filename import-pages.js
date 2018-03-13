@@ -3,7 +3,8 @@ var request = require('request'),
     fs = require('fs'),
     makeDir = require('make-dir'),
     mustache = require( "mustache" ),
-    sanitize = require("sanitize-filename");
+    sanitize = require("sanitize-filename")
+    cheerio = require('cheerio');
 
 request('https://uvalib-api.firebaseio.com/pages.json', function(error, response, body){
 
@@ -33,6 +34,20 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
       // make sure that we have an ending slash
       if (page.path.slice(-1) != "/") {
         page.path += "/";
+      }
+
+      if (page.body) {
+        const $ = cheerio.load(page.body);
+        $('[href]').each(function(i,elem) {
+          var attr = $(this).attr('href');
+          if (match = attr.match(/^https?:\/\/(www\.)?library\.virginia\.edu(.*\.pdf)$/i) ) {
+              $(this).attr('href', "https://wwwstatic.lib.virginia.edu"+match[2]);
+          }
+          if (match = attr.match(/^(\/.*\.pdf)$/i) ) {
+              $(this).attr('href', "https://wwwstatic.lib.virginia.edu"+match[1]);
+          }
+        });
+        page.body = $.html();
       }
 
       makeDir("data/pages"+page.path).then(path => {
