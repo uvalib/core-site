@@ -11,6 +11,9 @@
   <meta name="theme-color" content="#000">
   <link rel="manifest" href="manifest.json">
 
+  <!-- Fix for lastpass extention on polyfilled browsers see: https://github.com/uvalib/core-site/commit/403a25445552c3a2bec4d94c6136b2e9783a9635-->
+  <link rel="import" href="src/ce-fix.html">
+
   <style>
 
     html, body {
@@ -67,10 +70,6 @@
   </noscript>
 
   <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-
-  <!-- Fix for lastpass extention on polyfilled browsers see: https://github.com/uvalib/core-site/commit/403a25445552c3a2bec4d94c6136b2e9783a9635-->
-  <link rel="import" href="src/ce-fix.html">
-  
   <link rel="import" href="src/uvalib-app.html">
 
 </body>
