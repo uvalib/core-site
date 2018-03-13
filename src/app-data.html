@@ -168,12 +168,18 @@
         let crumbs = [];
         if (path != '/') {
           let title =  _.result(_.find(pages, {'path': path}), 'headline');
+          if (!title) {
+            title = (path && path.endsWith('/')) ? _.result(_.find(pages, {'path': path.slice(0,-1)}), 'headline') :  _.result(_.find(pages, {'path': path+'/'}), 'headline');
+          }
           if (title)
             crumbs.push({path: '', label: title});
         }
         let p = path, parentId;
         do {
           parentId = _.result(_.find(pages, {'path': path}), 'parentid');
+          if (!parentId) {
+            parentId = (path && path.endsWith('/')) ? _.result(_.find(pages, {'path': path.slice(0,-1)}), 'parentid') :  _.result(_.find(pages, {'path': path+'/'}), 'parentid');
+          }
           if (parentId) {
             let parent = _.find(pages, {'id': parentId});
             if (parent) {
