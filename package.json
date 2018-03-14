@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "bower install; ./import-pages.js; ./import-files.js; polymer build; ./package-build.sh",
+    "build": "bower install; ./import-pages.js; ./import-files.js; ./imagemin-files.js; polymer build; ./package-build.sh",
     "deploy": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/es6-unbundled/ www14.lib.virginia.edu:/wwwstatic"
   },
   "repository": {
@@ -21,6 +21,13 @@
   "dependencies": {
     "bower": "^1.8.2",
     "cheerio": "^1.0.0-rc.2",
+    "image-downloader": "^3.3.0",
+    "imagemin": "^5.3.1",
+    "imagemin-jpeg-recompress": "^5.1.0",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-mozjpeg": "^7.0.0",
+    "imagemin-pngquant": "^5.0.1",
+    "imagemin-webp": "^4.1.0",
     "make-dir": "^1.1.0",
     "mustache": "^2.3.0",
     "node-wget": "^0.4.2",

@@ -1,10 +1,22 @@
 #!/usr/local/bin/node
 var request = require('request'),
     makeDir = require('make-dir'),
-    wget = require('node-wget'),
+    download = require('image-downloader'),
     webp = require('webp-converter');
 
 var filesRoot = "https://drupal.lib.virginia.edu/sites/default/files";
+
+var getImage = function(options,count) {
+  console.log('attempt download('+count+') -> '+options.url);
+  download.image(options)
+    .then(({filename, image})=>{
+      console.log('File saved to ', filename);
+    })
+    .catch((err) => {
+      console.log(err);
+      if (count--) getImage(options, count);
+    });
+}
 
 request('https://api.devhub.virginia.edu/v1/library/files', function(error, response, body){
   var files = JSON.parse(body);
@@ -12,10 +24,16 @@ request('https://api.devhub.virginia.edu/v1/library/files', function(error, resp
     var path = file.uri.replace(/public:\/(.*\/).*/,"$1");
     var filename = file.uri.replace(/public:\/.*\/(.*)/,"$1");
     makeDir("files/"+path).then(abspath => {
-      console.log('wget -> '+filesRoot+path+filename)
-      wget({url:filesRoot+path+filename,
-        dest:abspath+"/"+filename},function(error, response){
-
+      getImage({url:filesRoot+path+filename,
+                      dest: abspath+"/"+filename}, 100);
+    });
+//      wget({url:filesRoot+path+filename,
+//        dest:abspath+"/"+filename},function(error, response){
+//
+//if (error) {
+//          console.log(abspath+"/"+filename);
+//          console.log(error);
+//}
 //          if (response && response.headers['content-type'] == 'image/jpeg') {
 //            webp.cwebp(abspath+"/"+filename.replace(' ','\ '),abspath+"/"+filename.replace(' ','\ ')+".webp","-q 80",function(status)
 //            {
@@ -26,8 +44,8 @@ request('https://api.devhub.virginia.edu/v1/library/files', function(error, resp
 //            });
 //          }
 
-        });
-    });
+//        });
+//    });
   });
 
 });
