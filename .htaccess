@@ -32,6 +32,13 @@ RewriteRule ^/JFK/?$ http://static.lib.virginia.edu/JFK/
 RewriteRule ^/charles_smith$  http://avalon.lib.virginia.edu/media_objects/avalon:1938
 
 Header set Access-Control-Allow-Origin "*"
+H2PushResource /ce-fix.html
+H2PushResource /bower_components/webcomponentsjs/webcomponents-lite.js
+H2PushResource /bower_components/polymer/polymer.html
+H2PushResource /bower_components/polymer/polymer-element.html
+H2PushResource /src/uvalib-app.html
+H2PushResource /src/app-data.html
+H2PushResource /js/load-deps.js
 
 Redirect /civilwarvirginia http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia
 Redirect /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid=40437&sid=297543
