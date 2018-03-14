@@ -12,7 +12,9 @@
     "data/*",
     "data/**/*",
     "files/*",
-    "files/**/*"
+    "files/**/*",
+    "files-comp/*",
+    "files-comp/**/*"
   ],
   "extraDependencies": [
     ".htaccess",
