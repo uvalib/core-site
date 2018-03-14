@@ -25,19 +25,15 @@ RewriteCond %{HTTP_USER_AGENT} (Googlebot|bingbot|msnbot|facebookexternalhit|Fac
 RewriteCond %{REQUEST_URI} !^/data/pages/.*$
 RewriteRule ^(.*)$ data/pages/$1 [L]
 
-### Redirect library.virginia.edu/* to www.library.virginia.edu/*
-RewriteCond %{HTTP_HOST} =library.virginia.edu
-RewriteRule ^(/.*)$ https://www.library.virginia.edu/$1
-
 RewriteRule ^/givingtohoosday/?$ http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
 RewriteRule ^/giving-form/?$ http://giving.virginia.edu/uvalibrary
 RewriteRule ^/mcgregor75/?$  http://explore.lib.virginia.edu/exhibits/show/mcgregor75
 RewriteRule ^/JFK/?$ http://static.lib.virginia.edu/JFK/
 RewriteRule ^/charles_smith$  http://avalon.lib.virginia.edu/media_objects/avalon:1938
-RewriteRule ^/civilwarvirginia/?$  http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia
 
 Header set Access-Control-Allow-Origin "*"
 
+Redirect /civilwarvirginia http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia
 Redirect /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid=40437&sid=297543
 Redirect /give http://giving.virginia.edu/uvalibrary
 Redirect /givingtohoosday http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
