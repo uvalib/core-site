@@ -14,13 +14,18 @@ request('https://api.devhub.virginia.edu/v1/library/files', function(error, resp
     makeDir("files/"+path).then(abspath => {
       console.log('wget -> '+filesRoot+path+filename)
       wget({url:filesRoot+path+filename,
-        dest:abspath+"/"+filename},function(){
-//          webp.cwebp("input.jpg","output.webp","-q 80",function(status)
-//          {
-//          	//if exicuted successfully status will be '100'
-//          	//if exicuted unsuccessfully status will be '101'
-//          	console.log(status);
-//          });
+        dest:abspath+"/"+filename},function(error, response){
+
+          if (response && response.headers['content-type'] == 'image/jpeg') {
+            webp.cwebp(abspath+"/"+filename.replace(' ','\ '),abspath+"/"+filename.replace(' ','\ ')+".webp","-q 80",function(status)
+            {
+            	//if exicuted successfully status will be '100'
+            	//if exicuted unsuccessfully status will be '101'
+            	//console.log(status);
+              if (status == '101') console.log("*******************************************************");
+            });
+          }
+
         });
     });
   });
