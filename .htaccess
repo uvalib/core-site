@@ -25,7 +25,7 @@ RewriteCond %{HTTP_USER_AGENT} (Googlebot|bingbot|msnbot|facebookexternalhit|Fac
 RewriteCond %{REQUEST_URI} !^/data/pages/.*$
 RewriteRule ^(.*)$ data/pages/$1 [L]
 
-//Proxy this so that we can use http push to pull it in
+#Proxy this so that we can use http push to pull it in
 RewriteRule "^piwik.js$" "https://analytics.lib.virginia.edu/piwik.js" [P]
 
 Header set Access-Control-Allow-Origin "*"
