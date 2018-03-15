@@ -25,11 +25,15 @@ RewriteCond %{HTTP_USER_AGENT} (Googlebot|bingbot|msnbot|facebookexternalhit|Fac
 RewriteCond %{REQUEST_URI} !^/data/pages/.*$
 RewriteRule ^(.*)$ data/pages/$1 [L]
 
+//Proxy this so that we can use http push to pull it in
 RewriteRule "^piwik.js$" "https://analytics.lib.virginia.edu/piwik.js" [P]
+
 Header set Access-Control-Allow-Origin "*"
 H2PushResource /src/uvalib-article.html
 H2PushResource /fonts/franklingothic-book-webfont.woff2
 H2PushResource /bower_component/moment-timezone/builds/moment-timezone-with-data.min.js
+H2PushResource /bower_components/iron-selector/iron-selection.html
+H2PushResource /bower_components/iron-selector/iron-selectable.html
 
 Redirect /civilwarvirginia http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia
 Redirect /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid=40437&sid=297543
