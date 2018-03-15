@@ -1,19 +1,20 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/uvalib-theme/uvalib-ui-element.html">
 <link rel="import" href="../bower_components/uvalib-helper-libs/uvalib-helper-libs.html" />
 
 <dom-module id="app-data">
-
+  <template></template>
   <script>
 
   (function() {
 
     let textarea = document.createElement('textarea');
 
-    class AppData extends Polymer.Element {
+    class AppData extends UvalibUiElement {
 
       static get is() { return 'app-data'; }
 
-      static get properties() { return {
+      static get properties() {
+        return Object.assign(super.properties, {
 
         path: String,
 
@@ -53,7 +54,7 @@
           readOnly: true,
           notify: true
         }
-      }}
+      }); }
 
       static get observers() { return [
         '_computePage(pages.items, path, pages)',
@@ -233,9 +234,13 @@
         //  img.removeAttribute('height');
         //}
 
+        template.content.querySelectorAll('paper-card').forEach( (card)=>{
+          if (card.hasAttribute('image'))
+            card.setAttribute('image',this.whichImage(card.getAttribute('image')));
+        });
+
         // Use figure where we have the content to support it
-        let images = template.content.querySelectorAll('img');
-        images.forEach( (img)=>{
+        template.content.querySelectorAll('img').forEach( (img)=>{
           // see if image has data-caption attribute and turn into a figure it so
             var fig = document.createElement('figure');
             fig.setAttribute('role','group');
@@ -245,7 +250,7 @@
             if (img.hasAttribute('class')) newImg.setAttribute('class',img.getAttribute('class'));
             if (img.hasAttribute('height')) newImg.setAttribute('height',img.getAttribute('height'));
             if (img.hasAttribute('width')) newImg.setAttribute('width',img.getAttribute('width'));
-            newImg.setAttribute('src',img.getAttribute('src'));
+            newImg.setAttribute('src',this.whichImage(img.getAttribute('src')));
             fig.appendChild(newImg);
             if (img.hasAttribute('data-caption')) {
               var caption = document.createElement('figcaption');
