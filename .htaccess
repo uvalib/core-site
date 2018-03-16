@@ -28,6 +28,7 @@ RewriteRule ^(.*)$ data/pages/$1 [L]
 
 #Proxy this so that we can use http push to pull it in
 RewriteRule "^piwik.js$" "https://analytics.lib.virginia.edu/piwik.js" [P]
+RewriteRule "^js/contollers/libweb.js$" "https://static.lib.virginia.edu/js/controllers/libweb.js" [P]
 
 Header set Access-Control-Allow-Origin "*"
 #H2PushResource /src/uvalib-article.html
