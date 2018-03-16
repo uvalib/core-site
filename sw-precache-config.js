@@ -45,6 +45,16 @@ module.exports = {
       }
     },
     {
+      urlPattern: /^https:\/\/static\.lib\.virginia\.edu\/.*/,
+      handler: 'fastest',
+      options: {
+        cache: {
+          maxEntries: 400,
+          name: 'data-api-cache'
+        }
+      }
+    },
+    {
       urlPattern: /^https:\/\/api\.devhub\.virginia\.edu\/.*/,
       handler: 'fastest',
       options: {
