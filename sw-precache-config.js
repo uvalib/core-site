@@ -1,10 +1,20 @@
 module.exports = {
   staticFileGlobs: [
     'manifest.json',
+    'src/ce-fix.html',
     'bower_components/webcomponentsjs/webcomponents-loader.js',
     'images/*'
   ],
   runtimeCaching: [
+    {
+      urlPattern: /\/js\/.*\.js/,
+      handler: 'fastest',
+      options: {
+        cache: {
+          name: 'local-js-cache'
+        }
+      }
+    },
     {
       urlPattern: /\/bower_components\/webcomponentsjs\/.*.js/,
       handler: 'fastest',
@@ -50,7 +60,7 @@ module.exports = {
       options: {
         cache: {
           maxEntries: 400,
-          name: 'data-api-cache'
+          name: 'static-file-cache'
         }
       }
     },
