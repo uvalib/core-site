@@ -30,8 +30,8 @@ RewriteRule ^(.*)$ data/pages/$1 [L]
 RewriteRule "^piwik.js$" "https://analytics.lib.virginia.edu/piwik.js" [P]
 RewriteRule "^js/contollers/libweb.js$" "https://static.lib.virginia.edu/js/controllers/libweb.js" [P]
 
-RewriteCond %{HTTP_HOST} !^preservation\.library\.virginia\.edu
-RewriteRule ^/$ https://www.library.virginia.edu/preservation  [R,L]
+RewriteCond %{HTTP_HOST} preservation\.library\.virginia\.edu
+RewriteRule ^(.*)$ https://www.library.virginia.edu/preservation  [R,L]
 
 Header set Access-Control-Allow-Origin "*"
 #H2PushResource /src/uvalib-article.html
