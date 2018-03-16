@@ -255,7 +255,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.$.content.innerHTML = "<h1 tabindex='-1'>"+title+"</h1>"+html;
           }
         }
-        //ShadyCSS.styleSubtree(this.$.content);
+        // handle anchors
+        if (window.location.hash) {
+            this._scrollToSelector(window.location.hash);
+        }
+      }
+
+      _scrollToSelector(selector){
+        this.shadowRoot.querySelector(selector).scrollIntoView({behavior:"smooth", block: "center", inline: "nearest"});
       }
 
       _articleChanged(article) {
@@ -281,7 +288,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _hashClick(e){
-        this.shadowRoot.querySelector(e.detail.anchor).scrollIntoView({behavior:"smooth", block: "center", inline: "nearest"});
+        this._scrollToSelector(e.detail.anchor);
       }
     }
 
