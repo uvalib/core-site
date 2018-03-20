@@ -46,6 +46,9 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
           if (match = attr.match(/^(\/.*\.pdf)$/i) ) {
               $(this).attr('href', "https://wwwstatic.lib.virginia.edu"+match[1]);
           }
+          if (attr.match(/^#.*$/)) {
+            $(this).attr('href', page.path+attr);
+          }
         });
         page.body = $('head').html();
         page.body += $('body').html();
