@@ -47,7 +47,8 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
               $(this).attr('href', "https://wwwstatic.lib.virginia.edu"+match[1]);
           }
         });
-        page.body = $.html();
+        page.body = $('head').html();
+        page.body += $('body').html();
       }
 
       makeDir("data/pages"+page.path).then(path => {
