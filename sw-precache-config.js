@@ -39,7 +39,7 @@ module.exports = {
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 400,
+          maxEntries: 200,
           name: 'data-pages-cache'
         }
       }
@@ -49,7 +49,7 @@ module.exports = {
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 400,
+          maxEntries: 200,
           name: 'data-json-cache'
         }
       }
@@ -59,7 +59,7 @@ module.exports = {
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 400,
+          maxEntries: 200,
           name: 'static-file-cache'
         }
       }
@@ -69,7 +69,17 @@ module.exports = {
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 400,
+          maxEntries: 100,
+          name: 'data-api-cache'
+        }
+      }
+    },
+    {
+      urlPattern: /^https:\/\/api\.devhub\.virginia\.edu\/.*\/library\/alerts/,
+      handler: 'networkFirst',
+      options: {
+        cache: {
+          maxEntries: 5,
           name: 'data-api-cache'
         }
       }
