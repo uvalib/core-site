@@ -55,6 +55,16 @@ module.exports = {
       }
     },
     {
+      urlPattern: /\/data\/pages\/emergency/,
+      handler: 'networkFirst',
+      options: {
+        cache: {
+          maxEntries: 200,
+          name: 'data-pages-cache'
+        }
+      }
+    },
+    {
       urlPattern: /^https:\/\/static\.lib\.virginia\.edu\/.*/,
       handler: 'fastest',
       options: {
