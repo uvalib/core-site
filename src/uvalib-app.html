@@ -64,7 +64,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </style>
     </custom-style>
 
-    <uvalib-analytics site-id="10" path="[[route.path]]"></uvalib-analytics>
+    <uvalib-analytics site-id="10" path="[[route.path]]" error="[[errorCode]]" referrer="[[referrer]]"></uvalib-analytics>
 
     <uvalib-skip-nav id="skipNavigation" tabindex="0"></uvalib-skip-nav>
 
@@ -127,6 +127,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           observer: '_pageChanged'
         },
 
+        referrer: String,
+
         routeData: Object,
 
         breadCrumbs: Array,
@@ -158,10 +160,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         lazyLoadComplete: Boolean,
 
-        _trail: String
+        _trail: String,
+
+        errorCode: {
+          type: String,
+          computed: '_getErrorCode(notFound)',
+          notify: true
+        },
+
+        route: {
+          type: Object,
+          observer: '_trackReferrer'
+        }
       }}
 
       static get observers() { return [
+//        '_trackReferrer(route)',
         '_notFound(notFound)',
         '_routePageChanged(routeData.page, isAttached)',
         '_updateArticleHeadline(article.headline)',
@@ -203,6 +217,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       connectedCallback() {
         super.connectedCallback();
         this.isAttached = true;
+      }
+
+      _trackReferrer(n, o) {
+        if (n.path && o.path) {
+          if (this.referrer != n.path) this.referrer = o.path;
+        }
+      }
+
+      _getErrorCode(notFound) {
+        return (notFound)? "404":null;
       }
 
       _jumpToSearch(e) {
