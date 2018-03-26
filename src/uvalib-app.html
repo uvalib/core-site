@@ -220,7 +220,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _trackReferrer(n, o) {
-        if (n.path && o.path) {
+        if (n && o && n.path && o.path) {
           if (this.referrer != n.path) this.referrer = o.path;
         }
       }
