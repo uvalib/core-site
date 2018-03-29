@@ -49,4 +49,5 @@ Redirect /organization   http://static.lib.virginia.edu/directory/organization.h
 Redirect /site-search https://www.library.virginia.edu/search
 Redirect /sitesearch https://www.library.virginia.edu/search
 Redirect /staff  http://static.lib.virginia.edu/directory/
+Redirect /study-spaces http://uvalibrary.maps.arcgis.com/apps/Shortlist/index.html?appid=e6cb8c4cde61410f873bc780c38bd958
 Redirect /support/ http://static.lib.virginia.edu/campaign/
