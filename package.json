@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "bower install; ./import-pages.js; npm run images polymer build; ./package-build.sh;",
-    "deploy": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/es6-unbundled/ www14.lib.virginia.edu:/wwwstatic",
+    "deploy": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/es6-unbundled/ www14.lib.virginia.edu:/wwwstatic;",
     "images": "./import-files.js; ./imagemin-files.js;",
     "images-deploy": "npm run deploy; rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' files/ www14.lib.virginia.edu:/wwwstatic/files; rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' files-comp/ www14.lib.virginia.edu:/wwwstatic/files-comp"
   },
