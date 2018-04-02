@@ -27,25 +27,6 @@ request('https://api.devhub.virginia.edu/v1/library/files', function(error, resp
       getImage({url:filesRoot+path+filename,
                       dest: abspath+"/"+filename}, 100);
     });
-//      wget({url:filesRoot+path+filename,
-//        dest:abspath+"/"+filename},function(error, response){
-//
-//if (error) {
-//          console.log(abspath+"/"+filename);
-//          console.log(error);
-//}
-//          if (response && response.headers['content-type'] == 'image/jpeg') {
-//            webp.cwebp(abspath+"/"+filename.replace(' ','\ '),abspath+"/"+filename.replace(' ','\ ')+".webp","-q 80",function(status)
-//            {
-//            	//if exicuted successfully status will be '100'
-//            	//if exicuted unsuccessfully status will be '101'
-//            	//console.log(status);
-//              if (status == '101') console.log("*******************************************************");
-//            });
-//          }
-
-//        });
-//    });
   });
 
 });
