@@ -90,7 +90,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <uvalib-chat></uvalib-chat>
     </template>
 
-    <app-location route="{{hash}}" use-hash-as-path></app-location>
+
     <app-route
         route="{{route}}"
         pattern="/:category/:id"
@@ -161,11 +161,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               tabindex: {
                 type: Number,
                 value: -1
-              },
-
-              hash: {
-                type: String,
-                observer: "_handleAnchor"
               }
             });
 
@@ -263,17 +258,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
         // handle anchors
         this._handleAnchor();
-      }
-
-      _handleAnchor(){
-        if (this.hash) {
-            this._scrollToSelector(window.location.hash);
-        }
-      }
-
-      _scrollToSelector(selector){
-        if (selector)
-          this.shadowRoot.querySelector(selector).scrollIntoView({behavior:"smooth", block: "center", inline: "nearest"});
       }
 
       _articleChanged(article) {
