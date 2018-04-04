@@ -79,6 +79,7 @@
                     var notFound = null;
                     for (let i=0; i< pagesItems.length; ++i) {
                       let page = pagesItems[i];
+                      if (page.path[0]!='/') page.path = '/'+page.path;
                       if (page.path === path || page.path+'/' === path || page.path === path+'/') {
                         this.page = page;
                         match = true;
@@ -157,6 +158,7 @@
         for (let i = 0, item; item = response[i]; ++i) {
           items.push({
             headline: this._unescapeText(item.title),
+            stage: item.stage,
             path: item.path,
             subnav: item.subnav,
             sidebar: item.sidebar,
