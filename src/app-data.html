@@ -1,8 +1,11 @@
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-ui-element.html">
 <link rel="import" href="../bower_components/uvalib-helper-libs/uvalib-helper-libs.html" />
+<link rel="import" href="../bower_components/uva-models/uva-library-stages.html">
 
 <dom-module id="app-data">
-  <template></template>
+  <template>
+    <uva-library-stages stage="{{stage}}"></uva-library-stages>
+  </template>
   <script>
 
   (function() {
@@ -23,7 +26,7 @@
           computed: '_makeBreadCrumbs(path,pages.items)',
           notify: true
         },
-
+        stage: Object,
         offline: Boolean,
 
         loading: {
