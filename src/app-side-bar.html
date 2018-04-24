@@ -14,12 +14,14 @@
           padding-bottom: .75em;
           border-top: 8px solid var(--uvalib-main-rotunda-orange);
           border-bottom: 8px solid var(--uvalib-main-rotunda-orange);
+          margin-left: calc(var(--uvalib-spacing-unit)*-1.875);
+          margin-right: calc(var(--uvalib-spacing-unit)*-1.875);
         }
 
-        :host h3 {
+        /* :host h3 {
           @apply --font-headline;
           margin-bottom: -1em;
-        }
+        } */
 
         :host([super-duper]) {
           display: block;
@@ -33,6 +35,10 @@
         }
         :host([small-screen][super-duper]) {
             background-color: var(--uvalib-main-white);
+        }
+
+        #content h3 {
+          margin-bottom: calc(var(--uvalib-spacing-unit)/2);
         }
 
         #content ul {
@@ -59,15 +65,26 @@
           margin: 0;
         }
 
+        .supportRenovation {
+          padding-left: var(--uvalib-spacing-unit);
+          padding-right: var(--uvalib-spacing-unit);
+        }
+        .supportRenovation h3 {
+          @apply --h3-with-flair;
+        }
+
         .faq {
-          padding-left: 1em;
+          padding-left: var(--uvalib-spacing-unit);
           /* background-color: white; */
         }
 
         .sidebarContactInfo {
           /* background-color: white; */
-          padding-left: 1em;
-          padding-bottom: 1em;
+          padding-left: var(--uvalib-spacing-unit);
+          padding-bottom: var(--uvalib-spacing-unit);
+        }
+        #content paper-button {
+          background-color: var(--uvalib-white);
         }
       </style>
     </custom-style>

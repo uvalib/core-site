@@ -11,11 +11,14 @@
       <style include="uvalib-theme">
       :host {
         display: block;
+        margin-top: calc(var(--uvalib-spacing-unit)*-1.875);
+        margin-left: calc(var(--uvalib-spacing-unit)*-1.875);
+        margin-right: calc(var(--uvalib-spacing-unit)*-1.875);
       }
 
-      h3 {
+      /* h3 {
         @apply --app-sub-section-headline;
-      }
+      } */
 
       a {
         text-decoration: none;
@@ -60,8 +63,9 @@
           padding: .75em;
           background-color: var(--uvalib-main-rotunda-orange);
           color: var(--color-white);
-          margin-right: -.7em;
+          margin-right: -.55em;
           margin-top: 0;
+          margin-bottom: 0;
         }
         #content ul {
           list-style: none;
