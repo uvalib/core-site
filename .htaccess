@@ -26,6 +26,10 @@ RewriteRule "^js/controllers/libweb.js$" "https://static.lib.virginia.edu/js/con
 RewriteCond %{HTTP_HOST} preservation\.library\.virginia\.edu
 RewriteRule ^(.*)$ https://www.library.virginia.edu/preservation  [R,L]
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.html [L]
+
 Header set Access-Control-Allow-Origin "*"
 #H2PushResource /src/uvalib-article.html
 #H2PushResource /fonts/franklingothic-book-webfont.woff2
@@ -43,4 +47,4 @@ Redirect /site-search https://www.library.virginia.edu/search
 Redirect /sitesearch https://www.library.virginia.edu/search
 Redirect /staff  http://static.lib.virginia.edu/directory/
 Redirect /study-spaces http://uvalibrary.maps.arcgis.com/apps/Shortlist/index.html?appid=e6cb8c4cde61410f873bc780c38bd958
-Redirect /support https://www.library.virginia.edu/support-library 
+Redirect /support https://www.library.virginia.edu/support-library
