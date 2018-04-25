@@ -77,6 +77,7 @@
                   if (!pagesItems) { this.page = null; }
                   else {
                     var notFound = null;
+                    path = path.replace('//','/');
                     for (let i=0; i< pagesItems.length; ++i) {
                       let page = pagesItems[i];
                       if (page.path[0]!='/') page.path = '/'+page.path;
