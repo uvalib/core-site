@@ -31,19 +31,40 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.html [L]
 
 Header set Access-Control-Allow-Origin "*"
+#Polymer2
 H2PushResource /bower_components/webcomponentsjs/webcomponents-loader.js
 H2PushResource /js/load-deps.js
 H2PushResource /js/controllers/libweb.js
 H2PushResource /src/ce-fix.html
-H2PushResource /src/uvalib-app.html
 H2PushResource /bower_components/polymer/polymer.html
-H2PushResource /src/app-data.html
 H2PushResource /bower_components/polymer/polymer-element.html
-H2PushResource /bower_components/app-route/app-location.html
-H2PushResource /bower_components/app-route/app-route.html
-H2PushResource /bower_components/uvalib-theme/uvalib-theme.html
 H2PushResource /bower_components/app-layout/helpers/helpers.html
-H2PushResource /bower_components/uvalib-header/uvalib-header.html 
+H2PushResource /bower_components/polymer/lib/legacy/legacy-element-mixin.html
+H2PushResource /bower_components/polymer/lib/legacy/polymer-fn.html
+H2PushResource /bower_components/polymer/lib/legacy/templatizer-behavior.html
+H2PushResource /bower_components/polymer/lib/elements/dom-bind.html
+H2PushResource /bower_components/polymer/lib/elements/dom-repeat.html
+H2PushResource /bower_components/polymer/lib/elements/dom-if.html
+H2PushResource /bower_components/font-roboto/roboto.html
+#appshell
+H2PushResource /src/uvalib-app.html
+H2PushResource /src/app-data.html
+H2PushResource /bower_components/iron-location/iron-query-params.html
+H2PushResource /bower_components/iron-location/iron-location.html
+H2PushResource /bower_components/app-route/app-location.html
+H2PushResource /bower_components/app-route/app-route-converter-behavior.html
+H2PushResource /bower_components/app-route/app-route.html
+H2PushResource /bower_components/uvalib-theme/color.html
+H2PushResource /bower_components/uvalib-theme/uvalib-styles.html
+H2PushResource /bower_components/uvalib-theme/uvalib-theme.html
+H2PushResource /bower_components/uvalib-theme/uvalib-icons.html
+#header
+H2PushResource /bower_components/uvalib-theme/uvalib-scroll-top-style.html
+H2PushResource /bower_components/uvalib-scroll-top/uvalib-scroll-top.html
+H2PushResource /bower_components/uvalib-header/uvalib-header.html
+H2PushResource /bower_components/paper-fab/paper-fab.html
+#footer
+H2PushResource /bower_components/uvalib-footer/uvalib-footer.html
 
 Redirect /civilwarvirginia http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia
 Redirect /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid=40437&sid=297543
