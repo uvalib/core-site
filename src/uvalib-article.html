@@ -98,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div role="main" class="container" fade-in$="[[!loading]]" hidden$="[[failure]]" on-click-hash-link="_hashClick">
       <article>
-        <div id="content" class="fade-in"></div>
+        <div id="content" class="fade-in" on-click="_click"></div>
       </article>
 
       <template is="dom-if" if="[[_or( article.sidebar, article.subnav)]]">
@@ -284,6 +284,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _hashClick(e){
         this._scrollToSelector(e.detail.anchor);
+      }
+
+      _click(e) {
+        var target = e.target
+        if (target.tagName.toLowerCase() === "a" && target.getAttribute('href')[0]==="#") {
+          e.preventDefault();
+          this._scrollToSelector(target.getAttribute('href'));
+        }
       }
     }
 
