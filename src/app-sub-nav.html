@@ -91,7 +91,7 @@
 
     <uva-library path="web/blocks" item="{{_item}}" uuid="[[uuid]]"></uva-library>
 
-    <div id="content">
+    <div id="content" on-click="_click">
 
     </div>
 
@@ -123,6 +123,13 @@
         }
 
       }}
+      _click(e) {
+        var target = e.target
+        if (target.tagName.toLowerCase() === "a" && target.getAttribute('href')[0]==="#") {
+          e.preventDefault();
+          this.dispatchEvent(new CustomEvent('click-hash-link',{bubbles: true, composed: true, detail: {anchor:target.getAttribute('href')}}));
+        }
+      }
       _update() {
         this.$.content.innerHTML = this._item.body
       }
