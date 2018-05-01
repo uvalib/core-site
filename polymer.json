@@ -4,7 +4,8 @@
   "fragments": [
     "src/uvalib-article.html",
     "src/news-path-warning.html",
-    "src/lazy-resources.html"
+    "src/lazy-resources.html",
+    "bower_components/uvalib-page/uvalib-services.html"
   ],
   "sources": [
     "src/**/*",
