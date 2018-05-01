@@ -4,7 +4,7 @@
 
 <dom-module id="app-data">
   <template>
-    <uva-library-stages stage="{{stage}}"></uva-library-stages>
+<!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
   </template>
   <script>
 
@@ -272,6 +272,10 @@
           //var uvalibImg = document.createElement('uvalib-im');
           //img.replaceWith(uvalibImg);
         });
+
+        //Get needed html imports
+        if (template.content.querySelector('uvalib-services'))
+          Polymer.importHref(this.resolveUrl('../bower_components/uvalib-page/uvalib-services.html'));
 
         return template.content.querySelector('.content').innerHTML;
       }
