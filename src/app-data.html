@@ -274,8 +274,9 @@
         });
 
         //Get needed html imports
+        var bower = (window.oldBrowser)? "../bower_components-compiled/":"../bower_components/";
         if (template.content.querySelector('uvalib-services'))
-          Polymer.importHref(this.resolveUrl('../bower_components/uvalib-page/uvalib-services.html'));
+          Polymer.importHref(this.resolveUrl(bower+'uvalib-page/uvalib-services.html'));
 
         return template.content.querySelector('.content').innerHTML;
       }
