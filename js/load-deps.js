@@ -31,7 +31,8 @@ try {
 if (oldBrowser) {
   head.appendChild( addScript('bower_components-compiled/webcomponentsjs/custom-elements-es5-adapter.js') );
   head.appendChild( addImport('bower_components-compiled/uva-helper-libs/polyfills.html') );
-  head.appendChild( addImport('src-compiled/uvalib-app.html') );
+  head.appendChild( addImport('src-compiled/uvalib-app.html')
+  window.oldBrowser=true;
 } else {
   head.appendChild( addImport('src/uvalib-app.html') );
 }
