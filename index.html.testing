@@ -80,6 +80,6 @@
   <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
   <script src="/js/load-deps.js"></script>
-  <script src="/js/controllers/libweb.js"></script>
+  <!--<script src="/js/controllers/libweb.js"></script>-->
 </body>
 </html>
