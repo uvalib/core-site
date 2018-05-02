@@ -277,6 +277,10 @@
         var bower = (window.oldBrowser)? "../bower_components-compiled/":"../bower_components/";
         if (template.content.querySelector('uvalib-services'))
           Polymer.importHref(this.resolveUrl(bower+'uvalib-page/uvalib-services.html'));
+        if (template.content.querySelector('uvalib-pre-services'))
+          Polymer.importHref(this.resolveUrl(bower+'uvalib-page/uvalib-pre-services.html'));
+        if (template.content.querySelector('uvalib-ils-form'))
+          Polymer.importHref(this.resolveUrl(bower+'uvalib-elements/uvalib-ils-form.html'));
 
         return template.content.querySelector('.content').innerHTML;
       }
