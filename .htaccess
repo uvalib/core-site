@@ -34,7 +34,7 @@ Header set Access-Control-Allow-Origin "*"
 ##Polymer2
 H2PushResource /bower_components/webcomponentsjs/webcomponents-loader.js
 H2PushResource /js/load-deps.js
-H2PushResource /js/controllers/libweb.js
+#H2PushResource /js/controllers/libweb.js
 H2PushResource /src/ce-fix.html
 #H2PushResource /bower_components/polymer/polymer.html
 #H2PushResource /bower_components/polymer/polymer-element.html
