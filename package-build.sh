@@ -1,4 +1,7 @@
 #!/bin/bash
+
+cp -r build/es5-bundled build/es6-unbundled/ie11
+
 cp index.html.testing build/es6-unbundled/index.html
 cp -r js/ build/es6-unbundled/js
 cp -r build/es5-bundled/src build/es6-unbundled/src-compiled
