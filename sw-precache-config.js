@@ -85,7 +85,7 @@ module.exports = {
       }
     },
     {
-      urlPattern: /^https:\/\/use\.typekit\.net/.*/,
+      urlPattern: /^https:\/\/.*\.typekit\.net/.*/, 
       handler: 'fastest',
       options: {
         cache: {
