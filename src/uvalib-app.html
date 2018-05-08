@@ -1,24 +1,17 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="app-data.html">
+<link rel="import" href="../bower_components/lazy-imports/lazy-imports-mixin.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-theme.html">
 <link rel="import" href="../bower_components/app-layout/helpers/helpers.html">
 <link rel="import" href="../bower_components/uvalib-header/uvalib-header.html">
-<link rel="import" href="../bower_components/uvalib-footer/uvalib-footer.html">
-<link rel="import" href="../bower_components/uvalib-scroll-top/uvalib-scroll-top.html" async>
+<link rel="import" href="uvalib-article.html">
 
 <dom-module id="uvalib-app">
+  <!-- This stuff should load first -->
+  <link rel="lazy-import" group="uvalib-app" href="app-data.html">
+  <link rel="lazy-import" group="uvalib-app--next" href="../bower_components/uvalib-footer/uvalib-footer.html">
+  <link rel="lazy-import" group="uvalib-app--next" href="../bower_components/uvalib-scroll-top/uvalib-scroll-top.html">
 
   <template>
     <custom-style>
@@ -113,7 +106,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
 
-    class UvaLibApp extends Polymer.Element {
+    class UvaLibApp extends Polymer.LazyImportsMixin(Polymer.Element) {
 
       static get is() { return 'uvalib-app'; }
 
@@ -176,6 +169,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       static get observers() { return [
 //        '_trackReferrer(route)',
         '_notFound(notFound)',
+//        '_lazyLoad(isAttached)',
         '_routePageChanged(routeData.page, isAttached)',
         '_updateArticleHeadline(article.headline)',
         '_updateDocumentTitle(page, category.title, articleHeadline, appTitle)',
@@ -183,6 +177,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ]}
 
       ready() {
+        super.ready();
+
+        this.importLazyGroup('uvalib-app').then(function(results){
+//          this.importLazyGroup('uvalib-app--next');
+        }.bind(this));
+
         // Listen for the skip to navigation events.
         this.addEventListener('jumpToSearch', this._jumpToSearch);
         this.addEventListener('jumpToContent', this._jumpToContent);
@@ -190,7 +190,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //        this.addEventListener('jumpToHeader', this._jumpToHeader);
 //        this.addEventListener('jumpToFooter', this._jumpToFooter);
 
-        super.ready();
         // Custom elements polyfill safe way to indicate an element has been upgraded.
         this.removeAttribute('unresolved');
 
@@ -266,7 +265,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _pageChanged(page, oldPage) {
         let href;
-
+/*
         switch(page) {
           case 'article':
             href = 'uvalib-article.html';
@@ -281,6 +280,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             cb,
             cb,
             true);
+*/
+        this._pageLoaded();
       }
 
       _pageLoaded(shouldResetLayout) {
