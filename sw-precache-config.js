@@ -85,12 +85,22 @@ module.exports = {
       }
     },
     {
-      urlPattern: /^https:\/\/.*\.typekit\.net/.*/, 
+      urlPattern: /^https:\/\/use\.typekit\.net\/.*/,
       handler: 'fastest',
       options: {
         cache: {
-          maxEntries: 40,
-          name: 'data-typekit-cache'
+          maxEntries: 100,
+          name: 'typekit-cache'
+        }
+      }
+    },
+    {
+      urlPattern: /^https:\/\/p\.typekit\.net\/.*/,
+      handler: 'fastest',
+      options: {
+        cache: {
+          maxEntries: 100,
+          name: 'typekit-cache2'
         }
       }
     },

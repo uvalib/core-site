@@ -26,6 +26,17 @@ RewriteRule "^js/controllers/libweb.js$" "https://static.lib.virginia.edu/js/con
 RewriteCond %{HTTP_HOST} preservation\.library\.virginia\.edu
 RewriteRule ^(.*)$ https://www.library.virginia.edu/preservation  [R,L]
 
+#Stupid IE11
+RewriteCond %{HTTP_USER_AGENT} Trident
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/es5/.*$
+RewriteRule ^(.*)$ es5/index.html  [L]
+#Make IE11's root set to es5
+RewriteCond %{HTTP_USER_AGENT} Trident
+RewriteCond %{REQUEST_URI} !^/es5/.*$
+RewriteRule ^(.*)$ es5/$1 [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.html [L]
