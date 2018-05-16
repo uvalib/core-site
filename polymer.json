@@ -1,13 +1,6 @@
 {
   "entrypoint": "index.html",
   "shell": "src/uvalib-app.html",
-  "fragments": [
-    "src/uvalib-article.html",
-    "src/news-path-warning.html",
-    "src/lazy-resources.html",
-    "bower_components/uvalib-page/uvalib-pre-services.html",
-    "bower_components/uvalib-page/uvalib-services.html"
-  ],
   "sources": [
     "src/**/*",
     "images/**/*",
