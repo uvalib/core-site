@@ -4,6 +4,15 @@
 <!--<link rel="import" href="../bower_components/uva-models/uva-library-stages.html">-->
 
 <dom-module id="app-data">
+
+  <link rel="lazy-import" group="app-data-uvalib-homepage" href="../bower_components/uvalib-page/uvalib-homepage.html">
+  <link rel="lazy-import" group="app-data-uvalib-pre-services" href="../bower_components/uvalib-page/uvalib-pre-services.html">
+  <link rel="lazy-import" group="app-data-uvalib-services" href="../bower_components/uvalib-page/uvalib-services.html">
+  <link rel="lazy-import" group="app-data-uvalib-ils-form" href="../bower_components/uvalib-elements/uvalib-ils-form.html">
+  <link rel="lazy-import" group="app-data-uvalib-hourspage" href="../bower_components/uvalib-page/uvalib-hourspage.html">
+  <link rel="lazy-import" group="app-data-uvalib-exhibitspage" href="../bower_components/uvalib-page/uvalib-exhibitspage.html">
+  <link rel="lazy-import" group="app-data-uvalib-collectionspage" href="../bower_components/uvalib-page/uvalib-collectionspage.html">
+
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
   </template>
@@ -94,7 +103,6 @@
                       this.page = notFound;
                     }
                   }
-
 
             });
       }
@@ -222,28 +230,6 @@
         let template = document.createElement('template');
         template.innerHTML = html;
 
-        // Remove h1, .kicker, and .date from content.
-        // let h1 = template.content.querySelector('h1');
-        // h1 && h1.remove();
-        // let kicker = template.content.querySelector('.kicker');
-        // kicker && kicker.remove();
-        // let date = template.content.querySelector('.date');
-        // date && date.remove();
-
-        // Remove the first image if it's the same as the item image.
-        // let image = template.content.querySelector('img');
-        // if (image && this._isSameImageSrc(image.src, this.article.imageUrl)) {
-        //   image.remove();
-        // }
-
-        // Remove width/height attributes from all images.
-        //let images = template.content.querySelectorAll('img');
-        //for (let i = 0; i < images.length; ++i) {
-        //  let img = images[i];
-        //  img.removeAttribute('width');
-        //  img.removeAttribute('height');
-        //}
-
         template.content.querySelectorAll('paper-card').forEach( (card)=>{
           if (card.hasAttribute('image'))
             card.setAttribute('image',this.whichImage(card.getAttribute('image')));
@@ -274,14 +260,21 @@
           //img.replaceWith(uvalibImg);
         });
 
-        //Get needed html imports
-        var bower = (window.oldBrowser)? "../bower_components-compiled/":"../bower_components/";
+        //Get needed to lazy load any needed components
+        if (template.content.querySelector('uvalib-homepage'))
+          this.importLazyGroup('app-data-uvalib-homepage');
         if (template.content.querySelector('uvalib-services'))
-          Polymer.importHref(this.resolveUrl(bower+'uvalib-page/uvalib-services.html'));
+          this.importLazyGroup('app-data-uvalib-services');
         if (template.content.querySelector('uvalib-pre-services'))
-          Polymer.importHref(this.resolveUrl(bower+'uvalib-page/uvalib-pre-services.html'));
+          this.importLazyGroup('app-data-uvalib-pre-services');
         if (template.content.querySelector('uvalib-ils-form'))
-          Polymer.importHref(this.resolveUrl(bower+'uvalib-elements/uvalib-ils-form.html'));
+          this.importLazyGroup('app-data-uvalib-ils-form');
+        if (template.content.querySelector('uvalib-hourspage'))
+          this.importLazyGroup('app-data-uvalib-hourspage');
+        if (template.content.querySelector('uvalib-exhibitspage'))
+          this.importLazyGroup('app-data-uvalib-exhibitspage');
+        if (template.content.querySelector('uvalib-collectionspage'))
+          this.importLazyGroup('app-data-uvalib-collectionspage');
 
         return template.content.querySelector('.content').innerHTML;
       }

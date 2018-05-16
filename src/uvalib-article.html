@@ -20,14 +20,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-ui-element.html" />
 
-
-
-<link rel="import" href="app-side-bar.html">
-<link rel="import" href="app-sub-nav.html">
-
 <script src="../bower_components/iframe-resizer/js/iframeResizer.min.js"></script>
 
 <dom-module id="uvalib-article">
+
+  <link rel="lazy-import" group="uvalib-article-notsmall" href="../bower_components/uvalib-chat/uvalib-chat.html">
+
+  <link rel="lazy-import" group="uvalib-article" href="app-side-bar.html">
+  <link rel="lazy-import" group="uvalib-article" href="app-sub-nav.html">
+
+  <link rel="lazy-import" group="uvalib-article2" href="news-network-warning.html">
 
   <template>
     <custom-style>
@@ -168,7 +170,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       static get observers() { return [
         '_loadArticle(article.headline,article.html)',
-        '_articleChanged(article)'
+        '_articleChanged(article)',
+        '_loadChat(mediumScreen,largeScreen)'
       ]}
 
       //Concat the this elements template with the parents
@@ -183,6 +186,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         super.connectedCallback();
 
         Polymer.RenderStatus.afterNextRender(this, this._installListeners);
+
+        this.importLazyGroup('uvalib-article').then( function(results) {
+          this.importLazyGroup('uvalib-article2');
+        }.bind(this));
       }
 
       changeFocusToContent() {
@@ -197,6 +204,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.shadowRoot.querySelector('h1').focus();
           }
         }
+      }
+
+      _loadChat(mediumScreen,largeScreen) {
+        if (mediumScreen || largeScreen) this.importLazyGroup('uvalib-article-notsmall');
       }
 
       _installListeners() {

@@ -8,18 +8,26 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="app-data.html">
+<link rel="import" href="../bower_components/lazy-imports/lazy-imports-mixin.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/app-route/app-location.html">
-<link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-theme.html">
 <link rel="import" href="../bower_components/app-layout/helpers/helpers.html">
-<link rel="import" href="../bower_components/uvalib-header/uvalib-header.html">
-<link rel="import" href="../bower_components/uvalib-footer/uvalib-footer.html">
-<link rel="import" href="../bower_components/uvalib-scroll-top/uvalib-scroll-top.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="app-data.html">
 <link rel="import" href="uvalib-article.html">
+<link rel="import" href="../bower_components/uvalib-header/uvalib-header.html">
 
 <dom-module id="uvalib-app">
+
+  // Then load vitals that are out of view
+  <link rel="lazy-import" group="uvalib-app" href="../bower_components/uvalib-skip-nav/uvalib-skip-nav.html">
+  <link rel="lazy-import" group="uvalib-app" href="../bower_components/uvalib-footer/uvalib-footer.html">
+
+  // Then load the rest
+  <link rel="lazy-import" group="uvalib-app2" href="news-snackbar.html">
+  <link rel="lazy-import" group="uvalib-app2" href="../bower_components/uvalib-scroll-top/uvalib-scroll-top.html">
+  <link rel="lazy-import" group="uvalib-app2" href="../bower_components/uvalib-analytics/uvalib-analytics.html">
 
   <template>
     <custom-style>
@@ -50,17 +58,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           /* use this value for the viewport height instead of "vh" unit */
           --viewport-height: 600px;
 
-
         }
 
-        /* desktop */
-/*
-        @media (min-width: 768px) {
-          :host {
-            margin: 0px;
-          }
-        }
-*/
       </style>
     </custom-style>
 
@@ -114,7 +113,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
 
-    class UvaLibApp extends Polymer.Element {
+    class UvaLibApp extends Polymer.LazyImportsMixin(Polymer.Element) {
 
       static get is() { return 'uvalib-app'; }
 
@@ -124,7 +123,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         page: {
           type: String,
-          observer: '_pageChanged'
+//          observer: '_pageChanged'
         },
 
         referrer: String,
@@ -157,8 +156,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         failure: Boolean,
 
         notFound: Boolean,
-
-        lazyLoadComplete: Boolean,
 
         _trail: String,
 
@@ -217,6 +214,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       connectedCallback() {
         super.connectedCallback();
         this.isAttached = true;
+
+        // Load group1 then group2 then group3
+        this.importLazyGroup('uvalib-app').then( function(results) {
+          this.importLazyGroup('uvalib-app2').then( function(results){
+              this._loadServiceWorker();
+          }.bind(this));
+        }.bind(this));
       }
 
       _trackReferrer(n, o) {
@@ -265,38 +269,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       }
 
-      _pageChanged(page, oldPage) {
-        let href;
-/*
-        switch(page) {
-          case 'article':
-            href = 'uvalib-article.html';
-          break;
-          default:
-            href = 'uvalib-article.html'
-          break;
-        }
-        let cb = this._pageLoaded.bind(this, Boolean(oldPage));
-        Polymer.importHref(
-            this.resolveUrl(href),
-            cb,
-            cb,
-            true);
-*/
-        this._pageLoaded();
-      }
-
-      _pageLoaded(shouldResetLayout) {
-        this._ensureLazyLoaded();
-      }
-
-      _ensureLazyLoaded() {
-        // load lazy resources after render and set `lazyLoadComplete` when done.
-        if (!this.lazyLoadComplete) {
-          Polymer.RenderStatus.afterNextRender(this, function(){
-            Polymer.importHref(this.resolveUrl('lazy-resources.html'), function(){
+      _loadServiceWorker() {
               this._notifyNetworkStatus();
-              this.lazyLoadComplete = true;
 
               // Load pre-caching Service Worker
               if ('serviceWorker' in navigator) {
@@ -318,9 +292,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
 
               }
-            }.bind(this));
-          }.bind(this));
-        }
       }
 
       _notifyNetworkStatus() {

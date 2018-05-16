@@ -1,9 +1,10 @@
+<link rel="import" href="../bower_components/lazy-imports/lazy-imports-mixin.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/uva-models/uva-library.html">
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-theme.html">
-<!--<link rel="import" href="../bower_components/uvalib-theme/uvalib-app-sub-nav.html">-->
 
 <dom-module id="app-sub-nav">
+  <link rel="lazy-import" group="app-sub-nav-uvalib-ils-form" href="../bower_components/uvalib-elements/uvalib-ils-form.html">
 
   <template>
 
@@ -15,10 +16,6 @@
         margin-left: calc(var(--uvalib-spacing-unit)*-1.875);
         margin-right: calc(var(--uvalib-spacing-unit)*-1.875);
       }
-
-      /* h3 {
-        @apply --app-sub-section-headline;
-      } */
 
       a {
         text-decoration: none;
@@ -99,7 +96,7 @@
 
   <script>
 
-    class AppSubNav extends Polymer.Element {
+    class AppSubNav extends Polymer.LazyImportsMixin(Polymer.Element) {
 
       static get is() { return 'app-sub-nav'; }
 
@@ -131,7 +128,11 @@
         }
       }
       _update() {
-        this.$.content.innerHTML = this._item.body
+        let template = document.createElement('template');
+        template.innerHTML = this._item.body;
+        if (template.content.querySelector('uvalib-ils-form'))
+          this.importLazyGroup('app-sub-nav-uvalib-ils-form');
+        this.$.content.innerHTML = template.innerHTML;
       }
     }
 
