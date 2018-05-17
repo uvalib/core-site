@@ -15,7 +15,6 @@
     ".htaccess",
     "manifest.json",
     "bower_components/webcomponentsjs/*",
-    "bower_components/uvalib-header/uvalib-simple-header.html",
     "bower_components/uva-helper-libs/polyfills.html",
     "bower_components/uva-helper-libs/polyfills/*",
     "bower_components/iframe-resizer/js/*",
