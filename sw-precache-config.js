@@ -36,7 +36,7 @@ module.exports = {
     },
     {
       urlPattern: /\/data\/pages\/.*/,
-      handler: 'fastest',
+      handler: 'networkFirst',
       options: {
         cache: {
           maxEntries: 200,
@@ -51,16 +51,6 @@ module.exports = {
         cache: {
           maxEntries: 200,
           name: 'data-json-cache'
-        }
-      }
-    },
-    {
-      urlPattern: /\/data\/pages\/emergency/,
-      handler: 'networkFirst',
-      options: {
-        cache: {
-          maxEntries: 200,
-          name: 'data-pages-cache'
         }
       }
     },
