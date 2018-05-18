@@ -87,5 +87,4 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
     );
   });
   fs.writeFile("data/pages.json", JSON.stringify(sitemap), function(){});
-
 });
