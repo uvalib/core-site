@@ -98,6 +98,7 @@ H2PushResource /bower_components/polymer/lib/utils/async.html
 H2PushResource /bower_components/lodash/dist/lodash.min.js
 H2PushResource /bower_components/moment/min/moment.min.js
 H2PushResource /bower_components/moment-timezone/builds/moment-timezone-with-data.min.js
+H2PushResource /data/pages.json
 H2PushResource /bower_components/uvalib-search-box/uvalib-search-box.html
 H2PushResource /fonts/uvalib-icon-font-03012018.woff2
 H2PushResource /src/app-side-bar.html
