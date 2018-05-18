@@ -156,8 +156,8 @@
           this._setFailure(false);
           return;
         }
-//        this._fetch('data/pages.json',
-        this._fetch('https://api.devhub.virginia.edu/v1/library/web',
+        this._fetch('data/pages.json',
+//        this._fetch('https://api.devhub.virginia.edu/v1/library/web',
           (response) => {
             this.set('pages.items', this._parseCategoryItems(response));
           },
