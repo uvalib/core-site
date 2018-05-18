@@ -161,3 +161,11 @@ H2PushResource /src/news-snackbar.html
 H2PushResource /bower_components/uvalib-scroll-top/uvalib-scroll-top.html
 H2PushResource /bower_components/uvalib-analytics/uvalib-analytics.html
 H2PushResource /bower_components/app-storage/app-localstorage/app-localstorage-document.html
+H2PushResource /bower_components/marked-element/marked-import.html
+H2PushResource /bower_components/paper-fab/paper-fab.html
+H2PushResource /bower_components/uvalib-theme/uvalib-scroll-top-style.html
+H2PushResource /bower_components/app-storage/app-storage-behavior.html
+H2PushResource /bower_components/marked/lib/marked.js
+H2PushResource /bower_components/paper-card/paper-card.html
+H2PushResource /bower_components/iron-image/iron-image.html
+H2PushResource /service-worker.js
