@@ -61,7 +61,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </style>
     </custom-style>
 
-    <uvalib-analytics site-id="10" path="[[route.path]]" error="[[errorCode]]" referrer="[[referrer]]"></uvalib-analytics>
+    <uvalib-analytics site-id="10" event="[[_events]]" path="[[route.path]]" error="[[errorCode]]" referrer="[[referrer]]"></uvalib-analytics>
 
     <uvalib-skip-nav id="skipNavigation" tabindex="0"></uvalib-skip-nav>
 
@@ -166,6 +166,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         route: {
           type: Object,
           observer: '_trackReferrer'
+        },
+
+        _events: {
+          type: Object,
+          notify: true
         }
       }}
 
@@ -185,6 +190,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.addEventListener('jumpToNavigation', this._jumpToNavigation);
 //        this.addEventListener('jumpToHeader', this._jumpToHeader);
 //        this.addEventListener('jumpToFooter', this._jumpToFooter);
+
+        this.addEventListener('uvalib-analytics-event', this._trackEvent);
 
         super.ready();
         // Custom elements polyfill safe way to indicate an element has been upgraded.
@@ -219,6 +226,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               this._loadServiceWorker();
           }.bind(this));
         }.bind(this));
+      }
+
+      _trackEvent(e) {
+        this._events =  e.detail.track;
       }
 
       _trackReferrer(n, o) {
