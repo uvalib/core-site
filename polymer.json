@@ -19,6 +19,7 @@
     "bower_components/uva-helper-libs/polyfills.html",
     "bower_components/uva-helper-libs/polyfills/*",
     "bower_components/iframe-resizer/js/*",
+    "bower_components/es6-promise/*",
     "fonts/*"
   ],
   "lint": {
