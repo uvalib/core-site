@@ -1,6 +1,6 @@
 #!/bin/bash
 cp -r build/es5-unbundled build/es6-unbundled/es5
-rsync -avh build/es5-bundled/ build/es6-unbundled/es5
+#rsync -avh build/es5-bundled/ build/es6-unbundled/es5
 rm build/es6-unbundled/es5/.htaccess
 cp -r push build/es6-unbundled/push
 cp build/es6-unbundled/index.html build/es6-unbundled/push/index.html
