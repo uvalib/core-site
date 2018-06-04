@@ -175,7 +175,8 @@
             subnav: item.subnav,
             sidebar: item.sidebar,
             category: item.category,
-            parentid: item.parent,
+            pageid: item.pageId,
+            parentid: item.parentId,
             iframe: item.iframe,
             id: item.uuid
           });
@@ -185,6 +186,7 @@
       }
 
       _makeBreadCrumbs(path, pages) {
+        console.log(pages);
         let crumbs = [];
         if (path != '/') {
           let title =  _.result(_.find(pages, {'path': path}), 'headline');
@@ -196,12 +198,14 @@
         }
         let p = path, parentId;
         do {
+          console.log(path);
           parentId = _.result(_.find(pages, {'path': path}), 'parentid');
+          console.log(parentId);
           if (!parentId) {
             parentId = (path && path.endsWith('/')) ? _.result(_.find(pages, {'path': path.slice(0,-1)}), 'parentid') :  _.result(_.find(pages, {'path': path+'/'}), 'parentid');
           }
           if (parentId) {
-            let parent = _.find(pages, {'id': parentId});
+            let parent = _.find(pages, {'pageid': parentId});
             if (parent) {
               if (parent.path && parent.headline)
                 crumbs.push({path: parent.path, label: parent.headline});
@@ -215,6 +219,7 @@
         if (p != '/') {
           crumbs.push({path: '/', label: 'University of Virginia Library'});
         }
+        console.log(crumbs);
         return crumbs;
       }
 

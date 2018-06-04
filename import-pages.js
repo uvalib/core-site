@@ -66,7 +66,7 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
   var sitemap = [];
   pages.forEach(page => {
     var tmpfilename = sanitize(page.title).replace(/\s/g,'_');
-
+    var parent = (page.parentPage) ? page.parentPage.id : '';
     sitemap.push(
       {
         "title": page.title,
@@ -74,6 +74,8 @@ request('https://uvalib-api.firebaseio.com/pages.json', function(error, response
         "author": "",
         "category": "Pages",
         "id": tmpfilename,
+        "pageId": page.id,
+        "parentId": parent,
         "link": page.path,
         "path": page.path,
         "sidebar": page.sidebar,
