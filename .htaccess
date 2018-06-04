@@ -39,8 +39,7 @@ RewriteRule ^(.*)$ es5/$1 [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ push/index.html [L]
-RewriteRule ^index.html$ push/index.html [L]
+RewriteRule ^(.*)$ index.html [L]
 
 Header set Access-Control-Allow-Origin "*"
 
