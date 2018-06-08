@@ -97,7 +97,7 @@
                         this.page = page;
                         match = true;
                       }
-                      if (page.path === "/404") notFound = page;
+                      if (page.path === "/404/") notFound = page;
                     }
                     if(!match) {
                       this._setNotFound(true);
@@ -186,7 +186,6 @@
       }
 
       _makeBreadCrumbs(path, pages) {
-        console.log(pages);
         let crumbs = [];
         if (path != '/') {
           let title =  _.result(_.find(pages, {'path': path}), 'headline');
@@ -198,9 +197,7 @@
         }
         let p = path, parentId;
         do {
-          console.log(path);
           parentId = _.result(_.find(pages, {'path': path}), 'parentid');
-          console.log(parentId);
           if (!parentId) {
             parentId = (path && path.endsWith('/')) ? _.result(_.find(pages, {'path': path.slice(0,-1)}), 'parentid') :  _.result(_.find(pages, {'path': path+'/'}), 'parentid');
           }
@@ -219,7 +216,6 @@
         if (p != '/') {
           crumbs.push({path: '/', label: 'University of Virginia Library'});
         }
-        console.log(crumbs);
         return crumbs;
       }
 
