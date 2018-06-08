@@ -102,10 +102,10 @@ async function buildPages() {
   await makePages(body, 'page-template.html');
 
   body = await request('https://uvalib-api.firebaseio.com/exhibit-pages.json');
-  await makePages(body, 'page-template.html', page=>{return "/exhibits/"+page.urlSlug});
+  await makePages(body, 'page-exhibit-template.html', page=>{return "/exhibits/"+page.urlSlug});
 
   body = await request('https://uvalib-api.firebaseio.com/libraries.json');
-  await makePages(body, 'page-template.html', page=>{return "/libraries/"+page.slug});
+  await makePages(body, 'page-library-template.html', page=>{return "/libraries/"+page.slug});
 
   console.log('making sitemap now');
   makeDir("data").then(path => {
