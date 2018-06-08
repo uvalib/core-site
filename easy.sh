@@ -10,6 +10,6 @@ mv uvalib-theme ../.uvalib-theme.bak;
 git clone https://github.com/uvalib-components/uvalib-theme.git
 cd ..
 ./import-pages.js
-./import-files.js
-./imagemin-files.js
+./import-files-lite.js
+#./imagemin-files.js
 polymer serve
