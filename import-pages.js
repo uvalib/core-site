@@ -1,95 +1,116 @@
 #!/usr/local/bin/node
-var request = require('request'),
+var request = require('request-promise'),
     fs = require('fs'),
     makeDir = require('make-dir'),
     mustache = require( "mustache" ),
     sanitize = require("sanitize-filename")
-    cheerio = require('cheerio');
+    cheerio = require('cheerio')
+    util = require('util');
 
-request('https://uvalib-api.firebaseio.com/pages.json', function(error, response, body){
+fs.readFileAsync = util.promisify(fs.readFile);
 
+var sitemap = [];
+function addToSitemap(page){
+  var tmpfilename = sanitize(page.title).replace(/\s/g,'_');
+  var parent = (page.parentPage) ? page.parentPage.id : '';
+  sitemap.push(
+    {
+      "title": page.title,
+      "time": "",
+      "author": "",
+      "category": "Pages",
+      "id": tmpfilename,
+      "pageId": page.id,
+      "parentId": parent,
+      "link": page.path,
+      "path": page.path,
+      "sidebar": page.sidebar,
+      "subnav": page.subnav,
+      "iframe": page.iframe,
+      "imgSrc": "",
+      "placeholder": "",
+      "summary": page.title,
+      "contentLength": 3584
+    }
+  );
+  console.log('added page to sitemap '+page.title);
+}
+
+async function makePages(body,template,mkPath){
   // Some global search and replace here
   body.replace('U.Va.', 'UVA');
 
   var pages = JSON.parse(body);
 
   // create the pages
-  fs.readFile('page-template.html', 'utf8', function(err, pageTemplate){
-    pages.forEach(page => {
-      if (page.body) {
-        page.body = page.body.replace(/https:\/\/drupal\.lib\.virginia\.edu\/sites\/default\/files\//g, '/files/');
-        page.body = page.body.replace(/\/sites\/default\/files\//g, '/files/');
-      }
+  var pageTemplate = await fs.readFileAsync(template,'utf8');
 
-      // Add leading slash to path if missing
-      if (!page.path.startsWith('/')) page.path = "/"+page.path;
-      // Pull filename from path or use index.html
-      if (page.path.endsWith('.html')) {
-        var tmp = page.path.split('/');
-        page.filename = tmp.pop();
-        page.path = tmp.join('/');
-      } else {
-        page.filename = "index.html";
-      }
-      // make sure that we have an ending slash
-      if (page.path.slice(-1) != "/") {
-        page.path += "/";
-      }
+  for (var i=0; i<pages.length; i++) {
+    var page = pages[i];
+//  pages.forEach(page => {
+    if (page.body) {
+      page.body = page.body.replace(/https:\/\/drupal\.lib\.virginia\.edu\/sites\/default\/files\//g, '/files/');
+      page.body = page.body.replace(/\/sites\/default\/files\//g, '/files/');
+    }
 
-      if (page.body) {
-        const $ = cheerio.load(page.body);
-        $('[href]').each(function(i,elem) {
-          var attr = $(this).attr('href');
-          if (match = attr.match(/^https?:\/\/(www\.)?library\.virginia\.edu(.*\.pdf)$/i) ) {
-              $(this).attr('href', "https://wwwstatic.lib.virginia.edu"+match[2]);
-          }
-          if (match = attr.match(/^(\/.*\.pdf)$/i) ) {
-              $(this).attr('href', "https://wwwstatic.lib.virginia.edu"+match[1]);
-          }
-          if (attr.match(/^#.*$/)) {
-            $(this).attr('href', page.path+attr);
-          }
-        });
-        page.body = $('head').html();
-        page.body += $('body').html();
-      }
+    if (!page.path && mkPath) page.path = mkPath(page);
 
-      makeDir("data/pages"+page.path).then(path => {
-        var tmpfilename = sanitize(page.title).replace(/\s/g,'_')+".html";
-        fs.writeFile("data/pages"+page.path+page.filename,
-                     mustache.render( pageTemplate, page ), function(){});
+    // Add leading slash to path if missing
+    if (!page.path.startsWith('/')) page.path = "/"+page.path;
+    // Pull filename from path or use index.html
+    if (page.path.endsWith('.html')) {
+      var tmp = page.path.split('/');
+      page.filename = tmp.pop();
+      page.path = tmp.join('/');
+    } else {
+      page.filename = "index.html";
+    }
+    // make sure that we have an ending slash
+    if (page.path.slice(-1) != "/") {
+      page.path += "/";
+    }
+
+    if (page.body) {
+      const $ = cheerio.load(page.body);
+      $('[href]').each(function(i,elem) {
+        var attr = $(this).attr('href');
+        if (match = attr.match(/^https?:\/\/(www\.)?library\.virginia\.edu(.*\.pdf)$/i) ) {
+            $(this).attr('href', "https://wwwstatic.lib.virginia.edu"+match[2]);
+        }
+        if (match = attr.match(/^(\/.*\.pdf)$/i) ) {
+            $(this).attr('href', "https://wwwstatic.lib.virginia.edu"+match[1]);
+        }
+        if (attr.match(/^#.*$/)) {
+          $(this).attr('href', page.path+attr);
+        }
       });
-    });
-  });
+      page.body = $('head').html();
+      page.body += $('body').html();
+    }
+    addToSitemap(page);
+    await makeDir("data/pages"+page.path);
+    fs.writeFile("data/pages"+page.path+page.filename,
+                   mustache.render( pageTemplate, page ), function(){});
+    console.log('wrote file? '+"data/pages"+page.path+page.filename);
+  }
+//  });
 
-  // create the sitemap
-  var sitemap = [];
-  pages.forEach(page => {
-    var tmpfilename = sanitize(page.title).replace(/\s/g,'_');
-    var parent = (page.parentPage) ? page.parentPage.id : '';
-    sitemap.push(
-      {
-        "title": page.title,
-        "time": "",
-        "author": "",
-        "category": "Pages",
-        "id": tmpfilename,
-        "pageId": page.id,
-        "parentId": parent,
-        "link": page.path,
-        "path": page.path,
-        "sidebar": page.sidebar,
-        "subnav": page.subnav,
-        "iframe": page.iframe,
-        "imgSrc": "",
-        "placeholder": "",
-        "summary": page.title,
-        "contentLength": 3584
-      }
-    );
-  });
+};
+
+async function buildPages() {
+  var body = await request('https://uvalib-api.firebaseio.com/pages.json');
+  await makePages(body, 'page-template.html');
+
+  body = await request('https://uvalib-api.firebaseio.com/exhibit-pages.json');
+  await makePages(body, 'page-template.html', page=>{return "/exhibits/"+page.urlSlug});
+
+  body = await request('https://uvalib-api.firebaseio.com/libraries.json');
+  await makePages(body, 'page-template.html', page=>{return "/libraries/"+page.slug});
+
+  console.log('making sitemap now');
   makeDir("data").then(path => {
     fs.writeFile("data/pages.json", JSON.stringify(sitemap), function(){});
   });
+};
 
-});
+buildPages();
