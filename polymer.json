@@ -16,6 +16,7 @@
     "manifest.json",
     "data/pages.json",
     "bower_components/webcomponentsjs/*",
+    "bower_components/uvalib-header/uvalib-header-lazyload.html",
     "bower_components/uva-helper-libs/polyfills.html",
     "bower_components/uva-helper-libs/polyfills/*",
     "bower_components/iframe-resizer/js/*",
