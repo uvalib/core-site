@@ -11,7 +11,7 @@
     "images": "./import-files.js; ./imagemin-files.js;",
     "images-lite": "./import-files-lite.js; ./imagemin-files.js;",
     "images-deploy": "npm run deploy; rsync -avh -e 'ssh -i $HOME/.ssh/id_rsa' files/ www14.lib.virginia.edu:/wwwstatic/files; rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' files-comp/ www14.lib.virginia.edu:/wwwstatic/files-comp",
-    "quick-page-asset-update": "./import-pages.js; npm run images-lite; rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' data/pages/ static01.lib.virginia.edu:/lib_content47/static/drupalPages;; rsync -avh -e 'ssh -i $HOME/.ssh/id_rsa' data/ www14.lib.virginia.edu:/wwwstatic/data;"
+    "quick-page-asset-update": "./import-pages.js; npm run images-lite; rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' data/pages/ static01.lib.virginia.edu:/lib_content47/static/drupalPages; rsync -avh -e 'ssh -i $HOME/.ssh/id_rsa' data/ www14.lib.virginia.edu:/wwwstatic/data;"
   },
   "repository": {
     "type": "git",
