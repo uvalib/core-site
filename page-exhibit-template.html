@@ -28,12 +28,57 @@
       }
     }
   </script>
+  <custom-style>
+    <style include="uvalib-theme uvalib-page-style iron-flex-factors">
+      .exhibit-header {}
+      .exhibit-main-image {}
+      .exhibit-welcome {}
+      .date-range {}
+      .exhibit-location {}
+      .overview {}
+      .gallery-info {}
+      .news {}
+      .pre-footer {
+        background-color: #613D0C;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+      }
+      .pre-footer a:first-child {
+        margin-right: 40px
+      }
+    </style>
+  </custom-style>
 </head>
 
 <body>
   <div class="content">
-    {{{body}}}
+    <div class="exhibit-header">
+      <div class="exhibit-main-image"><img src="{{{image.url}}}" alt="{{{image.alt}}}" /></div>
+      <div class="exhibit-welcome">
+        <h5>exhibition</h5>
+        <h1 class="h2">{{{title}}}</h1>
+        <p>{{{subTitle}}}</p>
+        <div class="date-range">
+          {{{startDate}}} &ndash; {{{endDate}}}
+        </div>
+        <div class="exhibit-location">{{{locationInfo}}}</div>
+      </div>
+    </div>
+    <div class="overview">{{{body}}}</div>
+    <div class="gallery-info shady">
+        <h2>Gallery Info</h2>
+    </div>
+    <div class="news">
+      news blocks
+    </div>
+    <div class="pre-footer">
+      <a href="#"><paper-button raised>Download Press Kit</paper-button></a>
+      <a href="#"><paper-button raised>Contact Exhibit Peeps</paper-button></a>
+    </div>
+
   </div>
+
 </body>
 
 </html>
