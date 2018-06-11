@@ -84,6 +84,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           min-width: 100%;
           height: 500px;
         }
+
+        /* EXHIBITION TEMPLATE */
+        .exhibition-template.content { margin-top: 0; margin-bottom: 0; }
+        .exhibition-template paper-button { background: white !important; }
+        .exhibition-template .exhibit-title { @apply --h3 !important; }
+
+        .exhibit-header { display: block; background-color: teal; width: 100%; height: 522px; }
+        .exhibit-main-image { float: left; }
+        .exhibit-main-image figure { margin: 0; }
+        .exhibit-welcome { color: var(--uvalib-secondary-lt-grey); display: block; float: right; width: 45%; padding-right: var(--uvalib-spacing-unit); padding-left: var(--uvalib-spacing-unit); }
+        .exhibit-welcome h4 { text-transform: uppercase; font-size: var(--uvalib-main-font-size-unit); }
+        .exhibit-welcome p { font-size: calc(var(--uvalib-main-font-size-unit)*1.25); }
+        .exhibit-date-range {}
+        .exhibit-location {}
+        .exhibit-overview { display: block; width: 100%;}
+        .exhibit-gallery-info { height: 200px; width: 100%; padding-top: 20px; text-align: center; background-color: var(--uvalib-secondary-lt-grey); display: block;}
+        .exhibit-news { background-color: var(--uvalib-secondary-md-grey); height: 200px; width: 100%; padding-top: 20px; text-align: center; display: block; }
+        .exhibit-pre-footer { display: block; background-color: #613D0C; width: 100%; padding-top: calc(var(--uvalib-spacing-unit)*1.25); padding-bottom: calc(var(--uvalib-spacing-unit)*1.25); text-align: center; margin-bottom: 0; }
+        .exhibit-pre-footer a:first-child { margin-right: calc(var(--uvalib-spacing-unit)*2.5);}
       </style>
     </custom-style>
 
@@ -302,6 +321,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           e.preventDefault();
           this._scrollToSelector(target.getAttribute('href'));
         }
+      }
+
+      _toggle() {
+        this.$.exhibitOverview.toggle();
+        this.$.exhibitOverviewButton.setAttribute('aria-expanded', this.$.exhibitOverview.opened);
       }
     }
 

@@ -31,44 +31,32 @@
   <link rel="import" href="../bower_components/uvalib-theme/uvalib-page-style.html">
   <custom-style>
     <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors uvalib-card-style">
-      /* EXHIBITION TEMPLATE */
-      .exhibit-header { background-color: teal;}
-      .exhibit-main-image { float: left; }
-      .exhibit-welcome { float: right; }
-      .exhibit-date-range { color: orange; }
-      .exhibit-location {}
-      .exhibit-overview {}
-      .exhibit-exhibit-gallery-info { height: 200px; width: 100%; background-color: pink; display: block;}
-      .exhibit-news { background-color: purple; height: 200px; width: 100%; padding: 20px; text-align: center; display: block; }
-      .exhibit-pre-footer {
-      background-color: #613D0C;
-      width: 100%;
-      padding: calc(var(--uvalib-spacing-unit)*1.25);
-      text-align: center;
-      }
-      .exhibit-pre-footer a:first-child {
-      margin-right: calc(var(--uvalib-spacing-unit)*2.5);
-      }
+
     </style>
   </custom-style>
 </head>
 
 <body>
   <div class="content">
+    <div class="exhibition-template">
     <div class="exhibit-header">
       <div class="exhibit-main-image"><img src="{{{image.url}}}" alt="{{{image.alt}}}" /></div>
       <div class="exhibit-welcome">
-        <h5>exhibition</h5>
-        <h1 class="h2">{{{title}}}</h1>
+        <h4>exhibition</h4>
+        <h1 class="exhibit-title">{{{title}}}</h1>
         <p>{{{subTitle}}}</p>
         <div class="exhibit-date-range">
           {{{startDate}}} &ndash; {{{endDate}}}
         </div>
         <div class="exhibit-location">{{{locationInfo}}}</div>
+        <a href="#" id="exhibitOverviewButton" onclick="toggle"><paper-button raised>Read Overview</paper-button></a>
+        <a href="#"><paper-button raised>Book Tour</paper-button></a>
       </div>
     </div>
-    <div class="exhibit-overview">{{{body}}}</div>
-    <div class="exhibit-gallery-info shady">
+    <iron-collapse id="exhibitOverview">
+      <div class="exhibit-overview">{{{body}}}</div>
+    </iron-collapse>
+    <div class="exhibit-gallery-info">
         <h2>Gallery Info</h2>
     </div>
     <div class="exhibit-news">
@@ -78,9 +66,10 @@
       <a href="#"><paper-button raised>Download Press Kit</paper-button></a>
       <a href="#"><paper-button raised>Contact Exhibit Peeps</paper-button></a>
     </div>
-
   </div>
-
+  </div>
+<script>
+</script>
 </body>
 
 </html>
