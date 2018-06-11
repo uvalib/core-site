@@ -86,6 +86,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
 
         /* EXHIBITION TEMPLATE */
+        :host([type='exhibit']) #pagetitle {display: none;}
         .exhibition-template.content { margin-top: 0; margin-bottom: 0; }
         .exhibition-template paper-button { background: white !important; }
         .exhibition-template .exhibit-title { @apply --h3 !important; }
@@ -284,14 +285,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         if (this.article && this.article.iframe && this.article.path) {
           console.log("loading iframe: /data/pages"+this.article.path);
-          this.$.content.innerHTML = "<h1 tabindex='-1'>"+title+"</h1><iframe id='ifrm' src='https://static.lib.virginia.edu/drupalPages"+this.article.path+"' scrolling='no' frameBorder='0'></iframe>";
+          this.$.content.innerHTML = "<h1 id='pagetitle' tabindex='-1'>"+title+"</h1><iframe id='ifrm' src='https://static.lib.virginia.edu/drupalPages"+this.article.path+"' scrolling='no' frameBorder='0'></iframe>";
           setTimeout(function(){iFrameResize({log:true,checkOrigin:false}, this.shadowRoot.getElementById('ifrm'))}.bind(this),2000);
         }
         else if (title && html) {
           if (this.route.prefix==="/" && this.route.path==="") {
             this.$.content.innerHTML = html;
           } else {
-            this.$.content.innerHTML = "<h1 tabindex='-1'>"+title+"</h1>"+html;
+            this.$.content.innerHTML = "<h1 id='pagetitle' tabindex='-1'>"+title+"</h1>"+html;
           }
         }
         // handle anchors
