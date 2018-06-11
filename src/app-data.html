@@ -169,6 +169,7 @@
 
         for (let i = 0, item; item = response[i]; ++i) {
           items.push({
+            type: item.type,
             headline: this._unescapeText(item.title),
             stage: item.stage,
             path: item.path,

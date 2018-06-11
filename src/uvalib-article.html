@@ -181,13 +181,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               tabindex: {
                 type: Number,
                 value: -1
+              },
+
+              type: {
+                reflectToAttribute: true,
+                computed: '_getType(article.type)'
               }
             });
 
       }
 
       static get observers() { return [
-        '_loadArticle(article.headline,article.html)',
+        '_loadArticle(article.headline,article.html,article.extra,article.type)',
         '_articleChanged(article)',
         '_loadChat(mediumScreen,largeScreen)'
       ]}
@@ -224,6 +229,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
 
+      _getType(type) {
+        if (type) return type;
+      }
       _loadChat(mediumScreen,largeScreen) {
         if (mediumScreen || largeScreen) this.importLazyGroup('uvalib-article-notsmall');
       }
@@ -278,7 +286,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           console.log("loading iframe: /data/pages"+this.article.path);
           this.$.content.innerHTML = "<h1 tabindex='-1'>"+title+"</h1><iframe id='ifrm' src='https://static.lib.virginia.edu/drupalPages"+this.article.path+"' scrolling='no' frameBorder='0'></iframe>";
           setTimeout(function(){iFrameResize({log:true,checkOrigin:false}, this.shadowRoot.getElementById('ifrm'))}.bind(this),2000);
-        } else if (title && html) {
+        }
+        else if (title && html) {
           if (this.route.prefix==="/" && this.route.path==="") {
             this.$.content.innerHTML = html;
           } else {
