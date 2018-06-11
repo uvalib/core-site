@@ -28,24 +28,26 @@
       }
     }
   </script>
+  <link rel="import" href="../bower_components/uvalib-theme/uvalib-page-style.html">
   <custom-style>
-    <style include="uvalib-theme uvalib-page-style iron-flex-factors">
-      .exhibit-header {}
-      .exhibit-main-image {}
-      .exhibit-welcome {}
-      .date-range {}
+    <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors uvalib-card-style">
+      /* EXHIBITION TEMPLATE */
+      .exhibit-header { background-color: teal;}
+      .exhibit-main-image { float: left; }
+      .exhibit-welcome { float: right; }
+      .exhibit-date-range { color: orange; }
       .exhibit-location {}
-      .overview {}
-      .gallery-info {}
-      .news {}
-      .pre-footer {
-        background-color: #613D0C;
-        width: 100%;
-        padding: 20px;
-        text-align: center;
+      .exhibit-overview {}
+      .exhibit-exhibit-gallery-info { height: 200px; width: 100%; background-color: pink; display: block;}
+      .exhibit-news { background-color: purple; height: 200px; width: 100%; padding: 20px; text-align: center; display: block; }
+      .exhibit-pre-footer {
+      background-color: #613D0C;
+      width: 100%;
+      padding: calc(var(--uvalib-spacing-unit)*1.25);
+      text-align: center;
       }
-      .pre-footer a:first-child {
-        margin-right: 40px
+      .exhibit-pre-footer a:first-child {
+      margin-right: calc(var(--uvalib-spacing-unit)*2.5);
       }
     </style>
   </custom-style>
@@ -59,20 +61,20 @@
         <h5>exhibition</h5>
         <h1 class="h2">{{{title}}}</h1>
         <p>{{{subTitle}}}</p>
-        <div class="date-range">
+        <div class="exhibit-date-range">
           {{{startDate}}} &ndash; {{{endDate}}}
         </div>
         <div class="exhibit-location">{{{locationInfo}}}</div>
       </div>
     </div>
-    <div class="overview">{{{body}}}</div>
-    <div class="gallery-info shady">
+    <div class="exhibit-overview">{{{body}}}</div>
+    <div class="exhibit-gallery-info shady">
         <h2>Gallery Info</h2>
     </div>
-    <div class="news">
+    <div class="exhibit-news">
       news blocks
     </div>
-    <div class="pre-footer">
+    <div class="exhibit-pre-footer">
       <a href="#"><paper-button raised>Download Press Kit</paper-button></a>
       <a href="#"><paper-button raised>Contact Exhibit Peeps</paper-button></a>
     </div>
