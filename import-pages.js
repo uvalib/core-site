@@ -10,7 +10,7 @@ var request = require('request-promise'),
 fs.readFileAsync = util.promisify(fs.readFile);
 
 var sitemap = [];
-function addToSitemap(page){
+function addToSitemap(page,type){
   var tmpfilename = sanitize(page.title).replace(/\s/g,'_');
   var parent = (page.parentPage) ? page.parentPage.id : '';
   sitemap.push(
@@ -30,13 +30,14 @@ function addToSitemap(page){
       "imgSrc": "",
       "placeholder": "",
       "summary": page.title,
-      "contentLength": 3584
+      "contentLength": 3584,
+      "type": type
     }
   );
   console.log('added page to sitemap '+page.title);
 }
 
-async function makePages(body,template,mkPath){
+async function makePages(body,template,mkPath,type){
   // Some global search and replace here
   body.replace('U.Va.', 'UVA');
 
@@ -87,7 +88,7 @@ async function makePages(body,template,mkPath){
       page.body = $('head').html();
       page.body += $('body').html();
     }
-    addToSitemap(page);
+    addToSitemap(page,type);
     await makeDir("data/pages"+page.path);
     fs.writeFile("data/pages"+page.path+page.filename,
                    mustache.render( pageTemplate, page ), function(){});
@@ -102,10 +103,10 @@ async function buildPages() {
   await makePages(body, 'page-template.html');
 
   body = await request('https://uvalib-api.firebaseio.com/exhibit-pages.json');
-  await makePages(body, 'page-exhibit-template.html', page=>{return "/exhibits/"+page.urlSlug});
+  await makePages(body, 'page-exhibit-template.html', page=>{return "/exhibits/"+page.urlSlug},'exhibit');
 
   body = await request('https://uvalib-api.firebaseio.com/libraries.json');
-  await makePages(body, 'page-library-template.html', page=>{return "/libraries/"+page.slug});
+  await makePages(body, 'page-library-template.html', page=>{return "/libraries/"+page.slug},'library');
 
   console.log('making sitemap now');
   makeDir("data").then(path => {

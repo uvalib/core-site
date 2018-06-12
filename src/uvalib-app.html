@@ -91,7 +91,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <uvalib-header relative-links id="header" library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
 
     <!-- breadcrumbs -->
-    <div id="breadCrumbs" inner-h-t-m-l="{{_trail}}"></div>
+    <div id="breadCrumbs" inner-h-t-m-l="[[_trail]]" hidden$="[[_isExhibit(article.type)]]"></div>
 
     <uvalib-article id="content"
           name="article"
@@ -227,7 +227,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }.bind(this));
         }.bind(this));
       }
-
+      _isExhibit(type) {
+        return type === 'exhibit';
+      }
       _trackEvent(e) {
         this._events =  e.detail.track;
       }
