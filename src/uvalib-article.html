@@ -88,18 +88,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         /* EXHIBITION TEMPLATE */
         .exhibition-template.content { margin-top: 0; margin-bottom: 0; }
         .exhibition-template paper-button { background: white !important; }
-        .exhibition-template .exhibit-title { @apply --h3 !important; }
+        .exhibition-template { font-family: serif !important; }
 
         .exhibit-header { display: block; background-color: teal; width: 100%; height: 522px; }
         .exhibit-main-image { float: left; }
         .exhibit-main-image figure { margin: 0; }
-        .exhibit-welcome { color: var(--uvalib-secondary-lt-grey); display: block; float: right; width: 45%; padding-right: var(--uvalib-spacing-unit); padding-left: var(--uvalib-spacing-unit); }
-        .exhibit-welcome h4 { text-transform: uppercase; font-size: var(--uvalib-main-font-size-unit); }
-        .exhibit-welcome p { font-size: calc(var(--uvalib-main-font-size-unit)*1.25); }
-        .exhibit-date-range {}
-        .exhibit-location {}
+        .exhibit-welcome { color: var(--uvalib-secondary-lt-grey); display: block; float: right; width: 43%; padding: 30px; }
+        .exhibit-welcome .header-label {
+          color: #ffffff;
+          font-size: 16px;
+          font-weight: 500;
+          text-transform: uppercase;
+          margin-top: 0; }
+        .exhibit-welcome h1 {   font-size: 32px;
+          color: #ffffff;
+          margin-top: 0; }
+        .exhibit-welcome p {   font-size: 21px;
+          color: #ffffff; }
+        .exhibit-date-range {   font-size: 24px;
+          color: #ffffff;
+          font-weight: 500; }
+        .exhibit-location {    font-size: 16px;
+          color: #ffffff;
+          font-weight: 400;
+          line-height: 1.5; }
+        .exhibition-button-group {}
         .exhibit-overview { display: block; width: 100%;}
-        .exhibit-gallery-info { height: 200px; width: 100%; padding-top: 20px; text-align: center; background-color: var(--uvalib-secondary-lt-grey); display: block;}
+        .exhibit-gallery-info { height: 200px; width: 100%; padding-top: 20px; text-align: center; background-color: var(--uvalib-grey-600); display: block;}
+        .exhibit-gallery-info h2 {color: var(--uvalib-main-white);}
         .exhibit-news { background-color: var(--uvalib-secondary-md-grey); height: 200px; width: 100%; padding-top: 20px; text-align: center; display: block; }
         .exhibit-pre-footer { display: block; background-color: #613D0C; width: 100%; padding-top: calc(var(--uvalib-spacing-unit)*1.25); padding-bottom: calc(var(--uvalib-spacing-unit)*1.25); text-align: center; margin-bottom: 0; }
         .exhibit-pre-footer a:first-child { margin-right: calc(var(--uvalib-spacing-unit)*2.5);}
@@ -321,11 +337,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           e.preventDefault();
           this._scrollToSelector(target.getAttribute('href'));
         }
-      }
-
-      _toggle() {
-        this.$.exhibitOverview.toggle();
-        this.$.exhibitOverviewButton.setAttribute('aria-expanded', this.$.exhibitOverview.opened);
       }
     }
 

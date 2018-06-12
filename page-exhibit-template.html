@@ -35,25 +35,30 @@
     <div class="exhibition-template">
     <div class="exhibit-header">
       <div class="exhibit-main-image"><img src="{{{image.url}}}" alt="{{{image.alt}}}" /></div>
-      <div class="exhibit-welcome">
-        <h4>exhibition</h4>
-        <h1 class="exhibit-title">{{{title}}}</h1>
-        <p>{{{subTitle}}}</p>
+      <div layout="column justify" class="exhibit-welcome">
+        <h4 class="header-label">exhibition</h4>
+        <div>
+          <h1>{{{title}}}</h1>
+          <p>{{{subTitle}}}</p>
+        </div>
         <div class="exhibit-date-range">
           {{{startDate}}} &ndash; {{{endDate}}}
         </div>
         <div class="exhibit-location">{{{locationInfo}}}</div>
-        <a href="#" id="exhibitOverviewButton" onclick="toggle"><paper-button raised>Read Overview</paper-button></a>
-        <a href="#"><paper-button raised>Book Tour</paper-button></a>
+        <div class="exhibit-button-group">
+          <a href="#" id="exhibitOverviewButton" onclick="toggle"><paper-button raised>Read Overview</paper-button></a>
+          <a href="#"><paper-button raised>Book Tour</paper-button></a>
+        </div>
       </div>
     </div>
     <iron-collapse id="exhibitOverview">
       <div class="exhibit-overview">{{{body}}}</div>
     </iron-collapse>
     <div class="exhibit-gallery-info">
-        <h2>Gallery Info</h2>
+      <h2>Gallery info</h2>
     </div>
     <div class="exhibit-news">
+      <h2>In the news</h2>
       news blocks
     </div>
     <div class="exhibit-pre-footer">
