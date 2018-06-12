@@ -33,9 +33,9 @@
 <body>
   <div class="content">
     <div class="exhibition-template">
-    <div class="exhibit-header">
+    <div class="exhibit-header shady">
       <div class="exhibit-main-image"><img src="{{{image.url}}}" alt="{{{image.alt}}}" /></div>
-      <div layout="column justify" class="exhibit-welcome">
+      <div class="exhibit-welcome vertical around-justified layout">
         <h4 class="header-label">exhibition</h4>
         <div>
           <h1>{{{title}}}</h1>
@@ -54,14 +54,82 @@
     <iron-collapse id="exhibitOverview">
       <div class="exhibit-overview">{{{body}}}</div>
     </iron-collapse>
-    <div class="exhibit-gallery-info">
+    <div class="exhibit-gallery-info shady">
       <h2>Gallery info</h2>
+      <div>
+        <paper-card class="exhibit-gallery-item">
+          <div class="exhibit-card-title">Harrison-Small Hours</div>
+          <div class="exhibit-card-content">This is the content. It is awesome. Don't you want to read this awesome content?</div>
+          <div class="exhibit-card-link"><a>directions</a></div>
+        </paper-card>
+        <paper-card class="exhibit-gallery-item">
+          <div class="exhibit-card-title">Bring your group on a tour</div>
+          <div class="exhibit-card-content">Schedule a private tour for your group or class. Private tours can be tailored based on your group’s needs.</div>
+          <div class="exhibit-card-link"><a>book a tour</a></div>
+        </paper-card>
+        <paper-card class="exhibit-gallery-item">
+          <div class="exhibit-card-title">Image gallery</div>
+          <div class="exhibit-card-content">Browse through selected items on view in the exhibition.</div>
+          <div class="exhibit-card-link"><a>view images</a></div>
+        </paper-card>
+        <paper-card class="exhibit-gallery-item">
+          <div class="exhibit-card-title">Events</div>
+          <div class="exhibit-card-content">Browse through selected items on view in the exhibition.</div>
+          <div class="exhibit-card-link"><a>view all library events</a></div>
+        </paper-card>
+      </div>
     </div>
-    <div class="exhibit-news">
+    <div class="exhibit-news shady">
       <h2>In the news</h2>
-      news blocks
+      <div>
+        <a><paper-card class="exhibit-news-item">
+          <div class="exhibit-card-news-source">Source</div>
+          <div class="exhibit-card-news-title">Title</div>
+          <div class="exhibit-card-news-copy">Sample copy</div>
+        </paper-card></a>
+        <a><paper-card class="exhibit-news-item">
+          <div class="exhibit-card-news-source">Source</div>
+          <div class="exhibit-card-news-title">Title</div>
+          <div class="exhibit-card-news-copy">Sample copy</div>
+        </paper-card></a>
+        <a><paper-card class="exhibit-news-item">
+          <div class="exhibit-card-news-source">Source</div>
+          <div class="exhibit-card-news-title">Title</div>
+          <div class="exhibit-card-news-copy">Sample copy</div>
+        </paper-card></a>
+        <a><paper-card class="exhibit-news-item">
+          <div class="exhibit-card-news-source">Source</div>
+          <div class="exhibit-card-news-title">Title</div>
+          <div class="exhibit-card-news-copy">Sample copy</div>
+        </paper-card></a>
+        <a><paper-card class="exhibit-news-item">
+          <div class="exhibit-card-news-source">Source</div>
+          <div class="exhibit-card-news-title">Title</div>
+          <div class="exhibit-card-news-copy">Sample copy</div>
+        </paper-card></a>
+        <a><paper-card class="exhibit-news-item">
+          <div class="exhibit-card-news-source">Source</div>
+          <div class="exhibit-card-news-title">Title</div>
+          <div class="exhibit-card-news-copy">Sample copy</div>
+        </paper-card></a>
+        <a><paper-card class="exhibit-news-item">
+          <div class="exhibit-card-news-source">Source</div>
+          <div class="exhibit-card-news-title">Title</div>
+          <div class="exhibit-card-news-copy">Sample copy</div>
+        </paper-card></a>
+        <a><paper-card class="exhibit-news-item">
+          <div class="exhibit-card-news-source">Source</div>
+          <div class="exhibit-card-news-title">Title</div>
+          <div class="exhibit-card-news-copy">Sample copy</div>
+        </paper-card></a>
+        <a><paper-card class="exhibit-news-item">
+          <div class="exhibit-card-news-source">Source</div>
+          <div class="exhibit-card-news-title">Title</div>
+          <div class="exhibit-card-news-copy">Sample copy</div>
+        </paper-card></a>
+      </div>
     </div>
-    <div class="exhibit-pre-footer">
+    <div class="exhibit-pre-footer shady">
       <a href="#"><paper-button raised>Download Press Kit</paper-button></a>
       <a href="#"><paper-button raised>Contact Exhibit Peeps</paper-button></a>
     </div>
