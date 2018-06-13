@@ -54,3 +54,4 @@ Redirect /sitesearch https://www.library.virginia.edu/search
 Redirect /staff  http://static.lib.virginia.edu/directory/
 Redirect /study-spaces http://uvalibrary.maps.arcgis.com/apps/Shortlist/index.html?appid=e6cb8c4cde61410f873bc780c38bd958
 Redirect /support https://www.library.virginia.edu/support-library
+Redirect /small https://small.library.virginia.edu

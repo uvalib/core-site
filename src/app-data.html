@@ -131,6 +131,9 @@
         } else if (path == '/support' || path.startsWith('/support/')) {
           window.location.replace("/support-library");
           return true;
+        } else if (path == '/small' || path.startsWith('/support/')) {
+          window.location.replace("https://small.library.virginia.edu/");
+          return true;
         }
         return false;
       }
