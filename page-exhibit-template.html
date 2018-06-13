@@ -34,48 +34,70 @@
   <div class="content">
     <div class="exhibition-template">
     <div class="exhibit-header shady">
-      <div class="exhibit-main-image"><img src="{{{image.url}}}" alt="{{{image.alt}}}" /></div>
-      <div class="exhibit-welcome vertical around-justified layout">
-        <h4 class="header-label">exhibition</h4>
-        <div>
-          <h1>{{{title}}}</h1>
-          <p>{{{subTitle}}}</p>
-        </div>
-        <div class="exhibit-date-range">
-          {{{startDate}}} &ndash; {{{endDate}}}
-        </div>
-        <div class="exhibit-location">{{{locationInfo}}}</div>
-        <div class="exhibit-button-group">
-          <a href="#" id="exhibitOverviewButton" onclick="toggle"><paper-button raised>Read Overview</paper-button></a>
-          <a href="#"><paper-button raised>Book Tour</paper-button></a>
+      <div class="exhibit-main-image"><img src="{{{image.url}}}" alt="{{{image.alt}}}" width="{{{image.width}}}" height="{{{image.height}}}" /></div>
+      <div class="exhibit-welcome">
+        <div class="vertical layout justified">
+          <span class="header-label">exhibition</span>
+          <h1 class="header-title">{{{title}}}</h1>
+          <p class="header-supporting-text">{{{subTitle}}}</p>
+          <div class="exhibit-date-range">{{{startDate}}}&nbsp;&ndash;&nbsp;{{{endDate}}}</div>
+          <div class="exhibit-location">{{{locationInfo}}}</div>
+          <div class="exhibit-button-group">
+            <a href="#" id="exhibitOverviewButton" onclick="toggle"><paper-button raised>Overview</paper-button></a>
+            <a href="#" id="exhibitBookTourButton"><paper-button raised>Book a Tour</paper-button></a>
+          </div>
         </div>
       </div>
     </div>
-    <iron-collapse id="exhibitOverview">
-      <div class="exhibit-overview">{{{body}}}</div>
-    </iron-collapse>
+    <!-- <iron-collapse id="exhibitBookTour"> -->
+    <div class="exhibit-book-tour">
+      <div class="exhibit-collapse-link"><a>close x</a></div>
+      <h2>Book a tour</h2>
+      <p>
+        Please complete the form below to request a guided tour. To request a UVA class tour,
+        please submit a <a href="http://small.library.virginia.edu/services/instruction/" aria-label="use our class tour request form to submit a U V A class tour">class tour</a> request.
+      </p>
+      <div id=“form_63a1706312fb1f702a78978a659be01e”></div>
+      <script type=“text/javascript” src=“//virginia.libsurveys.com/form_loader.php?id=63a1706312fb1f702a78978a659be01e”></script>
+    </div>
+    <!-- </iron-collapse> -->
+    <!-- <iron-collapse id="exhibitOverview"> -->
+      <div class="exhibit-overview">
+        <div class="exhibit-collapse-link"><a>close x</a></div>
+        <h2>Overview</h2>
+        {{{body}}}
+      </div>
+    <!-- </iron-collapse> -->
     <div class="exhibit-gallery-info shady">
       <h2>Gallery info</h2>
       <div>
         <paper-card class="exhibit-gallery-item">
-          <div class="exhibit-card-title">Harrison-Small Hours</div>
-          <div class="exhibit-card-content">This is the content. It is awesome. Don't you want to read this awesome content?</div>
-          <div class="exhibit-card-link"><a>directions</a></div>
+          <div class="fred vertical layout justified">
+            <div class="exhibit-card-title">Harrison-Small Hours</div>
+            <div class="exhibit-card-content">This is the content. It is awesome. Don't you want to read this awesome content?</div>
+            <div class="exhibit-card-link"><a>directions</a></div>
+          </div>
         </paper-card>
         <paper-card class="exhibit-gallery-item">
-          <div class="exhibit-card-title">Bring your group on a tour</div>
-          <div class="exhibit-card-content">Schedule a private tour for your group or class. Private tours can be tailored based on your group’s needs.</div>
-          <div class="exhibit-card-link"><a>book a tour</a></div>
+          <div class="fred vertical layout justified">
+            <div class="exhibit-card-title">Bring your group on a tour</div>
+            <div class="exhibit-card-content">Schedule a private tour for your group or class. Private tours can be tailored based on your group’s needs.</div>
+            <div class="exhibit-card-link"><a>book a tour</a></div>
+          </div>
         </paper-card>
         <paper-card class="exhibit-gallery-item">
-          <div class="exhibit-card-title">Image gallery</div>
-          <div class="exhibit-card-content">Browse through selected items on view in the exhibition.</div>
-          <div class="exhibit-card-link"><a>view images</a></div>
+          <div class="fred vertical layout justified">
+            <div class="exhibit-card-title">Image gallery</div>
+            <div class="exhibit-card-content">Browse through selected items on view in the exhibition.</div>
+            <div class="exhibit-card-link"><a>view images</a></div>
+          </div>
         </paper-card>
         <paper-card class="exhibit-gallery-item">
-          <div class="exhibit-card-title">Events</div>
-          <div class="exhibit-card-content">Browse through selected items on view in the exhibition.</div>
-          <div class="exhibit-card-link"><a>view all library events</a></div>
+          <div class="fred vertical layout justified">
+            <div class="exhibit-card-title">Events</div>
+            <div class="exhibit-card-content"><b>Join Lifetime Learning</b> in celebrating the University of Virginia’s Bicentennial with an <a>immersive, day-long experience on the history of UVA in 100 Objects</a>.</div>
+            <div class="exhibit-card-link"><a>view all library events</a></div>
+          </div>
         </paper-card>
       </div>
     </div>
