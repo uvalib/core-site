@@ -11,16 +11,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-ui-element.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../iron-collapse/iron-collapse.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-theme.html">
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-card-style.html">
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-ui-element.html" />
 <script src="../bower_components/iframe-resizer/js/iframeResizer.min.js"></script>
-
-<!-- EXHIBITION FONT -->
-<link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
-<!-- END -->
 
 <dom-module id="uvalib-article">
 
@@ -86,72 +81,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         /* EXHIBITION TEMPLATE */
         :host([type='exhibit']) #pagetitle {display: none;}
-        .exhibition-template paper-button { background: white !important; }
-
-        .exhibit-header { margin-top: -1px; height: 520px; overflow-y: hidden; }
-        .exhibit-main-image { float: left; }
-        .exhibit-main-image figure { margin: 0; }
-        .exhibit-welcome { float: right; width: 43%; padding: 30px; line-height: 1.5; }
-        .exhibit-welcome .header-label { font-size: 16px; font-weight: 300; text-transform: uppercase; margin-top: 0; }
-        .exhibit-welcome .header-title { line-height: 1.25; font-size: 32px; margin-top: 0; padding-top: var(--uvalib-spacing-unit); }
-        .exhibit-welcome .header-supporting-text { margin:0; font-size: 21px; }
-        .exhibit-date-range { font-size: 24px; font-weight: 500; padding-top: calc(var(--uvalib-spacing-unit)*2); }
-        .exhibit-location { font-size: 16px; font-weight: 400; padding-top: calc(var(--uvalib-spacing-unit)/2); }
-        .exhibit-button-group { padding-top: calc(var(--uvalib-spacing-unit)*2.25); }
-
-        .exhibit-book-tour { border: 1px dotted green; height: 100%; padding: var(--uvalib-spacing-unit); }
-        .exhibit-book-tour p {text-align: center;}
-        .exhibit-overview { border: 1px dashed red; padding: var(--uvalib-spacing-unit); }
-        .exhibit-collapse-link { float: right; text-transform: uppercase; }
-        .exhibit-gallery-info, .exhibit-news { padding-top: 20px; padding-bottom: 20px; }
-        .exhibit-book-tour h2, .exhibit-overview h2:first-of-type, .exhibit-gallery-info h2, .exhibit-news h2 { text-align: center; }
-        .exhibit-gallery-item, .exhibit-news-item { padding: var(--uvalib-spacing-unit); width: 540px; border-radius: 5px; }
-        .exhibit-gallery-item { padding-top: 20px;  height: 175px; }
-        .exhibit-gallery-item .fred { height: 100%; }
-        .exhibit-card-title { flex-grow: 0; font-size: 24px; font-weight: 600; text-transform: none; padding-bottom: calc(var(--uvalib-spacing-unit)/3);}
-        .exhibit-card-content { flex-grow: 1; line-height: 1.5;}
-        .exhibit-card-link { margin-top: 20px; text-transform: uppercase;}
-
-        .exhibit-news-item { height: 150px; }
-        .exhibit-card-news-source { padding-bottom: calc(var(--uvalib-spacing-unit)/3); text-transform: capitalize; }
-        .exhibit-card-news-title { padding-bottom: calc(var(--uvalib-spacing-unit)/3); font-size: 24px; font-weight: 400; text-transform: capitalize; }
-        .exhibit-card-news-copy {}
-
-        .exhibit-pre-footer { padding-top: calc(var(--uvalib-spacing-unit)*1.25); padding-bottom: calc(var(--uvalib-spacing-unit)*1.25); text-align: center; }
-        .exhibit-pre-footer a:first-child { margin-right: calc(var(--uvalib-spacing-unit)*2.5);}
-
-        /*MEDIUM BREAKPOINT*/
-        :host([medium-screen]) .exhibit-header  { height: 100%; }
-        :host([medium-screen]) .exhibit-main-image  { float: none; }
-        :host([medium-screen]) .exhibit-welcome { float: none; }
-        :host([medium-screen]) .exhibit-gallery-item, :host([medium-screen]) .exhibit-news-item { width: 330px; height: 200px; }
-
-        /*SMALL BREAKPOINT*/
-        :host([small-screen]) .exhibit-header  { height: 100%; }
-        :host([small-screen]) .exhibit-main-image  { float: none; }
-        :host([small-screen]) .exhibit-welcome { float: none; }
-        :host([small-screen]) .exhibit-gallery-info, :host([small-screen]) .exhibit-news, :host([small-screen]) .exhibit-overview, :host([small-screen]) .exhibit-book-tour { width: 100%; }
-        :host([small-screen]) .exhibit-gallery-item, :host([medium-screen]) .exhibit-news-item { width: 100%; height: 200px; }
-
-        /*CUSTOM STYLES HANDLED THROUGH DRUPAL*/
-        /* cusotom font */
-        .exhibition-template, h1, h2, h3, h4, h5, paper-card, paper-button, a { font-family: 'Alegreya', serif; }
-        /* header background color */
-        .exhibit-header { background-color: teal; }
-        /* header font colors */
-        .exhibit-welcome, .exhibit-welcome h1 { color: ivory; }
-        /* 'Gallery Info' section background color */
-        .exhibit-gallery-info { background-color: var(--uvalib-grey-600); }
-        .exhibit-gallery-info h2 { color: var(--uvalib-white); }
-        /* 'In the news' background color */
-        .exhibit-news { background-color: var(--uvalib-grey-300); }
-        /* 'In the news' copy color */
-        .exhibit-news-item { color: var(--uvalib-grey-600); }
-        /* 'In the news' article source color */
-        .exhibit-card-news-source { color: var(--uvalib-main-rotunda-orange); }
-        /* Pre-footer background color */
-        .exhibit-pre-footer { background-color: #613D0C; }
-
 
       </style>
     </custom-style>

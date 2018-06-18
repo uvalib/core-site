@@ -14,6 +14,7 @@
   <link rel="lazy-import" group="app-data-uvalib-exhibitspage" href="../bower_components/uvalib-page/uvalib-exhibitspage.html">
   <link rel="lazy-import" group="app-data-uvalib-collectionspage" href="../bower_components/uvalib-page/uvalib-collectionspage.html">
   <link rel="lazy-import" group="app-data-paper-card" href="../bower_components/paper-card/paper-card.html">
+  <link rel="lazy-import" group="app-data-uvalib-majorexhibitpage" href="../bower_components/uvalib-page/uvalib-majorexhibitpage.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -244,7 +245,9 @@
 
         // Use figure where we have the content to support it
         template.content.querySelectorAll('img').forEach( (img)=>{
-          // see if image has data-caption attribute and turn into a figure it so
+            // make sure that we are not already looking at a figure
+            if (img.parentElement.nodeName.toLowerCase() === 'figure') return;
+            // see if image has data-caption attribute and turn into a figure it so
             var fig = document.createElement('figure');
             fig.setAttribute('role','group');
             fig.setAttribute('class','caption caption-img align-'+img.getAttribute('data-align'));
@@ -284,6 +287,8 @@
           this.importLazyGroup('app-data-uvalib-collectionspage');
         if (template.content.querySelector('paper-card'))
           this.importLazyGroup('app-data-paper-card');
+        if (template.content.querySelector('uvalib-majorexhibitpage'))
+          this.importLazyGroup('app-data-uvalib-majorexhibitpage');
 
         return template.content.querySelector('.content').innerHTML;
       }
