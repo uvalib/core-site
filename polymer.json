@@ -28,7 +28,8 @@
     "bower_components/uvalib-imageviewer/uvalib-imageviewer.html",
     "bower_components/jsonpath-plus/lib/jsonpath-min.js",
     "bower_components/lightgallery.js/dist/fonts/*",
-    "fonts/*"
+    "fonts/*",
+    "googleec3dc865d320cf01.html"
   ],
   "lint": {
     "rules": ["polymer-2-hybrid"]
