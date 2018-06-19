@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "bower install; ./import-pages.js; npm run images; polymer build; ./package-build.sh; cp googleec3dc865d320cf01.html data/pages/;",
+    "build": "bower install; ./import-pages.js; npm run images; cp googleec3dc865d320cf01.html data/pages/; polymer build; ./package-build.sh;",
     "deploy-static-pages": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/es6-unbundled/data/pages/ static01.lib.virginia.edu:/lib_content47/static/drupalPages;",
     "deploy": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/es6-unbundled/ www14.lib.virginia.edu:/wwwstatic;",
     "images": "./import-files.js; ./imagemin-files.js;",
