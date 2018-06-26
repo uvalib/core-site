@@ -32,13 +32,10 @@
 
 <body>
   <div class="content">
-    <uvalib-majorexhibitpage library-id="{{library.uuid}}" exhibit-slug="{{urlSlug}}">
-      <figure slot="main-image" role="group" class="caption caption-img align-null">
-        <img src="{{{image.url}}}" alt="{{{image.alt}}}" />
-      </figure>
+    <uvalib-majorexhibitpage library-id="{{library.uuid}}" exhibit-slug="{{urlSlug}}" start-date="{{{startDate}}}" end-date="{{{endDate}}}">
+      <iron-image slot="main-image" src="{{{image.url}}}" alt="{{{image.alt}}}"></iron-image>
       <h1 slot="header-title">{{{title}}}</h1>
       <p slot="header-supporting-text">{{{subTitle}}}</p>
-      <div slot="date-range">{{{startDate}}}&nbsp;&ndash;&nbsp;{{{endDate}}}</div>
       <div slot="location">{{{locationInfo}}}</div>
       <div slot="book-tour-language">
         <h2>Book a tour</h2>
