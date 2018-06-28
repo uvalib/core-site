@@ -34,10 +34,10 @@
   <div class="content">
     <uvalib-majorexhibitpage library-id="{{library.uuid}}" exhibit-slug="{{urlSlug}}" start-date="{{{startDate}}}" end-date="{{{endDate}}}">
       <iron-image slot="main-image" src="{{{image.url}}}" alt="{{{image.alt}}}"></iron-image>
-      <h1 slot="header-title">{{{title}}}</h1>
+      <h1 slot="header-title"><span>{{{title}}}</span></h1>
       <p slot="header-supporting-text">{{{subTitle}}}</p>
       <div slot="location">{{{locationInfo}}}</div>
-      <div slot="book-tour-language">
+      <div slot="book-tour-language" class="clearBoth">
         <h2>Book a tour</h2>
         <p>
           Please complete the form below to request a guided tour. To request a UVA class tour,
