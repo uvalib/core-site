@@ -37,7 +37,7 @@ function addToSitemap(page,type){
   console.log('added page to sitemap '+page.title);
 }
 
-async function makePages(body,template,mkPath,type,parentId){
+async function makePages(body,template,mkPath,type,defaults,parentId){
   // Some global search and replace here
   body.replace('U.Va.', 'UVA');
 
@@ -89,6 +89,10 @@ async function makePages(body,template,mkPath,type,parentId){
       page.body += $('body').html();
     }
     if (parentId) page.parentPage = {id: parentId};
+if (defaults)
+    for (key in defaults) {
+      if (!page[key]) page[key]=defaults[key];
+    }
     addToSitemap(page,type);
     await makeDir("data/pages"+page.path);
     fs.writeFile("data/pages"+page.path+page.filename,
@@ -110,7 +114,7 @@ async function buildPages() {
   await makePages(body, 'page-library-template.html', page=>{return "/libraries/"+page.slug},'library');
 
   body = await request('https://uvalib-api.firebaseio.com/bookplates.json');
-  await makePages(body, 'page-bookplate-template.html', page=>{return "/bookplates/"+page.fundID},'bookplate',1224);
+  await makePages(body, 'page-bookplate-template.html', page=>{return "/bookplates/"+page.fundID},'bookplate',{bookplateImage:{url:"https://static.lib.virginia.edu/files/generic-bookplate.png",alt:"University of Virginia Library Bookplate image"}},1224);
 
   console.log('making sitemap now');
   makeDir("data").then(path => {
