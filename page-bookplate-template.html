@@ -33,11 +33,23 @@
 <body>
   <div class="content">
     <h1>E-Bookplate Program</h1>
-    <div class="layout horizontal">
+    <div class="bookplate-top">
       <figure>
         <img src="{{{bookplateImage.url}}}" alt="Bookplate; {{{bookplateImage.alt}}}" />
         <figcaption>{{{title}}}</figcaption>
       </figure>
+      <div class="bookplate-description">
+        <marked-element markdown="{{{summary}}}">
+          <div slot="markdown-html"></div>
+        </marked-element>
+        <a href="http://search.lib.virginia.edu/catalog?catalog_select=catalog&f[fund_code_facet][]={{{fundID}}}">Check availability of items purchased with this fund</a>
+      </div>
+    </div>
+    <div class="bookplate-bottom">
+      <h2>Virgo items purchased with this fund</h2>
+      <div class="virgo-items">
+
+      </div>
     </div>
   </div>
 <script>
