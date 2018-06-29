@@ -11,6 +11,9 @@ git clone https://github.com/uvalib-components/uvalib-theme.git
 rm -rf ../.uvalib-page.bak
 mv uvalib-page ../.uvalib-page.bak;
 git clone https://github.com/uvalib-components/uvalib-page.git
+rm -rf ../.uvalib-bookplates.bak
+mv uvalib-bookplates ../.uvalib-bookplates.bak;
+git clone https://github.com/uvalib-components/uvalib-bookplates.git
 cd ..
 ./import-pages.js
 ./import-files-lite.js
