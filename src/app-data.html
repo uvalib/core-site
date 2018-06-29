@@ -16,6 +16,7 @@
   <link rel="lazy-import" group="app-data-uvalib-collectionspage" href="../bower_components/uvalib-page/uvalib-collectionspage.html">
   <link rel="lazy-import" group="app-data-paper-card" href="../bower_components/paper-card/paper-card.html">
   <link rel="lazy-import" group="app-data-uvalib-majorexhibitpage" href="../bower_components/uvalib-page/uvalib-majorexhibitpage.html">
+  <link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-list-items.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -290,6 +291,8 @@
           this.importLazyGroup('app-data-paper-card');
         if (template.content.querySelector('uvalib-majorexhibitpage'))
           this.importLazyGroup('app-data-uvalib-majorexhibitpage');
+        if (template.content.querySelector('uvalib-bookplate-list-items'))
+          this.importLazyGroup('app-data-uvalib-bookplates');
 
         return template.content.querySelector('.content').innerHTML;
       }
