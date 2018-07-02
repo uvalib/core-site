@@ -44,7 +44,7 @@ async function makePages(body,template,mkPath,type,defaults,parentId){
   var pages = JSON.parse(body);
 
   // create the pages
-  var pageTemplate = await fs.readFileAsync(template,'utf8');
+  var pageTemplate = await fs.readFileAsync("templates/"+template,'utf8');
 
   for (var i=0; i<pages.length; i++) {
     var page = pages[i];
@@ -115,6 +115,9 @@ async function buildPages() {
 
   body = await request('https://uvalib-api.firebaseio.com/bookplates.json');
   await makePages(body, 'page-bookplate-template.html', page=>{return "/bookplates/"+page.fundID},'bookplate',{bookplateImage:{url:"https://static.lib.virginia.edu/files/generic-bookplate.png",alt:"University of Virginia Library Bookplate image"}},1224);
+
+  staff = await request('https://uvalib-api.firebaseio.com/people.json');
+  await makePages(body, 'page-staff-template.html', page=>{return "/staff/"+page.rid},'staffprofile');
 
   console.log('making sitemap now');
   makeDir("data").then(path => {

@@ -32,25 +32,8 @@
 
 <body>
   <div class="content">
-    <h1>Bookplate Program</h1>
-    <div class="bookplate-top layout horizontal wrap">
-      <figure class="flex" style="max-width: 400px;">
-        <img src="{{{bookplateImage.url}}}" alt="Bookplate; {{{bookplateImage.alt}}}" />
-        <figcaption>{{{title}}}</figcaption>
-      </figure>
-      <div class="bookplate-description flex-2 uvalib-top-margin">
-        <div class="bigFirstLetter">{{{summary}}}</div>
-        <a href="http://search.lib.virginia.edu/catalog?catalog_select=catalog&f[fund_code_facet][]={{{fundID}}}">Check availability of items purchased with this fund</a>
-      </div>
-    </div>
-    <div class="bookplate-bottom">
-      <div class="virgo-items">
-        <uvalib-bookplate-list-items fund-id="{{{fundID}}}"></uvalib-bookplate-list-items>
-      </div>
-    </div>
+    {{{body}}}
   </div>
-<script>
-</script>
 </body>
 
 </html>
