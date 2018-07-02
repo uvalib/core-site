@@ -45,7 +45,7 @@ Header set Access-Control-Allow-Origin "*"
 
 Redirect /civilwarvirginia http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia
 Redirect /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid=40437&sid=297543
-Redirect /give https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=19305&bledit=1&sort=1&dids=1391.1394.1393.1392&appealcode=NALDWEB
+Redirect /give https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=19305&bledit=1&sort=1&dids=1391.1394.1393.1392.287&appealcode=NALDWEB
 Redirect /givingtohoosday http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
 Redirect /libraries https://www.library.virginia.edu/hours
 Redirect /organization   http://static.lib.virginia.edu/directory/organization.html
