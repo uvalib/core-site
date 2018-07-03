@@ -37,7 +37,7 @@ function addToSitemap(page,type){
   console.log('added page to sitemap '+page.title);
 }
 
-async function makePages(body,template,mkPath,type,defaults,parentId){
+async function makePages(body,template,defaultFunc,type){
   // Some global search and replace here
   body.replace('U.Va.', 'UVA');
 
@@ -48,13 +48,17 @@ async function makePages(body,template,mkPath,type,defaults,parentId){
 
   for (var i=0; i<pages.length; i++) {
     var page = pages[i];
-//  pages.forEach(page => {
     if (page.body) {
       page.body = page.body.replace(/https:\/\/drupal\.lib\.virginia\.edu\/sites\/default\/files\//g, '/files/');
       page.body = page.body.replace(/\/sites\/default\/files\//g, '/files/');
     }
 
-    if (!page.path && mkPath) page.path = mkPath(page);
+    if (defaultFunc) {
+      var defaults = defaultFunc(page);
+      for (key in defaults) {
+        page[key] = defaults[key];
+      }
+    }
 
     // Add leading slash to path if missing
     if (!page.path.startsWith('/')) page.path = "/"+page.path;
@@ -88,18 +92,14 @@ async function makePages(body,template,mkPath,type,defaults,parentId){
       page.body = $('head').html();
       page.body += $('body').html();
     }
-    if (parentId) page.parentPage = {id: parentId};
-if (defaults)
-    for (key in defaults) {
-      if (!page[key]) page[key]=defaults[key];
-    }
+
     addToSitemap(page,type);
     await makeDir("data/pages"+page.path);
     fs.writeFile("data/pages"+page.path+page.filename,
                    mustache.render( pageTemplate, page ), function(){});
     console.log('wrote file? '+"data/pages"+page.path+page.filename);
   }
-//  });
+
 
 };
 
@@ -108,16 +108,31 @@ async function buildPages() {
   await makePages(body, 'page-template.html');
 
   body = await request('https://uvalib-api.firebaseio.com/exhibit-pages.json');
-  await makePages(body, 'page-exhibit-template.html', page=>{return "/exhibits/"+page.urlSlug},'exhibit');
-
+  await makePages(body, 'page-exhibit-template.html',
+                  page=>{return {
+                    path:"/exhibits/"+page.urlSlug
+                  }},'exhibit');
   body = await request('https://uvalib-api.firebaseio.com/libraries.json');
-  await makePages(body, 'page-library-template.html', page=>{return "/libraries/"+page.slug},'library');
-
+  await makePages(body, 'page-library-template.html',
+                  page=>{return {
+                    path:"/libraries/"+page.slug
+                  }},'library');
   body = await request('https://uvalib-api.firebaseio.com/bookplates.json');
-  await makePages(body, 'page-bookplate-template.html', page=>{return "/bookplates/"+page.fundID},'bookplate',{bookplateImage:{url:"https://static.lib.virginia.edu/files/generic-bookplate.png",alt:"University of Virginia Library Bookplate image"}},1224);
+  await makePages(body, 'page-bookplate-template.html',
+                  page=>{return {
+                    parentPage:{id:1224},
+                    bookplateImage:{url:"https://static.lib.virginia.edu/files/generic-bookplate.png",alt:"University of Virginia Library Bookplate image"},
+                    path:"/bookplates/"+page.fundID
+                  }},'bookplate');
 
-  staff = await request('https://uvalib-api.firebaseio.com/people.json');
-  await makePages(body, 'page-staff-template.html', page=>{return "/staff/"+page.rid},'staffprofile');
+  body = await request('https://uvalib-api.firebaseio.com/people.json');
+  await makePages(body, 'page-staff-template.html',
+                  person=>{return {
+                    path:"/staff/"+person.computingId,
+                    title:(person.displayName)?
+                      person.displayName:
+                      person.firstName+" "+person.lastName
+                  }},'staffprofile');
 
   console.log('making sitemap now');
   makeDir("data").then(path => {
