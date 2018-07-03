@@ -19,6 +19,7 @@
   <link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-list-items.html">
   <link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-browse.html">
   <link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-search.html">
+  <link rel="lazy-import" group="app-data-uvalib-search-box" href="../bower_components/uvalib-search-box/uvalib-search-box.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -302,7 +303,8 @@
           this.importLazyGroup('app-data-uvalib-bookplates');
         if (template.content.querySelector('uvalib-bookplate-search'))
           this.importLazyGroup('app-data-uvalib-bookplates');
-
+        if (template.content.querySelector('uvalib-search-box'))
+          this.importLazyGroup('app-data-uvalib-search-box');
 
         return template.content.querySelector('.content').innerHTML;
       }
