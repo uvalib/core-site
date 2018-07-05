@@ -32,7 +32,30 @@
 
 <body>
   <div class="content">
-    {{{body}}}
+    <div class="layout horizontal wrap">
+      <div class="flex" style="min-width: 200px;">
+        <img src="{{{field_image.url}}}" alt="Photo of {{{displayName}}}" hidden$="[[!field_image.url]]" />
+        <img src="https://static.lib.virginia.edu/files/generic-bookplate.png" alt:"This is an empty placeholder photo" hidden$="[[field_image.url]]"/>
+      </div>
+      <div class="flex-2">
+        <div class="layout vertical center-justified">
+          <h2 hidden$="[[!nickName]]">{{{nickName}}}</h2>
+          <p class="takeNoticeSize">{{{jobTitle}}}</p>
+          <a href="#">(Department Link)</a><br />
+          {{{body}}}
+          <div class="uva-padding uva-margin-top-bottom" style="background-color: #DADADA;">
+            <h4 class="uva-margin-bottom" style="margin-top: 0;">Contact Information</h4>
+            <a href="mailto:{{{email}}}">{{{email}}}</a>
+            <p>{{{phone}}}</p>
+            <p><b>{{{officeLocation}}}</b></p>
+            <p>Mailing Address<br />
+              {{{address}}}<br />
+              Charlottesville, VA 22904-4109
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 
