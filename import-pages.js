@@ -131,7 +131,10 @@ async function buildPages() {
                     path:"/staff/"+person.computingId,
                     title:(person.displayName)?
                       person.displayName:
-                      person.firstName+" "+person.lastName
+                      person.firstName+" "+person.lastName,
+                    field_image:(person.field_image)?
+                      person.field_image:
+                      {url: "https://static.lib.virginia.edu/files/generic-bookplate.png", alt: "This is an empty placeholder photo"}
                   }},'staffprofile');
 
   console.log('making sitemap now');

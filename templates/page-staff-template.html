@@ -34,12 +34,13 @@
   <div class="content">
     <div class="layout horizontal wrap">
       <div class="flex" style="min-width: 200px;">
-        <img src="{{{field_image.url}}}" alt="Photo of {{{displayName}}}" hidden$="[[!field_image.url]]" />
-        <img src="https://static.lib.virginia.edu/files/generic-bookplate.png" alt:"This is an empty placeholder photo" hidden$="[[field_image.url]]"/>
+        <img src="{{{field_image.url}}}" alt="{{{field_image.alt}}}" />
       </div>
       <div class="flex-2">
         <div class="layout vertical center-justified">
-          <h2 hidden$="[[!nickName]]">{{{nickName}}}</h2>
+          {{#nickName}}
+          <h2>{{{nickName}}}</h2>
+          {{/nickName}}
           <p class="takeNoticeSize">{{{jobTitle}}}</p>
           <a href="#">(Department Link)</a><br />
           {{{body}}}
