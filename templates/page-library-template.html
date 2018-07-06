@@ -28,14 +28,13 @@
       }
     }
   </script>
-  {{#iframe}}
-  <script src="https://www.library.virginia.edu/bower_components/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
-  {{/iframe}}
 </head>
 
 <body>
   <div class="content">
+    <h1>{{{title}}}</h1>
     {{{body}}}
+    <img src="{{{mainImage.url}}}" alt="{{{mainImage.alt}}}" />
   </div>
 </body>
 
