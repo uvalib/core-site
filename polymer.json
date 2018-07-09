@@ -25,7 +25,6 @@
     "bower_components/lightgallery.js/dist/js/lightgallery.min.js",
     "bower_components/lg-thumbnail.js/dist/lg-thumbnail.min.js",
     "bower_components/lg-fullscreen.js/dist/lg-fullscreen.min.js",
-    "bower_components/uvalib-imageviewer/uvalib-imageviewer.html",
     "bower_components/jsonpath-plus/lib/jsonpath-min.js",
     "bower_components/lightgallery.js/dist/fonts/*",
     "fonts/*"
