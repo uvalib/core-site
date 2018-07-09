@@ -88,6 +88,9 @@ async function makePages(body,template,defaultFunc,type){
         if (attr.match(/^#.*$/)) {
           $(this).attr('href', page.path+attr);
         }
+        if (page.iframe) {
+          $(this).attr('target', '_top');
+        }
       });
       page.body = $('head').html();
       page.body += $('body').html();
