@@ -92,6 +92,12 @@ async function makePages(body,template,defaultFunc,type){
           $(this).attr('target', '_top');
         }
       });
+      $('[src]').each(function(i,elem){
+        var attr = $(this).attr('src');
+        if (page.iframe && attr.startsWith('/')) {
+          $(this).attr('src', "https://www.library.virginia.edu"+attr);
+        }
+      });
       page.body = $('head').html();
       page.body += $('body').html();
     }
