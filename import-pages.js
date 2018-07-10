@@ -98,6 +98,23 @@ async function makePages(body,template,defaultFunc,type){
           $(this).attr('src', "https://www.library.virginia.edu"+attr);
         }
       });
+
+      // Use figure where we have the content to support it
+      $('img').each(function(i,img){
+        // make sure that we are not already looking at a figure
+        if ($(this).parent.name.toLowerCase() === 'figure') { return; }
+        var align = $(this).attr('data-align');
+        var fig = $('<figure role="group" class="caption caption-img align-'+align+'">');
+        fig.append($(this).clone());
+        var caption = $(this).attr('data-caption');
+        if (caption) {
+          var figcap = $('<figcaption>');
+          figcap.append(caption);
+          fig.append(figcap);
+        }
+        $(this).replaceWith(fig);
+      });
+
       page.body = $('head').html();
       page.body += $('body').html();
     }
