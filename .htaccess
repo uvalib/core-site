@@ -39,6 +39,8 @@ RewriteRule ^(.*)$ es5/$1 [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{HTTP_USER_AGENT} !(bot|agent|spider|crawler|extractor) [NC]
+RewriteCond %{HTTP_USER_AGENT} !(Googlebot|bingbot|msnbot|facebookexternalhit|Facebot|Twitterbot|Google-Structured-Data-Testing-Tool) [NC]
 RewriteRule ^(.*)$ index.html [L]
 
 Header set Access-Control-Allow-Origin "*"
