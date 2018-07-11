@@ -13,6 +13,7 @@
   ],
   "extraDependencies": [
     ".htaccess",
+    "robots.txt",
     "manifest.json",
     "data/pages.json",
     "bower_components/webcomponentsjs/*",
