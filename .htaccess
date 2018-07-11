@@ -16,6 +16,7 @@ RewriteRule ^/robots.txt$ no-robots.txt [L]
 # Give Bots the non-js version
 RewriteCond %{HTTP_USER_AGENT} (bot|agent|spider|crawler|extractor) [NC]
 RewriteCond %{HTTP_USER_AGENT} (Googlebot|bingbot|msnbot|facebookexternalhit|Facebot|Twitterbot|Google-Structured-Data-Testing-Tool) [NC]
+RewriteCond %{REQUEST_URI} !^/files/.*$
 RewriteCond %{REQUEST_URI} !^/data/pages/.*$
 RewriteRule ^(.*)$ data/pages/$1 [L]
 
