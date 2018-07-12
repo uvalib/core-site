@@ -11,21 +11,33 @@
   <meta name="twitter:title" content="{{title}}">
   <meta name="twitter:site" content="@uvalibrary">
   <script type="application/ld+json">
+
     {
       "@context": "http://schema.org",
-      "@type": "WebPage",
-      "mainEntityOfPage": "https://library.virginia.edu{{path}}",
-      "headline": "{{title}}",
-      "publisher": {
-        "@type": "Organization",
-        "name": "UVA Library",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://library.virginia.edu/images/icon-192.png",
-          "width": "192",
-          "height": "192"
+      "@graph": [{
+        "@type": "WebPage",
+        "mainEntityOfPage": "https://library.virginia.edu{{path}}",
+        "headline": "{{title}}",
+        "publisher": {
+          "@type": "Organization",
+          "name": "UVA Library",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://library.virginia.edu/images/icon-192.png",
+            "width": "192",
+            "height": "192"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "url": "https://www.library.virginia.edu/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.library.virginia.edu/search&q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
         }
-      }
+      }]
     }
   </script>
   {{#iframe}}

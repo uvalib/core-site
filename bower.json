@@ -1,20 +1,14 @@
 {
-  "name": "news",
+  "name": "UVALibrary",
   "version": "2.0.0",
   "authors": [
-    "The Polymer Authors"
+    "UVA Library UX"
   ],
   "private": true,
   "dependencies": {
-    "polymer": "polymer/polymer#^2.0.0",
     "app-layout": "polymerelements/app-layout#^2.0.0",
     "app-route": "polymerelements/app-route#^2.0.0",
-    "iron-flex-layout": "polymerelements/iron-flex-layout#^2.0.0",
-    "iron-icon": "polymerelements/iron-icon#^2.0.0",
-    "iron-iconset-svg": "polymerelements/iron-iconset-svg#^2.0.0",
     "iron-pages": "polymerelements/iron-pages#^2.0.0",
-    "iron-selector": "polymerelements/iron-selector#^2.0.0",
-    "paper-icon-button": "polymerelements/paper-icon-button#^2.0.0",
     "uvalib-elements": "uvalib-components/uvalib-elements#master",
     "promise-polyfill": "^6.0.2",
     "iframe-resizer": "davidjbradshaw/iframe-resizer#^3.5.16"
@@ -23,9 +17,8 @@
     "web-component-tester": "^6.0.0"
   },
   "resolutions": {
-    "lodash": "^4.17.4",
-    "paper-icon-button": "^2.0.1",
     "polymer": "^2.5.0",
-    "webcomponentsjs": "^1.1.0"
+    "lodash": "^4.17.5",
+    "webcomponentsjs": "^1.1.1"
   }
 }
