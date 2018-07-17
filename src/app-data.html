@@ -20,6 +20,8 @@
   <link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-browse.html">
   <link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-search.html">
   <link rel="lazy-import" group="app-data-uvalib-search-box" href="../bower_components/uvalib-search-box/uvalib-search-box.html">
+  <link rel="lazy-import" group="app-data-uvalib-staff-dir" href="../bower_components/uvalib-page/uvalib-staff-dir.html">
+  <link rel="lazy-import" group="app-data-uvalib-springshare" href="../bower_components/uvalib-springshare-form/uvalib-springshare-chat.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -119,7 +121,7 @@
         if (path == '/staff' || path.startsWith('/staff/')) {
           window.location.replace("https://static.lib.virginia.edu/directory/");
           return true;
-         } else if (path == '/libraries' || path.startsWith('/libraries/')) {
+        } else if (path == '/libraries' || path.startsWith('/libraries/')) {
           window.location.replace("/hours");
           return true;
         } else if (path == '/site-search' || path.startsWith('/site-search/')) {
@@ -305,6 +307,10 @@
           this.importLazyGroup('app-data-uvalib-bookplates');
         if (template.content.querySelector('uvalib-search-box'))
           this.importLazyGroup('app-data-uvalib-search-box');
+        if (template.content.querySelector('uvalib-staff-dir'))
+          this.importLazyGroup('app-data-uvalib-staff-dir');
+        if (template.content.querySelector('uvalib-springshare-chat'))
+          this.importLazyGroup('app-data-uvalib-springshare');
 
         return template.content.querySelector('.content').innerHTML;
       }
