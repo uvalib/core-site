@@ -22,6 +22,7 @@
   <link rel="lazy-import" group="app-data-uvalib-search-box" href="../bower_components/uvalib-search-box/uvalib-search-box.html">
   <link rel="lazy-import" group="app-data-uvalib-staff-dir" href="../bower_components/uvalib-page/uvalib-staff-dir.html">
   <link rel="lazy-import" group="app-data-uvalib-springshare" href="../bower_components/uvalib-springshare-form/uvalib-springshare-chat.html">
+  <link rel="lazy-import" group="app-data-uvalib-template-rmc" href="../bower_components/uvalib-page/uvalib-template-rmc.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -311,6 +312,8 @@
           this.importLazyGroup('app-data-uvalib-staff-dir');
         if (template.content.querySelector('uvalib-springshare-chat'))
           this.importLazyGroup('app-data-uvalib-springshare');
+        if (template.content.querySelector('uvalib-template-rmc'))
+          this.importLazyGroup('app-data-uvalib-template-rmc');
 
         return template.content.querySelector('.content').innerHTML;
       }
