@@ -41,7 +41,12 @@
     }
   </script>
   {{#iframe}}
+  <script src="https://www.library.virginia.edu/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
   <script src="https://www.library.virginia.edu/bower_components/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
+  <link rel="import" href="https://www.library.virginia.edu/src/uvalib-app.html">
+  <script src="https://static.lib.virginia.edu/js/controllers/libweb.js"></script>
+  <custom-style><style include="uvalib-theme iron-flex"></style></custom-style>
+
   {{/iframe}}
 
   {{{head}}}

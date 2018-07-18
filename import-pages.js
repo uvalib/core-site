@@ -115,17 +115,18 @@ async function makePages(body,template,defaultFunc,type){
         $(this).replaceWith(fig);
       });
 
-      if (page.iframe) {
-        page.head = $('head').append($('<script src="https://www.library.virginia.edu/bower_components/webcomponentsjs/webcomponents-loader.js"></script>'))
-                            .append($('<link rel="import" href="https://www.library.virginia.edu/src/uvalib-app.html">'))
-                            .append($('<script src="https://static.lib.virginia.edu/js/controllers/libweb.js"></script>'))
-                            .append($('<custom-style><style include="uvalib-theme iron-flex"></style></custom-style>')).html();
-      } else {
+//      if (page.iframe) {
+//        page.head = $('head').append($('<script src="https://www.library.virginia.edu/bower_components/webcomponentsjs/webcomponents-loader.js"></script>'))
+//                            .append($('<link rel="import" href="https://www.library.virginia.edu/src/uvalib-app.html">'))
+//                            .append($('<script src="https://static.lib.virginia.edu/js/controllers/libweb.js"></script>'))
+//                            .append($('<custom-style><style include="uvalib-theme iron-flex"></style></custom-style>'))
+//                            .append($('<foo></foo>')).html();
+//      } else {
         page.head = $('head').html();
-      }
+//      }
 
-      page.body = $('head').html();
-      page.body += $('body').html();
+//      page.body = $('head').html();
+//      page.body += $('body').html();
     }
 
     addToSitemap(page,type);
