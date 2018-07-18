@@ -95,6 +95,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           --uvalib-background-search: var(--uvalib-main-jefferson-blue);
         }
 
+        [unresolved] {
+          display: none;
+        }
+
       </style>
     </custom-style>
 
@@ -296,6 +300,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
         // handle anchors
         this._handleAnchor();
+
+//        setTimeout(this.updateStyles.bind(this),2000);
       }
 
       _articleChanged(article) {
