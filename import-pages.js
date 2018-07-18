@@ -10,7 +10,7 @@ var request = require('request-promise'),
 fs.readFileAsync = util.promisify(fs.readFile);
 
 var sitemap = [];
-function addToSitemap(page,type){
+function addToSitemap(page,type,template){
   var tmpfilename = sanitize(page.title).replace(/\s/g,'_');
   var parent = (page.parentPage) ? page.parentPage.id : '';
   sitemap.push(
@@ -31,7 +31,8 @@ function addToSitemap(page,type){
       "placeholder": "",
       "summary": page.title,
       "contentLength": 3584,
-      "type": type
+      "type": type,
+      "template": template
     }
   );
   console.log('added page to sitemap '+page.title);
@@ -115,21 +116,11 @@ async function makePages(body,template,defaultFunc,type){
         $(this).replaceWith(fig);
       });
 
-//      if (page.iframe) {
-//        page.head = $('head').append($('<script src="https://www.library.virginia.edu/bower_components/webcomponentsjs/webcomponents-loader.js"></script>'))
-//                            .append($('<link rel="import" href="https://www.library.virginia.edu/src/uvalib-app.html">'))
-//                            .append($('<script src="https://static.lib.virginia.edu/js/controllers/libweb.js"></script>'))
-//                            .append($('<custom-style><style include="uvalib-theme iron-flex"></style></custom-style>'))
-//                            .append($('<foo></foo>')).html();
-//      } else {
-        page.head = $('head').html();
-//      }
-
-//      page.body = $('head').html();
-//      page.body += $('body').html();
+      page.head = $('head').html();
     }
 
-    addToSitemap(page,type);
+
+    addToSitemap(page,type,page.template);
     await makeDir("data/pages"+page.path);
     fs.writeFile("data/pages"+page.path+page.filename,
                    mustache.render( pageTemplate, page ), function(){});

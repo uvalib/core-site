@@ -82,6 +82,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         /* SPECIAL TEMPLATE - omit h1 */
         :host([type='exhibit']) #pagetitle, :host([type='bookplate']) #pagetitle, :host([type='library']) #pagetitle {display: none;}
 
+        /* omit h1 for alt templated pages */
+        :host([template]) #pagetitle {display: none;}
+
         /* Bookplate Template */
         :host([type='bookplate']) figure {
 
@@ -175,6 +178,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               type: {
                 reflectToAttribute: true,
                 computed: '_getType(article.type)'
+              },
+
+              template: {
+                reflectToAttribute: true,
+                computed: '_getTemplate(article.template)'
               }
             });
 
@@ -220,6 +228,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _getType(type) {
         if (type) return type;
+      }
+      _getTemplate(template) {
+        if (template) return template;
       }
       _loadChat(mediumScreen,largeScreen) {
         if (mediumScreen || largeScreen) this.importLazyGroup('uvalib-article-notsmall');

@@ -184,6 +184,7 @@
 
         for (let i = 0, item; item = response[i]; ++i) {
           items.push({
+            template: item.template,
             type: item.type,
             headline: this._unescapeText(item.title),
             stage: item.stage,
