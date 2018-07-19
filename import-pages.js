@@ -148,7 +148,7 @@ async function buildPages() {
   await makePages(body, 'page-bookplate-template.html',
                   page=>{return {
                     parentPage:{id:1224},
-                    bookplateImage:{url:"https://static.lib.virginia.edu/files/generic-bookplate.png",alt:"University of Virginia Library Bookplate image"},
+                    bookplateImage:{url:(page.bookplateImage)?page.bookplateImage.url:"https://static.lib.virginia.edu/files/generic-bookplate.png",alt:"University of Virginia Library Bookplate image"},
                     path:"/bookplates/"+page.fundID
                   }},'bookplate');
 
