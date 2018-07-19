@@ -90,8 +90,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <uvalib-header relative-links id="header" library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
 
-    <!-- breadcrumbs -->
-    <div id="breadCrumbs" inner-h-t-m-l="[[_trail]]" hidden$="[[_isExhibit(article.type)]]"></div>
+    <template is="dom-if" if="[[!article.template]]">
+      <!-- breadcrumbs -->
+      <div id="breadCrumbs" inner-h-t-m-l="[[_trail]]" hidden$="[[_isExhibit(article.type)]]"></div>
+    </template>
 
     <uvalib-article id="content"
           name="article"
