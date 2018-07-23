@@ -5,27 +5,53 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="{{title}}">
   <meta property="og:site_name" content="UVA Library">
-  <meta property="og:url" content="https://library.virginia.edu{{path}}">
+  <meta property="og:url" content="https://library.virginia.edu{{{path}}}">
   <meta property="article:publisher" content="https://library.virginia.edu/">
-  <meta name="twitter:url" content="https://library.virginia.edu{{path}}">
+  <meta name="twitter:url" content="https://library.virginia.edu{{{path}}}">
   <meta name="twitter:title" content="{{title}}">
   <meta name="twitter:site" content="@uvalibrary">
   <script type="application/ld+json">
     {
       "@context": "http://schema.org",
-      "@type": "WebPage",
-      "mainEntityOfPage": "https://library.virginia.edu{{path}}",
-      "headline": "{{title}}",
-      "publisher": {
-        "@type": "Organization",
-        "name": "UVA Library",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://library.virginia.edu/images/icon-192.png",
-          "width": "192",
-          "height": "192"
+      "@graph": [{
+        "@type": "Person",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Charlottesville",
+          "addressRegion": "VA",
+          "streetAddress": "{{address}}"
+        },
+        "email": "mailto:{{email}}",
+        {{#field_image}}
+        "image": "{{{field_image.url}}}",
+        {{/field_image}}
+        "jobTitle": "{{jobTitle}}",
+        "name": "{{displayName}}",
+        "telephone": "{{phone}}",
+        "url": "https://www.library.virginia.edu/staff/{{computingId}}"
+      },{
+        "@type": "WebPage",
+        "mainEntityOfPage": "https://library.virginia.edu{{{path}}}",
+        "headline": "{{title}}",
+        "publisher": {
+          "@type": "Organization",
+          "name": "UVA Library",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://library.virginia.edu/images/icon-192.png",
+            "width": "192",
+            "height": "192"
+          }
         }
-      }
+      },{
+          "@type": "WebSite",
+          "url": "https://www.library.virginia.edu/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.library.virginia.edu/search&q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+      }]
     }
   </script>
 </head>
@@ -33,9 +59,11 @@
 <body>
   <div class="content">
     <div class="layout horizontal wrap">
+      {{#field_image}}
       <div class="flex" style="min-width: 200px;">
         <img src="{{{field_image.url}}}" alt="{{{field_image.alt}}}" />
       </div>
+      {{/field_image}}
       <div class="flex-2">
         <div class="layout vertical center-justified">
           {{#nickName}}

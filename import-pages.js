@@ -131,19 +131,22 @@ async function makePages(body,template,defaultFunc,type){
 };
 
 async function buildPages() {
+  // build basic pages
   var body = await request('https://uvalib-api.firebaseio.com/pages.json');
   await makePages(body, 'page-template.html');
-
+  // build major exhibit pages
   body = await request('https://uvalib-api.firebaseio.com/exhibit-pages.json');
   await makePages(body, 'page-exhibit-template.html',
                   page=>{return {
                     path:"/exhibits/"+page.urlSlug
                   }},'exhibit');
-  body = await request('https://uvalib-api.firebaseio.com/libraries.json');
-  await makePages(body, 'page-library-template.html',
+  // build library pages
+  var libs = await request('https://uvalib-api.firebaseio.com/libraries.json');
+  await makePages(libs, 'page-library-template.html',
                   page=>{return {
                     path:"/libraries/"+page.slug
                   }},'library');
+  // build bookplate pages
   body = await request('https://uvalib-api.firebaseio.com/bookplates.json');
   await makePages(body, 'page-bookplate-template.html',
                   page=>{return {
@@ -151,18 +154,34 @@ async function buildPages() {
                     bookplateImage:{url:(page.bookplateImage)?page.bookplateImage.url:"https://static.lib.virginia.edu/files/generic-bookplate.png",alt:"University of Virginia Library Bookplate image"},
                     path:"/bookplates/"+page.fundID
                   }},'bookplate');
-
-  body = await request('https://uvalib-api.firebaseio.com/people.json');
-  await makePages(body, 'page-staff-template.html',
+  // build team pages
+  var teams = await request('https://uvalib-api.firebaseio.com/teams.json');
+  await makePages(teams, 'page-team-template.html',
+                  team=>{return {
+                    path:"/teams/"+team.uuid
+                  }},'team');
+  // build area Pages
+  var areas = await request('https://uvalib-api.firebaseio.com/areas.json');
+  await makePages(areas, 'page-area-template.html',
+                  area=>{return {
+                    path:"/areas/"+area.uuid
+                  }},'area');
+  // build staff pages
+  var staff = await request('https://uvalib-api.firebaseio.com/people.json');
+  await makePages(staff, 'page-staff-template.html',
                   person=>{return {
+                    parentPage:{id:1137},
                     path:"/staff/"+person.computingId,
                     title:(person.displayName)?
                       person.displayName:
                       person.firstName+" "+person.lastName,
                     field_image:(person.field_image)?
-                      person.field_image:
-                      {url: "https://static.lib.virginia.edu/files/generic-bookplate.png", alt: "This is an empty placeholder photo"}
+                      person.field_image:""
+// Todo, add generic image for staff missing photos
+//                      {url: "https://static.lib.virginia.edu/files/generic-bookplate.png", alt: "This is an empty placeholder photo"}
                   }},'staffprofile');
+  // build area pages
+  //  https://uvalib-api.firebaseio.com/areas
 
   console.log('making sitemap now');
   makeDir("data").then(path => {

@@ -120,10 +120,10 @@
       }
 
       _redirects(path) {
-        if (path == '/staff' || path.startsWith('/staff/')) {
-          window.location.replace("https://static.lib.virginia.edu/directory/");
-          return true;
-        } else if (path == '/libraries' || path.startsWith('/libraries/')) {
+//        if (path == '/staff' || path.startsWith('/staff/')) {
+//          window.location.replace("https://static.lib.virginia.edu/directory/");
+//          return true;
+        if (path == '/libraries' || path.startsWith('/libraries/')) {
           window.location.replace("/hours");
           return true;
         } else if (path == '/site-search' || path.startsWith('/site-search/')) {

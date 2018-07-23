@@ -13,6 +13,12 @@ RewriteRule ^/$ - [F,L]
 RewriteCond %{HTTP_HOST} !^www\.library\.virginia\.edu
 RewriteRule ^/robots.txt$ no-robots.txt [L]
 
+RewriteCond %{HTTP_USER_AGENT} (bot|agent|spider|crawler|extractor) [NC]
+RewriteCond %{HTTP_USER_AGENT} (Googlebot|bingbot|msnbot|facebookexternalhit|Facebot|Twitterbot|Google-Structured-Data-Testing-Tool) [NC]
+RewriteCond %{REQUEST_URI} ^/data/pages/.*$
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^(.*)$ data/pages/$1 [F]
+
 # Give Bots the non-js version
 RewriteCond %{HTTP_USER_AGENT} (bot|agent|spider|crawler|extractor) [NC]
 RewriteCond %{HTTP_USER_AGENT} (Googlebot|bingbot|msnbot|facebookexternalhit|Facebot|Twitterbot|Google-Structured-Data-Testing-Tool) [NC]
