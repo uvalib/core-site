@@ -2,7 +2,7 @@
 rm -rf .bower_components.bak;
 mv bower_components .bower_components.bak;
 git pull
-npm install
+#npm install
 bower install
 cd bower_components;
 rm -rf ../.uvalib-theme.bak
