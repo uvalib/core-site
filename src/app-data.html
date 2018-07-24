@@ -147,6 +147,8 @@
         } else if (path == '/small' || path.startsWith('/support/')) {
           window.location.replace("https://small.library.virginia.edu/");
           return true;
+        } else if (path == '/data/pages' || path.startsWith('/data/pages')) {
+          window.location.replace(path.replace('/data/pages/','/'));
         }
         return false;
       }
