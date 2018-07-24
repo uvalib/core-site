@@ -12,7 +12,7 @@ rm -rf ../.uvalib-page.bak
 mv uvalib-page ../.uvalib-page.bak;
 git clone https://github.com/uvalib-components/uvalib-page.git
 rm -rf ../.uvalib-banner.bak
-mv uvalib-page ../.uvalib-banner.bak;
+mv uvalib-banner ../.uvalib-banner.bak;
 git clone https://github.com/uvalib-components/uvalib-banner.git
 rm -rf ../.uvalib-bookplates.bak
 mv uvalib-bookplates ../.uvalib-bookplates.bak;
