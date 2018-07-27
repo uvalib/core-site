@@ -137,7 +137,7 @@ async function buildPages() {
   body = await request('https://uvalib-api.firebaseio.com/exhibit-pages.json');
   await makePages(body, 'page-exhibit-template.html',
                   page=>{return {
-                    path:"/exhibits/"+page.urlSlug
+                    path:"/exhibitions/"+page.urlSlug
                   }},'exhibit');
   // build library pages
   var libs = await request('https://uvalib-api.firebaseio.com/libraries.json');
