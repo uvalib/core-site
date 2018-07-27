@@ -41,12 +41,11 @@ function addToSitemap(page,type,template){
 async function makePages(body,template,defaultFunc,type){
   // Some global search and replace here
   body.replace('U.Va.', 'UVA');
-
   var pages = JSON.parse(body);
 
   // create the pages
   var pageTemplate = await fs.readFileAsync("templates/"+template,'utf8');
-
+if(pages && pages.length > 0)
   for (var i=0; i<pages.length; i++) {
     var page = pages[i];
     if (page.body) {
