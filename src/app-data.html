@@ -25,6 +25,7 @@
   <link rel="lazy-import" group="app-data-uvalib-template-rmc" href="../bower_components/uvalib-page/uvalib-template-rmc.html">
   <link rel="lazy-import" group="app-data-uvalib-image-header" href="../bower_components/uvalib-banner/uvalib-image-header.html">
   <link rel="lazy-import" group="app-data-uvalib-staff-dir" href="../bower_components/uvalib-page/uvalib-staff-dir.html">
+  <link rel="lazy-import" group="app-data-uvalib-team-dir" href="../bower_components/uvalib-page/uvalib-team-dir.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -324,6 +325,8 @@
           this.importLazyGroup('app-data-uvalib-image-header');
         if (template.content.querySelector('uvalib-staff-dir'))
           this.importLazyGroup('app-data-uvalib-staff-dir');
+        if (template.content.querySelector('uvalib-team-dir'))
+          this.importLazyGroup('app-data-uvalib-team-dir');
 
         return template.content.querySelector('.content').innerHTML;
       }
