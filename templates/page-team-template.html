@@ -40,7 +40,26 @@
 
 <body>
   <div class="content">
-    
+    <div>
+      {{#area}}
+      <strong>Area:</strong>
+      <a href="/areas/{{area.uuid}}">{{{area.title}}}</a>
+      {{/area}}
+    </div>
+    <div>
+      {{#manager}}
+      <strong>Team Leader:</strong>
+      <a href="/staff/{{manager.computingId}}">{{{manager.displayName}}}</a>
+      {{/manager}}
+    </div>
+    {{#body}}
+    <p>{{{body}}}</p>
+    {{/body}}
+    <h2>Team members:</h2>
+    <uvalib-staff-dir team="{{uuid}}"></uvalib-staff-dir>
+    <div>
+      <a href="/staff" tabindex="-1"><paper-button raised>All Library Staff</paper-button></a>
+    </div>
   </div>
 </body>
 

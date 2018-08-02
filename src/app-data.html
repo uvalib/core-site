@@ -24,6 +24,7 @@
   <link rel="lazy-import" group="app-data-uvalib-springshare" href="../bower_components/uvalib-springshare-form/uvalib-springshare-chat.html">
   <link rel="lazy-import" group="app-data-uvalib-template-rmc" href="../bower_components/uvalib-page/uvalib-template-rmc.html">
   <link rel="lazy-import" group="app-data-uvalib-image-header" href="../bower_components/uvalib-banner/uvalib-image-header.html">
+  <link rel="lazy-import" group="app-data-uvalib-staff-dir" href="../bower_components/uvalib-page/uvalib-staff-dir.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -120,10 +121,10 @@
       }
 
       _redirects(path) {
-        if (path == '/staff' || path.startsWith('/staff/')) {
-          window.location.replace("https://static.lib.virginia.edu/directory/");
-          return true;
-        } else if (path == '/libraries' || path.startsWith('/libraries/')) {
+//        if (path == '/staff' || path.startsWith('/staff/')) {
+//          window.location.replace("https://static.lib.virginia.edu/directory/");
+//          return true;
+        if (path == '/libraries' || path.startsWith('/libraries/')) {
           window.location.replace("/hours");
           return true;
         } else if (path == '/site-search' || path.startsWith('/site-search/')) {
@@ -321,6 +322,8 @@
           this.importLazyGroup('app-data-uvalib-template-rmc');
         if (template.content.querySelector('uvalib-image-header'))
           this.importLazyGroup('app-data-uvalib-image-header');
+        if (template.content.querySelector('uvalib-staff-dir'))
+          this.importLazyGroup('app-data-uvalib-staff-dir');
 
         return template.content.querySelector('.content').innerHTML;
       }
