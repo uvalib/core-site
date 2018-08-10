@@ -27,57 +27,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <custom-style>
       <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors uvalib-card-style">
-        :host {
-          display: block;
-          @apply --layout-horizontal;
-          /*@apply --layout-wrap;*/
-          @apply --layout-center-justified;
-        }
 
-        [hidden] {
-          display: none !important;
-        }
+        :host { display: block; @apply --layout-horizontal; @apply --layout-center-justified; }
 
-        .container {
-            width: 100%;
-        }
+        [hidden] { display: none !important; }
 
         .container {
           min-height: 100vh;
           max-width: var(--uvalib-display-width-max);
-          /*@apply --layout-flex;*/
           width: 100%;
           @apply --layout-horizontal;
           @apply --layout-wrap;
         }
 
-        .container .fade-in {
-          opacity: 0;
-        }
+        .container .fade-in { opacity: 0; }
+        .container[fade-in] .fade-in { opacity: 1; transition: opacity 500ms; }
 
-        .container[fade-in] .fade-in {
-          opacity: 1;
-          transition: opacity 500ms;
-        }
+        article { @apply --layout-flex; margin-bottom: 40px; }
 
-        article {
-          @apply --layout-flex;
-          /*width: 100%;*/
-        }
-        aside {
-          margin-left: 24px;
-          width: 300px;
-        }
+        aside { margin-left: 24px; width: 300px; }
 
-        app-side-bar, app-sub-nav {
-          margin-bottom: 32px;
-        }
+        app-side-bar, app-sub-nav { margin-top: calc(var(--uvalib-spacing-unit)*6.25); margin-bottom: 32px; }
 
-        iframe {
-          width: 1px;
-          min-width: 100%;
-          height: 500px;
-        }
+        iframe { width: 1px; min-width: 100%; height: 500px; }
 
         /* SPECIAL TEMPLATE - omit h1 */
         :host([type='exhibit']) #pagetitle, :host([type='bookplate']) #pagetitle, :host([type='library']) #pagetitle {display: none;}
@@ -95,9 +67,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           --uvalib-background-search: var(--uvalib-main-jefferson-blue);
         }
 
-        [unresolved] {
-          display: none;
-        }
+        [unresolved] { display: none; }
 
       </style>
     </custom-style>
