@@ -24,18 +24,10 @@
         margin: 20px 0;
       }
 
-      .category {
-        display: none;
-      }
+      .category { display: none; }
 
-      :host([featured]) > a {
-        padding-bottom: 24px;
-        border-bottom: var(--app-border-style);
-      }
-
-      :host([featured]) > a:last-of-type {
-        border-bottom: none;
-      }
+      :host([featured]) > a { padding-bottom: 24px; border-bottom: var(--app-border-style); }
+      :host([featured]) > a:last-of-type { border-bottom: none; }
 
       :host([featured]) .category {
         display: inline-block;
@@ -45,10 +37,7 @@
         font-size: 11px;
       }
 
-      :host([featured]) .headline {
-        display: block;
-        margin: 20px 0;
-      }
+      :host([featured]) .headline { display: block; margin: 20px 0; }
 
       /* Sidebar Navigation (e.g. About Libra Page /libra) */
         :host {
@@ -60,18 +49,12 @@
           padding: .75em;
           background-color: var(--uvalib-main-rotunda-orange);
           color: var(--color-white);
-          margin-right: -.55em;
+          margin-right: -.6em;
           margin-top: 0;
           margin-bottom: 0;
         }
-        #content ul {
-          list-style: none;
-          margin-left: 0;
-        }
-        #content ul li {
-          font-size: 1.15em;
-          text-indent: -1em;
-        }
+        #content ul { list-style: none; margin-left: 0; }
+        #content ul li { font-size: 1.15em; text-indent: -1em; }
         #content ul li::before {
           font-family: uvalib-custom-icons;
           content: "\f0da";
@@ -79,10 +62,8 @@
           position: relative;
           top: 0.1em;
         }
-        #content ul li a {
-          display: inline;
-          margin: 0;
-        }
+        #content ul li a { display: inline; margin: 0; }
+
       </style>
     </custom-style>
 
