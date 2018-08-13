@@ -58,10 +58,8 @@ Redirect /give https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=
 Redirect /givefaulkner https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=684&cid=1509&appealcode=KUVAESTASFS5&sort=1&dids=1249&bledit=1
 Redirect /givingtohoosday http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
 Redirect /libraries https://www.library.virginia.edu/hours
-Redirect /organization   http://static.lib.virginia.edu/directory/organization.html
 Redirect /site-search https://www.library.virginia.edu/search
 Redirect /sitesearch https://www.library.virginia.edu/search
-Redirect /staff  http://static.lib.virginia.edu/directory/
 Redirect /study-spaces http://uvalibrary.maps.arcgis.com/apps/Shortlist/index.html?appid=e6cb8c4cde61410f873bc780c38bd958
 Redirect /support https://www.library.virginia.edu/support-library
 Redirect /small https://small.library.virginia.edu

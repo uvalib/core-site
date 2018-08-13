@@ -9,7 +9,6 @@
 
   <link rel="lazy-import" group="app-data-uvalib-homepage" href="../bower_components/uvalib-page/uvalib-homepage.html">
   <link rel="lazy-import" group="app-data-uvalib-pre-services" href="../bower_components/uvalib-page/uvalib-pre-services.html">
-  <link rel="lazy-import" group="app-data-uvalib-services" href="../bower_components/uvalib-page/uvalib-services.html">
   <link rel="lazy-import" group="app-data-uvalib-ils-form" href="../bower_components/uvalib-elements/uvalib-ils-form.html">
   <link rel="lazy-import" group="app-data-uvalib-hourspage" href="../bower_components/uvalib-page/uvalib-hourspage.html">
   <link rel="lazy-import" group="app-data-uvalib-exhibitspage" href="../bower_components/uvalib-page/uvalib-exhibitspage.html">
@@ -20,12 +19,14 @@
   <link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-browse.html">
   <link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-search.html">
   <link rel="lazy-import" group="app-data-uvalib-search-box" href="../bower_components/uvalib-search-box/uvalib-search-box.html">
-  <link rel="lazy-import" group="app-data-uvalib-staff-dir" href="../bower_components/uvalib-page/uvalib-staff-dir.html">
   <link rel="lazy-import" group="app-data-uvalib-springshare" href="../bower_components/uvalib-springshare-form/uvalib-springshare-chat.html">
   <link rel="lazy-import" group="app-data-uvalib-template-rmc" href="../bower_components/uvalib-page/uvalib-template-rmc.html">
   <link rel="lazy-import" group="app-data-uvalib-image-header" href="../bower_components/uvalib-banner/uvalib-image-header.html">
-  <link rel="lazy-import" group="app-data-uvalib-staff-dir" href="../bower_components/uvalib-page/uvalib-staff-dir.html">
-  <link rel="lazy-import" group="app-data-uvalib-team-dir" href="../bower_components/uvalib-page/uvalib-team-dir.html">
+
+  <link rel="lazy-import" group="app-data-uvalib-services" href="../bower_components/uvalib-directory/uvalib-services.html">
+  <link rel="lazy-import" group="app-data-uvalib-staff" href="../bower_components/uvalib-directory/uvalib-staff.html">
+  <link rel="lazy-import" group="app-data-uvalib-teams" href="../bower_components/uvalib-directory/uvalib-teams.html">
+  <link rel="lazy-import" group="app-data-uvalib-areas" href="../bower_components/uvalib-directory/uvalib-areas.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -122,9 +123,6 @@
       }
 
       _redirects(path) {
-//        if (path == '/staff' || path.startsWith('/staff/')) {
-//          window.location.replace("https://static.lib.virginia.edu/directory/");
-//          return true;
         if (path == '/libraries' || path.startsWith('/libraries/')) {
           window.location.replace("/hours");
           return true;
@@ -253,6 +251,10 @@
       }
 
       _formatHTML(html) {
+
+        // temp hack
+        html = html.replace('<uvalib-staff-dir','<uvalib-staff');
+
         let template = document.createElement('template');
         template.innerHTML = html;
 
@@ -291,8 +293,6 @@
         //Get needed to lazy load any needed components
         if (template.content.querySelector('uvalib-homepage'))
           this.importLazyGroup('app-data-uvalib-homepage');
-        if (template.content.querySelector('uvalib-services'))
-          this.importLazyGroup('app-data-uvalib-services');
         if (template.content.querySelector('uvalib-pre-services'))
           this.importLazyGroup('app-data-uvalib-pre-services');
         if (template.content.querySelector('uvalib-ils-form'))
@@ -315,18 +315,20 @@
           this.importLazyGroup('app-data-uvalib-bookplates');
         if (template.content.querySelector('uvalib-search-box'))
           this.importLazyGroup('app-data-uvalib-search-box');
-        if (template.content.querySelector('uvalib-staff-dir'))
-          this.importLazyGroup('app-data-uvalib-staff-dir');
         if (template.content.querySelector('uvalib-springshare-chat'))
           this.importLazyGroup('app-data-uvalib-springshare');
         if (template.content.querySelector('uvalib-template-rmc'))
           this.importLazyGroup('app-data-uvalib-template-rmc');
         if (template.content.querySelector('uvalib-image-header'))
           this.importLazyGroup('app-data-uvalib-image-header');
-        if (template.content.querySelector('uvalib-staff-dir'))
-          this.importLazyGroup('app-data-uvalib-staff-dir');
-        if (template.content.querySelector('uvalib-team-dir'))
-          this.importLazyGroup('app-data-uvalib-team-dir');
+        if (template.content.querySelector('uvalib-staff'))
+          this.importLazyGroup('app-data-uvalib-staff');
+        if (template.content.querySelector('uvalib-teams'))
+          this.importLazyGroup('app-data-uvalib-teams');
+        if (template.content.querySelector('uvalib-areas'))
+          this.importLazyGroup('app-data-uvalib-areas');
+        if (template.content.querySelector('uvalib-services'))
+          this.importLazyGroup('app-data-uvalib-services');
 
         return template.content.querySelector('.content').innerHTML;
       }

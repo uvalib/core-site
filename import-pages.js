@@ -157,6 +157,7 @@ async function buildPages() {
   // build team pages
   var areasParsed = JSON.parse(areas);
   var staffParsed = JSON.parse(staff);
+  var teamsParsed = JSON.parse(teams);
   await makePages(teams, 'page-team-template.html',
                   team=>{return {
                     path:"/teams/"+team.uuid,
@@ -169,7 +170,14 @@ async function buildPages() {
                     path:"/areas/"+area.uuid
                   }},'area');
   // build staff pages
-  await makePages(staff, 'page-staff-template.html',
+  staffParsed.forEach(person=>person.teams=teamsParsed.filter(
+    function (team) {
+      return (team.groupMembers)?
+        team.groupMembers.indexOf(person.computingId)>-1:
+        false;
+    }
+  ));
+  await makePages(JSON.stringify(staffParsed), 'page-staff-template.html',
                   person=>{return {
                     parentPage:{id:1137},
                     path:"/staff/"+person.computingId,
@@ -178,6 +186,7 @@ async function buildPages() {
                       person.firstName+" "+person.lastName,
                     field_image:(person.field_image)?
                       person.field_image:""
+//                    teams:teams.filter(team => team.groupMembers.indexOf(person.computingId)>-1)
 // Todo, add generic image for staff missing photos
 //                      {url: "https://static.lib.virginia.edu/files/generic-bookplate.png", alt: "This is an empty placeholder photo"}
                   }},'staffprofile');
