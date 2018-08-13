@@ -255,6 +255,8 @@
         // temp hack
         html = html.replace('<uvalib-staff-dir','<uvalib-staff');
 
+        this._initLazyLoad(html);
+
         let template = document.createElement('template');
         template.innerHTML = html;
 
@@ -290,47 +292,49 @@
           //img.replaceWith(uvalibImg);
         });
 
-        //Get needed to lazy load any needed components
-        if (template.content.querySelector('uvalib-homepage'))
-          this.importLazyGroup('app-data-uvalib-homepage');
-        if (template.content.querySelector('uvalib-pre-services'))
-          this.importLazyGroup('app-data-uvalib-pre-services');
-        if (template.content.querySelector('uvalib-ils-form'))
-          this.importLazyGroup('app-data-uvalib-ils-form');
-        if (template.content.querySelector('uvalib-hourspage'))
-          this.importLazyGroup('app-data-uvalib-hourspage');
-        if (template.content.querySelector('uvalib-exhibitspage'))
-          this.importLazyGroup('app-data-uvalib-exhibitspage');
-        if (template.content.querySelector('uvalib-collectionspage'))
-          this.importLazyGroup('app-data-uvalib-collectionspage');
-        if (template.content.querySelector('paper-card'))
-          this.importLazyGroup('app-data-paper-card');
-        if (template.content.querySelector('uvalib-majorexhibitpage'))
-          this.importLazyGroup('app-data-uvalib-majorexhibitpage');
-        if (template.content.querySelector('uvalib-bookplate-list-items'))
-          this.importLazyGroup('app-data-uvalib-bookplates');
-        if (template.content.querySelector('uvalib-bookplate-browse'))
-          this.importLazyGroup('app-data-uvalib-bookplates');
-        if (template.content.querySelector('uvalib-bookplate-search'))
-          this.importLazyGroup('app-data-uvalib-bookplates');
-        if (template.content.querySelector('uvalib-search-box'))
-          this.importLazyGroup('app-data-uvalib-search-box');
-        if (template.content.querySelector('uvalib-springshare-chat'))
-          this.importLazyGroup('app-data-uvalib-springshare');
-        if (template.content.querySelector('uvalib-template-rmc'))
-          this.importLazyGroup('app-data-uvalib-template-rmc');
-        if (template.content.querySelector('uvalib-image-header'))
-          this.importLazyGroup('app-data-uvalib-image-header');
-        if (template.content.querySelector('uvalib-staff'))
-          this.importLazyGroup('app-data-uvalib-staff');
-        if (template.content.querySelector('uvalib-teams'))
-          this.importLazyGroup('app-data-uvalib-teams');
-        if (template.content.querySelector('uvalib-areas'))
-          this.importLazyGroup('app-data-uvalib-areas');
-        if (template.content.querySelector('uvalib-services'))
-          this.importLazyGroup('app-data-uvalib-services');
-
         return template.content.querySelector('.content').innerHTML;
+      }
+
+      async _initLazyLoad(html) {
+        //Get needed to lazy load any needed components
+        if (html.indexOf('<uvalib-homepage')>=0)
+          await this.importLazyGroup('app-data-uvalib-homepage');
+        if (html.indexOf('<uvalib-pre-services')>=0)
+          await this.importLazyGroup('app-data-uvalib-pre-services');
+        if (html.indexOf('<uvalib-ils-form')>=0)
+          await this.importLazyGroup('app-data-uvalib-ils-form');
+        if (html.indexOf('<uvalib-hourspage')>=0)
+          await this.importLazyGroup('app-data-uvalib-hourspage');
+        if (html.indexOf('<uvalib-exhibitspage')>=0)
+          await this.importLazyGroup('app-data-uvalib-exhibitspage');
+        if (html.indexOf('<uvalib-collectionspage')>=0)
+          await this.importLazyGroup('app-data-uvalib-collectionspage');
+        if (html.indexOf('<paper-card')>=0)
+          await this.importLazyGroup('app-data-paper-card');
+        if (html.indexOf('<uvalib-majorexhibitpage')>=0)
+          await this.importLazyGroup('app-data-uvalib-majorexhibitpage');
+        if (html.indexOf('<uvalib-bookplate-list-items')>=0)
+          await this.importLazyGroup('app-data-uvalib-bookplates');
+        if (html.indexOf('<uvalib-bookplate-browse')>=0)
+          await this.importLazyGroup('app-data-uvalib-bookplates');
+        if (html.indexOf('<uvalib-bookplate-search')>=0)
+          await this.importLazyGroup('app-data-uvalib-bookplates');
+        if (html.indexOf('<uvalib-search-box')>=0)
+          await this.importLazyGroup('app-data-uvalib-search-box');
+        if (html.indexOf('<uvalib-springshare-chat')>=0)
+          await this.importLazyGroup('app-data-uvalib-springshare');
+        if (html.indexOf('<uvalib-template-rmc')>=0)
+          await this.importLazyGroup('app-data-uvalib-template-rmc');
+        if (html.indexOf('<uvalib-image-header')>=0)
+          await this.importLazyGroup('app-data-uvalib-image-header');
+        if (html.indexOf('<uvalib-staff')>=0)
+          await this.importLazyGroup('app-data-uvalib-staff');
+        if (html.indexOf('<uvalib-teams')>=0)
+          await this.importLazyGroup('app-data-uvalib-teams');
+        if (html.indexOf('<uvalib-areas')>=0)
+          await this.importLazyGroup('app-data-uvalib-areas');
+        if (html.indexOf('<uvalib-services')>=0)
+          await this.importLazyGroup('app-data-uvalib-services');
       }
 
       _fetch(url, callback, attempts, isRaw) {
