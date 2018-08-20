@@ -265,7 +265,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           if (this.route.prefix==="/" && this.route.path==="") {
             this.$.content.innerHTML = html;
           } else {
-            this.$.content.innerHTML = "<h1 id='pagetitle' tabindex='-1'>"+title+"</h1>"+html;
+            if (html.indexOf("no-header")===-1)
+              this.$.content.innerHTML = "<h1 id='pagetitle' tabindex='-1'>"+title+"</h1>"+html;
+            else
+              this.$.content.innerHTML = html;
           }
         }
         // handle anchors
