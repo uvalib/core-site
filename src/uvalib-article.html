@@ -292,8 +292,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           setTimeout(function(){iFrameResize({log:true,checkOrigin:false}, this.shadowRoot.getElementById('ifrm'))}.bind(this),2000);
         }
         else if (title && html) {
-            if (html.indexOf("no-header")===-1 || this.route.prefix!='/' || this.route.path!='') {
+            if (html.indexOf("no-header")===-1 && (this.route.prefix!='/' || this.route.path!='')) {
               this._title = `<h1 id='pagetitle' tabindex='-1'>${title}</h1>`;
+            } else {
+              this._title = '';
             }
             this.$.content.innerHTML = html;
         }
