@@ -87,6 +87,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           margin-bottom: 0;
           padding-left: var(--uvalib-spacing-unit);
         }
+
+        #title {
+          width: 100%;
+          padding-left: var(--uvalib-spacing-unit);
+          padding-right: var(--uvalib-spacing-unit);
+        }
       </style>
     </custom-style>
 
@@ -101,6 +107,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         data="{{_routeData}}"></app-route>
 
     <div role="main" class="container" fade-in$="[[!loading]]" hidden$="[[failure]]" on-click-hash-link="_hashClick">
+
+      <div id="title" inner-h-t-m-l="[[_title]]"></div>
+
       <article>
         <div id="content" class="fade-in" on-click="_click"></div>
       </article>
@@ -175,7 +184,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               template: {
                 reflectToAttribute: true,
                 computed: '_getTemplate(article.template)'
-              }
+              },
+
+              _title: String
             });
 
       }
@@ -276,23 +287,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         if (this.article && this.article.iframe && this.article.path) {
           console.log("loading iframe: /data/pages"+this.article.path);
-          this.$.content.innerHTML = "<h1 id='pagetitle' tabindex='-1'>"+title+"</h1><iframe id='ifrm' src='https://static.lib.virginia.edu/drupalPages"+this.article.path+"' scrolling='no' frameBorder='0'></iframe>";
+          this._title = `<h1 id='pagetitle' tabindex='-1'>${title}</h1>`;
+          this.$.content.innerHTML = "<iframe id='ifrm' src='https://static.lib.virginia.edu/drupalPages"+this.article.path+"' scrolling='no' frameBorder='0'></iframe>";
           setTimeout(function(){iFrameResize({log:true,checkOrigin:false}, this.shadowRoot.getElementById('ifrm'))}.bind(this),2000);
         }
         else if (title && html) {
-          if (this.route.prefix==="/" && this.route.path==="") {
+            if (html.indexOf("no-header")===-1 || this.route.prefix!='/' || this.route.path!='') {
+              this._title = `<h1 id='pagetitle' tabindex='-1'>${title}</h1>`;
+            }
             this.$.content.innerHTML = html;
-          } else {
-            if (html.indexOf("no-header")===-1)
-              this.$.content.innerHTML = "<h1 id='pagetitle' tabindex='-1'>"+title+"</h1>"+html;
-            else
-              this.$.content.innerHTML = html;
-          }
         }
         // handle anchors
         this._handleAnchor();
 
-//        setTimeout(this.updateStyles.bind(this),2000);
       }
 
       _articleChanged(article) {
