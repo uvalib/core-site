@@ -8,7 +8,6 @@
 <dom-module id="app-data">
 
   <link rel="lazy-import" group="app-data-uvalib-homepage" href="../bower_components/uvalib-page/uvalib-homepage.html">
-  <link rel="lazy-import" group="app-data-uvalib-pre-services" href="../bower_components/uvalib-page/uvalib-pre-services.html">
   <link rel="lazy-import" group="app-data-uvalib-ils-form" href="../bower_components/uvalib-elements/uvalib-ils-form.html">
   <link rel="lazy-import" group="app-data-uvalib-hourspage" href="../bower_components/uvalib-page/uvalib-hourspage.html">
   <link rel="lazy-import" group="app-data-uvalib-exhibitspage" href="../bower_components/uvalib-page/uvalib-exhibitspage.html">
@@ -299,8 +298,6 @@
         //Get needed to lazy load any needed components
         if (html.indexOf('<uvalib-homepage')>=0)
           await this.importLazyGroup('app-data-uvalib-homepage');
-        if (html.indexOf('<uvalib-pre-services')>=0)
-          await this.importLazyGroup('app-data-uvalib-pre-services');
         if (html.indexOf('<uvalib-ils-form')>=0)
           await this.importLazyGroup('app-data-uvalib-ils-form');
         if (html.indexOf('<uvalib-hourspage')>=0)

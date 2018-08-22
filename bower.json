@@ -11,7 +11,8 @@
     "iron-pages": "polymerelements/iron-pages#^2.0.0",
     "uvalib-elements": "uvalib-components/uvalib-elements#master",
     "promise-polyfill": "^6.0.2",
-    "iframe-resizer": "davidjbradshaw/iframe-resizer#^3.5.16"
+    "iframe-resizer": "davidjbradshaw/iframe-resizer#^3.5.16",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#v1.2.4"
   },
   "devDependencies": {
     "web-component-tester": "^6.0.0"
@@ -19,9 +20,6 @@
   "resolutions": {
     "polymer": "^2.5.0",
     "lodash": "^4.17.5",
-    "webcomponentsjs": "^1.1.1",
-    "vaadin-element-mixin": "^2.0.0",
-    "vaadin-development-mode-detector": "^2.0.0",
-    "vaadin-usage-statistics": "^2.0.1"
+    "webcomponentsjs": "^v1.2.4"
   }
 }

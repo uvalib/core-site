@@ -26,7 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <template>
     <custom-style>
-      <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors uvalib-card-style">
+      <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors iron-flex-reverse uvalib-card-style">
 
         :host { display: block; @apply --layout-horizontal; @apply --layout-center-justified; }
 
@@ -93,6 +93,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           padding-left: var(--uvalib-spacing-unit);
           padding-right: var(--uvalib-spacing-unit);
         }
+
+        .two-column {
+          @apply(--layout-horizontal);
+          @apply(--layout-wrap);
+        }
+        .two-column.reverse {
+          @apply(--layout-horizontal-reverse);
+        }
+        .two-column div {
+          @apply(--layout-flex);
+          min-width: 400px;
+        }
       </style>
     </custom-style>
 
@@ -108,7 +120,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div role="main" class="container" fade-in$="[[!loading]]" hidden$="[[failure]]" on-click-hash-link="_hashClick">
 
-      <div id="title" inner-h-t-m-l="[[_title]]"></div>
+      <div id="title" hidden$="[[!_title]]" inner-h-t-m-l="[[_title]]"></div>
 
       <article>
         <div id="content" class="fade-in" on-click="_click"></div>
