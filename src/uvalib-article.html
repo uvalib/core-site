@@ -47,7 +47,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         aside { margin-left: 24px; width: 300px; }
 
-        app-side-bar, app-sub-nav { margin-top: calc(var(--uvalib-spacing-unit)*6.25); margin-bottom: 32px; }
+        app-side-bar, app-sub-nav { margin-bottom: 32px; }
+        :host([small-screen]) app-sidebar, :host([small-screen]) app-sub-nav { margin-left: var(--uvalib-spacing-unit); margin-right: var(--uvalib-spacing-unit);}
 
         iframe { width: 1px; min-width: 100%; height: 500px; }
 
