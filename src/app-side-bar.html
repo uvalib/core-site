@@ -30,20 +30,23 @@
         :host([super-duper]) paper-card { margin: 0; }
         :host([small-screen][super-duper]) { background-color: var(--uvalib-main-white); }
 
+        a:hover { text-decoration: none; }
+
         #content h3 { margin-bottom: calc(var(--uvalib-spacing-unit)/2); }
 
-        #content h4 { margin-bottom: calc(var(--uvalib-spacing-unit)/2); }
+        #content h4 { margin-bottom: calc(var(--uvalib-spacing-unit)/8); }
 
-        #content ul { list-style: none; margin-left: 0; }
+        #content ul { list-style: none; margin-left: 0; margin-top: 0; }
         #content ul li { font-size: 1.15em; text-indent: -1em; }
         #content li:first-child { padding-top: .4em; }
-        #content ul li::before {
-          font-family: uvalib-custom-icons;
-          content: "\f0da";
-          padding-right: .75em;
-          position: relative;
-          top: 0.1em;
-        }
+        /* #content ul li::after {
+        font-family: uvalib-custom-icons;
+        font-size: calc(var(--uvalib-main-font-size-unit)/1.05);
+        content: "\f0da";
+        padding-left: calc(var(--uvalib-main-font-size-unit)/2);
+        position: relative;
+        top: 0.1em;
+        } */
         #content ul li a {
           color: var(--uvalib-text-grey);
           display: inline;
