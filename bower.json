@@ -11,15 +11,13 @@
     "iron-pages": "polymerelements/iron-pages#^2.0.0",
     "uvalib-elements": "uvalib-components/uvalib-elements#master",
     "promise-polyfill": "^6.0.2",
-    "iframe-resizer": "davidjbradshaw/iframe-resizer#^3.5.16",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#v1.2.4"
+    "iframe-resizer": "davidjbradshaw/iframe-resizer#^3.5.16"
   },
   "devDependencies": {
     "web-component-tester": "^6.0.0"
   },
   "resolutions": {
     "polymer": "^2.5.0",
-    "lodash": "^4.17.5",
-    "webcomponentsjs": "^v1.2.4"
+    "lodash": "^4.17.5"
   }
 }
