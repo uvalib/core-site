@@ -28,6 +28,19 @@
       }
     }
   </script>
+  {{#libcalID}}
+  <script>
+    window.jsonldcb{{libcalID}} = function(data) {
+      var e = document.createElement("script");
+      e.type = "application/ld+json";
+      e.text = JSON.stringify(data);
+      document.body.appendChild(e);
+    };
+    var jsonld_{{libcalID}} = document.createElement("script");
+    jsonld_{{libcalID}}.setAttribute("src","https://api3.libcal.com/api_hours_grid.php?format=jsonld&iid=863&lid={{libcalID}}&callback=jsonldcb{{libcalID}}");
+    document.body.appendChild(jsonld_{{libcalID}});
+  </script>
+  {{/libcalID}}
 </head>
 
 <body>
