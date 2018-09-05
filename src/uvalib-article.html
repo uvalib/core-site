@@ -52,17 +52,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         iframe { width: 1px; min-width: 100%; height: 500px; }
 
-        /* SPECIAL TEMPLATE - omit h1 */
-        :host([type='exhibit']) #pagetitle, :host([type='bookplate']) #pagetitle, :host([type='library']) #pagetitle {display: none;}
-
-        /* omit h1 for alt templated pages */
-        :host([template]) #pagetitle {display: none;}
-
-        /* Bookplate Template */
-        :host([type='bookplate']) figure {
-
-        }
-
         uvalib-search-box {
           --uvalib-search-box-border: 2px solid var(--uvalib-secondary-lt-grey);
           --uvalib-background-search: var(--uvalib-main-jefferson-blue);
@@ -87,12 +76,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           margin-top: calc(var(--uvalib-spacing-unit)/2);
           margin-bottom: 0;
           padding-left: var(--uvalib-spacing-unit);
-        }
-
-        #title {
-          width: 100%;
-          padding-left: var(--uvalib-spacing-unit);
-          padding-right: var(--uvalib-spacing-unit);
         }
 
         .two-column {
@@ -120,8 +103,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         data="{{_routeData}}"></app-route>
 
     <div role="main" class="container" fade-in$="[[!loading]]" hidden$="[[failure]]" on-click-hash-link="_hashClick">
-
-      <div id="title" hidden$="[[!_title]]" inner-h-t-m-l="[[_title]]"></div>
 
       <article>
         <div id="content" class="fade-in" on-click="_click"></div>
@@ -199,7 +180,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 computed: '_getTemplate(article.template)'
               },
 
-              _title: String
+              title: {
+                type: String,
+                notify: true
+              }
             });
 
       }
@@ -300,21 +284,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         if (this.article && this.article.iframe && this.article.path) {
           console.log("loading iframe: /data/pages"+this.article.path);
-          this._title = `<h1 id='pagetitle' tabindex='-1'>${title}</h1>`;
+          this.title = (this._showTitle())? `<h1 id='pagetitle' tabindex='-1'>${title}</h1>`: null;
           this.$.content.innerHTML = "<iframe id='ifrm' src='https://static.lib.virginia.edu/drupalPages"+this.article.path+"' scrolling='no' frameBorder='0'></iframe>";
           setTimeout(function(){iFrameResize({log:true,checkOrigin:false}, this.shadowRoot.getElementById('ifrm'))}.bind(this),2000);
         }
         else if (title && html) {
             if (html.indexOf("no-header")===-1 && (this.route.prefix!='/' || this.route.path!='')) {
-              this._title = `<h1 id='pagetitle' tabindex='-1'>${title}</h1>`;
+              this.title = (this._showTitle())? `<h1 id='pagetitle' tabindex='-1'>${title}</h1>`: null;
             } else {
-              this._title = '';
+              this.title = null;
             }
             this.$.content.innerHTML = html;
         }
         // handle anchors
         this._handleAnchor();
+      }
 
+      _showTitle(){
+        return (this.type != 'exhibit' && this.type != 'bookplate' && this.type != 'library' && !this.template);
       }
 
       _articleChanged(article) {

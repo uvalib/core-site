@@ -58,6 +58,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         }
 
+        /* BREADCRUMBS */
+                #breadCrumbs { max-width: var(--uvalib-display-width-max); margin: 0 auto; }
+                #breadCrumbs ol {
+                    list-style: none;
+                    display: inline-block;
+                    padding-left: 1em;
+                    margin-top: .5em;
+                }
+                #breadCrumbs ol li { list-style: none; display: inline-block; }
+                #breadCrumbs li::after {
+                    font-family: uvalib-custom-icons;
+                    content: "\f105";
+                    position: relative;
+                    top: 0.1em;
+                    padding-left: .4em;
+                    padding-right: .25em;
+                }
+                #breadCrumbs ol li:last-child::after { content: none; }
+        /*END*/
+
+        /* Page Title */
+          #title {
+            max-width: var(--uvalib-display-width-max);
+            margin: 0 auto; 
+            width: 100%;
+            padding-left: var(--uvalib-spacing-unit);
+            padding-right: var(--uvalib-spacing-unit);
+          }
+        /*END*/
+
       </style>
     </custom-style>
 
@@ -95,8 +125,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div id="breadCrumbs" inner-h-t-m-l="[[_trail]]" hidden$="[[_isExhibit(article.type)]]"></div>
     </template>
 
+    <div id="title" hidden$="[[!title]]" inner-h-t-m-l="[[title]]"></div>
+
     <uvalib-article id="content"
           name="article"
+          title="{{title}}"
           route="{{subroute}}"
           category-name="{{categoryName}}"
           category="[[category]]"
