@@ -50,6 +50,10 @@ RewriteCond %{HTTP_USER_AGENT} !(bot|agent|spider|crawler|extractor) [NC]
 RewriteCond %{HTTP_USER_AGENT} !(Googlebot|bingbot|msnbot|facebookexternalhit|Facebot|Twitterbot|Google-Structured-Data-Testing-Tool) [NC]
 RewriteRule ^(.*)$ index.html [L]
 
+RewriteCond %{HTTP_USER_AGENT} !(bot|agent|spider|crawler|extractor) [NC]
+RewriteCond %{HTTP_USER_AGENT} !(Googlebot|bingbot|msnbot|facebookexternalhit|Facebot|Twitterbot|Google-Structured-Data-Testing-Tool) [NC]
+RewriteRule "^libraries/.*" hours
+
 Header set Access-Control-Allow-Origin "*"
 
 Redirect /civilwarvirginia http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia
@@ -57,7 +61,6 @@ Redirect /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid
 Redirect /give https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=19305&bledit=1&sort=1&dids=1391.1394.1393.1392.287&appealcode=NALDWEB
 Redirect /givefaulkner https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=684&cid=1509&appealcode=KUVAESTASFS5&sort=1&dids=1249&bledit=1
 Redirect /givingtohoosday http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
-Redirect /libraries https://www.library.virginia.edu/hours
 Redirect /site-search https://www.library.virginia.edu/search
 Redirect /sitesearch https://www.library.virginia.edu/search
 Redirect /study-spaces http://uvalibrary.maps.arcgis.com/apps/Shortlist/index.html?appid=e6cb8c4cde61410f873bc780c38bd958
