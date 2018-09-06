@@ -27,6 +27,8 @@
   <link rel="lazy-import" group="app-data-uvalib-teams" href="../bower_components/uvalib-directory/uvalib-teams.html">
   <link rel="lazy-import" group="app-data-uvalib-areas" href="../bower_components/uvalib-directory/uvalib-areas.html">
 
+  <link rel="lazy-import" group="app-data-uvalib-events-ui" href="../bower_components/uvalib-events-ui/uvalib-events-ui.html">
+
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
   </template>
@@ -332,6 +334,8 @@
           await this.importLazyGroup('app-data-uvalib-areas');
         if (html.indexOf('<uvalib-services')>=0)
           await this.importLazyGroup('app-data-uvalib-services');
+        if (html.indexOf('<uvalib-events-ui')>=0)
+          await this.importLazyGroup('app-data-uvalib-events-ui');
       }
 
       _fetch(url, callback, attempts, isRaw) {
