@@ -124,32 +124,35 @@
       }
 
       _redirects(path) {
-        if (path == '/libraries' || path.startsWith('/libraries/')) {
+        if (path == '/libraries' || path.lastIndexOf('/libraries/',0)===0) {
           window.location.replace("/hours");
           return true;
-        } else if (path == '/site-search' || path.startsWith('/site-search/')) {
+        } else if (path == '/site-search' || path.lastIndexOf('/site-search/',0)===0) {
           window.location.replace("/search");
           return true;
-        } else if (path == '/give' || path.startsWith('/give/')) {
+        } else if (path == '/give' || path.lastIndexOf('/give/',0)===0) {
           window.location.replace("https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=19305&bledit=1&sort=1&dids=1391.1394.1393.1392.287&appealcode=NALDWEB");
           return true;
-        } else if (path == '/givefaulkner' || path.startsWith('/givefaulkner/')) {
+        } else if (path == '/givefaulkner' || path.lastIndexOf('/givefaulkner/',0)===0) {
           window.location.replace("https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=684&cid=1509&appealcode=KUVAESTASFS5&sort=1&dids=1249&bledit=1");
           return true;
-        } else if (path == '/givingtohoosday' || path.startsWith('/givingtohoosday/')) {
+        } else if (path == '/givingtohoosday' || path.lastIndexOf('/givingtohoosday/',0)===0) {
           window.location.replace('http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP');
           return true;
-        } else if (path == '/study-spaces' || path.startsWith('/study-spaces/')) {
+        } else if (path == '/study-spaces' || path.lastIndexOf('/study-spaces/',0)===0) {
           window.location.replace('http://uvalibrary.maps.arcgis.com/apps/Shortlist/index.html?appid=e6cb8c4cde61410f873bc780c38bd958');
           return true;
-        } else if (path == '/support' || path.startsWith('/support/')) {
+        } else if (path == '/support' || path.lastIndexOf('/support/',0)===0) {
           window.location.replace("/support-library");
           return true;
-        } else if (path == '/small' || path.startsWith('/support/')) {
+        } else if (path == '/small' || path.lastIndexOf('/small/',0)===0) {
           window.location.replace("https://small.library.virginia.edu/");
           return true;
-        } else if (path == '/data/pages' || path.startsWith('/data/pages')) {
+        } else if (path == '/data/pages' || path.lastIndexOf('/data/pages/',0)===0) {
           window.location.replace(path.replace('/data/pages/','/'));
+          return true;
+        } else if (path.lastIndexOf('/files/',0)===0) {
+          window.location.replace("https://static.lib.virginia.edu"+path.replace('/files/','/uvalibappfiles/'));
           return true;
         }
         return false;
