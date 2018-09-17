@@ -21,13 +21,12 @@
   <link rel="lazy-import" group="app-data-uvalib-springshare" href="../bower_components/uvalib-springshare-form/uvalib-springshare-chat.html">
   <link rel="lazy-import" group="app-data-uvalib-template-rmc" href="../bower_components/uvalib-page/uvalib-template-rmc.html">
   <link rel="lazy-import" group="app-data-uvalib-image-header" href="../bower_components/uvalib-banner/uvalib-image-header.html">
-
   <link rel="lazy-import" group="app-data-uvalib-services" href="../bower_components/uvalib-directory/uvalib-services.html">
   <link rel="lazy-import" group="app-data-uvalib-staff" href="../bower_components/uvalib-directory/uvalib-staff.html">
   <link rel="lazy-import" group="app-data-uvalib-teams" href="../bower_components/uvalib-directory/uvalib-teams.html">
   <link rel="lazy-import" group="app-data-uvalib-areas" href="../bower_components/uvalib-directory/uvalib-areas.html">
-
   <link rel="lazy-import" group="app-data-uvalib-events-ui" href="../bower_components/uvalib-events-ui/uvalib-events-ui.html">
+  <link rel="lazy-import" group="app-data-uvalib-news" href="../bower_components/uvalib-news/uvalib-news.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -339,6 +338,8 @@
           await this.importLazyGroup('app-data-uvalib-services');
         if (html.indexOf('<uvalib-events-ui')>=0)
           await this.importLazyGroup('app-data-uvalib-events-ui');
+        if (html.indexOf('<uvalib-news')>=0)
+          await this.importLazyGroup('app-data-uvalib-news');
       }
 
       _fetch(url, callback, attempts, isRaw) {
