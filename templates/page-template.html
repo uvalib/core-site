@@ -1,6 +1,9 @@
 <html lang="en">
 
 <head>
+  {{#noCrawl}}
+  <meta name="robots" content="noindex" />
+  {{/noCrawl}}
   <title>{{title}}</title>
   <meta property="og:type" content="article">
   <meta property="og:title" content="{{title}}">
