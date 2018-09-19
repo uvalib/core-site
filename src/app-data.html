@@ -271,6 +271,8 @@
 
         // Use figure where we have the content to support it
         template.content.querySelectorAll('img').forEach( (img)=>{
+            // if no-figure attribute is present avoid rewrite
+            if (img.hasAttribute('no-figure')) return;
             // make sure that we are not already looking at a figure
             if (img.parentElement.nodeName.toLowerCase() === 'figure') return;
             // see if image has data-caption attribute and turn into a figure it so
@@ -342,7 +344,7 @@
         if (html.indexOf('<uvalib-news')>=0)
           await this.importLazyGroup('app-data-uvalib-news');
         if (html.indexOf('<uvalib-staff-card')>=0)
-          await this.importLazyGroup('app-data-uvalib-staff-card');  
+          await this.importLazyGroup('app-data-uvalib-staff-card');
       }
 
       _fetch(url, callback, attempts, isRaw) {
