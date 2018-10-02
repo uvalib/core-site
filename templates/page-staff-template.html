@@ -60,10 +60,8 @@
   <div class="content">
     <div class="layout horizontal wrap">
       {{#field_image}}
-      <div class="flex-1" style="min-width: 200px;">
-        <figure foo>
-          <img src="{{{field_image.url}}}" alt="{{{field_image.alt}}}" />
-        </figure>
+      <div class="flex-1 layout horizontal" style="min-width: 200px;">
+        <iron-image class="flex" sizing="cover" style="margin: 0 20px 0 20px;" src="{{{field_image.url}}}" alt="{{{field_image.alt}}}"></iron-image>
       </div>
       {{/field_image}}
       <div class="flex-2">
