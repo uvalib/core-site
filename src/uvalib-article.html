@@ -286,7 +286,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         if (this.article && this.article.iframe && this.article.path) {
           console.log("loading iframe: /data/pages"+this.article.path);
           this.title = (this._showTitle())? `<h1 id='pagetitle' tabindex='-1'>${title}</h1>`: null;
-          this.$.content.innerHTML = "<iframe id='ifrm' src='https://static.lib.virginia.edu/drupalPages"+this.article.path+"' scrolling='no' frameBorder='0'></iframe>";
+          this.$.content.innerHTML = "<iframe id='ifrm' src='https://static.lib.virginia.edu/drupalPages"+this.article.path+window.location.search+"' scrolling='no' frameBorder='0'></iframe>";
           setTimeout(function(){iFrameResize({log:true,checkOrigin:false}, this.shadowRoot.getElementById('ifrm'))}.bind(this),2000);
         }
         else if (title && html) {
