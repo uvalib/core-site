@@ -20,6 +20,7 @@
   <link rel="lazy-import" group="app-data-uvalib-search-box" href="../bower_components/uvalib-search-box/uvalib-search-box.html">
   <link rel="lazy-import" group="app-data-uvalib-springshare" href="../bower_components/uvalib-springshare-form/uvalib-springshare-chat.html">
   <link rel="lazy-import" group="app-data-uvalib-template-rmc" href="../bower_components/uvalib-page/uvalib-template-rmc.html">
+  <link rel="lazy-import" group="app-data-uvalib-reno" href="../bower_components/uvalib-page/uvalib-reno.html">
   <link rel="lazy-import" group="app-data-uvalib-image-header" href="../bower_components/uvalib-banner/uvalib-image-header.html">
   <link rel="lazy-import" group="app-data-uvalib-services" href="../bower_components/uvalib-directory/uvalib-services.html">
   <link rel="lazy-import" group="app-data-uvalib-staff" href="../bower_components/uvalib-directory/uvalib-staff.html">
@@ -329,6 +330,8 @@
           await this.importLazyGroup('app-data-uvalib-springshare');
         if (html.indexOf('<uvalib-template-rmc')>=0)
           await this.importLazyGroup('app-data-uvalib-template-rmc');
+        if (html.indexOf('<uvalib-reno')>=0)
+          await this.importLazyGroup('app-data-uvalib-reno');
         if (html.indexOf('<uvalib-image-header')>=0)
           await this.importLazyGroup('app-data-uvalib-image-header');
         if (html.indexOf('<uvalib-staff')>=0)
