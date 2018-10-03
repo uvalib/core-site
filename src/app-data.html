@@ -29,6 +29,7 @@
   <link rel="lazy-import" group="app-data-uvalib-events-ui" href="../bower_components/uvalib-events-ui/uvalib-events-ui.html">
   <link rel="lazy-import" group="app-data-uvalib-news" href="../bower_components/uvalib-news/uvalib-news.html">
   <link rel="lazy-import" group="app-data-uvalib-staff-card" href="../bower_components/uvalib-directory/uvalib-staff-card.html">
+  <link rel="lazy-import" group="app-data-iron-image" href="../bower_components/iron-image/iron-image.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -348,6 +349,8 @@
           await this.importLazyGroup('app-data-uvalib-news');
         if (html.indexOf('<uvalib-staff-card')>=0)
           await this.importLazyGroup('app-data-uvalib-staff-card');
+        if (html.indexOf('<iron-image')>=0)
+          await this.importLazyGroup('app-data-iron-image');
       }
 
       _fetch(url, callback, attempts, isRaw) {
