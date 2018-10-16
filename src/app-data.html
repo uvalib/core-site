@@ -129,6 +129,9 @@
         if (path == '/libraries' || path.lastIndexOf('/libraries/',0)===0) {
           window.location.replace("/hours");
           return true;
+        } else if (path == '/reno' || path.lastIndexOf('/reno/',0)===0) {
+          window.location.replace("/renovation");
+          return true;
         } else if (path == '/site-search' || path.lastIndexOf('/site-search/',0)===0) {
           window.location.replace("/search");
           return true;
