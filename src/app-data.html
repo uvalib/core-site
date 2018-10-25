@@ -129,6 +129,9 @@
         if (path == '/libraries' || path.lastIndexOf('/libraries/',0)===0) {
           window.location.replace("/hours");
           return true;
+        } else if (path == '/history-of-the-university-of-virginia-library' || path.lastIndexOf('/history-of-the-university-of-virginia-library/',0)===0) {
+          window.location.replace("/renovation/history-of-the-project");
+          return true;
         } else if (path == '/reno' || path.lastIndexOf('/reno/',0)===0) {
           window.location.replace("/renovation");
           return true;
