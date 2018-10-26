@@ -8,8 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/lazy-imports/lazy-imports-mixin.html">
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/uvalib-theme/uvalib-ui-element.html">
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-theme.html">
 <link rel="import" href="../bower_components/app-layout/helpers/helpers.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
@@ -81,7 +80,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         /* Page Title */
           #title {
             max-width: var(--uvalib-display-width-max);
-            margin: 0 auto; 
+            margin: 0 auto;
             width: 100%;
             padding-left: var(--uvalib-spacing-unit);
             padding-right: var(--uvalib-spacing-unit);
@@ -146,72 +145,72 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
 
-    class UvaLibApp extends Polymer.LazyImportsMixin(Polymer.Element) {
+    class UvaLibApp extends UvalibUiElement {
 
       static get is() { return 'uvalib-app'; }
 
-      static get properties() { return {
+      static get properties() {
 
-        appTitle: String,
+        return Object.assign(super.properties,
+            {
+              appTitle: String,
 
-        page: {
-          type: String,
-//          observer: '_pageChanged'
-        },
+              page: {
+                type: String
+              },
 
-        referrer: String,
+              referrer: String,
 
-        routeData: Object,
+              routeData: Object,
 
-        breadCrumbs: Array,
+              breadCrumbs: Array,
 
-        categories: Array,
+              categories: Array,
 
-        categoryName: String,
+              categoryName: String,
 
-        category: Object,
+              category: Object,
 
-        articleId: String,
+              articleId: String,
 
-        article: Object,
+              article: Object,
 
-        articleHeadline: {
-          type: String,
-          value: ''
-        },
+              articleHeadline: {
+                type: String,
+                value: ''
+              },
 
-        offline: {
-          type: Boolean,
-          value: false,
-          readOnly: true
-        },
+              offline: {
+                type: Boolean,
+                value: false,
+                readOnly: true
+              },
 
-        failure: Boolean,
+              failure: Boolean,
 
-        notFound: Boolean,
+              notFound: Boolean,
 
-        _trail: String,
+              _trail: String,
 
-        errorCode: {
-          type: String,
-          computed: '_getErrorCode(notFound)',
-          notify: true
-        },
+              errorCode: {
+                type: String,
+                computed: '_getErrorCode(notFound)',
+                notify: true
+              },
 
-        route: {
-          type: Object,
-          observer: '_trackReferrer'
-        },
+              route: {
+                type: Object,
+                observer: '_trackReferrer'
+              },
 
-        _events: {
-          type: Object,
-          notify: true
-        }
-      }}
+              _events: {
+                type: Object,
+                notify: true
+              }
+            })
+      }
 
       static get observers() { return [
-//        '_trackReferrer(route)',
-//        '_notFound(notFound)',
         '_routePageChanged(routeData.page, isAttached)',
         '_updateArticleHeadline(article.headline)',
         '_updateDocumentTitle(page, category.title, articleHeadline, appTitle)',
@@ -225,7 +224,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.addEventListener('jumpToNavigation', this._jumpToNavigation);
 //        this.addEventListener('jumpToHeader', this._jumpToHeader);
 //        this.addEventListener('jumpToFooter', this._jumpToFooter);
-
         this.addEventListener('uvalib-analytics-event', this._trackEvent);
 
         super.ready();
