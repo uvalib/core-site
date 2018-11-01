@@ -56,6 +56,7 @@ RewriteRule "^libraries/.*" hours
 
 Header set Access-Control-Allow-Origin "*"
 
+Redirect /wp-content/themes/libweb/bower_components/webcomponentsjs https://www.library.virginia.edu/bower_components/webcomponentsjs
 Redirect /civilwarvirginia http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia
 Redirect /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid=40437&sid=297543
 Redirect /give https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=19305&bledit=1&sort=1&dids=1391.1394.1393.1392.287&appealcode=NALDWEB
