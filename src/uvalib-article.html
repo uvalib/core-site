@@ -297,7 +297,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.$.content.innerHTML = html;
         }
         // handle anchors
-        this._handleAnchor();
+        if (html)
+          setTimeout( this._handleAnchor.bind(this), 800);
       }
 
       _showTitle(){
