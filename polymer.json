@@ -31,6 +31,7 @@
     "bower_components/lg-fullscreen.js/dist/lg-fullscreen.min.js",
     "bower_components/jsonpath-plus/lib/jsonpath-min.js",
     "bower_components/lightgallery.js/dist/fonts/*",
+    "bower_components/uvalib-theme/uvalib-aeon-styles.html",
     "fonts/*"
   ],
   "lint": {
