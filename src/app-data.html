@@ -159,6 +159,9 @@
         } else if (path == '/data/pages' || path.lastIndexOf('/data/pages/',0)===0) {
           window.location.replace(path.replace('/data/pages/','/'));
           return true;
+        } else if (path == '/renovation/about' || path.lastIndexOf('/renovation/about/',0)===0) {
+          window.location.replace('/renovation');
+          return true;
         } else if (path.lastIndexOf('/files/',0)===0) {
           window.location.replace("https://static.lib.virginia.edu"+path.replace('/files/','/uvalibappfiles/'));
           return true;
