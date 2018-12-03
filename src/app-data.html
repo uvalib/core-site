@@ -282,6 +282,13 @@
 
         // Use figure where we have the content to support it
         template.content.querySelectorAll('img').forEach( (img)=>{
+
+            // use https://static.lib.virginia.edu/uvalibappfiles/ as the base for serving images
+            var imgSrc = img.getAttribute('src');
+            if (imgSrc && imgSrc.indexOf('/files/')==0) {
+              img.setAttribute('src','https://static.lib.virginia.edu/uvalibappfiles'+imgSrc.replace(/^\/files/,''));
+            }
+
             // if no-figure attribute is present avoid rewrite
             if (img.hasAttribute('no-figure')) return;
             // make sure that we are not already looking at a figure
