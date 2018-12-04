@@ -56,7 +56,7 @@ module.exports = {
     },
     {
       urlPattern: /^https:\/\/static\.lib\.virginia\.edu\/.*/,
-      handler: 'fastest',
+      handler: 'networkFirst',
       options: {
         cache: {
           maxEntries: 200,
