@@ -77,6 +77,7 @@ async function makePages(body,template,defaultFunc,type){
 
       if (page.body) {
         const $ = cheerio.load(page.body);
+/*
         $('[href]').each(function(i,elem) {
           var attr = $(this).attr('href');
           if (match = attr.match(/^https?:\/\/(www\.)?library\.virginia\.edu(.*\.pdf)$/i) ) {
@@ -98,7 +99,7 @@ async function makePages(body,template,defaultFunc,type){
             $(this).attr('src', "https://www.library.virginia.edu"+attr);
           }
         });
-
+*/
         // Use figure where we have the content to support it
         $('img').each(function(i,img){
           // make sure that we are not already looking at a figure
@@ -116,6 +117,7 @@ async function makePages(body,template,defaultFunc,type){
         });
 
         page.head = $('head').html();
+        page.body = $('body').html();
       }
 
 
