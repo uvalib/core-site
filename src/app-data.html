@@ -162,6 +162,9 @@
         } else if (path == '/renovation/about' || path.lastIndexOf('/renovation/about/',0)===0) {
           window.location.replace('/renovation');
           return true;
+        } else if (path == '/libra/landing' || path.lastIndexOf('/libra/landing/',0)===0) {
+          window.location.replace('/libra');
+          return true;
         } else if (path.lastIndexOf('/files/',0)===0) {
           window.location.replace("https://static.lib.virginia.edu"+path.replace('/files/','/uvalibappfiles/'));
           return true;
