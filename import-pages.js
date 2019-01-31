@@ -77,6 +77,12 @@ async function makePages(body,template,defaultFunc,type){
 
       if (page.body) {
         const $ = cheerio.load(page.body);
+        $('[href]').each(function(i,elem){
+          var href = $(this).attr('href');
+          if (href.match(/^#.*$/)) {
+            $(this).attr('href', page.path+href);
+          }
+        });
 /*
         $('[href]').each(function(i,elem) {
           var attr = $(this).attr('href');
