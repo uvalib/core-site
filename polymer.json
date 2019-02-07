@@ -15,6 +15,7 @@
     ".htaccess",
     "robots.txt",
     "manifest.json",
+    "sitemap.txt",
     "data/pages.json",
     "bower_components/webcomponentsjs/*",
     "bower_components/uvalib-header/uvalib-header-lazyload.html",

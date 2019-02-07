@@ -204,6 +204,7 @@ async function buildPages() {
   console.log('making sitemap now');
   makeDir("data").then(path => {
     fs.writeFile("data/pages.json", JSON.stringify(sitemap), function(){});
+    fs.writeFile("sitemap.txt", sitemap.map(p=>'https://www.library.virginia.edu'+p.path).join('\n'), function(){});
   });
 };
 
