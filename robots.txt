@@ -1,3 +1,4 @@
 User-agent: *
+Sitemap: https://www.library.virginia.edu/sitemap.txt
 Disallow: /data/pages/
 Disallow: /rmc/
