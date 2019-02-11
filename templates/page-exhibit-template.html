@@ -33,6 +33,13 @@
 
 <body>
   <div class="content">
+    <style>
+    uvalib-majorexhibitpage {
+      {{#styleHeader}}
+      --exhibit-header-color: {{{styleHeader}}};
+      {{/styleHeader}}
+    }
+    </style>
     <uvalib-majorexhibitpage library-id="{{library.uuid}}" exhibit-slug="{{urlSlug}}" start-date="{{{startDate}}}" end-date="{{{endDate}}}">
       <iron-image slot="main-image" src="{{{image.url}}}" alt="{{{image.alt}}}"></iron-image>
       <h1 slot="header-title"><span>{{{title}}}</span></h1>
