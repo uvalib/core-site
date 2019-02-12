@@ -35,9 +35,10 @@
   <div class="content">
     <style>
     uvalib-majorexhibitpage {
-      {{#styleHeader}}
-      --exhibit-header-color: {{{styleHeader}}};
-      {{/styleHeader}}
+      {{#styleHeaderColor}}--exhibit-header-color: {{{styleHeaderColor}}};{{/styleHeaderColor}}
+      {{#styleHeaderTextColor}}--exhibit-header-text-color: {{{styleHeaderTextColor}}};{{/styleHeaderTextColor}}
+      {{#styleNewsItemSourceTextColor}}--exhibit-news-item-source-text-color: {{{styleNewsItemSourceTextColor}}};{{/styleNewsItemSourceTextColor}}
+      {{#stylePreFooterBackColor}}--exhibit-pre-footer-back-color: {{{stylePreFooterBackColor}}};{{/stylePreFooterBackColor}}
     }
     </style>
     <uvalib-majorexhibitpage library-id="{{library.uuid}}" exhibit-slug="{{urlSlug}}" start-date="{{{startDate}}}" end-date="{{{endDate}}}">
