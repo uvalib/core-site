@@ -159,7 +159,7 @@ async function buildPages() {
                     bookplateImage:{url:(page.bookplateImage)?page.bookplateImage.url:"https://static.lib.virginia.edu/files/generic-bookplate.png",alt:"University of Virginia Library Bookplate image"},
                     path:"/bookplates/"+page.fundID
                   }},'bookplate');
-  var teams = await request('https://uvalib-api.firebaseio.com/teams.json');
+  teams = await request('https://uvalib-api.firebaseio.com/teams.json');
   var areas = await request('https://uvalib-api.firebaseio.com/areas.json');
   var staff = await request('https://uvalib-api.firebaseio.com/people.json');
   // build team pages
@@ -178,13 +178,10 @@ async function buildPages() {
                     path:"/areas/"+area.uuid
                   }},'area');
   // build staff pages
-  staffParsed.forEach(person=>person.teams=teamsParsed.filter(
-    function (team) {
-      return (team.groupMembers)?
-        team.groupMembers.indexOf(person.computingId)>-1:
-        false;
-    }
-  ));
+  staffParsed.forEach(person=>person.teams=(person.teams)? teamsParsed.filter(
+    team=>person.teams.indexOf(team.uuid)>-1
+  ):[] );
+
   await makePages(JSON.stringify(staffParsed), 'page-staff-template.html',
                   person=>{return {
                     parentPage:{id:1137},
@@ -194,9 +191,6 @@ async function buildPages() {
                       person.firstName+" "+person.lastName,
                     field_image:(person.field_image)?
                       person.field_image:""
-//                    teams:teams.filter(team => team.groupMembers.indexOf(person.computingId)>-1)
-// Todo, add generic image for staff missing photos
-//                      {url: "https://static.lib.virginia.edu/files/generic-bookplate.png", alt: "This is an empty placeholder photo"}
                   }},'staffprofile');
   // build area pages
   //  https://uvalib-api.firebaseio.com/areas
