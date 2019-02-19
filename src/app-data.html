@@ -30,6 +30,8 @@
   <link rel="lazy-import" group="app-data-uvalib-news" href="../bower_components/uvalib-news/uvalib-news.html">
   <link rel="lazy-import" group="app-data-uvalib-staff-card" href="../bower_components/uvalib-directory/uvalib-staff-card.html">
   <link rel="lazy-import" group="app-data-iron-image" href="../bower_components/iron-image/iron-image.html">
+  <link rel="lazy-import" group="app-data-uva-accordion" href="../bower_components/uva-accordion/uva-accordion.html">
+  <link rel="lazy-import" group="app-data-uvalib-form-builder" href="../bower_components/uvalib-form-builder/uvalib-form-builder.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -334,6 +336,10 @@
           await this.importLazyGroup('app-data-uvalib-staff-card');
         if (html.indexOf('<iron-image')>=0)
           await this.importLazyGroup('app-data-iron-image');
+        if (html.indexOf('<uvalib-form-builder')>=0)
+          await this.importLazyGroup('app-data-uvalib-form-builder');
+        if (this.path.lastIndexOf('/staff/',0)===0 || html.indexOf('<uva-accordion')>=0)
+          await this.importLazyGroup('app-data-uva-accordion');
       }
 
       _fetch(url, callback, attempts, isRaw) {

@@ -302,7 +302,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _showTitle(){
-        return (this.type != 'exhibit' && this.type != 'bookplate' && this.type != 'library' && !this.template);
+        return (this.type != 'exhibit' && this.type != 'bookplate' && this.type != 'library' && this.type !='staffprofile' && !this.template);
       }
 
       _articleChanged(article) {

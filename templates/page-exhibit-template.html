@@ -2,6 +2,7 @@
 
 <head>
   <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:type" content="article">
   <meta property="og:title" content="{{title}}">
   <meta property="og:site_name" content="UVA Library">
@@ -32,6 +33,14 @@
 
 <body>
   <div class="content">
+    <style>
+    uvalib-majorexhibitpage {
+      {{#styleHeaderColor}}--exhibit-header-color: {{{styleHeaderColor}}};{{/styleHeaderColor}}
+      {{#styleHeaderTextColor}}--exhibit-header-text-color: {{{styleHeaderTextColor}}};{{/styleHeaderTextColor}}
+      {{#styleNewsItemSourceTextColor}}--exhibit-news-item-source-text-color: {{{styleNewsItemSourceTextColor}}};{{/styleNewsItemSourceTextColor}}
+      {{#stylePreFooterBackColor}}--exhibit-pre-footer-back-color: {{{stylePreFooterBackColor}}};{{/stylePreFooterBackColor}}
+    }
+    </style>
     <uvalib-majorexhibitpage library-id="{{library.uuid}}" exhibit-slug="{{urlSlug}}" start-date="{{{startDate}}}" end-date="{{{endDate}}}">
       <iron-image slot="main-image" src="{{{image.url}}}" alt="{{{image.alt}}}"></iron-image>
       <h1 slot="header-title"><span>{{{title}}}</span></h1>
