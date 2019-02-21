@@ -2,7 +2,6 @@
 
 <head>
   <title>{{title}}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:type" content="article">
   <meta property="og:title" content="{{title}}">
   <meta property="og:site_name" content="UVA Library">
@@ -59,49 +58,150 @@
 
 <body>
   <div class="content">
-    <div class="layout horizontal wrap">
-      {{#field_image}}
-      <div class="flex-1 layout horizontal" style="min-width: 200px;">
-        <iron-image class="flex" sizing="cover" style="max-height: 450px; margin: 0 20px 0 20px;" src="{{{field_image.url}}}" alt="{{{field_image.alt}}}"></iron-image>
-      </div>
-      {{/field_image}}
-      <div class="flex-2">
-        <div class="layout vertical center-justified">
-          {{#nickName}}
-          <h2>{{{nickName}}}</h2>
-          {{/nickName}}
-          <p class="takeNoticeSize">{{{jobTitle}}}</p>
-          {{#teams}}
-            <a href="/teams/{{uuid}}">{{title}}</a><br />
-          {{/teams}}
-          {{{body}}}
-          <div class="uva-padding uva-margin-top-bottom" style="background-color: #DADADA;">
-            <h4 class="uva-margin-bottom" style="margin-top: 0;">Contact Information</h4>
-            <a href="mailto:{{{email}}}">{{{email}}}</a>
-            <p>{{{phone}}}</p>
-            <p><b>{{{officeLocation}}}</b></p>
-            <p><b>Mailing Address</b><br />
-              {{{address}}}
-            </p>
-            {{#twitter}}
-              <div id="twitter">
-                <a href="https://twitter.com/{{{twitter}}}"><iron-icon icon="twitter-square" aria-label="Twitter at"></iron-icon>{{{twitter}}}</a>
+      <div id="staff-bio-container">
+        <div class="spacer-row visibleAllButMobile"><!--spacer row--></div>
+        <div>
+          <div class="bio-quick-details"><!-- right rail fixed 538px -->
+            <div class="bio-image">
+              <!-- Photo -->
+              {{#field_image}}
+              <div>
+                <iron-image class="round" sizing="cover" src="{{{field_image.url}}}" alt="{{{field_image.alt}}}"></iron-image>
               </div>
+              {{/field_image}}
+              <!-- No photo -->
+              {{^field_image}}
+              <div>
+                <iron-image class="round" sizing="cover" src="https://static.lib.virginia.edu/files/no-bio-photo.png" alt="foo"></iron-image>
+              </div>
+              {{/field_image}}
+            </div>
+            <div class="display-name">{{displayName}}</div>
+            {{#nickName}}
+            <h2>{{{nickName}}}</h2>
+            {{/nickName}}
+            <p class="job-title takeNoticeSize">{{{jobTitle}}}</p>
+            <div class="bio-contact-info">
+              <p><span class="uvalib-icon-phone"></span>{{{phone}}}</p>
+              <p><span class="uvalib-icon-envelope-o"></span><a href="mailto:{{{email}}}">{{{email}}}</a></p>
+              <p><span class="uvalib-icon-map-marker"></span><b>Office:</b><br />{{{officeLocation}}}</p>
+              <p><b>Mailing Address:</b><br />
+                {{{address}}}<br>
+                Charlottesville, VA 22904
+              </p>
+            </div>
+            {{#teams}}<div class="bio-department"><h4>Department</h4><p>{{title}}</p></div>{{/teams}}
+            {{#languages}}<div class="bio-languages"><h4>Languages</h4><p>{{languages}}</p></div>{{/languages}}
+            {{#pronouns}}<div class="bio-pronouns"><h4>Pronouns</h4><p>{{pronouns}}</p></div>{{/pronouns}}
+            <!-- {{#guides}}<a href="{{guides}}"><paper-button raised>Schedule a Consultation</paper-button></a>{{/guides}}
+            {{^guides}}<a href=""><paper-button raised>Email me</paper-button></a>{{/guides}} -->
+          </div>
+          {{#bioWebLinks}}
+          <div class="bio-web-links visibleAllButMobile">
+            <h4>Find me on the web</h4>
+              {{#twitter}}
+                <a href="https://twitter.com/{{{twitter}}}" class="uvalib-icon-twitter-square"></a>
+              {{/twitter}}
+              {{#linkedin}}
+                <a href="https://www.linkedin.com/in/{{{linkedin}}}" class="uvalib-icon-linkedin-square"></a>
+              {{/linkedin}}
+              {{#site}}
+                <a href="{{site}}" class="uvalib-icon-o-globe"></a>
+              {{/site}}
+              {{#field_orcid_id}}
+                <a href="https://orcid.org/{{field_orcid_id}}">Orcid Id</a>
+              {{/field_orcid_id}}
+          </div>
+          {{/bioWebLinks}}
+        </div>
+        <div class="bio-full-details visibleAllButMobile">
+          <div slot="heading"><h3>About</h3></div>
+          <div slot="body">{{{body}}}</div>
+
+          {{#specialties.0}}
+            <div slot="heading"><h3>Subject speicalties</h3></div>
+            {{#specialties}}<div slot="body">{{value}}</div>{{/specialties}}
+          {{/specialties.0}}
+
+          {{#askMeAbout.0}}
+            <div slot="heading"><h3>Ask me about...</h3></div>
+            {{#askMeAbout}}<div slot="body">{{value}}</div>{{/askMeAbout}}
+          {{/askMeAbout.0}}
+
+          {{#profileOption}} <!-- possible to say profile and/or guides and/or CV? -->
+            <div slot="heading"><h3>Professional profile</h3></div>
+            <div slot="body">
+                {{#guides}}<a href="{{guides}}">My research guides</a><br>{{/guides}}
+                {{#cv}}<a href="{{cv}}">My curriculum vitae (CV)</a><br>{{/cv}}
+                {{{profile}}}
+            </div>
+          {{/profileOption}}
+
+          {{#teams}}
+            <div slot="heading"><h3>About my department</h3></div>
+            <div slot="body">{{{body}}}</div>
+          {{/teams}}
+        </div>
+
+        <div class="bio-full-details visibleMobile"> <!--flexible body section-->
+          <uva-accordion>
+            <uva-accordion-item opened heading-level="2">
+              <div slot="heading">About</div>
+              <div slot="body">{{{body}}}</div>
+            </uva-accordion-item>
+
+            {{#specialties.0}}
+            <uva-accordion-item heading-level="2">
+              <div slot="heading">Subject speicalties</div>
+              {{#specialties}}<div slot="body">{{value}}</div>{{/specialties}}
+            </uva-accordion-item>
+            {{/specialties.0}}
+
+            {{#askMeAbout.0}}
+            <uva-accordion-item heading-level="2">
+              <div slot="heading">Ask me about...</div>
+              {{#askMeAbout}}<div slot="body">{{value}}</div>{{/askMeAbout}}
+            </uva-accordion-item>
+            {{/askMeAbout.0}}
+
+            {{#profileOption}} <!-- possible to say profile and/or guides and/or CV? -->
+            <uva-accordion-item heading-level="2">
+              <div slot="heading">Professional profile</div>
+              <div slot="body">
+                  {{#guides}}<a href="{{guides}}">My research guides</a><br>{{/guides}}
+                  {{#cv}}<a href="{{cv}}">My curriculum vitae (CV)</a><br>{{/cv}}
+                  {{{profile}}}
+              </div>
+            </uva-accordion-item>
+            {{/profileOption}}
+
+            {{#teams}}
+            <uva-accordion-item heading-level="2">
+              <div slot="heading">About my department</div>
+              <div slot="body">{{{body}}}</div>
+            </uva-accordion-item>
+            {{/teams}}
+          </uva-accordion>
+
+        </div>
+        {{#bioWebLinks}}
+        <div class="bio-web-links visibleMobile">
+          <h4>Find me on the web</h4>
+            {{#twitter}}
+              <a href="https://twitter.com/{{{twitter}}}" class="uvalib-icon-twitter-square"></a>
             {{/twitter}}
             {{#linkedin}}
-              <div id="linkedin">
-                <a href="https://www.linkedin.com/in/{{{linkedin}}}"><iron-icon icon="linkedin-square" aria-label="LinkedIn at"></iron-icon>{{{linkedin}}}</a>
-              </div>
+              <a href="https://www.linkedin.com/in/{{{linkedin}}}" class="uvalib-icon-linkedin-square"></a>
             {{/linkedin}}
-          </div>
-          {{#profile}}
-          <div class="profile">
-            {{{profile}}}
-          </div>
-          {{/profile}}
+            {{#site}}
+              <a href="{{site}}" class="uvalib-icon-o-globe"></a>
+            {{/site}}
+            {{#field_orcid_id}}
+              <a href="https://orcid.org/{{field_orcid_id}}">Orcid Id</a>
+            {{/field_orcid_id}}
         </div>
+        {{/bioWebLinks}}
       </div>
-    </div>
   </div>
 </body>
 
