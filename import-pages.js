@@ -190,7 +190,8 @@ async function buildPages() {
                       person.displayName:
                       person.firstName+" "+person.lastName,
                     field_image:(person.field_image)?
-                      person.field_image:""
+                      person.field_image:"",
+                    profileOption: (person.guides || person.cv || person.profile)? "YES PLEASE":null
                   }},'staffprofile');
   // build area pages
   //  https://uvalib-api.firebaseio.com/areas
