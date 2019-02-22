@@ -192,7 +192,8 @@ async function buildPages() {
                     field_image:(person.field_image)?
                       person.field_image:"",
                     profileOption: (person.guides || person.cv || person.profile)? "YES PLEASE":null,
-                    bioWebLinks: (person.twitter || person.linkedin || person.site || person.field_orcid_id )?"YES PLEASE":null
+                    bioWebLinks: (person.twitter || person.linkedin || person.site || person.field_orcid_id )?"YES PLEASE":null,
+                    teamOption: (person.teams && person.teams.length > 0 && person.teams[0].body)?"YES PLEASE":null
                   }},'staffprofile');
   // build area pages
   //  https://uvalib-api.firebaseio.com/areas

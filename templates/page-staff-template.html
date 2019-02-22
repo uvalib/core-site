@@ -115,8 +115,10 @@
           {{/bioWebLinks}}
         </div>
         <div class="bio-full-details visibleAllButMobile">
-          <div slot="heading"><h3>About</h3></div>
-          <div slot="body">{{{body}}}</div>
+          {{#body}}
+            <div slot="heading"><h3>About</h3></div>
+            <div slot="body">{{{body}}}</div>
+          {{/body}}
 
           {{#specialties.0}}
             <div slot="heading"><h3>Subject specialties</h3></div>
@@ -137,10 +139,12 @@
             </div>
           {{/profileOption}}
 
-          {{#teams}}
+          {{#teamOption}}
             <div slot="heading"><h3>About my department</h3></div>
-            <div slot="body">{{{body}}}</div>
-          {{/teams}}
+            {{#teams}}
+              <div slot="body">{{{body}}}</div>
+            {{/teams}}
+          {{/teamOption}}
         </div>
 
         <div class="bio-full-details visibleMobile"> <!--flexible body section-->
