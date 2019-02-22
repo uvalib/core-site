@@ -93,8 +93,8 @@
             {{#teams}}<div class="bio-department"><h4>Department</h4><p>{{title}}</p></div>{{/teams}}
             {{#languages}}<div class="bio-languages"><h4>Languages</h4><p>{{languages}}</p></div>{{/languages}}
             {{#pronouns}}<div class="bio-pronouns"><h4>Pronouns</h4><p>{{pronouns}}</p></div>{{/pronouns}}
-            <!-- {{#guides}}<a href="{{guides}}"><paper-button raised>Schedule a Consultation</paper-button></a>{{/guides}}
-            {{^guides}}<a href=""><paper-button raised>Email me</paper-button></a>{{/guides}} -->
+            {{#schedule}}<a href="{{schedule}}"><paper-button raised>Schedule a Consultation</paper-button></a>{{/schedule}}
+            {{^schedule}}<a href="mailto:{{{email}}}"><paper-button raised>Email me</paper-button></a>{{/schedule}}
           </div>
           {{#bioWebLinks}}
           <div class="bio-web-links visibleAllButMobile">
@@ -119,7 +119,7 @@
           <div slot="body">{{{body}}}</div>
 
           {{#specialties.0}}
-            <div slot="heading"><h3>Subject speicalties</h3></div>
+            <div slot="heading"><h3>Subject specialties</h3></div>
             {{#specialties}}<div slot="body">{{value}}</div>{{/specialties}}
           {{/specialties.0}}
 
