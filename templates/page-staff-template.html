@@ -115,8 +115,10 @@
           {{/bioWebLinks}}
         </div>
         <div class="bio-full-details visibleAllButMobile">
-          <div slot="heading"><h3>About</h3></div>
-          <div slot="body">{{{body}}}</div>
+          {{#body}}
+            <div slot="heading"><h3>About</h3></div>
+            <div slot="body">{{{body}}}</div>
+          {{/body}}
 
           {{#specialties.0}}
             <div slot="heading"><h3>Subject speicalties</h3></div>
