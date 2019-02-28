@@ -122,7 +122,9 @@
 
           {{#specialties.0}}
             <div slot="heading"><h3>Subject specialties</h3></div>
-            {{#specialties}}<div slot="body">{{value}}</div>{{/specialties}}
+            <ul>
+              {{#specialties}}<li slot="body">{{value}}</li>{{/specialties}}
+            </ul>
           {{/specialties.0}}
 
           {{#askMeAbout.0}}
@@ -157,7 +159,9 @@
             {{#specialties.0}}
             <uva-accordion-item heading-level="2">
               <div slot="heading">Subject speicalties</div>
-              {{#specialties}}<div slot="body">{{value}}</div>{{/specialties}}
+              <ul>
+                {{#specialties}}<li slot="body">{{value}}</li>{{/specialties}}
+              </ul>
             </uva-accordion-item>
             {{/specialties.0}}
 
