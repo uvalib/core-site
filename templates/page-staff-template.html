@@ -129,7 +129,9 @@
 
           {{#askMeAbout.0}}
             <div slot="heading"><h3>Ask me about...</h3></div>
-            {{#askMeAbout}}<div slot="body">{{value}}</div>{{/askMeAbout}}
+            <ul>
+              {{#askMeAbout}}<li slot="body">{{value}}</li>{{/askMeAbout}}
+            </ul>
           {{/askMeAbout.0}}
 
           {{#profileOption}} <!-- possible to say profile and/or guides and/or CV? -->
@@ -158,17 +160,23 @@
 
             {{#specialties.0}}
             <uva-accordion-item heading-level="2">
-              <div slot="heading">Subject speicalties</div>
-              <ul>
-                {{#specialties}}<li slot="body">{{value}}</li>{{/specialties}}
-              </ul>
+              <div slot="heading">Subject specialties</div>
+              <div slot="body">
+                <ul>
+                  {{#specialties}}<li>{{value}}</li>{{/specialties}}
+                </ul>
+              </div>
             </uva-accordion-item>
             {{/specialties.0}}
 
             {{#askMeAbout.0}}
             <uva-accordion-item heading-level="2">
               <div slot="heading">Ask me about...</div>
-              {{#askMeAbout}}<div slot="body">{{value}}</div>{{/askMeAbout}}
+              <div slot="body">
+                <ul>
+                  {{#askMeAbout}}<li>{{value}}</li>{{/askMeAbout}}
+                </ul>
+              </div>
             </uva-accordion-item>
             {{/askMeAbout.0}}
 
