@@ -3,7 +3,7 @@
 <link rel="import" href="../bower_components/uva-helper-libs/polyfills/string.endswith.html">
 <link rel="import" href="../bower_components/uva-helper-libs/polyfills/string.startswith.html">
 <link rel="import" href="../bower_components/uva-helper-libs/polyfills/element.replacewith.html">
-<!--<link rel="import" href="../bower_components/uva-models/uva-library-stages.html">-->
+<link rel="import" href="../bower_components/uvalib-directory/uvalib-staff-card.html">
 
 <dom-module id="app-data">
 
@@ -28,7 +28,6 @@
   <link rel="lazy-import" group="app-data-uvalib-areas" href="../bower_components/uvalib-directory/uvalib-areas.html">
   <link rel="lazy-import" group="app-data-uvalib-events-ui" href="../bower_components/uvalib-events-ui/uvalib-events-ui.html">
   <link rel="lazy-import" group="app-data-uvalib-news" href="../bower_components/uvalib-news/uvalib-news.html">
-  <link rel="lazy-import" group="app-data-uvalib-staff-card" href="../bower_components/uvalib-directory/uvalib-staff-card.html">
   <link rel="lazy-import" group="app-data-iron-image" href="../bower_components/iron-image/iron-image.html">
   <link rel="lazy-import" group="app-data-uva-accordion" href="../bower_components/uva-accordion/uva-accordion.html">
   <link rel="lazy-import" group="app-data-uvalib-form-builder" href="../bower_components/uvalib-form-builder/uvalib-form-builder.html">
@@ -332,8 +331,6 @@
           await this.importLazyGroup('app-data-uvalib-events-ui');
         if (html.indexOf('<uvalib-news')>=0)
           await this.importLazyGroup('app-data-uvalib-news');
-        if (html.indexOf('<uvalib-staff-card')>=0)
-          await this.importLazyGroup('app-data-uvalib-staff-card');
         if (html.indexOf('<iron-image')>=0)
           await this.importLazyGroup('app-data-iron-image');
         if (html.indexOf('<uvalib-form-builder')>=0)
