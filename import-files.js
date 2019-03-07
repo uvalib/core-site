@@ -24,7 +24,8 @@ request('https://api.devhub.virginia.edu/v1/library/files', function(error, resp
     var path = file.uri.replace(/public:\/(.*\/).*/,"$1");
     var filename = file.uri.replace(/public:\/.*\/(.*)/,"$1");
     makeDir("files/"+path).then(abspath => {
-      getImage({url:filesRoot+path+filename,
+      var url = filesRoot+path+filename.replace("'","%27");
+      getImage({url: url,
                       dest: abspath+"/"+filename}, 100);
     });
   });
