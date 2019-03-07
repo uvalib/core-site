@@ -63,17 +63,7 @@ module.exports = {
           name: 'static-file-cache'
         }
       }
-    },
-    {
-      urlPattern: /^https:\/\/api\.devhub\.virginia\.edu\/.*/,
-      handler: 'fastest',
-      options: {
-        cache: {
-          maxEntries: 100,
-          name: 'data-api-cache'
-        }
-      }
-    },
+    },    
     {
       urlPattern: /^https:\/\/use\.typekit\.net\/.*/,
       handler: 'fastest',
