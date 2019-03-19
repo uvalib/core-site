@@ -32,6 +32,7 @@ function addToSitemap(page,type,template){
       "summary": page.title,
       "contentLength": 3584,
       "type": type,
+      "hideHeader": page.hideHeader,
       "template": template
     }
   );
@@ -76,7 +77,7 @@ async function makePages(body,template,defaultFunc,type){
       }
 
       if (page.body) {
-        const $ = cheerio.load(page.body);
+        const $ = cheerio.load(page.body,{xmlMode: true});
         $('[href]').each(function(i,elem){
           var href = $(this).attr('href');
           if (href.match(/^#.*$/)) {
@@ -122,8 +123,10 @@ async function makePages(body,template,defaultFunc,type){
           $(this).replaceWith(fig);
         });
 
-        page.head = $('head').html();
-        page.body = $('body').html();
+//console.log($.html());
+//process.exit();
+        //page.head = $('head').html();
+        page.body = $.html(); //$('body').html();
       }
 
 

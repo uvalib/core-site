@@ -179,7 +179,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 reflectToAttribute: true,
                 computed: '_getTemplate(article.template)'
               },
-
+              hideHeader: {
+                type: Boolean,
+                computed: '_getHideHeader(article.hideHeader)'
+              },
               title: {
                 type: String,
                 notify: true
@@ -228,6 +231,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _getType(type) {
         if (type) return type;
+      }
+      _getHideHeader(hideHeader) {
+        if (hideHeader) return hideHeader;
       }
       _getTemplate(template) {
         if (template) return template;
@@ -302,7 +308,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _showTitle(){
-        return (this.type != 'exhibit' && this.type != 'bookplate' && this.type != 'library' && this.type !='staffprofile' && !this.template);
+        return (!this.hideHeader && this.type != 'exhibit' && this.type != 'bookplate' && this.type != 'library' && this.type !='staffprofile' && !this.template);
       }
 
       _articleChanged(article) {
