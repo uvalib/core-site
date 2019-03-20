@@ -77,7 +77,7 @@ async function makePages(body,template,defaultFunc,type){
       }
 
       if (page.body) {
-        const $ = cheerio.load(page.body,{xmlMode: true});
+        const $ = cheerio.load(page.body);
         $('[href]').each(function(i,elem){
           var href = $(this).attr('href');
           if (href.match(/^#.*$/)) {
@@ -126,7 +126,8 @@ async function makePages(body,template,defaultFunc,type){
 //console.log($.html());
 //process.exit();
         //page.head = $('head').html();
-        page.body = $.html(); //$('body').html();
+        var style = ($('head').children('style'))? "<style>"+$('head').children('style').html()+"</style>":"";
+        page.body = style+$('body').html();
       }
 
 
