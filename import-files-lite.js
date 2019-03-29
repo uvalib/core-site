@@ -2,8 +2,7 @@
 var request = require('request'),
     makeDir = require('make-dir'),
     download = require('image-downloader'),
-    moment = require('moment'),
-    webp = require('webp-converter');
+    moment = require('moment');
 
 var filesRoot = "https://drupal.lib.virginia.edu/sites/default/files";
 
