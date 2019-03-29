@@ -126,8 +126,9 @@ async function makePages(body,template,defaultFunc,type){
 //console.log($.html());
 //process.exit();
         //page.head = $('head').html();
-        var style = ($('head').children('style'))? "<style>"+$('head').children('style').html()+"</style>":"";
-        page.body = style+$('body').html();
+        var style = ($('head').children('style').length > 0)? "<style>"+$('head').children('style').html()+"</style>":"";
+        var script = ($('head').children('script').length > 0)? "<script>"+$('head').children('script').html()+"</script>":"";
+        page.body = style+script+$('body').html();
       }
 
 
