@@ -1,8 +1,7 @@
 #!/usr/local/bin/node
 var request = require('request'),
     makeDir = require('make-dir'),
-    download = require('image-downloader'),
-    webp = require('webp-converter');
+    download = require('image-downloader');
 
 var filesRoot = "https://drupal.lib.virginia.edu/sites/default/files";
 

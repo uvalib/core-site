@@ -27,12 +27,6 @@
     "bower": "^1.8.2",
     "cheerio": "^1.0.0-rc.2",
     "image-downloader": "^3.3.0",
-    "imagemin": "^5.3.1",
-    "imagemin-jpeg-recompress": "^5.1.0",
-    "imagemin-jpegtran": "^5.0.2",
-    "imagemin-mozjpeg": "^7.0.0",
-    "imagemin-pngquant": "^5.0.1",
-    "imagemin-webp": "^4.1.0",
     "make-dir": "^1.1.0",
     "moment": "^2.22.2",
     "mustache": "^2.3.0",
@@ -40,8 +34,7 @@
     "polymer-cli": "^1.9.1",
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
-    "sanitize-filename": "^1.6.1",
-    "webp-converter": "^2.1.6"
+    "sanitize-filename": "^1.6.1"
   },
   "devDependencies": {
     "axe-core": "^3.0.0-beta.1"
