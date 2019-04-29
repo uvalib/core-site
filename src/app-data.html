@@ -1,8 +1,6 @@
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-ui-element.html">
 <link rel="import" href="../bower_components/uva-helper-libs/uvalib-helper-libs.html">
 <link rel="import" href="../bower_components/uva-helper-libs/polyfills/string.endswith.html">
-<link rel="import" href="../bower_components/uva-helper-libs/polyfills/string.startswith.html">
-<link rel="import" href="../bower_components/uva-helper-libs/polyfills/element.replacewith.html">
 <link rel="import" href="../bower_components/uvalib-directory/uvalib-staff-card.html">
 
 <dom-module id="app-data">
@@ -196,7 +194,6 @@
           return;
         }
         this._fetch('data/pages.json',
-//        this._fetch('https://api.devhub.virginia.edu/v1/library/web',
           (response) => {
             this.set('pages.items', this._parseCategoryItems(response));
           },
