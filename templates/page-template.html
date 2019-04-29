@@ -15,7 +15,6 @@
   <meta name="twitter:title" content="{{title}}">
   <meta name="twitter:site" content="@uvalibrary">
   <script type="application/ld+json">
-
     {
       "@context": "http://schema.org",
       "@graph": [{
@@ -44,6 +43,24 @@
       }]
     }
   </script>
+  {{#ancestors.length}}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {{#ancestors}}
+        {"@type": "ListItem",
+         "position": {{idx}},
+         "name": "{{title}}",
+         "item": "https://www.library.virgina.edu/{{path}}"
+        }
+        {{/ancestors}}
+      ]
+    }
+  </script>
+  {{/ancestors.length}}
+
   {{#iframe}}
   <script src="https://www.library.virginia.edu/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
   <script src="https://www.library.virginia.edu/bower_components/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>

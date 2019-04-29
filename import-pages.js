@@ -24,6 +24,7 @@ function addToSitemap(page,type,template){
       "parentId": parent,
       "link": page.path,
       "path": page.path,
+//      "ancestors": page.ancestors,
       "sidebar": page.sidebar,
       "subnav": page.subnav,
       "iframe": page.iframe,
@@ -39,16 +40,40 @@ function addToSitemap(page,type,template){
   console.log('added page to sitemap '+page.title);
 }
 
+function getAncestors(hashedPages, parentId) {
+  if (!parentId) return []
+  else if (parentId && !hashedPages[parentId]) return []
+  else {
+    var parent = hashedPages[parentId];
+    var crumb = {title:parent.title, path:parent.path};
+    if (parent.parentPage) {
+      var ancestors = getAncestors(hashedPages, parent.parentPage.id);
+      ancestors.push(crumb);
+      return ancestors;
+    } else return [crumb];
+  }
+}
+
 async function makePages(body,template,defaultFunc,type){
   // Some global search and replace here
   body.replace('U.Va.', 'UVA');
   var pages = JSON.parse(body);
+
+  // hased pages so we can build breadcrumb objects for each page
+  var hashedPages = pages.reduce((obj,item)=>{
+    obj[item.id] = item;
+    return obj;
+  }, {})
 
   // create the pages
   var pageTemplate = await fs.readFileAsync("templates/"+template,'utf8');
   if(pages && pages.length > 0)
     for (var i=0; i<pages.length; i++) {
       var page = pages[i];
+
+      page.ancestors = getAncestors(hashedPages, (page.parentPage)? page.parentPage.id:null);
+      page.ancestors.forEach((a,i)=>{ a.idx = i+1; });
+
       if (page.body) {
         page.body = page.body.replace(/https:\/\/drupal\.lib\.virginia\.edu\/sites\/default\/files\//g, '/files/');
         page.body = page.body.replace(/\/sites\/default\/files\//g, '/files/');
@@ -119,18 +144,21 @@ async function buildPages() {
   // build basic pages
   var body = await request('https://uvalib-api.firebaseio.com/pages.json');
   await makePages(body, 'page-template.html');
+
   // build major exhibit pages
   body = await request('https://uvalib-api.firebaseio.com/exhibit-pages.json');
   await makePages(body, 'page-exhibit-template.html',
                   page=>{return {
                     path:"/exhibitions/"+page.urlSlug
                   }},'exhibit');
+
   // build library pages
   var libs = await request('https://uvalib-api.firebaseio.com/libraries.json');
   await makePages(libs, 'page-library-template.html',
                   page=>{return {
                     path:"/libraries/"+page.slug
                   }},'library');
+
   // build bookplate pages
   body = await request('https://uvalib-api.firebaseio.com/bookplates.json');
   await makePages(body, 'page-bookplate-template.html',
