@@ -84,29 +84,7 @@ async function makePages(body,template,defaultFunc,type){
             $(this).attr('href', page.path+href);
           }
         });
-/*
-        $('[href]').each(function(i,elem) {
-          var attr = $(this).attr('href');
-          if (match = attr.match(/^https?:\/\/(www\.)?library\.virginia\.edu(.*\.pdf)$/i) ) {
-              $(this).attr('href', "https://wwwstatic.lib.virginia.edu"+match[2]);
-          }
-          if (match = attr.match(/^(\/.*\.pdf)$/i) ) {
-              $(this).attr('href', "https://wwwstatic.lib.virginia.edu"+match[1]);
-          }
-          if (attr.match(/^#.*$/)) {
-            $(this).attr('href', page.path+attr);
-          }
-          if (page.iframe) {
-            $(this).attr('target', '_top');
-          }
-        });
-        $('[src]').each(function(i,elem){
-          var attr = $(this).attr('src');
-          if (page.iframe && attr.startsWith('/')) {
-            $(this).attr('src', "https://www.library.virginia.edu"+attr);
-          }
-        });
-*/
+
         // Use figure where we have the content to support it
         $('img').each(function(i,img){
           // make sure that we are not already looking at a figure
@@ -123,9 +101,6 @@ async function makePages(body,template,defaultFunc,type){
           $(this).replaceWith(fig);
         });
 
-//console.log($.html());
-//process.exit();
-        //page.head = $('head').html();
         var style = ($('head').children('style').length > 0)? "<style>"+$('head').children('style').html()+"</style>":"";
         var script = ($('head').children('script').length > 0)? "<script>"+$('head').children('script').html()+"</script>":"";
         page.body = style+script+$('body').html();
