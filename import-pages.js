@@ -73,6 +73,7 @@ async function makePages(body,template,defaultFunc,type){
 
       page.ancestors = getAncestors(hashedPages, (page.parentPage)? page.parentPage.id:null);
       page.ancestors.forEach((a,i)=>{ a.idx = i+1; });
+      page.crumbIndex = page.ancestors.length+1;
 
       if (page.body) {
         page.body = page.body.replace(/https:\/\/drupal\.lib\.virginia\.edu\/sites\/default\/files\//g, '/files/');
