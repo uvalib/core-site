@@ -30,6 +30,8 @@
   <link rel="lazy-import" group="app-data-uvalib-form-builder" href="../bower_components/uvalib-form-builder/uvalib-form-builder.html">
   <link rel="lazy-import" group="app-data-uvalib-news-list" href="../bower_components/uvalib-news/uvalib-news-list.html">
   <link rel="lazy-import" group="app-data-uvalib-blog-list" href="../bower_components/uvalib-news/uvalib-blog-list.html">
+  <link rel="lazy-import" group="app-data-uvalib-directorypage" href="../bower_components/uvalib-page/uvalib-directorypage.html">
+  <link rel="lazy-import" group="app-data-dom-bind" href="../bower_components/polymer/lib/elements/dom-bind.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -338,6 +340,11 @@
           await this.importLazyGroup('app-data-uvalib-news-list');
         if (html.indexOf('<uvalib-blog-list')>=0)
           await this.importLazyGroup('app-data-uvalib-blog-list');
+        if (html.indexOf('<uvalib-directorypage')>=0)
+          await this.importLazyGroup('app-data-uvalib-directorypage');
+        if (html.indexOf('<dom-bind')>=0)
+          await this.importLazyGroup('app-data-dom-bind');
+
       }
 
       _fetch(url, callback, attempts, isRaw) {
