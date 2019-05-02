@@ -34,6 +34,7 @@
   <link rel="lazy-import" group="app-data-dom-bind" href="../bower_components/polymer/lib/elements/dom-bind.html">
   <link rel="lazy-import" group="app-data-dom-if" href="../bower_components/polymer/lib/elements/dom-if.html">
   <link rel="lazy-import" group="app-data-dom-repeat" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+  <link rel="lazy-import" group="app-data-uva-library" href="../bower_components/uva-models/uva-library.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -350,6 +351,8 @@
           await this.importLazyGroup('app-data-dom-if');
         if (html.indexOf('dom-repeat')>=0)
           await this.importLazyGroup('app-data-dom-repeat');
+        if (html.indexOf('<uva-library')>=0)
+          await this.importLazyGroup('app-data-uva-library');
       }
 
       _fetch(url, callback, attempts, isRaw) {
