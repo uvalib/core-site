@@ -1,42 +1,19 @@
 #!/usr/local/bin/node
-const imagemin = require('imagemin'),
-      makeDir = require('make-dir'),
-      imageminJpegRecompress = require('imagemin-jpeg-recompress'),
-      imageminPngquant = require('imagemin-pngquant'),
-      imageminWebp = require('imagemin-webp'),
-      {lstatSync, readdirSync } = require('fs'),
-      { join } = require('path');
+const glob = require("glob"),
+      gm = require('gm').subClass({imageMagick: true}),
+      fs = require('fs');
 
-const isDirectory = source => lstatSync(source).isDirectory()
-const getDirectories = source =>
-  readdirSync(source).map(name => join(source,name)).filter(isDirectory);
-
-//webp
-getDirectories("files").forEach((f)=>{
-  makeDir(f.replace('files','files-comp')).then(abspath => {
-    imagemin([f+'/*.{jpg,png}'], abspath, {
-        plugins: [
-            imageminWebp({quality: 50})
-        ]
-    }).then(files => {
-	     console.log('did one');
-	      //=> [{data: <Buffer 89 50 4e …>, path: 'build/images/foo.jpg'}, …]
+// options is optional
+glob("files/**/*.jpg", {}, function (er, files) {
+  files.forEach(f=>{
+    // max width
+    gm(f).resize(2000,null,'>').write(f, err=>{
+        // sm version
+        let fsm = f.replace('.jpg','.sm.jpg');
+        gm(f).resize(150,null,'>').write(fsm, err=>{
+          gm(f).stream('webp').pipe(fs.createWriteStream(f.replace('.jpg','.webp')));
+          gm(fsm).stream('webp').pipe(fs.createWriteStream(fsm.replace('.jpg','.webp')));
+        });
     });
-  });
-});
-
-// png & jpeg for mobile
-getDirectories("files").forEach((f)=>{
-  makeDir(f.replace('files','files-comp')).then(abspath => {
-    imagemin([f+'/*.{jpg,png}'], abspath, {
-        plugins: [
-            imageminJpegRecompress(),
-            imageminPngquant({quality: '65-80'})
-        ]
-    }).then(files => {
-      console.log('did one');
-	     //console.log(files);
-	      //=> [{data: <Buffer 89 50 4e …>, path: 'build/images/foo.jpg'}, …]
-    });
-  });
-});
+  })
+})
