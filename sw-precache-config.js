@@ -36,7 +36,7 @@ module.exports = {
     },
     {
       urlPattern: /\/data\/pages\/.*/,
-      handler: 'networkFirst',
+      handler: 'fastest',
       options: {
         cache: {
           maxEntries: 200,
@@ -46,7 +46,7 @@ module.exports = {
     },
     {
       urlPattern: /\/data\/.*json/,
-      handler: 'networkFirst',
+      handler: 'fastest',
       options: {
         cache: {
           maxEntries: 200,
@@ -56,14 +56,14 @@ module.exports = {
     },
     {
       urlPattern: /^https:\/\/static\.lib\.virginia\.edu\/.*/,
-      handler: 'networkFirst',
+      handler: 'fastest',
       options: {
         cache: {
           maxEntries: 200,
           name: 'static-file-cache'
         }
       }
-    },    
+    },
     {
       urlPattern: /^https:\/\/use\.typekit\.net\/.*/,
       handler: 'fastest',
@@ -85,12 +85,22 @@ module.exports = {
       }
     },
     {
+      urlPattern: /^https:\/\/api\.devhub\.virginia\.edu\/.*/,
+      handler: 'fastest',
+      options: {
+        cache: {
+          maxEntries: 5,
+          name: 'data-api-cache'
+        }
+      }
+    },
+    {
       urlPattern: /^https:\/\/api\.devhub\.virginia\.edu\/.*\/library\/alerts/,
       handler: 'networkFirst',
       options: {
         cache: {
           maxEntries: 5,
-          name: 'data-api-cache'
+          name: 'data-api-alert-cache'
         }
       }
     }
