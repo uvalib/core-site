@@ -38,6 +38,7 @@
   <link rel="lazy-import" group="app-data-uva-library" href="../bower_components/uva-models/uva-library.html">
   <link rel="lazy-import" group="app-data-paper-radio-group" href="../bower_components/paper-radio-group/paper-radio-group.html">
   <link rel="lazy-import" group="app-data-paper-radio-button" href="../bower_components/paper-radio-button/paper-radio-button.html">
+  <link rel="lazy-import" group="app-data-app-localstorage-document" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html" />
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -360,6 +361,8 @@
           await this.importLazyGroup('app-data-paper-radio-group');
         if (html.indexOf('<paper-radio-button')>=0)
           await this.importLazyGroup('app-data-paper-radio-button');
+        if (html.indexOf('<app-localstorage-document')>=0)
+          await this.importLazyGroup('app-data-app-localstorage-document');
       }
 
       _fetch(url, callback, attempts, isRaw) {
