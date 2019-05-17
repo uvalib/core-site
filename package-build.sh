@@ -1,5 +1,5 @@
 #!/bin/bash
-echo '<!-- www.library.virginia.edu -->' >> build/es6-unbundled/index.html 
+#echo '<!-- www.library.virginia.edu -->' >> build/es6-unbundled/index.html 
 cp -r build/es5-unbundled build/es6-unbundled/es5
 #rsync -avh build/es5-bundled/ build/es6-unbundled/es5
 rm build/es6-unbundled/es5/.htaccess
