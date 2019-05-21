@@ -28,7 +28,25 @@
         "jobTitle": "{{jobTitle}}",
         "name": "{{displayName}}",
         "telephone": "{{phone}}",
-        "url": "https://www.library.virginia.edu/staff/{{computingId}}"
+        "url": "https://www.library.virginia.edu/staff/{{computingId}}",
+        "sameAs":[
+          {{#twitter}}"https://twitter.com/{{{twitter}}}",{{/twitter}}
+          {{#linkedin}}"https://www.linkedin.com/in/{{{linkedin}}}"{{/linkedin}}
+        ]
+      },{
+        "@type": "Organization",
+        "url": "https://www.library.virginia.edu/",
+        "logo": "https://www.library.virginia.edu/images/icon-512.png",
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+1-434-924-3021",
+          "contactType": "customer service"
+        }],
+        "sameAs":[
+          "https://www.instagram.com/uvalibrary/",
+          "https://www.facebook.com/University-of-Virginia-Library-136530559704906/",
+          "https://twitter.com/UVaLibrary"
+        ]
       },{
         "@type": "WebPage",
         "mainEntityOfPage": "https://library.virginia.edu{{{path}}}",
