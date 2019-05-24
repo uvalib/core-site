@@ -66,6 +66,7 @@ RewriteRule "^libraries/.*" hours
 
 Header set Access-Control-Allow-Origin "*"
 
+Redirect permanent /libra/orcid-at-uva/ https://www.library.virginia.edu/services/orcid-at-uva
 Redirect permanent /libra/landing http://www.library.virginia.edu/libra
 Redirect permanent /wp-content/themes/libweb/bower_components/webcomponentsjs https://www.library.virginia.edu/bower_components/webcomponentsjs
 Redirect permanent /civilwarvirginia http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia

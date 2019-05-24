@@ -179,7 +179,11 @@
         } else if (path.lastIndexOf('/files/',0)===0) {
           window.location.replace("https://static.lib.virginia.edu"+path.replace('/files/','/uvalibappfiles/'));
           return true;
+        } else if (path == '/libra/orcid-at-uva' || path.lastIndexOf('/libra/orcid-at-uva/',0)===0) {
+          window.location.replace('/services/orcid-at-uva/');
+          return true;
         }
+
         return false;
       }
 
