@@ -113,6 +113,8 @@ async function makePages(body,template,defaultFunc,type){
 
         // Use figure where we have the content to support it
         $('img').each(function(i,img){
+          // allow for override
+          if ($(this).attr('no-figure')) { return; }
           // make sure that we are not already looking at a figure
           if ($(this).parent.name.toLowerCase() === 'figure') { return; }
           var align = $(this).attr('data-align');
