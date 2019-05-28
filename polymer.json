@@ -21,7 +21,6 @@
     "bower_components/uvalib-header/uvalib-header-lazyload.html",
     "bower_components/uva-helper-libs/polyfills.html",
     "bower_components/uva-helper-libs/polyfills/promise.html",
-    "bower_components/uva-helper-libs/polyfills/array.includes.html",
     "bower_components/uva-helper-libs/polyfills/array.findindex.html",
     "bower_components/uva-helper-libs/polyfills/element.replacewith.html",
     "bower_components/iframe-resizer/js/*",
