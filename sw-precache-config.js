@@ -103,6 +103,16 @@ module.exports = {
           name: 'data-api-alert-cache'
         }
       }
+    },
+    {
+      urlPattern: /\/manifest.json/,
+      handler: 'networkFirst',
+      options: {
+        cache: {
+          maxEntries: 1,
+          name: 'manifest-cache'
+        }
+      }
     }
   ]
 };
