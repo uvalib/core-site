@@ -36,7 +36,7 @@ module.exports = {
     },
     {
       urlPattern: /\/data\/pages\/.*/,
-      handler: 'fastest',
+      handler: 'networkFirst',
       options: {
         cache: {
           maxEntries: 200,
@@ -91,6 +91,17 @@ module.exports = {
         cache: {
           maxEntries: 5,
           name: 'data-api-cache'
+        }
+      }
+    },
+    {
+      https://api.devhub.virginia.edu/v1/library/web/banners
+      urlPattern: /^https:\/\/api.devhub.virginia.edu\/.*\/library\/web\/banners.*/,
+      handler: 'networkFirst',
+      options: {
+        cache: {
+          maxEntries: 5,
+          name: 'data-api-banner-cache'
         }
       }
     },
