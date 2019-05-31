@@ -55,6 +55,10 @@ module.exports = {
       }
     },
     {
+      urlPattern: /^https:\/\/analytics\.lib\.virginia\.edu\/.*/,
+      handler: 'networkOnly'
+    },
+    {
       urlPattern: /^https:\/\/static\.lib\.virginia\.edu\/.*/,
       handler: 'fastest',
       options: {
