@@ -99,7 +99,6 @@ module.exports = {
       }
     },
     {
-      https://api.devhub.virginia.edu/v1/library/web/banners
       urlPattern: /^https:\/\/api.devhub.virginia.edu\/.*\/library\/web\/banners.*/,
       handler: 'networkFirst',
       options: {
