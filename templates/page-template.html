@@ -6,13 +6,13 @@
   <meta name="robots" content="noindex" />
   {{/noCrawl}}
   <title>{{title}}</title>
-  <link rel="canonical" href="https://library.virginia.edu{{path}}" />
+  <link rel="canonical" href="https://library.virginia.edu{{{path}}}" />
   <meta property="og:type" content="article">
   <meta property="og:title" content="{{title}}">
   <meta property="og:site_name" content="UVA Library">
-  <meta property="og:url" content="https://library.virginia.edu{{path}}">
+  <meta property="og:url" content="https://library.virginia.edu{{{path}}}">
   <meta property="article:publisher" content="https://library.virginia.edu/">
-  <meta name="twitter:url" content="https://library.virginia.edu{{path}}">
+  <meta name="twitter:url" content="https://library.virginia.edu{{{path}}}">
   <meta name="twitter:title" content="{{title}}">
   <meta name="twitter:site" content="@uvalibrary">
   <script type="application/ld+json">
@@ -34,7 +34,7 @@
         ]
       },{
         "@type": "WebPage",
-        "mainEntityOfPage": "https://library.virginia.edu{{path}}",
+        "mainEntityOfPage": "https://library.virginia.edu{{{path}}}",
         "headline": "{{title}}",
         "publisher": {
           "@type": "Organization",
@@ -67,13 +67,13 @@
         {"@type": "ListItem",
          "position": {{idx}},
          "name": "{{title}}",
-         "item": "https://www.library.virginia.edu{{path}}"
+         "item": "https://www.library.virginia.edu{{{path}}}"
         },
         {{/ancestors}}
         {"@type": "ListItem",
          "position": {{crumbIndex}},
          "name": "{{title}}",
-         "item": "https://www.library.virginia.edu{{path}}"
+         "item": "https://www.library.virginia.edu{{{path}}}"
         }
       ]
     }
