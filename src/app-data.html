@@ -138,7 +138,10 @@
       }
 
       _redirects(path) {
-        if (path == '/libraries' || path.lastIndexOf('/libraries/',0)===0) {
+        if (path == '/libraries/robertson-media-center' || path.lastIndexOf('/libraries/robertson-media-center/',0)==0) {
+          window.location.replace("/rmc");
+          return true;
+        } else if (path == '/libraries' || path.lastIndexOf('/libraries/',0)===0) {
           window.location.replace("/hours");
           return true;
         } else if (path == '/history-of-the-university-of-virginia-library' || path.lastIndexOf('/history-of-the-university-of-virginia-library/',0)===0) {
