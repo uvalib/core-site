@@ -1,33 +1,79 @@
 #!/usr/local/bin/node
-const glob = require("glob"),
-      gm = require('gm').subClass({imageMagick: true}),
-      fs = require('fs');
+const imagemin = require('imagemin');
+const imageminOptipng = require('imagemin-optipng');
+const imageminWebp = require('imagemin-webp');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminGifsicle = require('imagemin-gifsicle');
+const imageminSvgo = require('imagemin-svgo');
+const ImageminGm = require('imagemin-gm')
+const imageminGm = new ImageminGm()
+const { readdirSync, statSync } = require('fs')
+const { join } = require('path')
+const dirs = p => readdirSync(p).filter(f => statSync(join(p, f)).isDirectory())
+var ds = dirs('files')
 
-async function minfiles() {
-  // options is optional
-  glob("files/**/*.jpg", {}, async function (er, files) {
-    for (i=0; i<files.length; i++) {
-      let f = files[i];
-//    files.forEach( function(f){
-      // max width
-      await new Promise(function(resolve,reject){
-        gm(f).resize(2000,null,'>').write(f, err=>{
-          gm(f).stream('webp').pipe(fs.createWriteStream(f.replace('.jpg','.webp')));
-          if (err) reject(err);
-          else resolve();
-        });
-      })
-      await new Promise(function(resolve,reject){
-        // sm version
-        let fsm = f.replace('.jpg','.sm.jpg');
-        gm(f).resize(150,null,'>').write(fsm, err=>{
-          gm(fsm).stream('webp').pipe(fs.createWriteStream(fsm.replace('.jpg','.webp')));
-          if (err) reject(err);
-          else resolve();
-        });
-      })
-    }
-  })
+async function compress() {
+  console.log('squish up the images')
+  for (var i=0; i<ds.length; i++) {
+    const dir = ds[i];
+    console.log(dir);
+  	const files = await imagemin(['files/'+dir+'/*.{jpg,png,gif,svg}'], 'files-ready/'+dir, {
+  		use: [
+        imageminMozjpeg(),
+        imageminOptipng(),
+        imageminGifsicle(),
+        imageminSvgo(),
+  		]
+  	}).catch(err => {
+      console.log(err);
+    });
+
+  	if(Array.isArray(files)) files.forEach(f=>console.log(f.path));
+  }
+  console.log('done');
 }
 
-minfiles();
+async function smaller() {
+  console.log("make some small versions")
+  for (var i=0; i<ds.length; i++) {
+    const dir = ds[i];
+    console.log(dir);
+  	const files = await imagemin(['files-ready/'+dir+'/*.{jpg,png,gif}'], 'files-ready/'+dir+'/SM', {
+  		use: [
+        imageminGm.resize({ width: 250, height: 250, gravity: 'Center' })
+  		]
+  	}).catch(err => {
+      console.log(err);
+    });
+
+    if(Array.isArray(files)) files.forEach(f=>console.log(f.path));
+  }
+  console.log('done');
+}
+
+
+async function webp() {
+  ds = dirs('files-ready')
+  console.log("make some webp versions for chrome")
+  for (var i=0; i<ds.length; i++) {
+    const dir = ds[i];
+    console.log(dir);
+  	const files = await imagemin(['files-ready/'+dir+'/*.{jpg,png,gif}'], 'files-ready/'+dir, {
+  		use: [
+        imageminWebp({quality: 75})
+  		]
+  	}).catch(err => {
+      console.log(err);
+    });
+
+  	files.forEach(f=>console.log(f.path));
+  }
+  console.log('done');
+}
+
+compress()
+.then(()=>{
+  smaller().then(()=>{
+    webp()
+  })
+})
