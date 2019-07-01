@@ -42,6 +42,7 @@
   <link rel="lazy-import" group="app-data-app-localstorage-document" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html" />
   <link rel="lazy-import" group="app-data-paper-tab" href="../bower_components/paper-tabs/paper-tab.html">
   <link rel="lazy-import" group="app-data-paper-tab" href="../bower_components/paper-tabs/paper-tabs.html">
+  <link rel="lazy-import" group="app-data-uvalib-banners" href="../bower_components/uvalib-banner/uvalib-banners.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -375,6 +376,8 @@
           await this.importLazyGroup('app-data-app-localstorage-document');
         if (html.indexOf('<paper-tab')>=0)
           await this.importLazyGroup('app-data-paper-tab');
+        if (html.indexOf('<uvalib-banners')>0)
+          await this.importLazyGroup('app-data-uvalib-banners');
       }
 
       _fetch(url, callback, attempts, isRaw) {
