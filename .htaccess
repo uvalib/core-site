@@ -66,18 +66,4 @@ RewriteRule "^libraries/.*" hours
 
 Header set Access-Control-Allow-Origin "*"
 
-Redirect permanent /libra/orcid-at-uva/ https://www.library.virginia.edu/services/orcid-at-uva
-Redirect permanent /libra/landing http://www.library.virginia.edu/libra
 Redirect permanent /wp-content/themes/libweb/bower_components/webcomponentsjs https://www.library.virginia.edu/bower_components/webcomponentsjs
-Redirect permanent /civilwarvirginia http://explore.lib.virginia.edu/exhibits/show/voicesofcivilwarvirginia
-Redirect permanent /digitization-guidelines http://guides.lib.virginia.edu/content.php?pid=40437&sid=297543
-Redirect permanent /give https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=19305&bledit=1&sort=1&dids=1391.1394.1393.1392.287&appealcode=OALDWEB
-Redirect permanent /givefaulkner https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=684&cid=1509&appealcode=KUVAESTASFS5&sort=1&dids=1249&bledit=1
-Redirect permanent /givingtohoosday http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP
-Redirect permanent /site-search https://www.library.virginia.edu/search
-Redirect permanent /sitesearch https://www.library.virginia.edu/search
-Redirect permanent /study-spaces http://uvalibrary.maps.arcgis.com/apps/Shortlist/index.html?appid=e6cb8c4cde61410f873bc780c38bd958
-Redirect permanent /support https://www.library.virginia.edu/support-library
-Redirect permanent /small https://small.library.virginia.edu
-Redirect permanent /renovation/about https://www.library.virginia.edu/renovation
-Redirect permanent /history-of-the-university-of-virginia-library/ https://www.library.virginia.edu/renovation/history-of-the-project

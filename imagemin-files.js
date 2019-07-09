@@ -3,7 +3,8 @@ const imagemin = require('imagemin');
 const imageminOptipng = require('imagemin-optipng');
 const imageminWebp = require('imagemin-webp');
 const imageminGif2webp = require('imagemin-gif2webp');
-const imageminMozjpeg = require('imagemin-mozjpeg');
+//const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminJpegtran = require('imagemin-jpegtran');
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
 const ImageminGm = require('imagemin-gm')
@@ -20,7 +21,7 @@ async function compress() {
     console.log(dir);
   	const files = await imagemin(['files/'+dir+'/*.{jpg,png,gif,svg}'], 'files-ready/'+dir, {
   		use: [
-        imageminMozjpeg(),
+//        imageminMozjpeg(),
         imageminOptipng(),
         imageminGifsicle(),
         imageminSvgo(),
@@ -36,6 +37,7 @@ async function compress() {
 
 async function smaller() {
   console.log("make some small versions")
+  var newds = [];
   for (var i=0; i<=ds.length; i++) {
     const dir = ds[i];
     console.log(dir);
@@ -46,15 +48,16 @@ async function smaller() {
   	}).catch(err => {
       console.log(err);
     });
-
     if(Array.isArray(files)) files.forEach(f=>console.log(f.path));
+    newds.push(dir);
+    newds.push(dir+'/SM');
   }
+  ds = newds;
   console.log('done');
 }
 
 
 async function webp() {
-  ds = [...new Set([...ds ,...dirs('files-ready')])];
   console.log("make some webp versions for chrome")
   for (var i=0; i<=ds.length; i++) {
     const dir = ds[i];

@@ -214,6 +214,19 @@ async function buildPages() {
     fs.writeFile("data/pages.json", JSON.stringify(sitemap), function(){});
     fs.writeFile("sitemap.txt", sitemap.map(p=>'https://www.library.virginia.edu'+p.path).join('\n'), function(){});
   });
+
+  console.log('making .htaccess now');
+  var data = await request('https://uvalib-api.firebaseio.com/redirects.json');
+  var redirects = JSON.parse(data);
+  var pageTemplate = await fs.readFileAsync("templates/site-htaccess.txt",'utf8');
+  // sort redirects by priority and make safe paths
+  redirects.forEach(r=>{
+    if (!r.priority) r.priority=0;
+    r.path = encodeURI(r.path);
+    r.destination = encodeURI(r.destination);
+  });
+  redirects = redirects.sort((a,b)=>(b.priority>a.priority)?1:-1);
+  fs.writeFile(".htaccess.test", mustache.render( pageTemplate, redirects ), function(){});
 };
 
 buildPages();
