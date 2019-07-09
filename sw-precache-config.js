@@ -25,6 +25,23 @@ module.exports = {
       }
     },
     {
+      urlPattern: /^https:\/\/static\.lib\.virginia\.edu\/js\/.*/,
+      handler: 'networkOnly'
+    },
+    {
+      urlPattern: /\/bower_components\/uvalib-form-builder\/.*/,
+      handler: 'networkOnly'
+    },
+    {
+      urlPattern: /\/bower_components\/webcomponentsjs\/.*.js/,
+      handler: 'fastest',
+      options: {
+        cache: {
+          name: 'webcomponentsjs-polyfills-cache'
+        }
+      }
+    },
+    {
       urlPattern: /.*\.(png|jpg|gif|svg|webp)/i,
       handler: 'fastest',
       options: {
