@@ -226,7 +226,7 @@ async function buildPages() {
     r.destination = encodeURI(r.destination);
   });
   redirects = redirects.sort((a,b)=>(b.priority>a.priority)?1:-1);
-  fs.writeFile(".htaccess.test", mustache.render( pageTemplate, redirects ), function(){});
+  fs.writeFile(".htaccess", mustache.render( pageTemplate, redirects ), function(){});
 };
 
 buildPages();

@@ -139,13 +139,55 @@
       }
 
       _redirects(path) {
-        if (path == '/data/pages' || path.lastIndexOf('/data/pages/',0)===0) {
+        if (path == '/libraries/robertson-media-center' || path.lastIndexOf('/libraries/robertson-media-center/',0)==0) {
+          window.location.replace("/rmc");
+          return true;
+        } else if (path == '/libraries' || path.lastIndexOf('/libraries/',0)===0) {
+          window.location.replace("/hours");
+          return true;
+        } else if (path == '/history-of-the-university-of-virginia-library' || path.lastIndexOf('/history-of-the-university-of-virginia-library/',0)===0) {
+          window.location.replace("/renovation/history-of-the-project");
+          return true;
+        } else if (path == '/reno' || path.lastIndexOf('/reno/',0)===0) {
+          window.location.replace("/renovation");
+          return true;
+        } else if (path == '/site-search' || path.lastIndexOf('/site-search/',0)===0) {
+          window.location.replace("/search");
+          return true;
+        } else if (path == '/give' || path.lastIndexOf('/give/',0)===0) {
+          window.location.replace("https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=19305&bledit=1&sort=1&dids=1391.1394.1393.1392.287&appealcode=OALDWEB");
+          return true;
+        } else if (path == '/givefaulkner' || path.lastIndexOf('/givefaulkner/',0)===0) {
+          window.location.replace("https://securelb.imodules.com/s/1535/16-uva/index-gid16.aspx?sid=1535&gid=16&pgid=684&cid=1509&appealcode=KUVAESTASFS5&sort=1&dids=1249&bledit=1");
+          return true;
+        } else if (path == '/givingtohoosday' || path.lastIndexOf('/givingtohoosday/',0)===0) {
+          window.location.replace('http://givingtohoosday.virginia.edu/library?appealcode=MGTHALDP');
+          return true;
+        } else if (path == '/study-spaces' || path.lastIndexOf('/study-spaces/',0)===0) {
+          window.location.replace('http://uvalibrary.maps.arcgis.com/apps/Shortlist/index.html?appid=e6cb8c4cde61410f873bc780c38bd958');
+          return true;
+        } else if (path == '/support' || path.lastIndexOf('/support/',0)===0) {
+          window.location.replace("/support-library");
+          return true;
+        } else if (path == '/small' || path.lastIndexOf('/small/',0)===0) {
+          window.location.replace("https://small.library.virginia.edu/");
+          return true;
+        } else if (path == '/data/pages' || path.lastIndexOf('/data/pages/',0)===0) {
           window.location.replace(path.replace('/data/pages/','/'));
+          return true;
+        } else if (path == '/renovation/about' || path.lastIndexOf('/renovation/about/',0)===0) {
+          window.location.replace('/renovation');
+          return true;
+        } else if (path == '/libra/landing' || path.lastIndexOf('/libra/landing/',0)===0) {
+          window.location.replace('/libra');
           return true;
         } else if (path.lastIndexOf('/files/',0)===0) {
           window.location.replace("https://static.lib.virginia.edu"+path.replace('/files/','/uvalibappfiles/'));
           return true;
-        } 
+        } else if (path == '/libra/orcid-at-uva' || path.lastIndexOf('/libra/orcid-at-uva/',0)===0) {
+          window.location.replace('/services/orcid-at-uva/');
+          return true;
+        }
 
         return false;
       }
