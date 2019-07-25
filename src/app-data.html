@@ -170,7 +170,7 @@
           window.location.replace("https://static.lib.virginia.edu"+path.replace('/files/','/uvalibappfiles/'));
           return true;
         } else if (this.redirects){
-          for (var i=0; i<=this.redirects.length; i++) {
+          for (var i=0; i<this.redirects.length; i++) {
             var r = this.redirects[i];
             if (path.lastIndexOf(r.path,0)===0) {
               window.location.replace(r.destination);
