@@ -102,14 +102,9 @@ async function makePages(body,template,defaultFunc,type){
         page.path += "/";
       }
 
+/*
       if (page.body) {
         const $ = cheerio.load(page.body);
-        $('[href]').each(function(i,elem){
-          var href = $(this).attr('href');
-          if (href.match(/^#.*$/)) {
-            $(this).attr('href', page.path+href);
-          }
-        });
 
         // Use figure where we have the content to support it
         $('img').each(function(i,img){
@@ -133,7 +128,7 @@ async function makePages(body,template,defaultFunc,type){
         var script = ($('head').children('script').length > 0)? "<script>"+$('head').children('script').html()+"</script>":"";
         page.body = style+script+$('body').html();
       }
-
+*/
 
       addToSitemap(page,type,page.template);
       await makeDir("data/pages"+page.path);

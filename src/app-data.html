@@ -97,14 +97,33 @@
           type: Boolean,
           readOnly: true,
           notify: true
+        },
+
+        redirects: {
+          type: Array,
+          notify: true,
         }
       }); }
 
       static get observers() { return [
-        '_computePage(pages.items, path, pages)',
+        '_computePage(pages.items, path, pages, redirects)',
         '_fetchPages(pages,offline)',
         '_fetchPage(page, offline)'
       ]}
+
+      ready(){
+        super.ready();
+        fetch('https://uvalib-api.firebaseio.com/redirects.json')
+          .then(function(response){
+            return response.json();
+          })
+          .then(function(redirects){
+            this.redirects = redirects;
+            if (this.path) {
+              this._redirects(this.path);
+            }
+          }.bind(this));
+      }
 
       _computePage(pagesItems, path){
 
@@ -129,9 +148,11 @@
                       if (page.path === "/404/") notFound = page;
                     }
                     if(!match) {
-                      this._setNotFound(true);
-                      console.log('not found');
-                      this.page = notFound;
+                      if (!this._redirects(path) && this.redirects) {
+                        this._setNotFound(true);
+                        console.log('not found');
+                        this.page = notFound;
+                      }
                     }
                   }
 
@@ -139,6 +160,26 @@
       }
 
       _redirects(path) {
+        if (path == '/data/pages' || path.lastIndexOf('/data/pages/',0)===0) {
+          window.location.replace(path.replace('/data/pages/','/'));
+          return true;
+        } else if (path == '/site-search' || path.lastIndexOf('/site-search/',0)===0) {
+          window.location.replace("/search");
+          return true;
+        } else if (path.lastIndexOf('/files/',0)===0) {
+          window.location.replace("https://static.lib.virginia.edu"+path.replace('/files/','/uvalibappfiles/'));
+          return true;
+        } else if (this.redirects){
+          for (var i=0; i<=this.redirects.length; i++) {
+            var r = this.redirects[i];
+            if (path.lastIndexOf(r.path,0)===0) {
+              window.location.replace(r.destination);
+              return true;
+            }
+          }
+        }
+
+/*
         if (path == '/libraries/robertson-media-center' || path.lastIndexOf('/libraries/robertson-media-center/',0)==0) {
           window.location.replace("/rmc");
           return true;
@@ -188,7 +229,7 @@
           window.location.replace('/services/orcid-at-uva/');
           return true;
         }
-
+*/
         return false;
       }
 
@@ -301,6 +342,32 @@
         template.content.querySelectorAll('paper-card').forEach( (card)=>{
           if (card.hasAttribute('image'))
             card.setAttribute('image',this.whichImage(card.getAttribute('image')));
+        });
+
+        template.content.querySelectorAll('[href]').forEach((link)=>{
+          let href = link.getAttribute('href');
+          if (href.match(/^#.*$/))
+            link.setAttribute('href', this.path+href);
+        });
+
+        // Use figure where we have the content to support it
+        template.content.querySelectorAll('img').forEach((img)=>{
+          // allow for override
+          if (img.hasAttribute('no-figure')) return;
+          // make sure that we are not already looking at a figure
+          if (img.parentElement.tagName.toLowerCase() === 'figure') return;
+          var align = img.getAttribute('data-align');
+          var fig = document.createElement('figure');
+          fig.setAttribute('role','group');
+          fig.setAttribute('class','caption caption-img align-'+(align)?align:'');
+          fig.appendChild(img.cloneNode());
+          var caption = img.getAttribute('data-caption');
+          if (caption) {
+            var figcap = document.createElement('figcaption');
+            figcap.appendChild(document.createTextNode(caption));
+            fig.appendChild(figcap);
+          }
+          img.replaceWith(fig);
         });
 
         return template.content.querySelector('.content').innerHTML;
