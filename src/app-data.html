@@ -113,16 +113,23 @@
 
       ready(){
         super.ready();
-        fetch('https://uvalib-api.firebaseio.com/redirects.json')
-          .then(function(response){
-            return response.json();
-          })
-          .then(function(redirects){
-            this.redirects = redirects;
-            if (this.path) {
-              this._redirects(this.path);
-            }
-          }.bind(this));
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+	           if (xhr.readyState !== 4) return;
+	           if (xhr.status >= 200 && xhr.status < 300) {
+		             this.redirects = JSON.parse(xhr.responseText);
+                 if (this.path) {
+                   this._redirects(this.path);
+                 }
+	           } else {
+		             // What to do when the request has failed
+		             console.log('error', xhr);
+	           }
+
+           }.bind(this);
+           xhr.open('GET', 'https://uvalib-api.firebaseio.com/redirects.json');
+           xhr.send();
       }
 
       _computePage(pagesItems, path){
