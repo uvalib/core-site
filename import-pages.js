@@ -76,7 +76,7 @@ async function makePages(body,template,defaultFunc,type){
       page.crumbIndex = page.ancestors.length+1;
 
       if (page.body) {
-        page.body = page.body.replace(/https:\/\/drupal\.lib\.virginia\.edu\/sites\/default\/files\//g, '/files/');
+        page.body = page.body.replace(/https:\/\/drupal\.lib\.virginia\.edu\/sites\/default\/files\//g, 'https://wwwstatic.lib.virginia.edu/files/');
         page.body = page.body.replace(/\/sites\/default\/files\//g, '/files/');
       }
 
@@ -149,6 +149,18 @@ async function buildPages() {
                   page=>{return {
                     path:"/exhibitions/"+page.urlSlug
                   }},'exhibit');
+
+  // build teaching and learning pages
+  body = await request('https://uvalib-api.firebaseio.com/learning.json');
+  body = JSON.parse(body).map(le=>{
+    if (le.learningItemUrl && le.learningItemUrl.includes('youtube'))
+      le.youtube = le.learningItemUrl;
+    return le;
+  })
+  await makePages(JSON.stringify(body), 'page-learning-template.html',
+                  page=>{return {
+                    path:"/services/learning/"+page.uuid
+                  }},'learning');
 
   // build library pages
   var libs = await request('https://uvalib-api.firebaseio.com/libraries.json');

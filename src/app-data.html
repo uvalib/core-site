@@ -44,6 +44,7 @@
   <link rel="lazy-import" group="app-data-paper-tab" href="../bower_components/paper-tabs/paper-tab.html">
   <link rel="lazy-import" group="app-data-paper-tab" href="../bower_components/paper-tabs/paper-tabs.html">
   <link rel="lazy-import" group="app-data-uvalib-banners" href="../bower_components/uvalib-banner/uvalib-banners.html">
+  <link rel="lazy-import" group="app-data-google-youtube" href="../bower_components/google-youtube/google-youtube.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -408,8 +409,9 @@
         if (html.indexOf('<uvalib-banners')>0)
           await this.importLazyGroup('app-data-uvalib-banners');
         if (html.indexOf('<uva-results-helper')>0)
-          await this.importLazyGroup('app-data-uva-results-helper');  
-
+          await this.importLazyGroup('app-data-uva-results-helper');
+        if (html.indexOf('<google-youtube')>0)
+          await this.importLazyGroup('app-data-google-youtube');
       }
 
       _fetch(url, callback, attempts, isRaw) {
