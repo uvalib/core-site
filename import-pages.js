@@ -76,7 +76,7 @@ async function makePages(body,template,defaultFunc,type){
       page.crumbIndex = page.ancestors.length+1;
 
       if (page.body) {
-        page.body = page.body.replace(/https:\/\/drupal\.lib\.virginia\.edu\/sites\/default\/files\//g, 'https://wwwstatic.lib.virginia.edu/files/');
+        page.body = page.body.replace(/https\:\/\/drupal\.lib\.virginia\.edu\/sites\/default\/files\//g, 'https://static.lib.virginia.edu/uvalibappfiles/');
         page.body = page.body.replace(/\/sites\/default\/files\//g, '/files/');
       }
 
