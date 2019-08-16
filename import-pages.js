@@ -24,7 +24,6 @@ function addToSitemap(page,type,template){
       "parentId": parent,
       "link": page.path,
       "path": page.path,
-//      "ancestors": page.ancestors,
       "sidebar": page.sidebar,
       "subnav": page.subnav,
       "iframe": page.iframe,
@@ -138,6 +137,18 @@ async function makePages(body,template,defaultFunc,type){
     }
 };
 
+function shuffleArray(arry) {
+    var array = JSON.parse(JSON.stringify(arry));
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+function intersection(array1, array2) {
+  return array1.filter(value => array2.includes(value));
+}
+
 async function buildPages() {
   // build basic pages
   var body = await request('https://uvalib-api.firebaseio.com/pages.json');
@@ -156,7 +167,13 @@ async function buildPages() {
     if (le.learningItemUrl && le.learningItemUrl.includes('youtube'))
       le.youtube = le.learningItemUrl;
     return le;
-  })
+  });
+  body = body.map(le=>{
+    // get 3 other items from the same field_category
+    le.related = shuffleArray(body).filter(i=>intersection(le.category,i.category).length>0);
+    if (le.related.length > 3) le.related.length = 3;
+    return le;
+  });
   await makePages(JSON.stringify(body), 'page-learning-template.html',
                   page=>{return {
                     path:"/services/learning/"+page.uuid

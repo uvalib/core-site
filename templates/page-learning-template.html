@@ -44,6 +44,31 @@
         <span>{{.}}</span>
       {{/category}}
     </div>
+    {{#youtubeId}}
+      {{#length}}
+        <div class="learning-vid-length">Length: {{length}} mins</div>
+      {{/length}}
+      <google-youtube video-id="{{{youtubeId}}}"></google-youtube>
+    {{/youtubeId}}
+    {{^youtubeId}}
+      <paper-button raised><a href="{{learningItemUrl}}" tab-index="-1">{{actionTerm}} {{simpleTitle}}</a></paper-button>
+    {{/youtubeId}}
+    <div class="shaded">
+      {{#related.length}}
+        <h3>You might also like…</h3>
+        <div class="resources">
+          {{#related}}
+            <div>
+              <h4>{{title}}</h4>
+              <div class="type">{{formatDisplay}}</div>
+            </div>
+          {{/related}}
+        </div>
+      {{/related.length}}
+      <p>This item is part of a collection of Learning Resources made available by
+the UVA Library.</p>
+      <paper-button><a href="/services/graduate-students-mock/" tab-index="-1">See all Learning Resources &gt;</a></paper-button>
+    </div>
   </div>
 <script>
 </script>

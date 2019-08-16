@@ -1,0 +1,49 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="uvalib-this-or-that">
+
+  <script>
+    class UvaLibThisOrThat extends Polymer.Element {
+
+      static get is() { return 'uvalib-this-or-that'; }
+
+      static get properties() {
+        return {
+          thisBool: {
+            type:Boolean,
+            observer:'_thisChanged',
+            notify: true
+          },
+          thatBool: {
+            type: Boolean,
+            observer: '_thatChanged',
+            notify: true
+          },
+          fallbackSelection: {
+            type: String,
+            value: null,
+            observer: '_fallbackUpdate'
+          }
+        }
+      }
+
+      _thisChanged(){
+        this.thatBool = !this.thisBool;
+      }
+      _thatChanged(){
+        this.thisBool = !this.thatBool;
+      }
+      _fallbackUpdate(){
+        if (this.fallbackSelection === "this") {
+          this.thisBool = true;
+        } else if (this.fallbackSelection === "that") {
+          this.thatBool = true;
+        }
+      }
+    }
+
+    customElements.define(UvaLibThisOrThat.is, UvaLibThisOrThat);
+
+  </script>
+
+</dom-module>
