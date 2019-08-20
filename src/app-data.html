@@ -316,23 +316,26 @@
 
         // Use figure where we have the content to support it
         template.content.querySelectorAll('img').forEach((img)=>{
+          var parent = img.parentElement;
+
           // allow for override
           if (img.hasAttribute('no-figure')) return;
           // make sure that we are not already looking at a figure
-          if (img.parentElement.tagName.toLowerCase() === 'figure') return;
+          if (parent.tagName.toLowerCase() === 'figure') return;
           var align = img.getAttribute('data-align');
           var fig = document.createElement('figure');
           fig.setAttribute('role','group');
           fig.setAttribute('class','caption caption-img align-'+(align)?align:'');
-          fig.appendChild(img.cloneNode());
+//          fig.appendChild(img.cloneNode());
           var caption = img.getAttribute('data-caption');
           if (caption) {
             var figcap = document.createElement('figcaption');
-//            figcap.appendChild(document.createTextNode(caption));
             figcap.innerHTML = caption;
             fig.appendChild(figcap);
           }
-          img.replaceWith(fig);
+//          img.replaceWith(fig);
+          parent.replaceChild(fig,img);
+          fig.appendChild(img);
         });
 
         return template.content.querySelector('.content').innerHTML;
