@@ -68,14 +68,14 @@
     {{^youtubeId}}
       <a href="{{learningItemUrl}}" tab-index="-1"><paper-button raised>{{actionTerm}} {{simpleTitle}}</paper-button></a>
     {{/youtubeId}}
-    <div class="shaded">
+    <div class="shaded vertical layout center">
       {{#related.length}}
-        <h3>You might also like…</h3>
-        <div class="resources">
+        <h2>You might also like…</h2>
+        <div class="resources horizontal layout" style="width: 100%; margin-top: 10px;">
           {{#related}}
-            <div>
-              <h4>{{title}}</h4>
-              <div class="type">{{formatDisplay}}</div>
+            <div class="flex vertical layout center" style="padding: 10px">
+              <div style="margin-bottom: 10px; font-weight: bold; font-size: x-large;"><a href="{{learningItemUrl}}">{{simpleTitle}}</a></div>
+              <div class="type">Type: {{formatDisplay}}</div>
             </div>
           {{/related}}
         </div>
