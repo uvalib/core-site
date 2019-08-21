@@ -176,6 +176,7 @@ async function buildPages() {
   });
   await makePages(JSON.stringify(body), 'page-learning-template.html',
                   page=>{return {
+                    "subnav":"65685915-3510-4626-a500-0b697d6fd5ee",
                     path:"/services/learning/"+page.uuid
                   }},'learning');
 
