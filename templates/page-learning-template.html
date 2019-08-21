@@ -75,7 +75,9 @@
           {{#related}}
             <div class="flex vertical layout center" style="padding: 10px">
               <div style="margin-bottom: 10px; font-weight: bold; font-size: x-large;"><a href="{{learningItemUrl}}">{{simpleTitle}}</a></div>
-              <div class="type">Type: {{formatDisplay}}</div>
+              {{#formatDisplay}}
+                <div class="type">Type: {{formatDisplay}}</div>
+              {{/formatDisplay}}
             </div>
           {{/related}}
         </div>
