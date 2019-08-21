@@ -35,15 +35,30 @@
 <body>
   <div class="content">
     <style>
+      .learning-type {
+        font-weight: bold;
+      }
+      paper-button {
+        margin: var(--uvalib-spacing-unit)
+      }
+      .shaded {
+        background-color: var(--uvalib-secondary-lt-grey);
+      }
     </style>
     <div class="learning-body">{{{body}}}</div>
-    <div class="learning-type">Type: {{{formatDisplay}}}</div>
-    <div class="learning-source">Source: {{{source}}}</div>
-    <div class="learning-categories">Categories:
+    {{#formatDisplay}}
+      <div class="learning-type">Type: {{{formatDisplay}}}</div>
+    {{/formatDisplay}}
+    {{#source}}
+      <div class="learning-source"><strong>Source:</strong> {{{source}}}</div>
+    {{/source}}
+    {{#category.length}}
+    <div class="learning-categories"><strong>Categories:</strong>
       {{#category}}
         <span>{{.}}</span>
       {{/category}}
     </div>
+    {{/category.length}}
     {{#youtubeId}}
       {{#length}}
         <div class="learning-vid-length">Length: {{length}} mins</div>
@@ -51,7 +66,7 @@
       <google-youtube video-id="{{{youtubeId}}}"></google-youtube>
     {{/youtubeId}}
     {{^youtubeId}}
-      <paper-button raised><a href="{{learningItemUrl}}" tab-index="-1">{{actionTerm}} {{simpleTitle}}</a></paper-button>
+      <a href="{{learningItemUrl}}" tab-index="-1"><paper-button raised>{{actionTerm}} {{simpleTitle}}</paper-button></a>
     {{/youtubeId}}
     <div class="shaded">
       {{#related.length}}
@@ -67,7 +82,7 @@
       {{/related.length}}
       <p>This item is part of a collection of Learning Resources made available by
 the UVA Library.</p>
-      <paper-button><a href="/services/graduate-students-mock/" tab-index="-1">See all Learning Resources &gt;</a></paper-button>
+      <a href="/services/learning/" tab-index="-1"><paper-button>See all Learning Resources</paper-button></a>
     </div>
   </div>
 <script>

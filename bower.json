@@ -12,7 +12,7 @@
     "uvalib-elements": "uvalib-components/uvalib-elements#master",
     "promise-polyfill": "^6.0.2",
     "iframe-resizer": "davidjbradshaw/iframe-resizer#^3.5.16",
-    "uva-accordion": "uva-components/uva-accordion#2.0.2"
+    "uva-accordion": "uva-components/uva-accordion#2.0.4"
   },
   "devDependencies": {
     "web-component-tester": "^6.0.0"
@@ -26,6 +26,6 @@
     "paper-styles": "^2.0.0",
     "iron-a11y-keys-behavior": "^v2.0.0",
     "iron-flex-layout": "^2.0.3",
-    "uva-accordion": "2.0.2"
+    "uva-accordion": "2.0.4"
   }
 }
