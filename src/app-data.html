@@ -320,22 +320,23 @@
           var parent = img.parentElement;
 
           // allow for override
-          if (img.hasAttribute('no-figure')) return;
+          if (!img.hasAttribute('data-caption') || img.hasAttribute('no-figure')) return;
           // make sure that we are not already looking at a figure
           if (parent.tagName.toLowerCase() === 'figure') return;
           var align = img.getAttribute('data-align');
           var fig = document.createElement('figure');
           fig.setAttribute('role','group');
-          fig.setAttribute('class','caption caption-img align-'+(align)?align:'');
-//          fig.appendChild(img.cloneNode());
+          fig.classList.add('class');
+          fig.classList.add('caption-img');
+          if (align) fig.classList.add('align-'+align);
           var caption = img.getAttribute('data-caption');
           if (caption) {
             var figcap = document.createElement('figcaption');
             figcap.innerHTML = caption;
             fig.appendChild(figcap);
           }
-//          img.replaceWith(fig);
           parent.replaceChild(fig,img);
+
           fig.appendChild(img);
         });
 
