@@ -19,6 +19,7 @@
   <link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-search.html">
   <link rel="lazy-import" group="app-data-uvalib-search-box" href="../bower_components/uvalib-search-box/uvalib-search-box.html">
   <link rel="lazy-import" group="app-data-uvalib-springshare" href="../bower_components/uvalib-springshare-form/uvalib-springshare-chat.html">
+  <link rel="lazy-import" group="app-data-uvalib-springshare-form" href="../bower_components/uvalib-springshare-form/uvalib-springshare-form.html">
   <link rel="lazy-import" group="app-data-uvalib-reno" href="../bower_components/uvalib-page/uvalib-reno.html">
   <link rel="lazy-import" group="app-data-uvalib-image-header" href="../bower_components/uvalib-banner/uvalib-image-header.html">
   <link rel="lazy-import" group="app-data-uvalib-services" href="../bower_components/uvalib-directory/uvalib-services.html">
@@ -48,6 +49,7 @@
   <link rel="lazy-import" group="app-data-uvalib-banners" href="../bower_components/uvalib-banner/uvalib-banners.html">
   <link rel="lazy-import" group="app-data-google-youtube" href="../bower_components/google-youtube/google-youtube.html">
   <link rel="lazy-import" group="app-data-uvalib-this-or-that" href="./uvalib-this-or-that.html">
+  <link rel="lazy-import" group="app-data-yaml-parser" href="../bower_components/uva-models/yaml-parser.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -425,6 +427,10 @@
           await this.importLazyGroup('app-data-google-youtube');
         if (html.indexOf('<uvalib-this-or-that')>0)
           await this.importLazyGroup('app-data-uvalib-this-or-that');
+        if (html.indexOf('<yaml-parser')>0)
+          await this.importLazyGroup('app-data-yaml-parser');
+        if (html.indexOf('<uvalib-springshare-form')>0)
+          await this.importLazyGroup('app-data-uvalib-springshare-form');
       }
 
       _fetch(url, callback, attempts, isRaw) {
