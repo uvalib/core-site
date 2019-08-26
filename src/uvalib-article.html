@@ -302,6 +302,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               this.title = null;
             }
             this.$.content.innerHTML = html;
+            this.$.content.querySelectorAll('dom-bind').forEach((dombind)=>{
+              dombind.getValues = (o)=>{
+                return (typeof o === 'object' && o !== null)? Object.values(o):null;
+              };
+            });
         }
         // handle anchors
         if (html)
