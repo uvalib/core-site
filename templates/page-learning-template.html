@@ -52,18 +52,16 @@
     {{#source}}
       <div class="learning-source"><strong>Source:</strong> {{{source}}}</div>
     {{/source}}
-    {{#category.length}}
+    {{#tagnames}}
     <div class="learning-categories"><strong>Categories:</strong>
-      {{#category}}
-        <span>{{.}}</span>
-      {{/category}}
+      {{{tagnames}}}
     </div>
-    {{/category.length}}
+    {{/tagnames}}
     {{#youtubeId}}
       {{#length}}
         <div class="learning-vid-length">Length: {{length}} mins</div>
       {{/length}}
-      <google-youtube video-id="{{{youtubeId}}}"></google-youtube>
+      <google-youtube fluid video-id="{{{youtubeId}}}"></google-youtube>
     {{/youtubeId}}
     {{^youtubeId}}
       <a href="{{learningItemUrl}}" tab-index="-1"><paper-button raised>{{actionTerm}} {{simpleTitle}}</paper-button></a>
