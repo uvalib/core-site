@@ -23,6 +23,7 @@
     "bower_components/uva-helper-libs/polyfills/promise.html",
     "bower_components/uva-helper-libs/polyfills/array.findindex.html",
     "bower_components/uva-helper-libs/polyfills/element.replacewith.html",
+    "bower_components/uva-helper-libs/polyfills/element.object.values-entries.html",
     "bower_components/iframe-resizer/js/*",
     "bower_components/es6-promise/*",
     "bower_components/lightgallery.js/dist/css/lightgallery.min.css",
