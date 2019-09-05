@@ -276,6 +276,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return this._desktopMediaQuery.matches;
       }
 
+_setInnerHTML(elm, html) {
+  elm.innerHTML = html;
+
+  Array.from(elm.querySelectorAll("script")).forEach( oldScript => {
+    oldScript.remove();
+    eval(oldScript.innerHTML);
+  });
+}
+
       _loadArticle(title,html) {
         // Remove any old iframes if we have them
         var ifrm = this.shadowRoot.getElementById('ifrm');
@@ -301,7 +310,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             } else {
               this.title = null;
             }
-            this.$.content.innerHTML = html;
+            //this.$.content.innerHTML = html;
+            this._setInnerHTML(this.$.content, html)
+
             this.$.content.querySelectorAll('dom-bind').forEach((dombind)=>{
               dombind.getValues = (o)=>{
                 return (typeof o === 'object' && o !== null)? Object.values(o):null;
