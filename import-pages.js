@@ -146,7 +146,8 @@ function shuffleArray(arry) {
     return array;
 }
 function intersection(array1, array2) {
-  return array1.filter(value => array2.includes(value));
+  return (array1 && array2 && Array.isArray(array1) && Array.isArray(array2) )?
+    array1.filter(value => array2.includes(value)):[];
 }
 
 async function buildPages() {
