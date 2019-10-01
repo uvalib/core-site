@@ -4,8 +4,10 @@ bower_components/
 node_modules/
 build/
 *.pyc
+.htaccess
 .bower_components.bak
 .uvalib-theme.bak
 .uvalib-banner.bak
 .uvalib-bookplates.bak
 .uvalib-page.bak
+sitemap.txt
