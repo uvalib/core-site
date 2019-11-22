@@ -49,6 +49,7 @@
   <link rel="lazy-import" group="app-data-google-youtube" href="../bower_components/google-youtube/google-youtube.html">
   <link rel="lazy-import" group="app-data-uvalib-this-or-that" href="./uvalib-this-or-that.html">
   <link rel="lazy-import" group="app-data-yaml-parser" href="../bower_components/uva-models/yaml-parser.html">
+  <link rel="lazy-import" group="app-data-copy-to-clipboard" href="../bower_components/copy-to-clipboard/copy-to-clipboard.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -432,7 +433,8 @@
           await this.importLazyGroup('app-data-uvalib-springshare-form');
         if (html.indexOf('<uva-library-hours')>0)
           await this.importLazyGroup('app-data-uva-library-hours');
-
+        if (html.indexOf('<copy-to-clipboard')>0)
+          await this.importLazyGroup('app-data-copy-to-clipboard');
       }
 
       _fetch(url, callback, attempts, isRaw) {

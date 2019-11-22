@@ -279,7 +279,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 _setInnerHTML(elm, html) {
   elm.innerHTML = html;
 
-  Array.from(elm.querySelectorAll("script")).forEach( oldScript => {
+  Array.from(elm.querySelectorAll("script:not([type='application/yaml'])")).forEach( oldScript => {
     oldScript.remove();
     eval(oldScript.innerHTML);
   });
