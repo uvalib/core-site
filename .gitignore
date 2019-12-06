@@ -11,3 +11,4 @@ build/
 .uvalib-bookplates.bak
 .uvalib-page.bak
 sitemap.txt
+.DS_Store
