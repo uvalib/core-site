@@ -128,13 +128,7 @@ module.exports = {
     },
     {
       urlPattern: /^https:\/\/api\.devhub\.virginia\.edu\/.*\/library\/alerts/,
-      handler: 'networkFirst',
-      options: {
-        cache: {
-          maxEntries: 5,
-          name: 'data-api-alert-cache'
-        }
-      }
+      handler: 'networkOnly'
     },
     {
       urlPattern: /\/manifest.json/,
