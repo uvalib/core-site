@@ -118,13 +118,7 @@ module.exports = {
     },
     {
       urlPattern: /^https:\/\/api.devhub.virginia.edu\/.*\/library\/web\/banners.*/,
-      handler: 'networkFirst',
-      options: {
-        cache: {
-          maxEntries: 5,
-          name: 'data-api-banner-cache'
-        }
-      }
+      handler: 'networkOnly'
     },
     {
       urlPattern: /^https:\/\/api\.devhub\.virginia\.edu\/.*\/library\/alerts/,
