@@ -1,8 +1,8 @@
 #!/bin/bash
 #echo '<!-- www.library.virginia.edu -->' >> build/es6-unbundled/index.html
-cp -r build/es5-unbundled build/es6-unbundled/es5
+#cp -r build/es5-unbundled build/es6-unbundled/es5
 #rsync -avh build/es5-bundled/ build/es6-unbundled/es5
-rm build/es6-unbundled/es5/.htaccess
+#rm build/es6-unbundled/es5/.htaccess
 #sed -i 's/<head>/<head><link rel="import" href="bower_components\/uva-helper-libs\/polyfills.html">/' build/es6-unbundled/es5/index.html
 #sed -i '.bak' 's/<head>/<head><link rel="import" href="bower_components\/uva-helper-libs\/polyfills.html">/' build/es6-unbundled/es5/index.html
 
