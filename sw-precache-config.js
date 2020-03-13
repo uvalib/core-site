@@ -63,6 +63,10 @@ module.exports = {
       }
     },
     {
+      urlPattern: /\/data\/pages\/emergency\/.*/,
+      handler: 'networkOnly'
+    },
+    {
       urlPattern: /\/data\/.*json/,
       handler: 'fastest',
       options: {

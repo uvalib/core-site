@@ -42,8 +42,15 @@
   },
   "builds": [
     {
+      "name": "es5-unbundled",
+      "js": {"minify": false, "compile": true},
+      "addServiceWorker": false,
+      "addPushManifest": false,
+      "insertPrefetchLinks": false
+    },
+    {
       "preset": "es6-unbundled",
-      "js": { "minify" : false, "compile" : false }
+      "js": { "minify" : false }
     }
   ]
 }
