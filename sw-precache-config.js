@@ -43,6 +43,10 @@ module.exports = {
       }
     },
     {
+      urlPattern: /\/bower_components\/uvalib-search-box\/.*/,
+      handler: 'networkOnly'
+    },
+    {
       urlPattern: /.*\.(png|jpg|gif|svg|webp)/i,
       handler: 'fastest',
       options: {
