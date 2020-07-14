@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node ./import-pages.js; node --max-old-space-size=4000 ./node_modules/polymer-cli/bin/polymer.js build --name es6-unbundled; bash ./package-build.sh; cp googleec3dc865d320cf01.html build/es6-unbundled/; cp googleec3dc865d320cf01.html build/es6-unbundled/data/pages/;",
+    "build": "node ./import-pages.js; node --max-old-space-size=4000 ./node_modules/polymer-cli/bin/polymer.js build; bash ./package-build.sh; cp googleec3dc865d320cf01.html build/es6-unbundled/; cp googleec3dc865d320cf01.html build/es6-unbundled/data/pages/;",
     "deploy-static-pages": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/es6-unbundled/data/pages/ static01.lib.virginia.edu:/lib_content47/static/drupalPages;",
     "deploy": "rsync -avh -e \"ssh -i /home/teamcity/build-deploy-scripts/keys/bamboo_deploy -l bamboo\" build/es6-unbundled/ bamboo@www14.lib.virginia.edu:/wwwstatic;",
     "images": "rsync -avh --delete -e \"ssh -i /home/teamcity/build-deploy-scripts/keys/bamboo_deploy -l bamboo\" bamboo@drupal.lib.virginia.edu:/usr/share/drupal/sites/default/files/ files; node ./imagemin-files.js; rsync -avh files-ready/ files;",
