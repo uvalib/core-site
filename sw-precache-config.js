@@ -4,7 +4,7 @@ module.exports = {
     'src/ce-fix.html',
     'bower_components/webcomponentsjs/webcomponents-loader.js',
     'bower_components/uva-helper-libs/polyfills.html',
-    'bower_components/components-font-awesome/css/all.min.css',
+    'bower_components/components-font-awesome/css/*',
     'images/*'
   ],
   runtimeCaching: [
