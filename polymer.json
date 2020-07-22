@@ -18,7 +18,7 @@
     "sitemap.txt",
     "data/pages.json",
     "bower_components/webcomponentsjs/*",
-    "bower_components/components-font-awesome/css/*",
+    "bower_components/components-font-awesome/*",
     "bower_components/uvalib-header/uvalib-header-lazyload.html",
     "bower_components/uva-helper-libs/polyfills.html",
     "bower_components/uva-helper-libs/polyfills/promise.html",
