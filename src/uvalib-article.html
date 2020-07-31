@@ -24,6 +24,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="lazy-import" group="uvalib-article" href="app-side-bar.html">
   <link rel="lazy-import" group="uvalib-article" href="app-sub-nav.html">
   <link rel="lazy-import" group="uvalib-article2" href="news-network-warning.html">
+  <link rel="lazy-import" group="uvalib-article2" href="../bower_components/uvalib-alerts/uvalib-alerts-regional.html">
 
   <template>
     <custom-style>
@@ -105,6 +106,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div role="main" class="container" fade-in$="[[!loading]]" hidden$="[[failure]]" on-click-hash-link="_hashClick">
 
+      <uvalib-alerts-regional id="alerts-regional"></uvalib-alerts-regional>
+
       <article>
         <div id="content" class="fade-in" on-click="_click"></div>
       </article>
@@ -140,7 +143,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         return Object.assign(super.properties,
             {
-              route: Object,
+              route: {
+                type:Object,
+                observer:'_updateRegionAlert'
+              },
 
               category: Object,
 
@@ -227,6 +233,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           if (this.shadowRoot.querySelector('h1')) {
             this.shadowRoot.querySelector('h1').focus();
           }
+        }
+      }
+
+      _updateRegionAlert() {
+        const regalerts = this.shadowRoot.querySelector('uvalib-alerts-regional')
+        if (regalerts && regalerts._alertsChanged) {
+          regalerts._alertsChanged();
         }
       }
 
