@@ -231,11 +231,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // For any other page focus should go to the heading.
         // NOTE for this to work these elements need to have tabindex=-1
         if (this.shadowRoot.querySelector('uvalib-homepage')) {
-          console.log('banner');
           this.shadowRoot.querySelector('uvalib-homepage').setBannerFocus();
+          console.log('home page banner');
         } else {
-          if (this.shadowRoot.querySelector('h1')) {
-            this.shadowRoot.querySelector('h1').focus();
+          if (this.shadowRoot.querySelector('#content nav a')) {
+            this.shadowRoot.querySelector('#content nav a').focus();
+          } else {
+            this.shadowRoot.querySelector('#content a, #content input, #content select, #content textarea').focus();
           }
         }
       }
