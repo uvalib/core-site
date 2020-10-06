@@ -162,9 +162,13 @@
 
           {{#teamOption}}
             <div slot="heading"><h3>About my department</h3></div>
-            {{#teams}}
-              <div slot="body">{{{body}}}</div>
-            {{/teams}}
+            {{#teams.length}}
+              {{#teams}}
+                {{#teambody}}
+                  <div slot="body">{{{teambody}}}</div>
+                {{/teambody}}
+              {{/teams}}
+            {{/teams.length}}
           {{/teamOption}}
         </div>
 

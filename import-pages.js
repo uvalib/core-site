@@ -219,6 +219,7 @@ async function buildPages() {
   staffParsed.forEach(person=>person.teams=(person.teams)? teamsParsed.filter(
     team=>person.teams.indexOf(team.uuid)>-1
   ):[] );
+  staffParsed.forEach( person=>person.teams.forEach( team=>team.teambody=team.body ) );
 
   await makePages(JSON.stringify(staffParsed), 'page-staff-template.html',
                   person=>{return {
