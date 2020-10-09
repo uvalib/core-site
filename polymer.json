@@ -38,6 +38,7 @@
     "bower_components/uvalib-theme/uvalib-aeon5-styles.html",
     "bower_components/uvalib-theme/uvalib-ils-styles.html",
     "bower_components/web-components/packages/uvalib-image/dist/*",
+    "bower_components/web-components/packages/uvalib-counts/build/*",
     "fonts/*"
   ],
   "lint": {
