@@ -1,3 +1,4 @@
+<script type="module" src="/bower_components/web-components/packages/uvalib-counts/build/uvalib-data-viz-donut.js"></script>
 <link rel="import" href="../bower_components/uvalib-theme/uvalib-ui-element.html">
 <link rel="import" href="../bower_components/uva-helper-libs/uvalib-helper-libs.html">
 <link rel="import" href="../bower_components/uvalib-directory/uvalib-staff-card.html">
@@ -440,8 +441,8 @@
           await this.importLazyGroup('app-data-uvalib-alerts');
         if (html.indexOf('<uvalib-image')>0)
           import( location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '') + "/bower_components/web-components/packages/uvalib-image/dist/uvalib-image.js");
-        if (html.indexOf('<uvalib-data-viz-donut')>0)
-          import( location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '') + "/bower_components/web-components/packages/uvalib-counts/build/uvalib-data-viz-donut.js");
+//        if (html.indexOf('<uvalib-data-viz-donut')>0)
+//          import( location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '') + "/bower_components/web-components/packages/uvalib-counts/build/uvalib-data-viz-donut.js");
       }
 
       _fetch(url, callback, attempts, isRaw) {
