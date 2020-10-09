@@ -440,6 +440,8 @@
           await this.importLazyGroup('app-data-uvalib-alerts');
         if (html.indexOf('<uvalib-image')>0)
           import( location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '') + "/bower_components/web-components/packages/uvalib-image/dist/uvalib-image.js");
+        if (html.indexOf('<uvalib-data-viz-donut')>0)
+          import( location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '') + "/bower_components/web-components/packages/uvalib-counts/build/uvalib-data-viz-donut.js");
       }
 
       _fetch(url, callback, attempts, isRaw) {
