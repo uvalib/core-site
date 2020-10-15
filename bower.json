@@ -28,7 +28,7 @@
     "iron-a11y-keys-behavior": "^v2.0.0",
     "iron-flex-layout": "^2.0.3",
     "clipboard": "^2.0.1",
-    "uva-accordion": "2.0.12",
+    "uva-accordion": "2.0.13",
     "web-components": "master"
   }
 }
