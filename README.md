@@ -18,6 +18,7 @@ Install [polymer-cli](https://github.com/Polymer/polymer-cli):
 ### Import pages from Library API
 
     ./import-pages.js
+    ./import-files.js
 
 ## Start the development server
 
