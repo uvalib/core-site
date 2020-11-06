@@ -2,7 +2,6 @@ files/
 data/
 bower_components/
 node_modules/
-build/
 *.pyc
 .htaccess
 .bower_components.bak

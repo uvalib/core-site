@@ -1,0 +1,412 @@
+<html><head><link rel="import" href="../bower_components/uvalib-theme/uvalib-ui-element.html"><link rel="import" href="../bower_components/uva-helper-libs/uvalib-helper-libs.html"><link rel="import" href="../bower_components/uvalib-directory/uvalib-staff-card.html"><link rel="import" href="../bower_components/shadycss/apply-shim.html"><link rel="import" href="../bower_components/polymer/lib/elements/custom-style.html"></head><body><dom-module id="app-data"><link rel="lazy-import" group="app-data-uvalib-homepage" href="../bower_components/uvalib-page/uvalib-homepage.html"><link rel="lazy-import" group="app-data-uvalib-ils-form" href="../bower_components/uvalib-elements/uvalib-ils-form.html"><link rel="lazy-import" group="app-data-uvalib-hourspage" href="../bower_components/uvalib-page/uvalib-hourspage.html"><link rel="lazy-import" group="app-data-uvalib-exhibitspage" href="../bower_components/uvalib-page/uvalib-exhibitspage.html"><link rel="lazy-import" group="app-data-uvalib-collectionspage" href="../bower_components/uvalib-page/uvalib-collectionspage.html"><link rel="lazy-import" group="app-data-paper-card" href="../bower_components/paper-card/paper-card.html"><link rel="lazy-import" group="app-data-uvalib-majorexhibitpage" href="../bower_components/uvalib-page/uvalib-majorexhibitpage.html"><link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-list-items.html"><link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-browse.html"><link rel="lazy-import" group="app-data-uvalib-bookplates" href="../bower_components/uvalib-bookplates/uvalib-bookplate-search.html"><link rel="lazy-import" group="app-data-uvalib-search-box" href="../bower_components/uvalib-search-box/uvalib-search-box.html"><link rel="lazy-import" group="app-data-uvalib-springshare" href="../bower_components/uvalib-springshare-form/uvalib-springshare-chat.html"><link rel="lazy-import" group="app-data-uvalib-springshare-form" href="../bower_components/uvalib-springshare-form/uvalib-springshare-form.html"><link rel="lazy-import" group="app-data-uvalib-reno" href="../bower_components/uvalib-page/uvalib-reno.html"><link rel="lazy-import" group="app-data-uvalib-image-header" href="../bower_components/uvalib-banner/uvalib-image-header.html"><link rel="lazy-import" group="app-data-uvalib-services" href="../bower_components/uvalib-directory/uvalib-services.html"><link rel="lazy-import" group="app-data-uvalib-staff" href="../bower_components/uvalib-directory/uvalib-staff.html"><link rel="lazy-import" group="app-data-uvalib-teams" href="../bower_components/uvalib-directory/uvalib-teams.html"><link rel="lazy-import" group="app-data-uvalib-areas" href="../bower_components/uvalib-directory/uvalib-areas.html"><link rel="lazy-import" group="app-data-uvalib-events-ui" href="../bower_components/uvalib-events-ui/uvalib-events-ui.html"><link rel="lazy-import" group="app-data-uvalib-news" href="../bower_components/uvalib-news/uvalib-news.html"><link rel="lazy-import" group="app-data-iron-image" href="../bower_components/iron-image/iron-image.html"><link rel="lazy-import" group="app-data-uva-accordion" href="../bower_components/uva-accordion/uva-accordion.html"><link rel="lazy-import" group="app-data-uvalib-form-builder" href="../bower_components/uvalib-form-builder/uvalib-form-builder.html"><link rel="lazy-import" group="app-data-uvalib-news-list" href="../bower_components/uvalib-news/uvalib-news-list.html"><link rel="lazy-import" group="app-data-uvalib-blog-list" href="../bower_components/uvalib-news/uvalib-blog-list.html"><link rel="lazy-import" group="app-data-uvalib-directorypage" href="../bower_components/uvalib-page/uvalib-directorypage.html"><link rel="lazy-import" group="app-data-dom-bind" href="../bower_components/polymer/lib/elements/dom-bind.html"><link rel="lazy-import" group="app-data-dom-if" href="../bower_components/polymer/lib/elements/dom-if.html"><link rel="lazy-import" group="app-data-dom-repeat" href="../bower_components/polymer/lib/elements/dom-repeat.html"><link rel="lazy-import" group="app-data-uva-library" href="../bower_components/uva-models/uva-library.html"><link rel="lazy-import" group="app-data-uva-library-hours" href="../bower_components/uva-models/uva-library-hours.html"><link rel="lazy-import" group="app-data-uva-results-helper" href="../bower_components/uva-models/uva-results-helper.html"><link rel="lazy-import" group="app-data-uva-results-highlighter" href="../bower_components/uva-models/uva-results-highlighter.html"><link rel="lazy-import" group="app-data-paper-radio-group" href="../bower_components/paper-radio-group/paper-radio-group.html"><link rel="lazy-import" group="app-data-paper-radio-button" href="../bower_components/paper-radio-button/paper-radio-button.html"><link rel="lazy-import" group="app-data-paper-toggle-button" href="../bower_components/paper-toggle-button/paper-toggle-button.html"><link rel="lazy-import" group="app-data-app-localstorage-document" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html"><link rel="lazy-import" group="app-data-paper-tab" href="../bower_components/paper-tabs/paper-tab.html"><link rel="lazy-import" group="app-data-paper-tab" href="../bower_components/paper-tabs/paper-tabs.html"><link rel="lazy-import" group="app-data-uvalib-banners" href="../bower_components/uvalib-banner/uvalib-banners.html"><link rel="lazy-import" group="app-data-google-youtube" href="../bower_components/google-youtube/google-youtube.html"><link rel="lazy-import" group="app-data-uvalib-this-or-that" href="./uvalib-this-or-that.html"><link rel="lazy-import" group="app-data-yaml-parser" href="../bower_components/uva-models/yaml-parser.html"><link rel="lazy-import" group="app-data-copy-to-clipboard" href="../bower_components/copy-to-clipboard/copy-to-clipboard.html"><link rel="lazy-import" group="app-data-uvalib-alerts" href="../bower_components/uvalib-alerts/uvalib-alerts.html"><template></template><script>(function () {
+  let textarea = document.createElement('textarea');
+
+  class AppData extends UvalibUiElement {
+    static get is() {
+      return 'app-data';
+    }
+
+    static get properties() {
+      return Object.assign(super.properties, {
+        path: String,
+        breadCrumbs: {
+          type: Array,
+          computed: '_makeBreadCrumbs(path,pages.items)',
+          notify: true
+        },
+        stage: Object,
+        offline: Boolean,
+        loading: {
+          type: Boolean,
+          readOnly: true,
+          notify: true
+        },
+        pages: {
+          type: Object,
+          notify: true,
+          value: {
+            name: 'pages',
+            title: 'Pages'
+          }
+        },
+        page: {
+          type: Object,
+          notify: true
+        },
+        failure: {
+          type: Boolean,
+          readOnly: true,
+          notify: true
+        },
+        notFound: {
+          type: Boolean,
+          readOnly: true,
+          notify: true
+        },
+        redirects: {
+          type: Array,
+          notify: true
+        }
+      });
+    }
+
+    static get observers() {
+      return ['_computePage(pages.items, path, pages, redirects)', '_fetchPages(pages,offline)', '_fetchPage(page, offline)'];
+    }
+
+    ready() {
+      super.ready();
+      var xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState !== 4) return;
+
+        if (xhr.status >= 200 && xhr.status < 300) {
+          this.redirects = JSON.parse(xhr.responseText);
+
+          if (this.path) {
+            this._redirects(this.path);
+          }
+        } else {
+          // What to do when the request has failed
+          console.log('error', xhr);
+        }
+      }.bind(this);
+
+      xhr.open('GET', 'https://uvalib-api.firebaseio.com/redirects.json');
+      xhr.send();
+    }
+
+    _computePage(pagesItems, path) {
+      if (path && !this._redirects(path)) this._debouncer = Polymer.Debouncer.debounce(this._debouncer, Polymer.Async.timeOut.after(50), () => {
+        var match = false;
+
+        if (!pagesItems) {
+          this.page = null;
+        } else {
+          var notFound = null;
+          path = path.replace('//', '/');
+
+          for (let i = 0; i < pagesItems.length; ++i) {
+            let page = pagesItems[i];
+            if (page.path[0] != '/') page.path = '/' + page.path;
+
+            if (page.path === path || page.path + '/' === path || page.path === path + '/') {
+              this.page = page;
+              match = true;
+            }
+
+            if (page.path === "/404/") notFound = page;
+          }
+
+          if (!match) {
+            if (!this._redirects(path) && this.redirects) {
+              this._setNotFound(true);
+
+              console.log('not found');
+              this.page = notFound;
+            }
+          }
+        }
+      });
+    }
+
+    _redirects(path) {
+      if (path == '/data/pages' || path.lastIndexOf('/data/pages/', 0) === 0) {
+        window.location.replace(path.replace('/data/pages/', '/'));
+        return true;
+      } else if (path == '/site-search' || path.lastIndexOf('/site-search/', 0) === 0) {
+        window.location.replace("/search");
+        return true;
+      } else if (path.lastIndexOf('/files/', 0) === 0) {
+        window.location.replace("https://static.lib.virginia.edu" + path.replace('/files/', '/uvalibappfiles/'));
+        return true;
+      } else if (this.redirects) {
+        let current = path.replace(/(\/)$/, '') + '/';
+
+        for (var i = 0; i < this.redirects.length; i++) {
+          var r = this.redirects[i];
+          let origin = r.path.replace(/(\/)$/, '') + '/'; // strip ending /
+          //            if (path.lastIndexOf(r.path,0)===0) {
+          //            if (current === origin) {
+
+          if (current.startsWith(origin)) {
+            window.location.replace(r.destination);
+            return true;
+          }
+        }
+      }
+
+      return false;
+    }
+
+    _fetchPage(page, offline) {
+      // Don't fail if we become offline but already have a cached version, or if there's
+      // nothing to fetch, or if already loading.
+      if (offline && page && page.html || !page || this.loading || page.iframe) {
+        this._setFailure(false);
+
+        return;
+      }
+
+      this._fetch('data/pages' + page.path + '/index.html', response => {
+        this.set('page.html', this._formatHTML(response));
+      }, 1
+      /* attempts */
+      , true
+      /* isRaw */
+      );
+    }
+
+    _fetchPages(pages, offline, attempts) {
+      // Don't fail if we become offline but already have a cached version, or if there's
+      // nothing to fetch, or if already loading.
+      if (offline && pages && pages.items || !pages || this.loading) {
+        this._setFailure(false);
+
+        return;
+      }
+
+      this._fetch('data/pages.json', response => {
+        this.set('pages.items', this._parseCategoryItems(response));
+      }, attempts || 1
+      /* attempts */
+      );
+    }
+
+    _parseCategoryItems(response) {
+      let items = [];
+
+      for (let i = 0, item; item = response[i]; ++i) {
+        items.push({
+          template: item.template,
+          type: item.type,
+          headline: this._unescapeText(item.title),
+          stage: item.stage,
+          path: item.path,
+          subnav: item.subnav,
+          sidebar: item.sidebar,
+          category: item.category,
+          pageid: item.pageId,
+          parentid: item.parentId,
+          iframe: item.iframe,
+          hideHeader: item.hideHeader,
+          id: item.uuid
+        });
+      }
+
+      return items;
+    }
+
+    _makeBreadCrumbs(path, pages) {
+      let crumbs = [];
+
+      if (path != '/') {
+        let title = _.result(_.find(pages, {
+          'path': path
+        }), 'headline');
+
+        if (!title) {
+          title = path && path.endsWith('/') ? _.result(_.find(pages, {
+            'path': path.slice(0, -1)
+          }), 'headline') : _.result(_.find(pages, {
+            'path': path + '/'
+          }), 'headline');
+        }
+
+        if (title) crumbs.push({
+          path: '',
+          label: title
+        });
+      }
+
+      let p = path,
+          parentId;
+
+      do {
+        parentId = _.result(_.find(pages, {
+          'path': path
+        }), 'parentid');
+
+        if (!parentId) {
+          parentId = path && path.endsWith('/') ? _.result(_.find(pages, {
+            'path': path.slice(0, -1)
+          }), 'parentid') : _.result(_.find(pages, {
+            'path': path + '/'
+          }), 'parentid');
+        }
+
+        if (parentId) {
+          let parent = _.find(pages, {
+            'pageid': parentId
+          });
+
+          if (parent) {
+            if (parent.path && parent.headline) crumbs.push({
+              path: parent.path,
+              label: parent.headline
+            });
+            path = parent.path;
+          } else {
+            parentId = null;
+          }
+        }
+      } while (parentId); // necessary because we don't have parent page references for top level pages
+
+
+      if (p != '/') {
+        crumbs.push({
+          path: '/',
+          label: 'University of Virginia Library'
+        });
+      }
+
+      return crumbs;
+    }
+
+    _unescapeText(text) {
+      textarea.innerHTML = text;
+      return textarea.textContent;
+    }
+
+    _trimRight(text, maxLength) {
+      let breakIdx = text.indexOf(' ', maxLength);
+      return breakIdx === -1 ? text : text.substr(0, breakIdx) + '...';
+    }
+
+    _formatHTML(html) {
+      // temp hack
+      html = html.replace('<uvalib-staff-dir', '<uvalib-staff');
+
+      this._initLazyLoad(html);
+
+      let template = document.createElement('template');
+      template.innerHTML = html;
+      template.content.querySelectorAll('paper-card').forEach(card => {
+        if (card.hasAttribute('image')) card.setAttribute('image', this.whichImage(card.getAttribute('image')));
+      });
+      template.content.querySelectorAll('[href]').forEach(link => {
+        let href = link.getAttribute('href');
+        if (href.match(/^#.*$/)) link.setAttribute('href', this.path + href);
+      }); // Use figure where we have the content to support it
+
+      template.content.querySelectorAll('img').forEach(img => {
+        var parent = img.parentElement; // allow for override
+
+        if (!img.hasAttribute('data-caption') || img.hasAttribute('no-figure')) return; // make sure that we are not already looking at a figure
+
+        if (parent.tagName.toLowerCase() === 'figure') return;
+        var align = img.getAttribute('data-align');
+        var fig = document.createElement('figure');
+        fig.setAttribute('role', 'group');
+        fig.classList.add('class');
+        fig.classList.add('caption-img');
+        if (align) fig.classList.add('align-' + align);
+        var caption = img.getAttribute('data-caption');
+
+        if (caption) {
+          var figcap = document.createElement('figcaption');
+          figcap.innerHTML = caption;
+          fig.appendChild(figcap);
+        }
+
+        parent.replaceChild(fig, img);
+        fig.appendChild(img);
+      });
+      return template.content.querySelector('.content').innerHTML;
+    }
+
+    _initLazyLoad(html) {
+      var _this = this;
+
+      return babelHelpers.asyncToGenerator(function* () {
+        //Get needed to lazy load any needed components
+        if (html.indexOf('<uvalib-homepage') >= 0) yield _this.importLazyGroup('app-data-uvalib-homepage');
+        if (html.indexOf('<uvalib-ils-form') >= 0) yield _this.importLazyGroup('app-data-uvalib-ils-form');
+        if (html.indexOf('<uvalib-hourspage') >= 0) yield _this.importLazyGroup('app-data-uvalib-hourspage');
+        if (html.indexOf('<uvalib-exhibitspage') >= 0) yield _this.importLazyGroup('app-data-uvalib-exhibitspage');
+        if (html.indexOf('<uvalib-collectionspage') >= 0) yield _this.importLazyGroup('app-data-uvalib-collectionspage');
+        if (html.indexOf('<paper-card') >= 0) yield _this.importLazyGroup('app-data-paper-card');
+        if (html.indexOf('<uvalib-majorexhibitpage') >= 0) yield _this.importLazyGroup('app-data-uvalib-majorexhibitpage');
+        if (html.indexOf('<uvalib-bookplate-list-items') >= 0) yield _this.importLazyGroup('app-data-uvalib-bookplates');
+        if (html.indexOf('<uvalib-bookplate-browse') >= 0) yield _this.importLazyGroup('app-data-uvalib-bookplates');
+        if (html.indexOf('<uvalib-bookplate-search') >= 0) yield _this.importLazyGroup('app-data-uvalib-bookplates');
+        if (html.indexOf('<uvalib-search-box') >= 0) yield _this.importLazyGroup('app-data-uvalib-search-box');
+        if (html.indexOf('<uvalib-springshare-chat') >= 0) yield _this.importLazyGroup('app-data-uvalib-springshare');
+        if (html.indexOf('<uvalib-reno') >= 0) yield _this.importLazyGroup('app-data-uvalib-reno');
+        if (html.indexOf('<uvalib-image-header') >= 0) yield _this.importLazyGroup('app-data-uvalib-image-header');
+        if (html.indexOf('<uvalib-staff') >= 0) yield _this.importLazyGroup('app-data-uvalib-staff');
+        if (html.indexOf('<uvalib-teams') >= 0) yield _this.importLazyGroup('app-data-uvalib-teams');
+        if (html.indexOf('<uvalib-areas') >= 0) yield _this.importLazyGroup('app-data-uvalib-areas');
+        if (html.indexOf('<uvalib-services') >= 0) yield _this.importLazyGroup('app-data-uvalib-services');
+        if (html.indexOf('<uvalib-events-ui') >= 0) yield _this.importLazyGroup('app-data-uvalib-events-ui');
+        if (html.indexOf('<uvalib-news') >= 0) yield _this.importLazyGroup('app-data-uvalib-news');
+        if (html.indexOf('<iron-image') >= 0) yield _this.importLazyGroup('app-data-iron-image');
+        if (html.indexOf('<uvalib-form-builder') >= 0) yield _this.importLazyGroup('app-data-uvalib-form-builder');
+        if (_this.path.lastIndexOf('/staff/', 0) === 0 || html.indexOf('<uva-accordion') >= 0) yield _this.importLazyGroup('app-data-uva-accordion');
+        if (html.indexOf('<uvalib-news-list') >= 0) yield _this.importLazyGroup('app-data-uvalib-news-list');
+        if (html.indexOf('<uvalib-blog-list') >= 0) yield _this.importLazyGroup('app-data-uvalib-blog-list');
+        if (html.indexOf('<uvalib-directorypage') >= 0) yield _this.importLazyGroup('app-data-uvalib-directorypage');
+        if (html.indexOf('dom-bind') >= 0) yield _this.importLazyGroup('app-data-dom-bind');
+        if (html.indexOf('dom-if') >= 0) yield _this.importLazyGroup('app-data-dom-if');
+        if (html.indexOf('dom-repeat') >= 0) yield _this.importLazyGroup('app-data-dom-repeat');
+        if (html.indexOf('<uva-library') >= 0) yield _this.importLazyGroup('app-data-uva-library');
+        if (html.indexOf('<paper-radio-group') >= 0) yield _this.importLazyGroup('app-data-paper-radio-group');
+        if (html.indexOf('<paper-toggle-button') >= 0) yield _this.importLazyGroup('app-data-paper-toggle-button');
+        if (html.indexOf('<paper-radio-button') >= 0) yield _this.importLazyGroup('app-data-paper-radio-button');
+        if (html.indexOf('<app-localstorage-document') >= 0) yield _this.importLazyGroup('app-data-app-localstorage-document');
+        if (html.indexOf('<paper-tab') >= 0) yield _this.importLazyGroup('app-data-paper-tab');
+        if (html.indexOf('<uvalib-banners') > 0) yield _this.importLazyGroup('app-data-uvalib-banners');
+        if (html.indexOf('<uva-results-helper') > 0) yield _this.importLazyGroup('app-data-uva-results-helper');
+        if (html.indexOf('<uva-results-highlighter') > 0) yield _this.importLazyGroup('app-data-uva-results-highlighter');
+        if (html.indexOf('<google-youtube') > 0) yield _this.importLazyGroup('app-data-google-youtube');
+        if (html.indexOf('<uvalib-this-or-that') > 0) yield _this.importLazyGroup('app-data-uvalib-this-or-that');
+        if (html.indexOf('<yaml-parser') > 0) yield _this.importLazyGroup('app-data-yaml-parser');
+        if (html.indexOf('<uvalib-springshare-form') > 0) yield _this.importLazyGroup('app-data-uvalib-springshare-form');
+        if (html.indexOf('<uva-library-hours') > 0) yield _this.importLazyGroup('app-data-uva-library-hours');
+        if (html.indexOf('<copy-to-clipboard') > 0) yield _this.importLazyGroup('app-data-copy-to-clipboard');
+        if (html.indexOf('<uvalib-alerts') > 0) yield _this.importLazyGroup('app-data-uvalib-alerts');
+        if (html.indexOf('<uvalib-image') > 0) import(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + "/bower_components/web-components/packages/uvalib-image/dist/uvalib-image.js"); //        if (html.indexOf('<uvalib-data-viz-donut')>0)
+        //          import( location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '') + "/bower_components/web-components/packages/uvalib-counts/build/uvalib-data-viz-donut.js");
+      })();
+    }
+
+    _fetch(url, callback, attempts, isRaw) {
+      let xhr = new XMLHttpRequest();
+      xhr.addEventListener('load', e => {
+        this._setLoading(false);
+
+        if (isRaw) {
+          callback(e.target.responseText);
+        } else {
+          callback(JSON.parse(e.target.responseText));
+        }
+      });
+      xhr.addEventListener('error', e => {
+        // Flaky connections might fail fetching resources
+        if (attempts > 1) {
+          this._fetchDebouncer = Polymer.Debouncer.debounce(this._fetchDebouncer, Polymer.Async.timeOut.after(200), this._fetch.bind(this, url, callback, attempts - 1));
+        } else {
+          this._setLoading(false);
+
+          this._setFailure(true);
+        }
+      });
+
+      this._setLoading(true);
+
+      this._setFailure(false);
+
+      xhr.open('GET', url);
+      xhr.send();
+    }
+
+    refresh() {
+      // Try at most 3 times to get the pages.
+      this._fetchPages(this.pages, this.offline, 3);
+    }
+
+  }
+
+  customElements.define(AppData.is, AppData);
+})();</script></dom-module></body></html>

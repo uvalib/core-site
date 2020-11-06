@@ -1,0 +1,78 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/uvalib-app.html",
+  "fragments": [],
+  "sources": [
+    "src/**/*",
+    "images/**/*",
+    "data/*",
+    "data/**/*",
+    "files/*",
+    "files/**/*",
+    "files-comp/*",
+    "files-comp/**/*",
+    "index.html",
+    "src/uvalib-app.html"
+  ],
+  "extraDependencies": [
+    "bower_components/webcomponentsjs/*.js",
+    ".htaccess",
+    "robots.txt",
+    "manifest.json",
+    "sitemap.txt",
+    "data/pages.json",
+    "bower_components/webcomponentsjs/*",
+    "bower_components/components-font-awesome/css/*",
+    "bower_components/components-font-awesome/webfonts/*",
+    "bower_components/uvalib-header/uvalib-header-lazyload.html",
+    "bower_components/uva-helper-libs/polyfills.html",
+    "bower_components/uva-helper-libs/polyfills/promise.html",
+    "bower_components/uva-helper-libs/polyfills/array.findindex.html",
+    "bower_components/uva-helper-libs/polyfills/element.replacewith.html",
+    "bower_components/uva-helper-libs/polyfills/object.values-entries.html",
+    "bower_components/iframe-resizer/js/*",
+    "bower_components/es6-promise/*",
+    "bower_components/lightgallery.js/dist/css/lightgallery.min.css",
+    "bower_components/lightgallery.js/dist/js/lightgallery.min.js",
+    "bower_components/lg-thumbnail.js/dist/lg-thumbnail.min.js",
+    "bower_components/lg-fullscreen.js/dist/lg-fullscreen.min.js",
+    "bower_components/jsonpath-plus/lib/jsonpath-min.js",
+    "bower_components/lightgallery.js/dist/fonts/*",
+    "bower_components/uvalib-theme/uvalib-aeon-styles.html",
+    "bower_components/uvalib-theme/uvalib-aeon5-styles.html",
+    "bower_components/uvalib-theme/uvalib-ils-styles.html",
+    "bower_components/web-components/packages/uvalib-image/dist/*",
+    "bower_components/web-components/packages/uvalib-counts/build/*",
+    "fonts/*"
+  ],
+  "builds": [
+    {
+      "name": "es6-unbundled",
+      "browserCapabilities": [
+        "es2015",
+        "push"
+      ],
+      "js": {
+        "minify": false,
+        "compile": "es2015",
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": false,
+      "addServiceWorker": true,
+      "addPushManifest": true,
+      "preset": "es6-unbundled"
+    }
+  ],
+  "lint": {
+    "rules": [
+      "polymer-2-hybrid"
+    ]
+  },
+  "moduleResolution": "node"
+}
