@@ -118,7 +118,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         failure="{{failure}}"
         not-found="{{notFound}}"></app-data>
 
-    <uvalib-header relative-links id="header" library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]"></uvalib-header>
+    <uvalib-header relative-links id="header" library-home-link="/" lazy-load-complete="[[lazyLoadComplete]]">
+      <uvalib-alerts-level4></uvalib-alerts-level4>
+    </uvalib-header>
 
     <template is="dom-if" if="[[!_or(article.template,article.hideHeader)]]">
       <!-- breadcrumbs -->
