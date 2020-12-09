@@ -43,7 +43,8 @@
     "bower_components/uvalib-theme/uvalib-ils-styles.html",
     "bower_components/web-components/packages/uvalib-image/dist/*",
     "bower_components/web-components/packages/uvalib-counts/build/*",
-    "fonts/*"
+    "fonts/*",
+    "src/es6-components/*"
   ],
   "builds": [
     {
