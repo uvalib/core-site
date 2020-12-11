@@ -4,6 +4,7 @@
   "description": "## Prerequisites",
   "main": "",
   "scripts": {
+    "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf src/es6-components; npx rollup -c; node ./import-pages.js; node --max-old-space-size=4000 ./node_modules/polymer-cli/bin/polymer.js build; bash ./package-build.sh; cp googleec3dc865d320cf01.html build/es6-unbundled/; cp googleec3dc865d320cf01.html build/es6-unbundled/data/pages/;",
     "deploy-static-pages": "rsync -avh --delete -e 'ssh -i $HOME/.ssh/id_rsa' build/es6-unbundled/data/pages/ static01.lib.virginia.edu:/lib_content47/static/drupalPages;",
@@ -23,16 +24,19 @@
     "url": "https://github.com/uvalib/core-site/issues"
   },
   "homepage": "https://github.com/uvalib/core-site#readme",
-  "dependencies": {
-    "@uvalib/uvalib-alerts": "^0.3.7",
-    "@uvalib/uvalib-counts": "^0.0.2",
-    "autoprefixer": "^10.1.0",
-    "bower": "^1.8.2",
-    "chai": "^4.2.0",
-    "cheerio": "^1.0.0-rc.2",
-    "files": "^1.0.0",
-    "glob": "^7.1.3",
-    "gm": "^1.23.1",
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "axe-core": "^3.0.0-beta.1",
+    "rollup": "^2.34.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-uglify-es": "0.0.1",
+    "sanitize-filename": "^1.6.1",
+    "sinon": "^4.5.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "polymer-cli": "^1.9.10",
     "image-downloader": "^3.3.0",
     "imagemin": "^6.1.0",
     "imagemin-gif2webp": "^2.0.0",
@@ -53,19 +57,14 @@
     "node-wget": "^0.4.3",
     "pngquant": "^2.0.1",
     "pngquant-bin": "^5.0.2",
-    "polymer-cli": "^1.9.10",
     "postcss": "^8.2.0",
-    "request": "^2.87.0",
-    "request-promise": "^4.2.2",
-    "rollup": "^2.34.2",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-postcss": "^4.0.0",
-    "rollup-plugin-uglify-es": "0.0.1",
-    "sanitize-filename": "^1.6.1",
-    "sinon": "^4.5.0"
-  },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "axe-core": "^3.0.0-beta.1"
+    "@uvalib/uvalib-alerts": "^0.3.12",
+    "autoprefixer": "^10.1.0",
+    "bower": "^1.8.2",
+    "chai": "^4.2.0",
+    "cheerio": "^1.0.0-rc.2",
+    "files": "^1.0.0",
+    "glob": "^7.1.3",
+    "gm": "^1.23.1"
   }
 }

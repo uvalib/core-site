@@ -50,7 +50,6 @@
   <link rel="lazy-import" group="app-data-uvalib-this-or-that" href="./uvalib-this-or-that.html">
   <link rel="lazy-import" group="app-data-yaml-parser" href="../bower_components/uva-models/yaml-parser.html">
   <link rel="lazy-import" group="app-data-copy-to-clipboard" href="../bower_components/copy-to-clipboard/copy-to-clipboard.html">
-  <link rel="lazy-import" group="app-data-uvalib-alerts" href="../bower_components/uvalib-alerts/uvalib-alerts.html">
 
   <template>
 <!--    <uva-library-stages stage="{{stage}}"></uva-library-stages> -->
@@ -436,8 +435,6 @@
           await this.importLazyGroup('app-data-uva-library-hours');
         if (html.indexOf('<copy-to-clipboard')>0)
           await this.importLazyGroup('app-data-copy-to-clipboard');
-        if (html.indexOf('<uvalib-alerts')>0)
-          await this.importLazyGroup('app-data-uvalib-alerts');
         if (html.indexOf('<uvalib-image')>0)
           import( location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '') + "/bower_components/web-components/packages/uvalib-image/dist/uvalib-image.js");
 //        if (html.indexOf('<uvalib-data-viz-donut')>0)
