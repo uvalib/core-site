@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/uvalib/core-site#readme",
   "dependencies": {
-    "@uvalib/uvalib-counts": "^0.0.2"
+    "@uvalib/uvalib-counts": "^0.0.2",
+    "@uvalib/uvalib-models": "^0.3.32"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
