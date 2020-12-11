@@ -58,7 +58,7 @@
     "node-wget": "^0.4.3",
     "pngquant": "^2.0.1",
     "pngquant-bin": "^5.0.2",
-    "polymer-cli": "^1.9.10",
+    "polymer-cli": "^1.9.11",
     "postcss": "^8.2.0",
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
