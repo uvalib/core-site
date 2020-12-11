@@ -1,4 +1,4 @@
-import './prebuild-580ac81d.js';
+import './prebuild.js';
 
 (function () {
   var link = document.createElement('link');
