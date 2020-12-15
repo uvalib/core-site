@@ -1,4 +1,6 @@
 #!/bin/bash
+rm -rf node_modules/\@uvalib;
+npm install --force;
 rm -rf .bower_components.bak;
 mv bower_components .bower_components.bak;
 git pull
@@ -21,4 +23,5 @@ cd ..
 ./import-pages.js
 ./import-files-lite.js
 #./imagemin-files.js
+npm run es6build;
 polymer serve

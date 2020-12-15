@@ -4,6 +4,7 @@
   "description": "## Prerequisites",
   "main": "",
   "scripts": {
+    "es6build": "rm -rf node_modules/\\@uvalib/*/node_modules; rm -rf src/es6-components/*; npx rollup -c",
     "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node ./import-pages.js; node --max-old-space-size=4000 ./node_modules/polymer-cli/bin/polymer.js build; bash ./package-build.sh; cp googleec3dc865d320cf01.html build/es6-unbundled/; cp googleec3dc865d320cf01.html build/es6-unbundled/data/pages/;",
@@ -31,7 +32,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
-    "@uvalib/uvalib-alerts": "^0.3.16",
+    "@uvalib/uvalib-alerts": "^0.3.17",
     "autoprefixer": "^10.1.0",
     "axe-core": "^3.0.0-beta.1",
     "bower": "^1.8.2",
