@@ -27,12 +27,12 @@
   "homepage": "https://github.com/uvalib/core-site#readme",
   "dependencies": {
     "@uvalib/uvalib-counts": "^0.0.2",
-    "@uvalib/uvalib-models": "^0.3.32",
+    "@uvalib/uvalib-models": "^0.3.33",
     "@uvalib/web-styles": "^0.2.4"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
-    "@uvalib/uvalib-alerts": "^0.3.17",
+    "@uvalib/uvalib-alerts": "^0.3.18",
     "autoprefixer": "^10.1.0",
     "axe-core": "^3.0.0-beta.1",
     "bower": "^1.8.2",

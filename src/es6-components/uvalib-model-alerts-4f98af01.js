@@ -1,4 +1,4 @@
-import { U as UvalibModelFBDB } from './prebuild-ae26cb06.js';
+import { U as UvalibModelFBDB } from './prebuild-c3f79808.js';
 
 /**
  * `uvalib-model-alerts`
@@ -13,12 +13,15 @@ class UvalibModelAlerts extends UvalibModelFBDB {
   }
   set seen(array2){
     var array1 = this.seen;
+console.log("seen set");    
     if (!(array1.length === array2.length && array1.every((value, index) => value === array2[index]))) {
       var seenCount = array2.length;
       localStorage.setItem('uvalib-alerts-seen',JSON.stringify(array2));
-      if (this.seen.length != seenCount) {
+console.log("seen changed "+array2.length);      
+//      if (this.seen.length != seenCount) {
+//console.log("seen confirmed change");        
         this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: array2.length}}));
-      }
+//      }
       this.dispatchEvent(new CustomEvent('alerts-changed', {bubbles: true, composed: true, detail: {seenCount: array2.length}}));
     }
   }
