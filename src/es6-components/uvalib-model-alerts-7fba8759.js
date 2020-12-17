@@ -1,4 +1,4 @@
-import { U as UvalibModelFBDB } from './prebuild-627eef38.js';
+import { U as UvalibModelFBDB } from './prebuild-60717b2e.js';
 
 /**
  * `uvalib-model-alerts`
@@ -29,7 +29,7 @@ console.log("seen changed "+array2.length);
   get alerts(){
     if (Array.isArray(this.lastResponse) && this.lastResponse.length>0) {
       return this.lastResponse.map(function(alert) {
-        if (alert.severity==="alert3") {this.setSeen(alert.uuid);}
+//        if (alert.severity==="alert3") {this.setSeen(alert.uuid)}
         if (this.seen && this.seen.indexOf(alert.uuid)>-1) {alert.seen = true;}
         else {alert.seen = false;}
         return alert;

@@ -382,7 +382,7 @@ class UvalibAlerts extends HTMLElement {
 
   _setupAlertsModel(){
     import ('./debounce-9d40488e.js').then(function (n) { return n.d; }).then(function(debounce){    
-      import('./uvalib-model-alerts-1e2f0844.js').then(function(){
+      import('./uvalib-model-alerts-7fba8759.js').then(function(){
         this._alertsModel = document.createElement('uvalib-model-alerts');
         this._alertsModel.addEventListener('seen-count-changed',debounce.default(function(e){
 console.log("seen count changed");                  
@@ -502,7 +502,7 @@ class UvalibAlertsLevel4 extends UvalibAlerts {
 
   _setupAlertsModel(){
     import ('./debounce-9d40488e.js').then(function (n) { return n.d; }).then(function(debounce){    
-      import('./uvalib-model-alerts-1e2f0844.js').then(function(){       
+      import('./uvalib-model-alerts-7fba8759.js').then(function(){       
         this._alertsModel = document.createElement('uvalib-model-alerts');
         this._alertsModel.addEventListener('alerts-changed',debounce.default(function(e){
           if (Array.isArray(this._alertsModel.data)) {
