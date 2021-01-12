@@ -24,8 +24,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="lazy-import" group="uvalib-article" href="app-side-bar.html">
   <link rel="lazy-import" group="uvalib-article" href="app-sub-nav.html">
   <link rel="lazy-import" group="uvalib-article2" href="news-network-warning.html">
+<!--
   <link rel="lazy-import" group="uvalib-article2" href="../bower_components/uvalib-alerts/uvalib-alerts-regional.html">
-
+-->
   <template>
     <custom-style>
       <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors iron-flex-reverse uvalib-card-style">
@@ -244,8 +245,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _updateRegionAlert() {
         const regalerts = this.shadowRoot.querySelector('uvalib-alerts-regional')
-        if (regalerts && regalerts._alertsChanged) {
-          regalerts._alertsChanged();
+        if (regalerts) {
+          regalerts._updateAlerts();
         }
       }
 
