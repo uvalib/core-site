@@ -4,7 +4,7 @@
   "description": "## Prerequisites",
   "main": "",
   "scripts": {
-    "es6build": "rm -rf node_modules/\\@uvalib/*/node_modules; rm -rf src/es6-components/*; npx rollup -c",
+    "es6build": "rm -rf node_modules/\\@uvalib/*/node_modules; rm -rf src/es6-components/*; rm -rf src/es6-deploy/*; npx rollup -c; cp -r src/es6-components src/es6-deploy;",
     "dedupe": "find -L node_modules -name \"node_modules\" | grep -v '^node_modules$' | xargs rm -rf",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node ./import-pages.js; node --max-old-space-size=4000 ./node_modules/polymer-cli/bin/polymer.js build; bash ./package-build.sh; cp googleec3dc865d320cf01.html build/es6-unbundled/; cp googleec3dc865d320cf01.html build/es6-unbundled/data/pages/;",

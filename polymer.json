@@ -40,7 +40,8 @@
     "bower_components/web-components/packages/uvalib-image/dist/*",
     "bower_components/web-components/packages/uvalib-counts/build/*",
     "fonts/*",
-    "src/es6-components/*"
+    "src/es6-components/*",
+    "src/es6-deploy/*"
   ],
   "lint": {
     "rules": ["polymer-2-hybrid"]
