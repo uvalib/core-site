@@ -50,7 +50,8 @@
 
     {
       "preset": "es6-unbundled",
-      "js": { "minify" : false }
+      "js": { "minify" : false,
+        "transformModulesToAmd": false }
     }
   ]
 }
