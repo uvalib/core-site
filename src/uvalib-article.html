@@ -245,7 +245,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _updateRegionAlert() {
         const regalerts = this.shadowRoot.querySelector('uvalib-alerts-regional')
-        if (regalerts) {
+        if (regalerts && regalerts._updateAlerts) {
           regalerts._updateAlerts();
         }
       }
