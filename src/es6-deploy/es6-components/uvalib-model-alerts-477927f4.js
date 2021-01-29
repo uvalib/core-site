@@ -1,4 +1,4 @@
-import { U as UvalibModelFBDB } from './prebuild-217dc9fa.js';
+import { U as UvalibModelFBDB } from './prebuild-436c65b5.js';
 
 /**
  * `uvalib-model-alerts`
@@ -12,16 +12,11 @@ class UvalibModelAlerts extends UvalibModelFBDB {
     return (Array.isArray(seen))? seen:[]; 
   }
   set seen(array2){
-    var array1 = this.seen;
-console.log("seen set");    
+    var array1 = this.seen;    
     if (!(array1.length === array2.length && array1.every((value, index) => value === array2[index]))) {
       var seenCount = array2.length;
-      localStorage.setItem('uvalib-alerts-seen',JSON.stringify(array2));
-console.log("seen changed "+array2.length);      
-//      if (this.seen.length != seenCount) {
-//console.log("seen confirmed change");        
-        this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: array2.length}}));
-//      }
+      localStorage.setItem('uvalib-alerts-seen',JSON.stringify(array2));       
+      this.dispatchEvent(new CustomEvent('seen-count-changed', {bubbles: true, composed: true, detail: {seenCount: array2.length}}));
       this.dispatchEvent(new CustomEvent('alerts-changed', {bubbles: true, composed: true, detail: {seenCount: array2.length}}));
     }
   }
@@ -29,7 +24,6 @@ console.log("seen changed "+array2.length);
   get alerts(){
     if (Array.isArray(this.lastResponse) && this.lastResponse.length>0) {
       return this.lastResponse.map(function(alert) {
-//        if (alert.severity==="alert3") {this.setSeen(alert.uuid)}
         if (this.seen && this.seen.indexOf(alert.uuid)>-1) {alert.seen = true;}
         else {alert.seen = false;}
         return alert;
