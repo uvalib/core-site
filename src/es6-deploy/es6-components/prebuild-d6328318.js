@@ -382,7 +382,7 @@ class UvalibAlerts extends HTMLElement {
 
   _setupAlertsModel(){
     import ('./debounce-9d40488e.js').then(function (n) { return n.d; }).then(function(debounce){    
-      import('./uvalib-model-alerts-72913c3c.js').then(function(){
+      import('./uvalib-model-alerts-142e51ca.js').then(function(){
         this._alertsModel = document.createElement('uvalib-model-alerts');
         this._alertsModel.addEventListener('seen-count-changed',debounce.default(function(e){
 console.log("seen count changed");                  
@@ -502,7 +502,7 @@ class UvalibAlertsLevel4 extends UvalibAlerts {
 
   _setupAlertsModel(){
     import ('./debounce-9d40488e.js').then(function (n) { return n.d; }).then(function(debounce){    
-      import('./uvalib-model-alerts-72913c3c.js').then(function(){       
+      import('./uvalib-model-alerts-142e51ca.js').then(function(){       
         this._alertsModel = document.createElement('uvalib-model-alerts');
         this._alertsModel.addEventListener('alerts-changed',debounce.default(function(e){
           if (Array.isArray(this._alertsModel.data)) {
@@ -26166,13 +26166,13 @@ class UvalibModelRealtimeOverride extends UvalibModelFBDB {
     }
 
     _adjustDom(value){
-      if (value) {
+      if (value && this._overrideContainer && this._defaultContainer) {
         // we have data to override with
         this._overrideContainer.innerHTML = value;
         this._defaultContainer.style.display = "none";
         this._overrideContainer.style.display = "block";
         this.style.display = "block";
-      } else {
+      } else if (this._overrideContainer && this._defaultContainer) {
         // just show the default content
         this._overrideContainer.style.display = "none";
         this._defaultContainer.style.display = "block";
@@ -26197,6 +26197,7 @@ class UvalibModelRealtimeOverride extends UvalibModelFBDB {
       this._defaultContainer.setAttribute('part','default');
       this._container.appendChild(this._defaultContainer);
       this.shadow.appendChild(this._container);
+      this._adjustDom();
     }
 
 }
