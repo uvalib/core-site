@@ -1,4 +1,4 @@
-import { U as UvalibModelFBDB } from './prebuild-436c65b5.js';
+import { U as UvalibModelFBDB } from './prebuild-171050e3.js';
 
 /**
  * `uvalib-model-alerts`

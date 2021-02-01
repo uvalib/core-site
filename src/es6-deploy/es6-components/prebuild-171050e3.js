@@ -382,7 +382,7 @@ class UvalibAlerts extends HTMLElement {
 
   _setupAlertsModel(){
     import ('./debounce-9d40488e.js').then(function (n) { return n.d; }).then(function(debounce){    
-      import('./uvalib-model-alerts-477927f4.js').then(function(){
+      import('./uvalib-model-alerts-72913c3c.js').then(function(){
         this._alertsModel = document.createElement('uvalib-model-alerts');
         this._alertsModel.addEventListener('seen-count-changed',debounce.default(function(e){
 console.log("seen count changed");                  
@@ -502,7 +502,7 @@ class UvalibAlertsLevel4 extends UvalibAlerts {
 
   _setupAlertsModel(){
     import ('./debounce-9d40488e.js').then(function (n) { return n.d; }).then(function(debounce){    
-      import('./uvalib-model-alerts-477927f4.js').then(function(){       
+      import('./uvalib-model-alerts-72913c3c.js').then(function(){       
         this._alertsModel = document.createElement('uvalib-model-alerts');
         this._alertsModel.addEventListener('alerts-changed',debounce.default(function(e){
           if (Array.isArray(this._alertsModel.data)) {
@@ -26153,15 +26153,14 @@ class UvalibModelRealtimeOverride extends UvalibModelFBDB {
     }
 
     _checkTime(value) {
-      // see if we can parse the db value as a datetime
-//      var d = DateTime.fromISO(value);      
-      var d = DateTime.fromSeconds(value);      
+      // see if we can parse the db value as a datetime     
+      var d = DateTime.fromMillis(value);      
 
-      if (DateTime.local() < d) {       
+      if (DateTime.local().toMillis() < d.toMillis()) {              
         // poll every few minutes to see if need to continue showing the override
         this._adjustDom(this.defaultValue);
-        this._timeout = window.setTimeout(function(){this._checkTime(value);}.bind(this), 6000);
-      } else {
+        this._timeout = window.setTimeout(function(){this._checkTime(value);}.bind(this), 60000);
+      } else {       
         this._adjustDom();  // show the default
       }
     }
