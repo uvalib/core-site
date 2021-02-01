@@ -382,7 +382,7 @@ class UvalibAlerts extends HTMLElement {
 
   _setupAlertsModel(){
     import ('./debounce-9d40488e.js').then(function (n) { return n.d; }).then(function(debounce){    
-      import('./uvalib-model-alerts-142e51ca.js').then(function(){
+      import('./uvalib-model-alerts-13f19def.js').then(function(){
         this._alertsModel = document.createElement('uvalib-model-alerts');
         this._alertsModel.addEventListener('seen-count-changed',debounce.default(function(e){
 console.log("seen count changed");                  
@@ -502,7 +502,7 @@ class UvalibAlertsLevel4 extends UvalibAlerts {
 
   _setupAlertsModel(){
     import ('./debounce-9d40488e.js').then(function (n) { return n.d; }).then(function(debounce){    
-      import('./uvalib-model-alerts-142e51ca.js').then(function(){       
+      import('./uvalib-model-alerts-13f19def.js').then(function(){       
         this._alertsModel = document.createElement('uvalib-model-alerts');
         this._alertsModel.addEventListener('alerts-changed',debounce.default(function(e){
           if (Array.isArray(this._alertsModel.data)) {
@@ -19098,26 +19098,29 @@ class UvalibDataVizDonut extends HTMLElement {
       super();
       this.dataEvent = "uvalib-model-data-value";
       this.library = "clemons";
+
+      this.addEventListener(this.dataEvent, function(e){
+        this._data = e.detail;
+        this._setData();
+      }.bind(this));
     }
   
     connectedCallback() {
       this._setupDom();
-      
-      this.addEventListener(this.dataEvent, function(e){
-        const data = e.detail;
+    }
+
+    _setData(){
+      const data = this._data;
+      if (!data.isOpenNow) data.occupancy.value = 0;
+      if (this.container) {
         this.container.setAttribute('class',data.isOpenNow?"open":"closed" );
-console.log(data.shortName);        
         this._setValues(this.name, data.shortName);
         this.capacity.innerHTML = data.maximumAttendeeCapacity;
         this.occupied.innerHTML = data.occupancy.value;
         const percent = Math.round( (( data.occupancy.value/data.maximumAttendeeCapacity) * 100).toFixed(3) );
         this.viz.setAttribute('percent',percent);
-//        this._setValues(this.percent, `${percent}%`);
-//        this.shadowRoot.querySelector('.donut-segment').setAttribute('stroke-dasharray', `${percent} ${100-percent}`);
-//        this.shadowRoot.querySelector('.donut-segment').setAttribute('level', `${percent} ${100-percent}`);
-
-        this.style.visibility = 'visible';        
-      }.bind(this));
+        this.style.visibility = 'visible';
+      }
     }
 
     _isIterable(obj) {
@@ -19165,7 +19168,9 @@ console.log(data.shortName);
       this.occupied = this.container.querySelector('#occupied');
       this.capacity = this.container.querySelector('#capacity');
       this.viz = this.container.querySelector('uvalib-viz-donut');
+      if (this._data) this._setData(); 
     }
+
     attributeChangedCallback(name, oldValue, newValue) {
       switch(name){
         case "data-event":

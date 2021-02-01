@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/uvalib/core-site#readme",
   "dependencies": {
-    "@uvalib/uvalib-counts": "^0.0.2",
+    "@uvalib/uvalib-counts": "^0.0.7",
     "@uvalib/uvalib-models": "^0.3.44",
     "@uvalib/web-styles": "^0.2.4"
   },
