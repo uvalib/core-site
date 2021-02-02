@@ -1,0 +1,46 @@
+
+    <custom-style><style>
+      uvalib-simple-search-box {
+        --uvalib-search-box-border: 2px solid var(--uvalib-secondary-lt-grey);
+        --uvalib-background-search: var(--uvalib-main-jefferson-blue)
+      }
+      .tools {
+        background-color: var(--uvalib-secondary-lt-grey);
+        padding: 20px;
+      }
+      paper-tab {
+        --paper-tab-content: {
+          background-color: var(--uvalib-secondary-web-orange);
+          color: var(--uvalib-main-white);
+          font-weight: bold;
+        };
+        --paper-tab-content-unselected: {
+          background-color: var(--uvalib-text-grey);
+          color: var(--uvalib-main-white);
+          font-weight: bold;
+        };
+      }
+      paper-tab[focused] {
+        @apply --accessibility-outline-for-light-bg;
+      }
+    </style></custom-style>
+    <dom-bind id="app">
+      <template>
+        <paper-tabs selected="{{segment}}" attr-for-selected="name" fallback-selection="list">
+          <paper-tab name="list">Show All (A-Z)</paper-tab>
+          <paper-tab name="subject">By Subject Specialty</paper-tab>
+          <paper-tab name="department">By Department</paper-tab>
+        </paper-tabs>
+        <div class="tools">
+          <uvalib-simple-search-box placeholder="Search name or keyword" search-again-option="" value="{{query}}"></uvalib-simple-search-box>
+              <label hidden$="[[!viewSelectable]]" id="radiolabel">Show Me:</label>
+              <paper-radio-group hidden$="[[!viewSelectable]]" selected="{{view}}" fallback-selection="list" aria-labelledby="radiolabel">
+                <paper-radio-button name="list">List View</paper-radio-button>
+                <paper-radio-button name="images">Image View</paper-radio-button>
+              </paper-radio-group>
+        </div>
+        <app-localstorage-document key="uvalib-staff-dir-view-select" data="{{view}}"></app-localstorage-document>
+        <app-localstorage-document key="uvalib-staff-dir-segment-select" data="{{segment}}"></app-localstorage-document>
+        <uvalib-directorypage segment="[[segment]]" relative-links="" query$="[[query]]" view="[[view]]" view-selectable="{{viewSelectable}}"></uvalib-directorypage>
+      </template>
+    </dom-bind>

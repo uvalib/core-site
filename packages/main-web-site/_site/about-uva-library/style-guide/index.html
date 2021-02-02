@@ -1,0 +1,1164 @@
+
+
+        <style type="text/css">
+      .main-bucket {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        grid-column-gap: 20px;
+        margin-top: 40px;
+      }
+      .left-nav {
+        border-right: 1px solid #ccc;
+      }
+      .left-nav ul {
+        padding-left: 0px;
+        text-transform: capitalize;
+      }
+      .main-content {
+        padding: 0 1rem;
+      }
+      .main-content h2,
+      .main-content h3 {
+        text-transform: capitalize;
+        margin-bottom: 40px;
+      }
+      .main-content h2 {
+        margin-top: 80px;
+        border-bottom: 1px solid var(--uvalib-grey-light);
+      }
+      .main-content h2:nth-of-type(1) {
+        margin-top: 0;
+      }
+
+      code { color: var(--uvalib-yellow-dark); }
+
+      .section-block {
+        margin: 50px 0;
+      }
+
+      .swatch-bucket {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 1rem;
+      }
+
+      .swatch {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        align-content: stretch;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 4px 4px 5px 5px;
+        height: 200px;
+        border: 1px solid var(--uvalib-grey-light);
+      }
+      .swatch.swatch-mini { height: 100px; }
+
+      .swatch.uvalib-brand-blue-lightest {
+        background-color: var(--uvalib-brand-blue-lightest);
+      }
+      .swatch.uvalib-brand-blue-lighter {
+        background-color: var(--uvalib-brand-blue-lighter);
+      }
+      .swatch.uvalib-brand-blue-light {
+        background-color: var(--uvalib-brand-blue-light);
+      }
+      .swatch.uvalib-brand-blue {
+        background-color: var(--uvalib-brand-blue);
+      }
+      .swatch.uvalib-brand-orange-lightest {
+        background-color: var(--uvalib-brand-orange-lightest);
+      }
+      .swatch.uvalib-brand-orange {
+        background-color: var(--uvalib-brand-orange);
+      }
+      .swatch.uvalib-brand-orange-dark {
+        background-color: var(--uvalib-brand-orange-dark);
+      }
+      .swatch.uvalib-blue-alt-lightest {
+        background-color: var(--uvalib-blue-alt-lightest);
+      }
+      .swatch.uvalib-blue-alt {
+        background-color: var(--uvalib-blue-alt);
+      }
+      .swatch.uvalib-blue-alt-dark {
+        background-color: var(--uvalib-blue-alt-dark);
+      }
+      .swatch.uvalib-teal-lightest {
+        background-color: var(--uvalib-teal-lightest);
+      }
+      .swatch.uvalib-teal-light {
+        background-color: var(--uvalib-teal-light);
+      }
+      .swatch.uvalib-teal {
+        background-color: var(--uvalib-teal);
+      }
+      .swatch.uvalib-teal-dark {
+        background-color: var(--uvalib-teal-dark);
+      }
+      .swatch.uvalib-green-lightest {
+        background-color: var(--uvalib-green-lightest);
+      }
+      .swatch.uvalib-green {
+        background-color: var(--uvalib-green);
+      }
+      .swatch.uvalib-green-dark {
+        background-color: var(--uvalib-green-dark);
+      }
+      .swatch.uvalib-red-lightest {
+        background-color: var(--uvalib-red-lightest);
+      }
+      .swatch.uvalib-red {
+        background-color: var(--uvalib-red);
+      }
+      .swatch.uvalib-red-dark {
+        background-color: var(--uvalib-red-dark);
+      }
+      .swatch.uvalib-red-darkest {
+        background-color: var(--uvalib-red-darkest);
+      }
+      .swatch.uvalib-yellow-lightest {
+        background-color: var(--uvalib-yellow-lightest);
+      }
+      .swatch.uvalib-yellow {
+        background-color: var(--uvalib-yellow);
+      }
+      .swatch.uvalib-yellow-dark {
+        background-color: var(--uvalib-yellow-dark);
+      }
+      .swatch.uvalib-beige {
+        background-color: var(--uvalib-beige);
+      }
+      .swatch.uvalib-beige-dark {
+        background-color: var(--uvalib-beige-dark);
+      }
+      .swatch.uvalib-grey-lightest {
+        background-color: var(--uvalib-grey-lightest);
+      }
+      .swatch.uvalib-grey-light {
+        background-color: var(--uvalib-grey-light);
+      }
+      .swatch.uvalib-grey {
+        background-color: var(--uvalib-grey);
+      }
+      .swatch.uvalib-grey-dark {
+        background-color: var(--uvalib-grey-dark);
+      }
+      .swatch.uvalib-grey-darkest {
+        background-color: var(--uvalib-grey-darkest);
+      }
+      .swatch.uvalib-text-light {
+        background-color: var(--uvalib-text-light);
+      }
+      .swatch.uvalib-text {
+        background-color: var(--uvalib-text);
+      }
+      .swatch.uvalib-text-dark {
+        background-color: var(--uvalib-text-dark);
+      }
+      .swatch.uvalib-status-ltorange {
+        background-color: var(--uvalib-status-ltorange);
+      }
+      .swatch.uvalib-status-orange {
+        background-color: var(--uvalib-status-orange);
+      }
+      .swatch.uvalib-status-magenta {
+        background-color: var(--uvalib-status-magenta);
+      }
+      .swatch.uvalib-status-blue {
+        background-color: var(--uvalib-status-blue);
+      }
+
+      .swatch .swatch-name {
+        padding: 20px 5px;
+        font-size: .9em;
+        line-height: 1.5;
+        text-align: center;
+        background: #fff;
+        border: 1px solid var(--uvalib-grey-light);
+        /* border-top: none; */
+        border-radius: 0 0 5px 5px;
+        border-width: 1px 0 0 0;
+      }
+
+      .swatch-name:nth-child(1) {
+        order: 0;
+        flex: 0 1 auto;
+        align-self: stretch;
+      }
+
+      .swatch .swatch-name strong {
+        text-transform: uppercase;
+      }
+
+      .color-name {
+        border-bottom: 1px solid var(--uvalib-grey-light);
+        padding: 6px 0;
+      }
+
+      .color-name:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .color-name code {
+        font-size: 0.8em;
+      }
+      .box-shadow-example {
+        display: grid;
+        width: 200px;
+        height: 100px;
+        border: 1px solid var(--uvalib-grey-light);
+        border-radius: 5px;
+        background-color: white;
+        margin-bottom: 10px;
+      }
+      .box-shadow-example span {
+        margin: auto;
+      }
+    </style>
+    <h1>UVA Library Web Style Guide</h1>
+    <div class="main-bucket">
+      <div class="left-nav visibleAllButMobile" style="top: 0px;">
+        <uva-accordion tree multi>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#colors">Colors</a></div>
+            <div slot="body"><a href="#primary">primary</a></div>
+            <div slot="body"><a href="#secondary">secondary</a></div>
+            <div slot="body"><a href="#greys">Greys</a></div>
+            <div slot="body"><a href="#common-usage">common usage</a></div>
+            <div slot="body"><a href="#alert-colors">alert colors</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading">typography</div>
+            <div slot="body"><a href="#typography">typography</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#copywriting">copywriting</a></div>
+            <div slot="body"><a href="place-names">place names</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#logo">logo</a></div>
+            <div slot="body"><a href="#usage">usage</a></div>
+            <div slot="body"><a href="#secondary_usage">secondary usage</a></div>
+            <div slot="body"><a href="#violations">violations</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#icons">icons</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#lists">lists</a></div>
+            <div slot="body"><a href="#list_unstyled">unstyled</a></div>
+            <div slot="body"><a href="#list_styled">styled</a></div>
+            <div slot="body"><a href="#list_definition">definition list</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#buttons_links">buttons &amp; links</a></div>
+            <div slot="body"><a href="#button_colors">colors</a></div>
+            <div slot="body"><a href="#disabled">disabled</a></div>
+            <div slot="body"><a href="#sizes">sizes</a></div>
+            <div slot="body"><a href="#links">links</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#borders-etc">borders, containers & rules</a></div>
+            <div slot="body">borders</div>
+            <div slot="body">containers</div>
+            <div slot="body">rules</div>
+            <div slot="body"><a href="box-shadow">box shadow</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#grid_system">grid & flexbox systems</a></div>
+            <div slot="body">Something about Grid</div>
+            <div slot="body">Something about Flexbox</div>
+          </uva-accordion-item>
+          <hr />
+          <h3>Web Components</h3>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#site_header">site header</a></div>
+            <div slot="body"><a href="#header-full">full</a></div>
+            <div slot="body"><a href="#header_simple">simple</a></div>
+          </uva-accordion-item>
+          <!-- <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#left_hand_menu">left-hand menu</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#panels">panels</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#cards">cards</a></div>
+          </uva-accordion-item> -->
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#accordions">accordions</a></div>
+          </uva-accordion-item>
+          <!-- <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#tables">tables</a></div>
+            <div slot="body"><a href="#basic_table_usage">basic table usage</a></div>
+            <div slot="body"><a href="#hover_rows">hover rows</a></div>
+            <div slot="body"><a href="#contextual_classes">contextual classes</a></div>
+            <div slot="body"><a href="#scrollable_tables">scrollable tables</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#breadcrumbs">breadcrumbs</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#tabs">tabs</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#forms">forms</a></div>
+            <div slot="body"><a href="#basic_form_usage">basic form usage</a></div>
+            <div slot="body"><a href="#disabled_state">disabled state</a></div>
+            <div slot="body"><a href="#validation_states">validation states</a></div>
+            <div slot="body"><a href="#checkboxes_and_radios">checkboxes and radios</a></div>
+            <div slot="body"><a href="#toggle_switch">toggle switch</a></div>
+          </uva-accordion-item> -->
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#alerts">alerts</a></div>
+          </uva-accordion-item>
+          <!-- <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#labels">carousel</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#tooltips">tooltips</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#menus">menus &amp; sidebars</a></div>
+            <div slot="body">primary navigation</div>
+            <div slot="body">secondary navigation</div>
+            <div slot="body">left menu</div>
+            <div slot="body">right menu</div>
+            <div slot="body">right sidebar</div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#popovers">popovers</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#blockquotes">blockquotes</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#progress_bars">progress bars</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#page_loader">page loader</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#carousel_dots">carousels</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#modals">modals</a></div>
+          </uva-accordion-item>
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#footers">footers</a></div>
+            <div slot="body"><a href="#footers_full">full</a></div>
+            <div slot="body"><a href="#footers_simple">simple</a></div>
+          </uva-accordion-item> 
+          <hr />
+          <uva-accordion-item tree heading-level="2">
+            <div slot="heading"><a href="#faq">faq</a></div>
+            <div slot="body">How do I (A)?</div>
+            <div slot="body">Can I do (B)?</div>
+            <div slot="body">What about (C)?</div>
+            <div slot="body">Do I have to do (D)?</div>
+          </uva-accordion-item> -->
+        </uva-accordion>
+      </div>
+      <div class="main-content">
+        <div class="alertbox alertbox-secondary">
+          <p>This is an work in progress. Please note that contents will change and are being updated continually. If you have questions, please contact Library Communications at <a href="mailto:lb-communications@virginia.edu">lb-communications@virginia.edu</a>.</p>
+          <p><em>This site was last updated on 8/14/2020</em></p>
+        </div>
+        <h2 id="colors">colors</h2>
+        <div id="primary" class="section-block">
+          <h3>primary colors</h3>
+          <div class="swatch-bucket">
+            <div>
+              <div class="swatch uvalib-brand-blue">
+                <div class="swatch-name">
+                  <div><strong>brand-blue</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-brand-blue</code></div>
+              <div class="color-name"><code>#232D4B</code></div>
+              <div class="color-name"><code>C:98 M:83 Y:12 K:46</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-brand-blue-light">
+                <div class="swatch-name">
+                  <div><strong>brand-blue-light</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-brand-blue-light</code></div>
+              <div class="color-name"><code>#0370B7</code></div>
+              <div class="color-name"><code>C:88 M:53 Y:0 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-brand-blue-lighter">
+                <div class="swatch-name">
+                  <div><strong>brand-blue-lighter</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-brand-blue-lighter</code></div>
+              <div class="color-name"><code>#3395D4</code></div>
+              <div class="color-name"><code>C:73 M:29 Y:0 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-brand-blue-lightest">
+                <div class="swatch-name">
+                  <div><strong>brand-blue-lightest</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-brand-blue-lightest</code></div>
+              <div class="color-name"><code>#87B9D9</code></div>
+              <div class="color-name"><code>C:45 M:15 Y:5 K:0</code></div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block">
+          <div class="swatch-bucket">
+            <div>
+              <div class="swatch uvalib-brand-orange-dark">
+                <div class="swatch-name">
+                  <div><strong>brand-orange-dark</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-brand-orange-dark</code></div>
+              <div class="color-name"><code>#B35900</code></div>
+              <div class="color-name"><code>C:23 M:72 Y:100 K:12</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-brand-orange">
+                <div class="swatch-name">
+                  <div><strong>brand-orange</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-brand-orange</code></div>
+              <div class="color-name"><code>#E57200</code></div>
+              <div class="color-name"><code>C:0 M:68 Y:100 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-brand-orange-lightest">
+                <div class="swatch-name">
+                  <div><strong>brand-orange-lightest</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-brand-orange-lightest</code></div>
+              <div class="color-name"><code>#FFEAD6</code></div>
+              <div class="color-name"><code>C:0 M:8 Y:14 K:0</code></div>
+            </div>
+          </div>
+        </div>
+        <div id="secondary" class="section-block">
+          <h3>secondary colors</h3>
+          <div class="swatch-bucket">
+            <div>
+              <div class="swatch uvalib-blue-alt-dark">
+                <div class="swatch-name">
+                  <div><strong>blue-alt-dark</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-blue-alt-dark</code></div>
+              <div class="color-name"><code>#005679</code></div>
+              <div class="color-name"><code>C:96 M:63 Y:33 K:14</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-blue-alt">
+                <div class="swatch-name">
+                  <div><strong>blue-alt</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-blue-alt</code></div>
+              <div class="color-name"><code>#007BAC</code></div>
+              <div class="color-name"><code>C:86 M:44 Y:15 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-blue-alt-lightest">
+                <div class="swatch-name">
+                  <div><strong>blue-alt-lightest</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-blue-alt-lightest</code></div>
+              <div class="color-name"><code>#BFE7F7</code></div>
+              <div class="color-name"><code>C:19 M:5 Y:0 K:0</code></div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block">
+          <div class="swatch-bucket">
+            <div>
+              <div class="swatch uvalib-teal-dark">
+                <div class="swatch-name">
+                  <div><strong>teal-dark</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-teal-dark</code></div>
+              <div class="color-name"><code>#16777C</code></div>
+              <div class="color-name"><code>C:86 M:37 Y:47 K:11</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-teal">
+                <div class="swatch-name">
+                  <div><strong>teal</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-teal</code></div>
+              <div class="color-name"><code>#1DA1A8</code></div>
+              <div class="color-name"><code>C:77 M:16 Y:35 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-teal-light">
+                <div class="swatch-name">
+                  <div><strong>teal-light</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-teal-light</code></div>
+              <div class="color-name"><code>#5BD7DE</code></div>
+              <div class="color-name"><code>C:49 M:0 Y:16 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-teal-lightest">
+                <div class="swatch-name">
+                  <div><strong>teal-lightest</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-teal-lightest</code></div>
+              <div class="color-name"><code>#C8F2F4</code></div>
+              <div class="color-name"><code>C:16 M:0 Y:5 K:0</code></div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block">
+          <div class="swatch-bucket">
+            <div>
+              <div class="swatch uvalib-green-dark">
+                <div class="swatch-name">
+                  <div><strong>green-dark</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-green-dark</code></div>
+              <div class="color-name"><code>#4E9737</code></div>
+              <div class="color-name"><code>C:74 M:18 Y:100 K:4</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-green">
+                <div class="swatch-name">
+                  <div><strong>green</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-green</code></div>
+              <div class="color-name"><code>#62BB46</code></div>
+              <div class="color-name"><code>C:65 M:0 Y:100 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-green-lightest">
+                <div class="swatch-name">
+                  <div><strong>green-lightest</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-green-lightest</code></div>
+              <div class="color-name"><code>#89CC74</code></div>
+              <div class="color-name"><code>C:49 M:0 Y:75 K:0</code></div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block">
+          <div class="swatch-bucket">
+            <div>
+              <div class="swatch uvalib-red-darkest">
+                <div class="swatch-name">
+                  <div><strong>red-darkest</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-red-darkest</code></div>
+              <div class="color-name"><code>--uvalib-red-emergency</code></div>
+              <div class="color-name"><code>#B30000</code></div>
+              <div class="color-name"><code>C:20 M:100 Y:100 K:13</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-red-dark">
+                <div class="swatch-name">
+                  <div><strong>red-dark</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-red-dark</code></div>
+              <div class="color-name"><code>#DF1E43</code></div>
+              <div class="color-name"><code>C:6 M:100 Y:73 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-red">
+                <div class="swatch-name">
+                  <div><strong>red</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-red</code></div>
+              <div class="color-name"><code>#EF3F6B</code></div>
+              <div class="color-name"><code>C:0 M:90 Y:40 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-red-lightest">
+                <div class="swatch-name">
+                  <div><strong>red-lightest</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-red-lightest</code></div>
+              <div class="color-name"><code>#FBCFDA</code></div>
+              <div class="color-name"><code>C:0 M:22 Y:10 K:0</code></div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block">
+          <div class="swatch-bucket">
+            <div>
+              <div class="swatch uvalib-yellow-dark">
+                <div class="swatch-name">
+                  <div><strong>yellow-dark</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-yellow-dark</code></div>
+              <div class="color-name"><code>#B99C02</code></div>
+              <div class="color-name"><code>C:30 M:33 Y:100 K:3</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-yellow">
+                <div class="swatch-name">
+                  <div><strong>yellow</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-yellow</code></div>
+              <div class="color-name"><code>#ECC602</code></div>
+              <div class="color-name"><code>C:9 M:19 Y:100 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-yellow-lightest">
+                <div class="swatch-name">
+                  <div><strong>yellow-lightest</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-green-lightest</code></div>
+              <div class="color-name"><code>#FEF6C8</code></div>
+              <div class="color-name"><code>C:1 M:3 Y:24 K:0</code></div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block">
+          <div class="swatch-bucket">
+            <div>
+              <div class="swatch uvalib-beige-dark">
+                <div class="swatch-name">
+                  <div><strong>beige-dark</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-beige-dark</code></div>
+              <div class="color-name"><code>#C0B298</code></div>
+              <div class="color-name"><code>C:26 M:26 Y:41 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-beige">
+                <div class="swatch-name">
+                  <div><strong>beige</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-beige</code></div>
+              <div class="color-name"><code>#F7EFE1</code></div>
+              <div class="color-name"><code>C:2 M:4 Y:11 K:0</code></div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block" id="greys">
+          <h3 id="secondary">Other</h3>
+          <div class="swatch-bucket">
+            <div>
+              <div class="swatch uvalib-grey-darkest">
+                <div class="swatch-name">
+                  <div><strong>grey-darkest</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-grey-darkest</code></div>
+              <div class="color-name"><code>#2B2B2B</code></div>
+              <div class="color-name"><code>C:70 M:64 Y:63 K:65</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-grey-dark">
+                <div class="swatch-name">
+                  <div><strong>grey-dark</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-grey-dark</code></div>
+              <div class="color-name"><code>#4F4F4F</code></div>
+              <div class="color-name"><code>C:63 M:55 Y:54 K:28</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-grey">
+                <div class="swatch-name">
+                  <div><strong>grey</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-grey</code></div>
+              <div class="color-name"><code>#808080</code></div>
+              <div class="color-name"><code>C:52 M:43 Y:43 K:7</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-grey-light">
+                <div class="swatch-name">
+                  <div><strong>grey-light</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-grey-light</code></div>
+              <div class="color-name"><code>#DADADA</code></div>
+              <div class="color-name"><code>C:13 M:10 Y:11 K:0</code></div>
+            </div>
+            <div>
+              <div class="swatch uvalib-grey-lightest">
+                <div class="swatch-name">
+                  <div><strong>grey-lightest</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-grey-lightest</code></div>
+              <div class="color-name"><code>#F1F1F1</code></div>
+              <div class="color-name"><code>C:4 M:3 Y:3 K:0</code></div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block" id="common-usage">
+          <h4>Common Usage</h4>
+          <div class="swatch-bucket">
+            <div>
+              <div class="swatch swatch-mini uvalib-text-dark">
+                <div class="swatch-name">
+                  <div><strong>text-dark</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-text-dark</code></div>
+              <div>
+                <p>This is used when ADA compliance needs the higher contrast. This is the darkest color that is used for text.</p>
+              </div>
+            </div>
+            <div>
+              <div class="swatch swatch-mini uvalib-text">
+                <div class="swatch-name">
+                  <div><strong>text</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-text</code></div>
+              <div>
+                <p>This is the default color for all text on light backgrounds.</p>
+              </div>
+            </div>
+            <div>
+              <div class="swatch swatch-mini uvalib-text-lightest">
+                <div class="swatch-name">
+                  <div><strong>text-lightest</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-text-lightest</code></div>
+              <div>
+                <p>This is for text on a dark background. It is the lightest color that is used for text.</p>
+              </div>
+            </div>
+          </div>
+          <div class="swatch-bucket section-block">
+            <div>
+              <div class="swatch swatch-mini uvalib-grey-light">
+                <div class="swatch-name">
+                  <div><strong>grey-light</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-grey-light</code></div>
+              <div>
+                <p>This is used for all default borders, horizontal rules, and other seperators.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block" id="alert-colors">
+          <h4>Alert Only Colors</h4>
+          <p>These colors were chosen from IBM's study on color blindness and are to be most effective for all audiences. When pairing with text, it must meet WCAG AAA standards for contrast.</p>
+          <div class="swatch-bucket">
+            <div>
+              <div class="swatch swatch-mini uvalib-status-ltorange">
+                <div class="swatch-name">
+                  <div><strong>status-LtOrange</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>#FFB000</code><br><code>--uvalib-status-ltorange</code><br /><code>--uvalib-status-alert2</code><br /><code>--uvalib-status-ra-notice</code><br /><code>--uvalib-status-modified</code></div>
+              <div>
+                <p>This is used for alert level 2*, for regional notice alerts, and for service page status.</p>
+              </div>
+            </div>
+            <div>
+              <div class="swatch swatch-mini uvalib-status-orange">
+                <div class="swatch-name">
+                  <div><strong>status-Orange</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>#FE6100</code><br><code>--uvalib-status-orange</code><br /><code>--uvalib-status-alert3</code></div>
+              <div>
+                <p>This is used for alert level 3.</p>
+              </div>
+            </div>
+            <div>
+              <div class="swatch swatch-mini uvalib-status-magenta">
+                <div class="swatch-name">
+                  <div><strong>status-Magenta</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>#DC267F</code><br><code>--uvalib-status-magenta</code><br /><code>--uvalib-status-alert1</code></div>
+              <div>
+                <p>This is used for alert level 1* and for service status page alerts.</p>
+              </div>
+            </div>
+            <div>
+              <div class="swatch swatch-mini uvalib-status-blue">
+                <div class="swatch-name">
+                  <div><strong>status-blue</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code> #648FFF</code><br><code>--uvalib-status-blue</code><br /><code>--uvalib-status-alert4</code><br><code>--uvalib-status-ra-fyi</code><br><code>--uvalib-status-available</code></div>
+              <div>
+                <p>This is used for alert level 4*, for regional FYI alerts, and for service status page alerts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div id="typography" class="section-block">
+            <h2>typography</h2>
+            <p><b>Franklin Gothic</b> is the preferred typeface, however, <i>Bodoni (Poster)</i> is also an approved typeface and is to be used very sparingly for Drop Caps as noted below.</p>
+            <p>The minimum size for the majority of body text should not be less than <b>16pt</b>.</p>
+            <p>Using the heading classes "as is" will include the default padding and margin.<br />Alternatively, you can use <code>.h1 .h2 .h3 .h4 .h5 .h6</code> to bring in the style (e.g. if you wanted to style an h3 to look that of another header, you could give it that class) but be sure to use proper symantics first.</p>
+            <ul class=simple>
+              <li class="h1 uva-clear-margin uva-clear-padding">Heading 1</li>
+              <li class="h2 uva-clear-margin uva-clear-padding">Heading 2</li>
+              <li class="h3 uva-clear-margin uva-clear-padding">Heading 3</li>
+              <li class="h4 uva-clear-margin uva-clear-padding">Heading 4</li>
+              <li class="h5 uva-clear-margin uva-clear-padding">Heading 5</li>
+              <li class="h5 uva-clear-margin uva-clear-padding">Heading 6</li>
+            </ul>
+            <p><code>Sample paragraph formatting</code><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent maximus faucibus mattis. Sed non malesuada velit, quis porta lorem. Sed eu commodo metus. Aenean ullamcorper lacinia lectus, eultricies elit maximus at.</p>
+            <p>Donec efficitur metus est, in tempus neque malesuada ullamcorper. Donec imperdiet pharetra nulla sit amet venenatis. Aliquam vitae nisl ac elit bibendum ornare. Integer ligula libero, euismod vel finibus id, imperdiet vitae ligula.<br /><b>Keep line height appropirately proportional. Do not exceed a value of 1.5.</b></p>
+          </div>
+          <h3 id="drop_caps">drop caps</h3>
+          <div>
+            <p>Drop caps are used very sparingly and are used more on informational pages (e.g. About Us) and not so much on content pages (e.g. Services).</p>
+            <code>class="dropCap"</code>
+            <p class="dropCap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent maximus faucibus mattis. Sed non malesuada velit, quis porta lorem. Sed eu commodo metus. Aenean ullamcorper lacinia lectus, eu ultricies elit maximus at.</p>
+            <p>Donec efficitur metus est, in tempus neque malesuada ullamcorper. Donec imperdiet pharetra nulla sit amet venenatis. Aliquam vitae nisl ac elit bibendum ornare. Integer ligula libero.</p>
+          </div>
+          <hr />
+          <h2 id="copywriting">Copywriting</h2>
+          <div>
+            <p>Our audiences are constantly inundated with information. We strive to make the Library&rsquo;s voice clear, compelling, compact, and jargon-free. </p>
+            <p>The Library follows the <a href="https://brand.virginia.edu/">University of Virginia brand style</a> for formal University names and abbreviations, such as &ldquo;UVA&rdquo;. With the exception of using the Oxford (serial) comma, which we recognize as being important for clarity, the Library adheres to AP Style.</p>
+            <p>Library staff can <a href="https://confluence.lib.virginia.edu/display/COM/Writing+Style+Guide">read more in Confluence</a>.</p>
+            <p>For questions, contact <a href="mailto:%20lb-communications@virginia.edu">lb-communications@virginia.edu</a>.</p>
+          </div>
+          <h3 id="place-names">Place Names</h3>
+          <div>
+            <p>Formal name is listed first, alternate names or abbreviations are listed in parenthesis.</p>
+            <ul>
+              <li>Main Library (formerly Alderman)</li>
+              <li>Charles L. Brown Science &amp; Engineering Library (Brown, Brown Library in Clark Hall)</li>
+              <li>Astronomy Library</li>
+              <li>Mathematics Library</li>
+              <li>Physics Library</li>
+              <li>Clemons Library (Clemons)</li>
+              <li>Fiske Kimball Fine Arts Library (Fine Arts Library)</li>
+              <li>Albert and Shirley Small Special Collections Library (Special Collections) 
+                <ul>
+                  <li>Auditorium: Auditorium of the Albert and Shirley Small Special Collections Library</li>
+                </ul>
+              </li>
+              <li>Mary and David Harrison Institute for American History, Literature, and Culture (Harrison Institute)</li>
+              <li>Music Library </li>
+              <li>The Camp Family Library at Darden (Camp Library)</li>
+              <li>Claude Moore Health Sciences Library (Health Sciences Library)</li>
+              <li>Arthur J. Morris Law Library (Law Library)</li>
+              <li>Scholars&rsquo; Lab </li>
+              <li>Robertson Media Center (RMC)</li>
+            </ul>
+          </div>
+          <hr />
+          <h2 id="logo">logo</h2>
+          <div class="section-block">
+            <div class="alertbox alertbox-primary">This is a work in progress</div>In the mean time, please refer to <a href="https://confluence.lib.virginia.edu/pages/viewpage.action?pageId=41320965" alt="UVA Library Logos">this page in Confluence</a>
+          </div>
+          <!--
+          <h3 id="usage">usage</h3>
+          <div class="section-block">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent maximus faucibus mattis. Sed non malesuada velit, quis porta lorem. Sed eu commodo metus. Aenean ullamcorper lacinia lectus, eu ultricies
+          </div>
+          <h3 id="secondary_usage">secondary usage</h3>
+          <div class="section-block">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent maximus faucibus mattis. Sed non malesuada velit, quis porta lorem. Sed eu commodo metus. Aenean ullamcorper lacinia lectus, eu ultricies
+          </div>
+          <h3 id="violations">violations</h3>
+          <div class="section-block">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent maximus faucibus mattis. Sed non malesuada velit, quis porta lorem. Sed eu commodo metus. Aenean ullamcorper lacinia lectus, eu ultricies
+          </div>
+          <hr /> -->
+          <h2 id="icons">icons</h2>
+          <div class="section-block">
+            UVA Library uses <a href="https://fontawesome.com/icons?d=gallery">Font Awesome's</a> Basic set of icons
+          </div>
+          <hr />
+          <h2 id="lists">lists</h2>
+          <div class="section-block">
+            <div class="alertbox alertbox-primary">This is a work in progress</div>
+          </div>
+          <h3 id="unstyled">unstyled</h3>
+          <div class="section-block">
+            <ul class="simple">
+              <li>one</li>
+              <li>two</li>
+              <li>three</li>
+              <li>four</li>
+            </ul>
+          </div>
+          <div class="section-block">
+            <h3 id="styled">styled</h3>
+            <ul>
+              <li>one</li>
+              <li>two</li>
+              <li>three</li>
+              <li>four</li>
+            </ul>
+          </div>
+          <h3 id="nested">nested</h3>
+          <div class="section-block">
+            <ul>
+              <li>one</li>
+              <li>two</li>
+              <li>three</li>
+              <li>four</li>
+              <ul>
+                <li>five</li>
+                <li>six</li>
+                <li>seven</li>
+                <li>eight</li>
+              </ul>
+            </ul>
+          </div>
+          <div class="section-block">
+            <h3 id="definition_list">definition list</h3>
+            <dl>
+              <dt>Label</dt>
+              <dd>This is the value</dd>
+              <dt>Label</dt>
+              <dd>This is the value</dd>
+              <dt>Label</dt>
+              <dd>This is the value</dd>
+              <dt>Label</dt>
+              <dd>This is the value</dd>
+            </dl>
+          </div>
+          <hr />
+          <h2 id="buttons_links">buttons & links</h2>
+          <div class="section-block">
+            Consistency in button colors helps to set patters in user behavior. When they see a button/link/action of a certain color, they will expect a certain action to happen. For example, when a user sees an orange button used to submit a form, repeated usage will demonstrate that then all orange buttons will be used to "push" information to the server/client.
+          </div>
+          <h3 id="colors">Control colors</h3>
+          <div class="swatch-bucket section-block">
+            <div>
+              <div class="swatch swatch-mini uvalib-brand-blue">
+                <div class="swatch-name">
+                  <div><strong>brand-blue</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-brand-blue</code></div>
+              <div>
+                <p>This color is used for navigation headers, filter menu headers, "selected" tabs and other clickable items that keep the user on the page.</p>
+              </div>
+            </div>
+            <div>
+              <div class="swatch swatch-mini uvalib-brand-blue-light">
+                <div class="swatch-name">
+                  <div><strong>brand-blue-light</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-brand-blue-light</code></div>
+              <div>
+                <p>This is the default button color</p>
+              </div>
+            </div>
+            <div>
+              <div class="swatch swatch-mini uvalib-brand-orange">
+                <div class="swatch-name">
+                  <div><strong>brand-orange</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-brand-orange</code></div>
+              <div>
+                <p>This is used for all "submit" form button</p>
+              </div>
+            </div>
+            <div>
+              <div class="swatch swatch-mini uvalib-grey-light">
+                <div class="swatch-name">
+                  <div><strong>grey-light</strong></div>
+                </div>
+              </div>
+              <div class="color-name"><code>--uvalib-grey-light</code></div>
+              <div>
+                <p>This is used for all disabled button states</p>
+              </div>
+            </div>
+          </div>
+          <div class="section-block swatch-bucket">
+            <div>
+              <a class="uvalib-btn">Sample button</a>
+              <p><code>uvalib-btn</code></p>
+            </div>
+            <div>
+              <a class="uvalib-btn uvalib-btn-white uvalib-btn-outline">Sample button</a>
+              <p><code>uvalib-btn</code><br /><code>uvalib-btn-white</code><br /><code>uvalib-btn-outline</code></p>
+            </div>
+            <div>
+              <a class="uvalib-btn uvalib-btn-alt">Sample button</a>
+              <p><code>uvalib-btn</code><br /><code>uvalib-btn-alt</code></p>
+              <p><b>Note:</b> Due to WACAG compliance, this button should not be made smaller.</p>
+            </div>
+            <div>
+              <a class="uvalib-btn disabled">Sample button</a>
+              <p><code>uvalib-btn</code><br /><code>disabled</code></p>
+            </div>
+          </div>
+          <h3 id="sizes">sizes</h3>
+          <div class="section-block swatch-bucket">
+            <div>
+              <a class="uvalib-btn smallButton">Small button</a>
+              <p><code>uvalib-btn</code><br /><code>smallButton</code></p>
+            </div>
+            <div>
+              <a class="uvalib-btn mediumButton">Medium button</a>
+              <p><code>uvalib-btn</code><br /><code>mediumButton</code></p>
+            </div>
+            <div>
+              <a class="uvalib-btn">Regular button</a>
+              <p><code>uvalib-btn</code><br />[Default size]</p>
+            </div>
+          </div>
+          <h3 id="links">links</h3>
+          <div class="section-block">
+            Link should always be colored differently from the rest of the bopy copy and must show a state change when "hover" or "focus" is active. If the background is white/light then the proper color is <code>--uvalib-blue-alt-dark</code>.
+            If used on dark backgrounds, then use <code>--uvalib-blue-alt-lightest</code> [class="link-light"].
+          </div>
+          <hr />
+          <h2 id="borders-etc">Borders, Containers & Rules</h2>
+          <h3>Containers</h3>
+          <div class="section-block">
+            <div class="border-it">
+              This is an example of proper border color.<br /><code>class="border-it"</code><br /><em>Note that <code>border-it</code> does not style corners.</em>
+            </div>
+          </div>
+          <h3 id="box-shadow">Box Shadow</h3>
+          <div class="section-block">
+            <div class="box-shadow box-shadow-example">
+              <span>This is a basic box shadow.</span>
+            </div>
+            <code> box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);</code>
+          </div>
+          <h3>Rules</h3>
+          <p>Rules, either <code>&lt;hr&gt;</code> or when using <code>border</code>, <code>border-top</code>, <code>border-top</code>, <code>border-bottom</code>, <code>border-left</code>, <code>border-right</code>, or any combination, <code>--uvalib-grey-light</code> should be the color used.</p>
+          <p>If the border is appearing on a grey background, then using <code>--uvalib-brand-blue</code> or <code>--uvalib-brand-blue-alt-dark</code> would be acceptible.</p>
+          <p>By default, rules should be 1px in width. The goal is to keep the layout looking light. If a heavier line is needed, it may go up to 2px or 3px, but watch for nested elements. If you have three elements with borders and they nest, combined, they should not be larger than 3px wide. </p>
+          <p><em>Styled rules should be avoided (no dashed, dotted, etc.)</em></p>
+          <hr />
+          <h2 id="Web_Components">Web Components</h2>
+          <div class="alertbox alertbox-primary">This section is a work in progress</div>
+          <h2 id="site_header">Site header</h2>
+          <h3 id="header_full">full</h3>
+          <div class="section-block">
+            <uvalib-header demo></uvalib-header>
+          </div>      
+          <h3 id="header_simple">simple</h3>
+          <div class="section-block">
+            <uvalib-header simple demo></uvalib-header>
+          </div>
+          <hr />
+          <!-- <h2 id="left_hand_menu">left-hand menu</h2>
+          <hr />
+          <h2 id="panels">panels</h2>
+          <hr />
+          <h2 id="cards">cards</h2>
+          <hr />
+          <h2 id="accordions">accordions</h2>
+          <hr />
+          <h2 id="tables">tables</h2>
+          <h3 id="basic_table_usage">basic table usage</h3>
+          <h3 id="hover_rows">hover rows</h3>
+          <h3 id="contextual_classes">contextual classes</h3>
+          <h3 id="scrollable_tables">scrollable tables</h3>
+          <hr />
+          <h2 id="breadcrumbs">breadcrumbs</h2>
+          <hr />
+          <h2 id="tabs">tabs</h2>
+          <hr />
+          <h2 id="forms">forms</h2>
+          <h3 id="basic_form_usage">basic form usage</h3>
+          <h3 id="disabled_state">disabled state</h3>
+          <h3 id="validation_states">validation states</h3>
+          <h3 id="checkboxes_radios">checkboxes and radios</h3>
+          <h3 id="toggle_switch">toggle switch</h3> -->
+          <h3 id="alerts">alerts</h3>
+          <div class="section-block">
+            <p>There are two types of alerts: <b>Sitewide</b> and <b>Regional</b></p>
+            <h4>Sitewide Alerts</h4>
+            <p>Sitewide alerts appear as full-width banners. They are attached to the header and display from the bottom of the main navigation bar. Sitewide alerts must meet <a href="https://webaim.org/resources/contrastchecker/" alt="WCAG compliance checker tool">WCAG AAA compliance</a>.</p>
+            <dl>
+              <b>Alert Levels</b>
+              <dt>Level 3</dt>
+              <dd>Dismissible alert, POTENTIAL or FORTHCOMING event</dd>
+              <dt>Level 2</dt>
+              <dd>Dismissible alert, CURRENT event</dd>
+              <dt>Level 1</dt>
+              <dd>Non-dismissible alert, <em>TRUE EMERGENCY ONLY</em></dd>
+            </dl>
+            <uvalib-alerts id="alerts2" override alerts='[{"body":"<p>The <a href=\"https://www.library.virginia.edu/status\">Status Dashboard</a> provides quick information about access to materials, how to get help, and status of Library spaces. <a href=\"https://www.library.virginia.edu/status\">Visit now &gt;&nbsp;</a></p>\r\n\r\n<p>&nbsp;</p>\r\n","changed":1596225114,"created":1583946219,"id":1591,"inactive":false,"promote":true,"severity":"alert3","sticky":false,"title":"Test of alert level 3","uuid":"03b05b5c-a395-4506-a83a-1b463abf6538","seen":false},{"body":"<p>The <a href=\"https://www.library.virginia.edu/status\">Status Dashboard</a> provides quick information about access to materials, how to get help, and status of Library spaces. <a href=\"https://www.library.virginia.edu/status\">Visit now &gt;&nbsp;</a></p>\r\n\r\n<p>&nbsp;</p>\r\n","changed":1596225114,"created":1583946219,"id":1591,"inactive":false,"promote":true,"severity":"alert2","sticky":false,"title":"Test of alert level 2","uuid":"03b05b5c-a395-4506-a83a-1b463abf6538","seen":false},{"body":"<p>The <a href=\"https://www.library.virginia.edu/status\">Status Dashboard</a> provides quick information about access to materials, how to get help, and status of Library spaces. <a href=\"https://www.library.virginia.edu/status\">Visit now &gt;&nbsp;</a></p>\r\n\r\n<p>&nbsp;</p>\r\n","changed":1596225114,"created":1583946219,"id":1591,"inactive":false,"promote":true,"severity":"alert1","sticky":false,"title":"Test of alert level 1","uuid":"03b05b5c-a395-4506-a83a-1b463abf6538","seen":false}]'></uvalib-alerts>
+            <h4>Regional Alerts (Level 4)</h4>
+            <p>Regional alerts are containers that appear within the content of a page that alerts the user to temporary (or even semi-perminent) changes to a service, routine, or pattern. By default, <code>--uvalib-text-dark</code> is used or #FFFFFF to get optimal contrast. Although black (#000000) is not a part of the approved color system, it may be used sparingly when proper contrast is required.            </p>
+            <h5>'FYI' Alertbox</h5>
+            <p>These alertboxes can live on a page for a longer period of time, and indicate an update or general notice to the content below.</p>
+            <code>class="ra-box ra-fyi"</code>
+            <div class="alertbox alertbox-primary">
+              This is an example of an <em>FYI</em> alertbox.
+            </div>
+            <h5>'Notice' Alertbox</h5>
+            <p>Notice alertboxes indicate a more disruptive change (ex: downtime). They should be used sparingly and for short periods of time. </p>
+            <code>class="ra-box ra-notice"</code>
+            <div class="alertbox alertbox-secondary">
+              This is an example of a <em>notice</em> alertbox.
+            </div>
+          </div>
+          <!-- <hr />
+          <h2 id="carousel">carousel</h2>
+          <hr />
+          <h2 id="tooltips">tooltips</h2> 
+          <hr />
+          <h2 id="menus_sidebars">menus & sidebars</h2>
+          <h3 id="primary_navigation">primary navigation</h3>
+          <h3 id="secondary_navigation">secondary navigation</h3>
+          <h3 id="left_menu">left menu</h3>
+          <h3 id="right_menu">right menu</h3>
+          <h3 id="right_sidebar">right sidebar</h3>
+          <hr />
+          <h2 id="popovers">popovers</h2>
+          <hr />
+          <h2 id="blockquotes">blockquotes</h2>
+          <hr />
+          <h2 id="progress_bars">progress bars</h2>
+          <hr />
+          <h2 id="page_loader">page loader</h2>
+          <hr />
+          <h2 id="carousels">carousels</h2>
+          <hr />
+          <h2 id="modals">modals</h2>
+          <hr />
+          <h2 id="footers">footers</h2>
+          <h3 id="full">full</h3>
+          <h3 id="simple">simple</h3>
+          <hr />
+          <h2 id="faq">faq</h2>-->
+          <hr />
+          <h3>Keep checking back as there will be more to come!</h3>
+        </div>
+      </div>

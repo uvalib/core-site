@@ -1,0 +1,90 @@
+
+    <div id="tnl-container">
+    <p>Let us help you succeed! Learn to use Virgo, discover databases & subject guides, explore Information Literacy training,
+  download lesson plan templates, and much more.</p>
+    <dom-bind id="app">
+      <template>
+
+        <div class="shaded tools layout horizontal center-justified">
+          <div>
+            <uvalib-simple-search-box placeholder="Search learning resources" search-again-option value="{{query}}"></uvalib-simple-search-box>
+                <label id="radiolabel">Show Me:</label>
+                <uvalib-this-or-that this-bool="{{categoryView}}" that-bool="{{azView}}" fallback-selection="this"></uvalib-this-or-that>
+                <paper-radio-button name="category" checked="{{categoryView}}">Category View</paper-radio-button>
+                <paper-radio-button name="az" checked="{{azView}}">A-Z</paper-radio-button>
+          </div>
+        </div>
+        <uva-library firebase path="learning" items="{{learning}}"></uva-library>
+        <uva-library firebase sort-by="weight" path="tags" items="{{categories}}"></uva-library>
+        <uva-results-helper search-id="uuid" input="[[learning]]" output="{{az}}" sort-by="title" search-query="[[query]]" search-keys='["tagnames","formatDisplay","textBody","title"]'></uva-results-helper>
+        <template is="dom-if" if="[[categoryView]]" restamp>
+          <h2><span hidden$="[[query]]">Browse</span><span hidden$="[[!query]]">Search</span> by Category:</h2>
+          <div class="alert" hidden="[[az]]">No results found for <em>[[query]]</em></div>
+          <uva-accordion multi class="categories">
+            <dom-repeat items="[[categories]]" as="cat"><template>
+              <uva-accordion-item heading-level="3" opened="[[query]]" hidden$="[[!cat.items]]">
+                <div slot="heading">
+                  <img src="[[cat.icon]]" alt="" style="max-width:80px; max-height:80px;"/>
+                  <h3>[[cat.name]]</h3>
+                  <div>[[cat.description]]</div>
+                </div>
+                <div slot="body">
+                  <uva-results-helper search-id="uuid" input="[[learning]]" output="{{cat.items}}" sort-by="title" search-query="[[query]]" filter-by="tagids" filter="[[cat.uuid]]" search-keys='["tagnames","formatDisplay","textBody","title"]'></uva-results-helper>
+                  <ul>
+                    <template is="dom-repeat" items="[[cat.items]]" as="res">
+                      <li>
+                        <h4><uva-results-highlighter match-property="title" matches="[[res.matches]]" text="[[res.item.title]]" ></uva-results-highlighter></h4>
+                        <p><uva-results-highlighter match-property="textBody" matches="[[res.matches]]" text="[[res.item.textBody]]" ></uva-results-highlighter></p>
+                        <div class="format" hidden$="[[!res.item.formatDisplay]]"><strong>Type: <uva-results-highlighter match-property="formatDisplay" matches="[[res.matches]]" text="[[res.item.formatDisplay]]" ></uva-results-highlighter></strong></div>
+                        <div class="linkto" hidden$="[[!res.item.learningItemUrl]]">
+                          <a href="[[res.item.learningItemUrl]]">
+                              [[res.item.actionTerm]] [[res.item.simpleTitle]] <img src="https://static.lib.virginia.edu/files/images/general-icons/link.png" alt="" style="max-width:15px; max-height:15px;" />
+                          </a>
+                        </div>
+                        <div class="source" hidden$="[[!res.item.source]]"><strong>Source:</strong> [[res.item.source]]</div>
+                        <div class="cats" hidden$="[[!res.item.tags]]"><strong>Categories:</strong> <uva-results-highlighter match-property="tagnames" matches="[[res.matches]]" text="[[res.item.tagnames]]" ></uva-results-highlighter></div>
+                        <div class="permalink">
+                          <a href="/services/learning/[[res.item.uuid]]/">[[res.item.simpleTitle]] [Permalink]</a>
+                        </div>
+                      </li>
+                    </template>
+                  </ul>
+                </div>
+              </uva-accordion-item>
+            </template></dom-repeat>
+          </uva-accordion>
+          <paper-button active="{{azView}}" toggles>or view all</paper-button>
+        </template>
+        <template is="dom-if" if="[[azView]]" restamp>
+          <div class="alert" hidden="[[az]]">No results found for <em>[[query]]</em></div>
+          <uva-accordion multi>
+            <template is="dom-repeat" items="[[az]]" as="res">
+              <uva-accordion-item heading-level="3" opened="{{res.opened}}">
+                <div slot="heading">
+                  <h4><uva-results-highlighter match-property="title" matches="[[res.matches]]" text="[[res.item.title]]" ></uva-results-highlighter></h4>
+<!--                  <div inner-h-t-m-l="[[res.item.body]]" hidden$="[[!res.item.body]]"></div> -->
+                  <div><uva-results-highlighter match-property="textBody" matches="[[res.matches]]" text="[[res.item.textBody]]" ></uva-results-highlighter></div>
+                  <div class="linkto">
+                    <a href="[[res.item.learningItemUrl]]" tab-index="-1">
+                        [[res.item.actionTerm]] [[res.item.simpleTitle]] <img src="https://static.lib.virginia.edu/files/images/general-icons/link.png" alt="" style="max-width:15px; max-height:15px;" />
+                    </a>
+                  </div>
+                </div>
+                <div slot="body">
+                  <dom-if if="[[res.opened]]"><template>
+                    <div class="azbody">
+                      <div class="source" hidden$="[[!res.item.source]]"><strong>Source:</strong> [[res.item.source]]</div>
+                      <div class="cats" hidden$="[[!res.item.tags]]"><strong>Categories:</strong> [[res.item.tagnames]]</div>
+                      <div class="permalink">
+                        <a href="/services/learning/[[res.item.uuid]]/">[[res.item.simpleTitle]] [Permalink]</a>
+                      </div>
+                    </div>
+                  </template></dom-if>
+                </div>
+              </uva-accordion-item>
+          </uva-accordion>
+        </template>
+
+      </template>
+    </dom-bind>
+</div>

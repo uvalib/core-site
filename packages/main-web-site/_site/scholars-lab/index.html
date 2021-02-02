@@ -1,0 +1,165 @@
+
+        <style>
+        .mid-section, .main-section, .bottom-section { margin: 75px 0; }
+        .main-section p { padding-left: calc(var(--uvalib-spacing-unit)*2); padding-right: calc(var(--uvalib-spacing-unit)*2); }
+        .main-section h3 { text-transform: uppercase !important; }
+
+        #location-map {
+          width: 100%;
+          height: 300px;
+        }
+        .grid-container {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+
+        :host([large-screen]) .grid-container {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+        }
+        :host([large-screen]) .grid-copy { order: -1; }
+
+    </style>
+    <uvalib-image-header src="https://static.lib.virginia.edu/files/images/hero-study-scholarsLab-study-space.jpg" alt="Scholars Lab space is bright and open with a variety of study spots">
+        <h1 slot="header-title">Scholars’ Lab</h1>
+        <p slot="header-description">The UVA Library's community lab for the practice of experimental scholarship. </p>
+      </uvalib-image-header>
+    <div class="mid-section layout horizontal wrap justified">
+      <paper-card class="flex-2" heading="Community" image="https://static.lib.virginia.edu/files/images/1comm-makerspace-smiling.jpg" alt="Three people gather around a common project. One is talking, one smiling, and the third is watching the (unseen) project closely.">
+        <div class="card-content">
+          <p>Come learn with us! We offer mentoring, collaboration, & a safe space for anyone curious about  new and experimental approaches to teaching, research, and learning. </p>
+        </div>
+        <div class="card-actions">
+          <a tabindex="-1" href="#community">
+            <paper-button>More about Community</paper-button>
+          </a>
+        </div>
+      </paper-card>
+
+      <paper-card class="flex-2" heading="Makerspace" image="https://static.lib.virginia.edu/files/images/2-make-handles.jpg" alt="Colorful handles that could belong to a variety of tools are hanging on a peg board">
+        <div class="card-content">
+          <p>For tinkering and experimentation of all kinds. Walk-ins are welcome, but <a href="https://scholarslab.lib.virginia.edu/makerspace/">reservations are encouraged</a>. Open to all, free, no experience needed.</p>
+        </div>
+        <div class="card-actions">
+          <a tabindex="-1" href="#makerspace">
+            <paper-button>More about Makerspace</paper-button>
+          </a>
+        </div>
+      </paper-card>
+
+      <paper-card class="flex-2" heading="Study Space" image="https://static.lib.virginia.edu/files/images/3student-presentation.jpg" alt="A group of students in comfy chairs with someone giving an informal presentation nearby.">
+        <div class="card-content">
+          <p>Our unique space provides ideal spots for studying and group work. Come on in.</p>
+        </div>
+        <div class="card-actions">
+          <a tabindex="-1" href="#study">
+            <paper-button>More about Study Space</paper-button>
+          </a>
+        </div>
+      </paper-card>
+    </div>
+
+
+      <div class="header-wrapper">
+        <div class="header-wrapper-bg">
+          <h2>Location &amp; Hours</h2>
+        </div>
+      </div>
+      <div class="layout horizontal around-justified wrap">
+
+      <div class="flex-2">
+          <paper-card id="location_help" style="width: 90%;">
+            <div class="card-content layout horizontal center-center wrap">
+              <p>The Scholars’ Lab is located on the <strong>3rd floor of Clemons Library</strong>.</p>
+
+		        <iron-image id="location-map" src="https://static.lib.virginia.edu/files/images/scholarslab-map.jpg" sizing="contain" alt="A map showing the location of Clemons library."></iron-image>
+
+            </div>
+  		 </paper-card>
+        </div>
+
+        <div class="flex-2">
+          <paper-card id="map_hours" style="width: 90%;">
+            <div class="card-content layout horizontal center-center wrap">
+
+
+				<dom-bind>
+				<template>
+				  <div class="hours-widget">
+					<uva-library-hours library-ids='[2090,2093]' hours-ranges="{{hours}}"></uva-library-hours>
+					<h3>Today’s hours</h3>
+					<div>Study Space: [[hours.0]]</div>
+					<div>Makerspace: [[hours.1]]</div>
+
+				  </div>
+				</template>
+				</dom-bind>				
+				
+
+			  
+				<p>Want some help? <a href="mailto:scholarslab@virginia.edu">Email scholarslab@virginia.edu</a>, stop by our office hours (Wednesdays 10-11:30am during Fall and Spring semesters), or <a href="https://scholarslab.lib.virginia.edu">visit our website</a> to learn more about what we offer.</p>
+
+				<p>[<a href="https://www.facebook.com/scholarslab/">facebook</a>] [<a href="https://twitter.com/scholarslab">twitter</a>] [<a href="https://github.com/scholarslab">github</a>]</p>
+
+			  			  
+		
+            </div>
+  			<div class="card-actions">
+             <a tabindex="-1" href="https://www.library.virginia.edu/hours">
+               <paper-button>See Study Space and Makerspace Hours</paper-button>
+             </a>
+            </div>
+          </paper-card>
+        </div>
+      </div>
+
+
+    <div class="bottom-section">
+
+      <div class="header-wrapper">
+        <div class="header-wrapper-bg">
+          <h2 id="community">Community</h2>
+        </div>
+      </div>
+      <div class="horizontal layout wrap">
+        <div class="flex" style="min-width: 40%;">
+          <p>The Scholars’ Lab is first and foremost a space for learning together—about almost anything—by trying stuff. We’d love for you to be a part of our community! </p>
+          <p>Our staff has expertise in digital project development in all fields, including digital humanities, spatial technologies, and cultural heritage data. If you want to work with texts, images, maps, sounds, or 3D models of physical spaces, we have a specialist for that. </p>
+          <h3>Upcoming Events </h3>
+          <p>We host local and national speakers from across the digital spectrum. We offer popular GIS, AR/VR, coding, and Makerspace workshops. Want to learn more? All of our events are free and open to the public! </p>
+        </div>
+        <paper-card id="events" heading="Upcoming Events" style="width: 90%;">
+          <div class="card-content">
+              <uvalib-events-ui cal-id="4299" cat-ids-filter="33496" class="long" max-num-events-shown="4"></uvalib-events-ui>
+          </div>
+          <div class="card-actions">
+           <a tabindex="-1" href="http://cal.lib.virginia.edu/calendar/events">
+             <paper-button>View All Events</paper-button>
+           </a>
+          </div>
+        </paper-card>
+      </div>
+
+      <div class="header-wrapper">
+        <div class="header-wrapper-bg">
+          <h2 id="makerspace">Makerspace</h2>
+        </div>
+      </div>
+      <div>
+        <p>The <a href="https://scholarslab.lib.virginia.edu/makerspace/">Scholars’ Lab makerspace</a> is a place for experimentation with technology like <a href="https://cal.lib.virginia.edu/equipment?lid=264">3D modeling and printing, programming, electronics, wearable tech and virtual/augmented reality</a>. </p>
+        <p>The makerspace is located in the center of our Scholars’ Lab common area, and is free and open to all. We specialize in the humanities and arts, but are a generally curious and welcoming place—so come see us! </p>
+        <p><a href="https://scholarslab.lib.virginia.edu/makerspace/">Read more about the Makerspace</a> and <a href="https://cal.lib.virginia.edu/equipment?lid=264">explore available equipment</a>.</p>
+
+      </div>
+
+      <div class="header-wrapper">
+        <div class="header-wrapper-bg">
+          <h2 id="study">Study Space</h2>
+        </div>
+      </div>
+      <div>
+        <p>Just <a href="https://scholarslab.lib.virginia.edu/hours-and-spaces/">need a space</a> to do some reading, <a href="https://guides.lib.virginia.edu/c.php?g=623612&p=4344598#s-lg-box-wrapper-22974974">use a computer</a>, or meet with a project partner? Our space is easy to find (just enter in the main door of Alderman Library, turn left, then turn right after you pass Greenberry’s and the bathrooms), and it’s open during the same hours as Alderman Library. </p>
+      </div>
+
+
+    </div>

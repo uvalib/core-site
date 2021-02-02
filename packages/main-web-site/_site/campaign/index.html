@@ -1,0 +1,189 @@
+
+    
+    <custom-style>
+      <style>
+        .nc-campaign h1, .nc-campaign h2, .nc-campaign h3, .nc-campaign h4, .nc-campaign h5 {
+          font-family: adobe-caslon-pro,serif;
+          font-weight: 600;
+          font-style: normal;
+        }
+        .nc-campaign h2 {
+          margin-top: 2em;
+        }
+        .nc-header .give-button {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          align-items: flex-end;
+          margin-top: -2em;
+        }
+        .give-button a {
+          padding: 1em 1.5em;
+          color: white;
+          font-weight: bold;
+          font-size: 1.25em;
+          background-color: var(--uvalib-brand-orange);
+          text-decoration: none;
+        }
+        .give-button a:hover {
+          text-decoration: underline;
+          background-color: var(--uvalib-brand-orange-dark);
+        }
+        .campain-goals {
+          display: grid;
+          margin: 1em 3em;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-gap: 2em;
+        }
+        .campain-goals div {
+          border: 1px solid var(--uvalib-grey);
+          padding: 1em;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .nc-fund {
+          width: 60vw;
+        }
+        .wtg {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          align-items: center;
+          margin-top: 2.5em;
+        }
+        .wtg h2 {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-items: center;
+          width: 12em;
+          height: 2em;
+          background-color: var(--uvalib-brand-orange);
+          color: white;
+          padding-top: .5em;
+          text-transform: uppercase;
+          margin-top: -1.25em;
+          margin-bottom: 2em;
+        }
+        .wtg-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 2em;
+          justify-items: center;
+          text-align: center;
+          width: 50vw;
+        }
+        .wtg-content i {
+          font-size: 4rem;
+          color: var(--uvalib-brand-blue);
+        }
+
+        .questions {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+        }
+
+        @media screen and (max-width: 600px) {
+          .campain-goals, .wtg-content, .questions {
+            grid-template-columns: 1fr;
+          }
+          .campain-goals {
+            margin: 1em .5em;
+          }
+          .nc-header .give-button {
+            margin-top: 0;
+          }
+          .wtg h2 {
+            width: 80vw;
+          }
+          .wtg-content {
+            width: 90vw;
+          }
+          .nc-fund {
+            width: 90vw;
+          }
+        }
+      </style>
+    </custom-style>
+    <div class="nc-campaign">
+      <div class="nc-header">
+        <!-- <uvalib-image-header src="/files/case-statement/next-chapter-head.png" no-overlay position="top" alt="The Next Chapter - The Campaign for the University of Virginia Library">
+          <h1 slot="header-title" hidden>The Next Chapter - The Campaign for the University of Virginia Library</h1>
+        </uvalib-image-header> -->
+        <h1 hidden>The Next Chapter - The Campaign for the University of Virginia Library</h1>
+        <img src="/files/2020-11/next-chapter-head.png" />
+
+        <div class="give-button"><a href="/support-library/">Give now</a></div>
+      </div>
+    <p class="h4">The history of the University of Virginia can be divided into three chapters, each marked by the construction of a library.</p>
+    <p>The first chapter was marked by the iconic Rotunda, the “temple of knowledge” conceived as the centerpiece of UVA’s transformative educational community.</p>
+    <p>The second chapter began in 1938 with the opening of a new building to replace the Rotunda as UVA’s main library. The new library announced a significant push to build collections and a purposeful new commitment to the scholarly enterprise.</p>
+    <p>The Library’s next chapter is beginning now, marked by the renovation of the main library as the hub of the flexible library system that UVA needs as it enters its third century.</p>
+    <p>Each of these chapters feature new approaches to Library spaces, collections, and services. As the University’s “Honor the Future” campaign continues, the Library is working towards three major campaign goals.</p>
+
+    <h2>Campaign Goals</h2>
+    <div class="campain-goals">
+      <div>
+        <img src="/files/2020-11/Clerestory_space_800pw-sq.png" alt=" " />
+        <h3>Renovating our Main Library</h3>
+        <p>The 80-plus-year-old building needs an extensive overhaul to bring it up to current standards of safety, accessibility, and service.</p>
+        <p><a href="/campaign/renovation">Main Library Renovation</a></p>
+      </div>
+      <div>
+        <img src="/files/2020-11/Collections_SBJH_800pxSq.jpg" alt=" " />
+        <h3>Improving Collections</h3>
+        <p>The Library’s collections are essential to scholarship, and building and enhancing them, as well as strengthening preservation and special collections, is vital to the University.</p>
+        <p><a href="/campaign/improving-collections">Improving Collections</a></p>
+      </div>
+      <div>
+        <img src="/files/2020-11/braille_800pw-sq.png" alt=" " />
+        <h3>Increasing Access and Affordability</h3>
+        <p>Ensuring that our collections, spaces, and services are accessible to all is imperative, and affordability is a key component of access.</p>
+        <p><a href="/campaign/access-affordability">Access and affordability</a></p>
+      </div>
+    </div>
+    <h2>Giving to the Library</h2>
+    <div class="nc-fund">
+      <h3>Library Annual Fund</h3>
+      <p>Annual giving is vital to the University of Virginia Library. We rely on the generosity of donors each and every year to respond quickly to emerging priorities and critical needs as they arise. Unrestricted gifts &mdash; funds that are not earmarked for a certain purpose and can be used as needed &mdash; provide sustained support for our programs and services, which in turn foster excellence throughout all of UVA’s academic programs.</p>
+      <p>Annual gifts support every aspect of the Library’s mission: to strengthen undergraduate learning and research, support faculty scholarship, and further innovation and collaboration. They enhance our collections and physical spaces and promote both collaborative learning and quiet reflection.</p>
+      <p>Thank you for your dedication and support as we adapt to the needs of these changing times.</p>
+    </div>
+    <p><a href="http://library.virginia.edu/give" aria-label="Give to support the renovation">Give now</a></p>
+    <div class="wtg shady">
+      <h2>Ways to Give</h2>
+      <div class="wtg-content">
+        <div>
+            <i class="far fa-laptop"></i>
+            <h3>Online</h3>
+            <p>Our secure online form allows you to make a credit card donation directly to the University Library. You’ll receive an e-mail confirmation of your gift, and a receipt by mail for tax purposes.</p>
+        </div>
+        <div>
+          <i class="fas fa-file-invoice-dollar"></i>
+          <h3>Matching Gift?</h3>
+          <p>It’s possible your employer will match your gift. Type your company’s name into our matching gift search, or check with your company’s financial department to see if you can double your charitable contribution to the Library.</p>
+        </div>
+        <div>
+          <i class="far fa-envelope"></i>
+          <h3>Mail</h3>
+          <p>Simply send a check payable to <em>UVA Library</em> to: <b>University of Virginia Library<br />P.O. Box 37963<br />Boone, IA 50037-4963</b></p>
+        </div>
+        <div>
+          <i class="far fa-exchange-alt"></i>
+          <h3>Stock Bonds or Bond Transfers</h3>
+          <p>If you would like to make a gift of stocks or bond, please contact Robin Mitchell at <a href="tel:+01-434-466-7408">(434)&nbsp;466-7408</a> or <a href="mailto:robin.mitchell@virginia.edu?subject=Library Fundraising">robin.mitchell@virginia.edu</a>.</p>
+        </div>
+      </div>
+    </div>
+    <h2>Questions?</h2>
+    <div class="questions">
+      <uvalib-staff-card computing-id="rlm4kf" preferred-name="Robin Mitchell" preferred-email="Robin.Mitchell@virginia.edu"></uvalib-staff-card>
+      <p>If you have questions about making a gift to the University Library, contact Robin Mitchell at <a href="tel:+01-434-466-7408">(434)&nbsp;466-7408</a> or <a href="mailto:robin.mitchell@virginia.edu?subject=Library Fundraising">robin.mitchell@virginia.edu</a>.</p>
+    </div>
+    </div>

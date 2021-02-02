@@ -1,0 +1,46 @@
+
+<p><a href="/organization/">View organizational structure.</a></p>
+    <custom-style><style>
+      uvalib-simple-search-box {
+        --uvalib-search-box-border: 2px solid var(--uvalib-secondary-lt-grey);
+        --uvalib-background-search: var(--uvalib-main-jefferson-blue)
+      }
+      .tools {
+        background-color: var(--uvalib-secondary-lt-grey);
+        padding: 20px;
+      }
+      paper-tab {
+        --paper-tab-content: {
+          background-color: var(--uvalib-secondary-web-orange);
+          color: var(--uvalib-main-white);
+          font-weight: bold;
+        };
+        --paper-tab-content-unselected: {
+          background-color: var(--uvalib-text-grey);
+          color: var(--uvalib-main-white);
+          font-weight: bold;
+        };
+      }
+      paper-tab[focused] {
+        @apply --accessibility-outline-for-light-bg;
+      }
+    </style></custom-style>
+    <dom-bind id="app">
+      <template>
+        <paper-tabs selected="{{segment}}" attr-for-selected="name" fallback-selection="list">
+          <paper-tab name="list">Show All (A-Z)</paper-tab>
+          <paper-tab name="subject">By Subject Specialty</paper-tab>
+          <paper-tab name="department">By Department</paper-tab>
+        </paper-tabs>
+        <div class="tools">
+          <uvalib-simple-search-box placeholder="Search name or keyword" search-again-option="" value="{{query}}"></uvalib-simple-search-box>
+              <label hidden$="[[!availableViews]]" id="radiolabel">Show Me:</label>
+              <paper-radio-group hidden$="[[!availableViews]]" selected="{{view}}" fallback-selection="list" aria-labelledby="radiolabel">
+                <template mutable-data is="dom-repeat" items="[[availableViews]]">
+                  <paper-radio-button name="[[item.id]]" hidden$="[[!item.visible]]">[[item.label]]</paper-radio-button>
+                </template>
+              </paper-radio-group>
+        </div>
+        <uvalib-directorypage available-views="{{availableViews}}" segment="[[segment]]" view="{{view}}" relative-links="" query$="[[query]]"></uvalib-directorypage>
+      </template>
+    </dom-bind>

@@ -1,0 +1,30 @@
+{
+  "name": "main-web-site",
+  "version": "1.0.0",
+  "description": "Main University of Virginia Library web site",
+  "author": "Doug Chestnut <dougchestnut@gmail.com>",
+  "homepage": "https://library.virginia.edu",
+  "license": "ISC",
+  "main": "lib/main-web-site.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uvalib/core-site.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/uvalib/core-site/issues"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy-cache-assets": "^2.1.0"
+  }
+}
