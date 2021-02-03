@@ -1,9 +1,12 @@
 ---
+layout: basicPageLayout.njk
 pagination:
     data: uvalibpages
     size: 1
     alias: uvalibpage
 permalink: "{{uvalibpage.path}}/index.html"
+eleventyComputed:
+    title: "{{uvalibpage.title}}"
 ---
 
 {{uvalibpage.body|safe}}
