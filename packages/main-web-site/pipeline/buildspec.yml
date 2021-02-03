@@ -1,0 +1,35 @@
+#
+# buildspec.yml
+#
+
+version: 0.2
+
+#env:
+#  variables:
+#    name: value
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+#    commands:
+
+  pre_build:
+    commands:
+      - npm install --global yarn
+
+  build:
+    commands:
+      - cd packages/main-web-site
+      - yarn install
+      - npx @11ty/eleventy
+      - cd _site
+      - aws s3 sync . s3://library-staging.internal.lib.virginia.edu
+# do CDN invalidation
+
+#  post_build:
+#    commands:
+
+#
+# end of file
+#
