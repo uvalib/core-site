@@ -1,11 +1,9 @@
 # `main-web-site`
 
-> TODO: description
+> A build of the University of Virginia web site using 11ty
 
 ## Usage
 
 ```
-const mainWebSite = require('main-web-site');
-
-// TODO: DEMONSTRATE API
+npx @11ty/eleventy --serve
 ```
