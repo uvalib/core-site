@@ -18,3 +18,5 @@ npx @11ty/eleventy --serve
 ```
 npx @11ty/eleventy
 ```
+
+The `_site` directory contains the sites static build.
