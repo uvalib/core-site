@@ -24,8 +24,8 @@ phases:
       - yarn install
       - npx @11ty/eleventy
       - cd _site
-      - aws s3 sync . s3://library-staging.internal.lib.virginia.edu
-# do CDN invalidation
+      - aws s3 sync . s3://$BUCKET_NAME
+      - aws cloudfront create-invalidation --distribution-id $CDN_ID --paths "/*"
 
 #  post_build:
 #    commands:
