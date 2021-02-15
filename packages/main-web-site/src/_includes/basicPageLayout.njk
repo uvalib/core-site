@@ -4,21 +4,93 @@ title: UVA Library Page
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <title>UVA Library</title>
+
+  <link rel="shortcut icon" sizes="32x32" href="images/icon-32.png">
+  <meta name="theme-color" content="#000">
+
+  <link rel="stylesheet" type="text/css" href="https://static.lib.virginia.edu/files/fontawesome/css/all.css">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
 
     {# look for any web components in the content that we might need imports for #}
-    {% if 'uvalib-model-realtime-override' in content %}
-    <script type="module" defer src="https://static.lib.virginia.edu/js/controllers/components-build/uvalib-model-realtime-override.js"></script>
+    <script type="module">
+      document.addEventListener("DOMContentLoaded", () => {
+        {% if 'uvalib-model-realtime-override' in content %}
+        import('https://static.lib.virginia.edu/js/controllers/components-build/uvalib-model-realtime-override.js');
+        {% endif %}
+        {% if 'uvalib-data-viz-donut' in content %}
+        import('https://static.lib.virginia.edu/js/controllers/components-build/uvalib-data-viz-donut.js');
+        {% endif %}
+      });
+    </script>
+
+    {# look for any older web components that still use html imports (polyfilled below) #}
+    {% if 'uvalib-homepage in content '%}
+    <link rel="import" href="https://www.library.virginia.edu/bower_components/uvalib-page/uvalib-homepage.html">
     {% endif %}
-    {% if 'uvalib-data-viz-donut' in content %}
-    <script type="module" defer src="https://static.lib.virginia.edu/js/controllers/components-build/uvalib-data-viz-donut.js"></script>
-    {% endif %}
+
+    {# imports that we need for the app shell #}
+    <link rel="import" href="https://www.library.virginia.edu/bower_components/uvalib-header/uvalib-header.html">
+    <script type="module">
+      var _htmlImport = (url)=>{
+        var link = document.createElement("link");
+        link.setAttribute('rel','import');
+        link.setAttribute('href',url);
+        document.head.appendChild(link);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        import('https://static.lib.virginia.edu/js/controllers/components-build/uvalib-alerts-level4.js');
+        import('https://static.lib.virginia.edu/js/controllers/components-build/uvalib-alerts-regional.js');
+        _htmlImport("https://www.library.virginia.edu/bower_components/uvalib-footer/uvalib-footer.html");
+      });
+    </script>
+
+    {# drop in controller js for things that might be dropped in from a global context - ie stats #}
+    <script src="https://static.lib.virginia.edu/js/controllers/libweb.js" async></script>
+
+      <style>
+        html, body { overflow-x: hidden; }
+
+        body {
+          margin: 0;
+          min-height: 100vh;
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        /* mobile */
+        @media (max-width: 767px) {
+          body { background-size: 100% 100vh; }
+          body.fixed-viewport-height { background-size: 100% 600px; }
+          [hidden] { display: none; }
+        }
+      </style>
 
   </head>
   <body>
+    <uvalib-header></uvalib-header>
+
+    <uvalib-alerts-regional hidden url="library.virginia.edu/askalibrarian"></uvalib-alerts-regional>
+
     {{ content | safe }}
+
+    <uvalib-footer></uvalib0-footer>
+
+    <noscript>
+      <div style="background-color: #ffffff; text: #000;">
+          JavaScript must be enabled in order for you to use our website. However, it seems JavaScript is either disabled or not supported by your browser.
+      </div>
+    </noscript>
+
+    <script src="http://library.virginia.edu/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
   </body>
 </html>
