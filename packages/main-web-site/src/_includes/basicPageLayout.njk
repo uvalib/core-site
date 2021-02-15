@@ -8,6 +8,15 @@ title: UVA Library Page
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+
+    {# look for any web components in the content that we might need imports for #}
+    {% if 'uvalib-model-realtime-override' in content %}
+    <script type="module" defer src="https://static.lib.virginia.edu/js/controllers/components-build/uvalib-model-realtime-override.js"></script>
+    {% endif %}
+    {% if 'uvalib-data-viz-donut' in content %}
+    <script type="module" defer src="https://static.lib.virginia.edu/js/controllers/components-build/uvalib-data-viz-donut.js"></script>
+    {% endif %}
+
   </head>
   <body>
     {{ content | safe }}
