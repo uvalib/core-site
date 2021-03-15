@@ -1,0 +1,35 @@
+#
+# deployspec.yml
+#
+
+version: 0.2
+
+#env:
+#  variables:
+#    name: value
+
+phases:
+  install:
+    runtime-versions:
+      node: 10
+    commands:
+
+  pre_build:
+    commands:
+      - TODAYS_DATE=$(date +"%Y%m%d")
+
+  build:
+    commands:
+      - LATEST_ASSETS_FILE=$(aws s3 ls s3://$BUCKET_NAME/$TODAYS_DATE | grep assets | head -1 | awk '{print $4})
+      - aws s3 cp s3://$BUCKET_NAME/$LATEST_ASSETS_FILE .
+      - mkdir assets
+      - tar xzvf $LATEST_ASSETS_FILE assets
+      # do the rsync
+      #- rsync -av assets/ <target host>:/wwwstatic
+
+#  post_build:
+#    commands:
+
+#
+# end of file
+#

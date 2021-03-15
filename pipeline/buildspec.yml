@@ -28,7 +28,6 @@ phases:
       - cd build/es6-unbundled
       - tar czvf $BUILD_TARFILE .
       - aws s3 cp $BUILD_TARFILE s3://$BUCKET_NAME
-      #- rsync -av build/es6-unbundled/ <target host>:/wwwstatic
 
 #  post_build:
 #    commands:
