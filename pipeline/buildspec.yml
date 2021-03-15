@@ -22,7 +22,7 @@ phases:
   build:
     commands:
       - npm install
-      - npx bower install
+      - npx bower install --allow-root
       - npm run build
 
 #  post_build:
