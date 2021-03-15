@@ -11,8 +11,8 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      node: 10
-    commands:
+      nodejs: 10
+#    commands:
 
   pre_build:
     commands:
@@ -20,12 +20,12 @@ phases:
 
   build:
     commands:
-      - LATEST_ASSETS_FILE=$(aws s3 ls s3://$BUCKET_NAME/$TODAYS_DATE | grep assets | head -1 | awk '{print $4})
+      - LATEST_ASSETS_FILE=$(aws s3 ls s3://$BUCKET_NAME/$TODAYS_DATE | grep es6-assets | head -1 | awk '{print $4})
       - aws s3 cp s3://$BUCKET_NAME/$LATEST_ASSETS_FILE .
-      - mkdir assets
-      - tar xzvf $LATEST_ASSETS_FILE assets
+      - mkdir es6-assets
+      - tar xzvf $LATEST_ASSETS_FILE es6-assets
       # do the rsync
-      #- rsync -av assets/ <target host>:/wwwstatic
+      #- rsync -av es6-assets/ <target host>:/wwwstatic
 
 #  post_build:
 #    commands:
