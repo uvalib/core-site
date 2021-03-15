@@ -1,0 +1,33 @@
+#
+# buildspec.yml
+#
+
+version: 0.2
+
+#env:
+#  variables:
+#    name: value
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+#    commands:
+
+  pre_build:
+    commands:
+      - BUILD_VERSION=$(date --date="@$(echo $CODEBUILD_START_TIME | cut -c1-10)" +"%Y%m%d%H%M%S")
+      - COMMIT_TAG=gitcommit-$CODEBUILD_RESOLVED_SOURCE_VERSION
+
+  build:
+    commands:
+      - npm install
+      - npx bower install
+      - npm run build
+
+#  post_build:
+#    commands:
+
+#
+# end of file
+#
