@@ -22,10 +22,11 @@ phases:
     commands:
       - LATEST_ASSETS_FILE=$(aws s3 ls s3://$BUCKET_NAME/$TODAYS_DATE | grep es6-assets | head -1 | awk '{print $4}')
       - aws s3 cp s3://$BUCKET_NAME/$LATEST_ASSETS_FILE .
-      - mkdir es6-assets
-      - tar xzvf $LATEST_ASSETS_FILE es6-assets
+      - mkdir $CODEBUILD_SRC_DIR/es6-assets
+      - cd $CODEBUILD_SRC_DIR/es6-assets
+      - tar xzvf $CODEBUILD_SRC_DIR/$LATEST_ASSETS_FILE .
       # do the rsync
-      #- rsync -av es6-assets/ <target host>:/wwwstatic
+      #- rsync -av $CODEBUILD_SRC_DIR/es6-assets/ <target host>:/wwwstatic
 
 #  post_build:
 #    commands:
