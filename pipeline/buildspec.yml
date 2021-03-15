@@ -24,6 +24,11 @@ phases:
       - npm install
       - npx bower install --allow-root
       - npm run build
+      - BUILD_TARFILE=$CODEBUILD_SRC_DIR/$BUILD_VERSION-es6-assets.tgz
+      - cd build/es6-unbundled
+      - tar czvf $BUILD_TARFILE .
+      - aws s3 copy $BUILD_TARFILE s3://$BUCKET_NAME
+      #- rsync -av build/es6-unbundled/ <target host>:/wwwstatic
 
 #  post_build:
 #    commands:
