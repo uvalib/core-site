@@ -27,7 +27,7 @@ phases:
       - npm install
       - npx bower install --allow-root
       - npm run build
-      - scp -v -r -C -i "$CODEBUILD_SRC_DIR/$drupal_key" "$drupal_user@$drupal_host:/usr/share/drupal/sites/default/files/" .
+      - scp -v -r -C -oStrictHostKeyChecking=no -i $CODEBUILD_SRC_DIR/$drupal_key $drupal_user@$drupal_host:/usr/share/drupal/sites/default/files/ .
       - node ./imagemin-files.js
       - BUILD_TARFILE=$CODEBUILD_SRC_DIR/$BUILD_VERSION-assets.tgz
       - tar czvf $BUILD_TARFILE build/es6-unbundled data/pages files
