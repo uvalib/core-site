@@ -32,7 +32,7 @@ phases:
       - node ./imagemin-files.js
       - BUILD_TARFILE=$CODEBUILD_SRC_DIR/$BUILD_VERSION-assets.tgz
       - tar czvf $BUILD_TARFILE build/es6-unbundled data/pages files
-      - aws s3 cp $BUILD_TARFILE s3://$BUCKET_NAME
+      - aws s3 cp $BUILD_TARFILE s3://$BUCKET_NAME --quiet
 
 #  post_build:
 #    commands:

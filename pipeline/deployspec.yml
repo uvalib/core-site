@@ -22,7 +22,7 @@ phases:
   build:
     commands:
       - LATEST_ASSETS_FILE=$(aws s3 ls s3://$BUCKET_NAME/$TODAYS_DATE | grep assets | head -1 | awk '{print $4}')
-      - aws s3 cp s3://$BUCKET_NAME/$LATEST_ASSETS_FILE .
+      - aws s3 cp s3://$BUCKET_NAME/$LATEST_ASSETS_FILE . --quiet
       - mkdir $CODEBUILD_SRC_DIR/assets
       - cd $CODEBUILD_SRC_DIR/assets
       - tar xzvf $CODEBUILD_SRC_DIR/$LATEST_ASSETS_FILE
