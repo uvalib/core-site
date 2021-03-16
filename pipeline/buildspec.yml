@@ -8,7 +8,7 @@ env:
   variables:
     drupal_host: drupal.lib.virginia.edu
     drupal_user: bamboo
-    drupal_key: $CODEBUILD_SRC_DIR/build-deploy-scripts/keys/bamboo_deploy
+    drupal_key: build-deploy-scripts/keys/bamboo_deploy
 
 phases:
   install:
@@ -27,8 +27,9 @@ phases:
       - npm install
       - npx bower install --allow-root
       - npm run build
-      - mkdir files
-      - scp -rC -i $drupal_key @drupal_user@$drupal_host:/usr/share/drupal/sites/default/files/ .
+      - echo "$CODEBUILD_SRC_DIR/$drupal_key"
+      - ls -l $CODEBUILD_SRC_DIR/$drupal_key
+      - scp -rC -i $CODEBUILD_SRC_DIR/$drupal_key @drupal_user@$drupal_host:/usr/share/drupal/sites/default/files/ .
       - node ./imagemin-files.js
       - BUILD_TARFILE=$CODEBUILD_SRC_DIR/$BUILD_VERSION-assets.tgz
       - tar czvf $BUILD_TARFILE build/es6-unbundled data/pages files

@@ -13,3 +13,4 @@ sitemap.txt
 .DS_Store
 build/
 files-ready/
+bamboo_deploy
