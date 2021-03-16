@@ -25,10 +25,11 @@ phases:
       - aws s3 cp s3://$BUCKET_NAME/$LATEST_ASSETS_FILE .
       - mkdir $CODEBUILD_SRC_DIR/assets
       - cd $CODEBUILD_SRC_DIR/assets
-      - tar xzvf $CODEBUILD_SRC_DIR/$LATEST_ASSETS_FILE .
+      - tar xzvf $CODEBUILD_SRC_DIR/$LATEST_ASSETS_FILE
       # do the rsync
       #- rsync -av $CODEBUILD_SRC_DIR/assets/build/es6-unbundled/ $target_host_user@$target_host_name:/wwwstatic
       #- rsync -av $CODEBUILD_SRC_DIR/assets/data/ $target_host_user@$target_host_name:/wwwstatic/data
+      #- rsync -av $CODEBUILD_SRC_DIR/assets/files/ $target_host_user@$target_host_name:/wwwstatic/files
 
 #  post_build:
 #    commands:
