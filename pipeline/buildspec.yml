@@ -4,9 +4,11 @@
 
 version: 0.2
 
-#env:
-#  variables:
-#    name: value
+env:
+  variables:
+    drupal_host: drupal.lib.virginia.edu
+    drupal_user: bamboo
+    drupal_key: $CODEBUILD_SRC_DIR/build-deploy-scripts/keys/bamboo_deploy
 
 phases:
   install:
@@ -18,15 +20,18 @@ phases:
     commands:
       - BUILD_VERSION=$(date --date="@$(echo $CODEBUILD_START_TIME | cut -c1-10)" +"%Y%m%d%H%M%S")
       - COMMIT_TAG=gitcommit-$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - git clone https://$GITLAB_USER:$GITLAB_TOKEN@gitlab.com/uvalib/build-deploy-scripts.git
 
   build:
     commands:
       - npm install
       - npx bower install --allow-root
       - npm run build
-      - BUILD_TARFILE=$CODEBUILD_SRC_DIR/$BUILD_VERSION-es6-assets.tgz
-      - cd build/es6-unbundled
-      - tar czvf $BUILD_TARFILE .
+      - mkdir files
+      - scp -rC -i $drupal_key @drupal_user@$drupal_host:/usr/share/drupal/sites/default/files/ .
+      - node ./imagemin-files.js
+      - BUILD_TARFILE=$CODEBUILD_SRC_DIR/$BUILD_VERSION-assets.tgz
+      - tar czvf $BUILD_TARFILE build/es6-unbundled data/pages files
       - aws s3 cp $BUILD_TARFILE s3://$BUCKET_NAME
 
 #  post_build:

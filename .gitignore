@@ -12,3 +12,4 @@ node_modules/
 sitemap.txt
 .DS_Store
 build/
+files-ready/
