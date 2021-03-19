@@ -31,8 +31,11 @@ phases:
       - scp -r -C -oStrictHostKeyChecking=accept-new -i $CODEBUILD_SRC_DIR/$drupal_key $drupal_user@$drupal_host:/usr/share/drupal/sites/default/files/ .
       - node ./imagemin-files.js
       - rsync -avh files-ready/ files
+      - mkdir info
+      - touch info/$BUILD_VERSION.tag
+      - touch info/$COMMIT_TAG.git
       - BUILD_TARFILE=$CODEBUILD_SRC_DIR/$BUILD_VERSION-assets.tgz
-      - tar czvf $BUILD_TARFILE build/es6-unbundled data/pages files
+      - tar czvf $BUILD_TARFILE build/es6-unbundled data/pages files info
       - aws s3 cp $BUILD_TARFILE s3://$BUCKET_NAME --quiet
 
 #  post_build:

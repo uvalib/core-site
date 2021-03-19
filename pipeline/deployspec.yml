@@ -6,30 +6,49 @@ version: 0.2
 
 env:
   variables:
-    target_host_name: www14.lib.virginia.edu
-    target_host_user: bamboo
+    terraform_version: 0.14.8
+    target_host_name: library-legacy-dev-private.internal.lib.virginia.edu
+    target_host_user: aws_deploy
+    target_host_root_fs: /mnt/wwwstatic
 
 phases:
   install:
     runtime-versions:
-      nodejs: 10
+      golang: 1.x
+      python: 3.x
 #    commands:
 
   pre_build:
     commands:
+      # update
+      - apt-get update -y
+      - apt-get install -y ccrypt
+      # install terraform
+      - wget -q https://releases.hashicorp.com/terraform/${terraform_version}/terraform_${terraform_version}_linux_amd64.zip
+      - unzip terraform_${terraform_version}_linux_amd64.zip
+      - mv terraform /usr/local/bin
+      # get the terraform repo and decrypt the access key
+      - git clone https://$GITLAB_USER:$GITLAB_TOKEN@gitlab.com/uvalib/terraform-infrastructure.git
+      - $CODEBUILD_SRC_DIR/terraform-infrastructure/scripts/decrypt-key.ksh terraform-infrastructure/global/private-keys/aws_deploy.pem.cpt global/private-keys/aws_deploy.pem
+      - PRIVATE_KEY=$CODEBUILD_SRC_DIR/terraform-infrastructure/global/private-keys/aws_deploy.pem
+      - chmod 600 $PRIVATE_KEY
+      # used to determine the appropriate build to deploy
       - TODAYS_DATE=$(date +"%Y%m%d")
 
   build:
     commands:
+      # download the file from S3 and untar
       - LATEST_ASSETS_FILE=$(aws s3 ls s3://$BUCKET_NAME/$TODAYS_DATE | grep assets | head -1 | awk '{print $4}')
       - aws s3 cp s3://$BUCKET_NAME/$LATEST_ASSETS_FILE . --quiet
       - mkdir $CODEBUILD_SRC_DIR/assets
       - cd $CODEBUILD_SRC_DIR/assets
       - tar xzvf $CODEBUILD_SRC_DIR/$LATEST_ASSETS_FILE
       # do the rsync
-      #- rsync -av $CODEBUILD_SRC_DIR/assets/build/es6-unbundled/ $target_host_user@$target_host_name:/wwwstatic
-      #- rsync -av $CODEBUILD_SRC_DIR/assets/data/ $target_host_user@$target_host_name:/wwwstatic/data
-      #- rsync -av $CODEBUILD_SRC_DIR/assets/files/ $target_host_user@$target_host_name:/wwwstatic/files
+      - rsync -ah --no-perms --omit-dir-times -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/build/es6-unbundled/ $target_host_user@$target_host_name:$target_host_root_fs
+      - rsync -ah --no-perms --omit-dir-times -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/data/ $target_host_user@$target_host_name:$target_host_root_fs/data
+      - rsync -ah --no-perms --omit-dir-times -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/files/ $target_host_user@$target_host_name:$target_host_root_fs/files
+      - rsync -ah --no-perms --omit-dir-times -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/info/ $target_host_user@$target_host_name:$target_host_root_fs/info
+
 
 #  post_build:
 #    commands:
