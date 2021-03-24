@@ -5,6 +5,7 @@
 
 <dom-module id="app-sub-nav">
   <link rel="lazy-import" group="app-sub-nav-uvalib-ils-form" href="../bower_components/uvalib-elements/uvalib-ils-form.html">
+  <link rel="lazy-import" group="app-data-uva-accordion" href="../bower_components/uva-accordion/uva-accordion.html">
 
   <template>
 
@@ -117,6 +118,8 @@
         template.innerHTML = this._item.body;
         if (template.content.querySelector('uvalib-ils-form'))
           this.importLazyGroup('app-sub-nav-uvalib-ils-form');
+        if (template.innerHTML.indexOf('<uva-accordion')>=0)
+          this.importLazyGroup('app-data-uva-accordion');
         this.$.content.innerHTML = template.innerHTML;
       }
     }
