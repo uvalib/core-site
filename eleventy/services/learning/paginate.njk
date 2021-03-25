@@ -1,0 +1,18 @@
+---
+layout: basicLearningLayout.njk
+pagination:
+    data: learningLevel2
+    size: 1
+    alias: lL2Item
+permalink: "services/learning/{{lL2Item.uuid}}/index.html"
+eleventyComputed:
+    title: "Learning Resources: {{lL2Item.name}}"
+---
+
+<h2>{% for l1 in learningLevel1 %}{% if lL2Item.parent == l1.uuid %}{{ l1.name }}{% endif %}{% endfor %}</h2>
+
+<h3>{{ lL2Item.name }}</h3>
+
+{% for l3 in learningLevel3 %}{% if lL2Item.uuid in l3.tags %}
+<h4>{{ l3.title }}</h4>
+{% endif %}{% endfor %}

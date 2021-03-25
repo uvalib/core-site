@@ -1,0 +1,11 @@
+---
+layout: basicLearningLayout.njk
+title: "Learning Resources"
+---
+    
+{% for tag in learningLevel1 %}
+    <h2>{{ tag.name }}</h2>
+    {% for subtag in learningLevel2 %}{% if subtag.parent == tag.uuid %}
+        <h3>{{ subtag.name }}</h3>
+    {% endif %}{% endfor %}
+{% endfor %}

@@ -162,6 +162,7 @@ async function buildPages() {
                     path:"/exhibitions/"+page.urlSlug
                   }},'exhibit');
 
+/*
   // build teaching and learning pages
   body = await request('https://uvalib-api.firebaseio.com/learning.json');
   body = JSON.parse(body).map(le=>{
@@ -181,6 +182,7 @@ async function buildPages() {
                     "subnav":"65685915-3510-4626-a500-0b697d6fd5ee",
                     path:"/services/learning/"+page.uuid
                   }},'learning');
+*/
 
   // build library pages
   var libs = await request('https://uvalib-api.firebaseio.com/libraries.json');
@@ -257,4 +259,19 @@ async function buildPages() {
   fs.writeFile(".htaccess", mustache.render( pageTemplate, redirects ), function(){});
 };
 
-buildPages();
+buildPages().then(()=>{
+
+  const { exec } = require("child_process")
+  exec( "npx @11ty/eleventy", (error, stdout, stderr)=>{
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stdout: ${stdout}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  } );
+
+});

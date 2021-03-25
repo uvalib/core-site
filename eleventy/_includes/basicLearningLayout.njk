@@ -1,0 +1,91 @@
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <link rel="canonical" href="https://library.virginia.edu/services/learning/" />
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:site_name" content="UVA Library">
+  <meta property="og:url" content="https://library.virginia.edu/services/learning/">
+  <meta property="article:publisher" content="https://library.virginia.edu/">
+  <meta name="twitter:url" content="https://library.virginia.edu/services/learning/">
+  <meta name="twitter:title" content="Learning Resources">
+  <meta name="twitter:site" content="@uvalibrary">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@graph": [{
+        "@type": "Organization",
+        "url": "https://www.library.virginia.edu/",
+        "logo": "https://www.library.virginia.edu/images/icon-512.png",
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+1-434-924-3021",
+          "contactType": "customer service"
+        }],
+        "sameAs":[
+          "https://www.instagram.com/uvalibrary/",
+          "https://www.facebook.com/University-of-Virginia-Library-136530559704906/",
+          "https://twitter.com/UVaLibrary"
+        ]
+      },{
+        "@type": "WebPage",
+        "mainEntityOfPage": "https://library.virginia.edu/services/learning/",
+        "headline": "Learning Resources",
+        "publisher": {
+          "@type": "Organization",
+          "name": "UVA Library",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://library.virginia.edu/images/icon-192.png",
+            "width": "192",
+            "height": "192"
+          }
+        }
+      },{
+          "@type": "WebSite",
+          "url": "https://www.library.virginia.edu/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.library.virginia.edu/search&q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+      }]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem",
+         "position": 1,
+         "name": "Services",
+         "item": "https://www.library.virginia.edu/services"
+        },
+        {"@type": "ListItem",
+         "position": 2,
+         "name": "Learning Resources",
+         "item": "https://www.library.virginia.edu/services/learning/"
+        }
+      ]
+    }
+  </script>
+
+
+  <style>
+   img  {width: 75%;}
+  </style>
+
+</head>
+
+<body>
+  <div class="content">
+    
+{{ content | safe }}
+
+  </div>
+</body>
+
+</html>
