@@ -38,7 +38,7 @@ phases:
   build:
     commands:
       # download the file from S3 and untar
-      - LATEST_ASSETS_FILE=$(aws s3 ls s3://$BUCKET_NAME/$TODAYS_DATE | grep assets | head -1 | awk '{print $4}')
+      - LATEST_ASSETS_FILE=$(aws s3 ls s3://$BUCKET_NAME/$TODAYS_DATE | grep assets | tail -1 | awk '{print $4}')
       - echo "Downloading $LATEST_ASSETS_FILE"
       - aws s3 cp s3://$BUCKET_NAME/$LATEST_ASSETS_FILE . --quiet
       - mkdir $CODEBUILD_SRC_DIR/assets
