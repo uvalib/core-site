@@ -44,10 +44,10 @@ phases:
       - cd $CODEBUILD_SRC_DIR/assets
       - tar xzf $CODEBUILD_SRC_DIR/$LATEST_ASSETS_FILE
       # do the rsync
-      - rsync -ah --no-perms --omit-dir-times -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/build/es6-unbundled/ $target_host_user@$target_host_name:$target_host_root_fs
-      - rsync -ah --no-perms --omit-dir-times -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/data/ $target_host_user@$target_host_name:$target_host_root_fs/data
-      - rsync -ah --no-perms --omit-dir-times -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/files/ $target_host_user@$target_host_name:$target_host_root_fs/files
-      - rsync -ah --no-perms --omit-dir-times -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/info/ $target_host_user@$target_host_name:$target_host_root_fs/info
+      - rsync -ah --no-perms --omit-dir-times --delete -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/build/es6-unbundled/ $target_host_user@$target_host_name:$target_host_root_fs
+      - rsync -ah --no-perms --omit-dir-times --delete -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/data/ $target_host_user@$target_host_name:$target_host_root_fs/data
+      - rsync -ah --no-perms --omit-dir-times --delete -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/files/ $target_host_user@$target_host_name:$target_host_root_fs/files
+      - rsync -ah --no-perms --omit-dir-times --delete -e "ssh -oStrictHostKeyChecking=accept-new -i $PRIVATE_KEY -l $target_host_user" $CODEBUILD_SRC_DIR/assets/info/ $target_host_user@$target_host_name:$target_host_root_fs/info
 
 
 #  post_build:
