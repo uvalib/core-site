@@ -262,7 +262,8 @@ async function buildPages() {
 buildPages().then(()=>{
 
   const { exec } = require("child_process")
-  exec( "npx @11ty/eleventy", (error, stdout, stderr)=>{
+
+  exec( "cp data/pages.json eleventy/_data/; npx @11ty/eleventy", (error, stdout, stderr)=>{
     if (error) {
       console.log(`error: ${error.message}`);
       return;

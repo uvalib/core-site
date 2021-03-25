@@ -14,8 +14,6 @@ module.exports = async function() {
       [];
   };
 
-  console.log(json)
-
   return  json.map(e=>{
       return {
           'uuid': _getValue(e.uuid)[0],

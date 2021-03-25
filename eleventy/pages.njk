@@ -1,0 +1,30 @@
+---
+permalink: pages.json
+---
+
+[
+  {# add learning pages to the SPA page tree #}
+  {% for lL2Item in learningLevel2 %}
+    {
+        "title":"{{lL2Item.name}}",
+        "time":"",
+        "author":"",
+        "category":"Pages",
+        "id":"{{lL2Item.uuid}}",
+        "parentId":"{{lL2Item.parent}}",
+        "link":"/services/learning/{{lL2Item.uuid}}/",
+        "path":"/services/learning/{{lL2Item.uuid}}/",
+        "subnav":"",
+        "imgSrc":"",
+        "placeholder":"",
+        "summary":"{{lL2Item.description}}",
+        "contentLength":"",
+        "type":"learning"
+    },
+  {% endfor %}
+
+  {# pull in the rest of the pages created outside of 11ty #}  
+  {% for page in pages %}
+    {{ page | JSONstringify | safe }}{{ '' if loop.last else ',' }}
+  {% endfor  %}
+]
