@@ -36,6 +36,7 @@ phases:
       - touch info/$COMMIT_TAG.git
       - BUILD_TARFILE=$CODEBUILD_SRC_DIR/$BUILD_VERSION-assets.tgz
       - tar czvf $BUILD_TARFILE build/es6-unbundled data/pages files info
+      - echo "Uploading $BUILD_TARFILE"
       - aws s3 cp $BUILD_TARFILE s3://$BUCKET_NAME --quiet
 
 #  post_build:
