@@ -259,7 +259,9 @@ async function buildPages() {
   fs.writeFile(".htaccess", mustache.render( pageTemplate, redirects ), function(){});
 };
 
-buildPages().then(()=>{
+buildPages()
+/*
+.then(()=>{
 
   const { exec } = require("child_process")
 
@@ -276,3 +278,4 @@ buildPages().then(()=>{
   } );
 
 });
+*/
