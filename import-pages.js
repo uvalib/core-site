@@ -260,7 +260,6 @@ async function buildPages() {
 };
 
 buildPages()
-/*
 .then(()=>{
 
   const { exec } = require("child_process")
@@ -278,4 +277,3 @@ buildPages()
   } );
 
 });
-*/
