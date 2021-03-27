@@ -1,11 +1,17 @@
 ---
 layout: basicLearningLayout.njk
-title: "Learning Resources"
+title: "Learning Hub"
 ---
     
+<style>
+    img {
+        width: 2em;
+    }
+</style>
 {% for tag in learningLevel1 %}
-    <h2>{{ tag.name }}</h2>
+    <h2><img src="{{tag.icon}}" alt=""/>{{ tag.name }}</h2>
     {% for subtag in learningLevel2 %}{% if subtag.parent == tag.uuid %}
         <h3>{{ subtag.name }}</h3>
+        <p>{{ subtag.description | safe }}</p>
     {% endif %}{% endfor %}
 {% endfor %}

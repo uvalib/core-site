@@ -264,7 +264,7 @@ buildPages()
 
   const { exec } = require("child_process")
 
-  exec( "cp data/pages.json eleventy/_data/; npx @11ty/eleventy", (error, stdout, stderr)=>{
+  return exec( "cp data/pages.json eleventy/_data/; npx @11ty/eleventy", (error, stdout, stderr)=>{
     if (error) {
       console.log(`error: ${error.message}`);
       return;
