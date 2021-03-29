@@ -11,7 +11,7 @@ title: "Learning Hub"
 {% for tag in learningLevel1 %}
     <h2><img src="{{tag.icon}}" alt=""/>{{ tag.name }}</h2>
     {% for subtag in learningLevel2 %}{% if subtag.parent == tag.uuid %}
-        <h3>{{ subtag.name }}</h3>
+        <h3><a href="/services/learning/{{ subtag.uuid }}">{{ subtag.name }}</a></h3>
         <p>{{ subtag.description | safe }}</p>
     {% endif %}{% endfor %}
 {% endfor %}

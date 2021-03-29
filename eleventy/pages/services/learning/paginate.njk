@@ -9,10 +9,17 @@ eleventyComputed:
     title: "Learning Resources: {{lL2Item.name}}"
 ---
 
-<h2>{% for l1 in learningLevel1 %}{% if lL2Item.parent == l1.uuid %}{{ l1.name }}{% endif %}{% endfor %}</h2>
+{% for l1 in learningLevel1 %}
+    {% if lL2Item.parent == l1.uuid %}
+        <h2>{{ l1.name }}</h2>
+        {{ l1.description | safe }}
+    {% endif %}
+{% endfor %}
 
 <h3>{{ lL2Item.name }}</h3>
 
 {% for l3 in learningLevel3 %}{% if lL2Item.uuid in l3.tags %}
+{% if l3.youtube %}{{ l3.youtube }}{% endif %}
 <h4>{{ l3.title }}</h4>
+{{ l3.body | safe }}
 {% endif %}{% endfor %}
