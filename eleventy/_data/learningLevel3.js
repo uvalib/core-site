@@ -28,7 +28,10 @@ module.exports = async function() {
           'category': _getValue(e.field_category)[0],
           'format': _getValue(e.field_format)[0],
           'length': _getValue(e.field_length)[0],
-          'tags': _getValue(e.field_testing_taxonomy, 'target_uuid')
+          'tags': _getValue(e.field_testing_taxonomy, 'target_uuid'),
+          'youtube': e.learningItemUrl && e.learningItemUrl.includes('youtube')?
+              e.learningItemUrl: null
+          
       };
   })
   
