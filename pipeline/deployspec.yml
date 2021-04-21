@@ -6,7 +6,7 @@ version: 0.2
 
 env:
   variables:
-    terraform_version: 0.14.8
+    terraform_version: 0.15.0
     target_host_name: library-legacy-dev-private.internal.lib.virginia.edu
     target_host_user: aws_deploy
     target_host_root_fs: /mnt/wwwstatic
