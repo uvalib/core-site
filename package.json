@@ -31,6 +31,7 @@
     "@uvalib/uvalib-counts": "^0.0.7",
     "@uvalib/uvalib-models": "^0.3.44",
     "@uvalib/web-styles": "^0.2.4",
+    "eleventy": "^1.0.6",
     "striptags": "^3.1.1"
   },
   "devDependencies": {
