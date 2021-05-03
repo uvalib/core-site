@@ -8,6 +8,26 @@ permalink: "pages/services/learning/{{lL2Item.uuid}}/index.html"
 eleventyComputed:
     title: "Learning Resources: {{lL2Item.name}}"
 ---
+<style>
+.learning-header {
+        border-bottom: 2px solid var(--uvalib-grey);
+    }
+.learning-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    margin-left: 3em;
+}
+.learning-container div {
+    min-width: 150px;
+    max-width: 210px;
+    margin-top: 2em;
+    margin-right: 2em;
+}</style>
+
 
 {% for l1 in learningLevel1 %}
     {% if lL2Item.parent == l1.uuid %}
@@ -15,11 +35,15 @@ eleventyComputed:
         {{ l1.description | safe }}
     {% endif %}
 {% endfor %}
-
-<h3>{{ lL2Item.name }}</h3>
-
+<div class="learning-header">
+    <h3>{{ lL2Item.name }}</h3>
+</div>
+<div class="learning-container">
 {% for l3 in learningLevel3 %}{% if lL2Item.uuid in l3.tags %}
 {% if l3.youtube %}{{ l3.youtube }}{% endif %}
-<h4>{{ l3.title }}</h4>
-{{ l3.body | safe }}
+<div>
+    <h4>{{ l3.title }}</h4>
+    {{ l3.body | safe }}
+</div>
 {% endif %}{% endfor %}
+</div>
