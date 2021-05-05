@@ -195,6 +195,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 type: Boolean,
                 computed: '_getHideHeader(article.hideHeader)'
               },
+              hidePageTitle: {
+                type: Boolean,
+                computed: '_getHidePageTitle(article.hideHeader, article.hidePageTitle)'
+              },
               title: {
                 type: String,
                 notify: true
@@ -254,7 +258,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         if (type) return type;
       }
       _getHideHeader(hideHeader) {
-        if (hideHeader) return hideHeader;
+        if (hideHeader) return true;
+      }
+      _getHidePageTitle(hideHeader, hidePageTitle) {
+        if (hideHeader || hidePageTitle) return true;
       }
       _getTemplate(template) {
         if (template) return template;
@@ -345,7 +352,7 @@ _setInnerHTML(elm, html) {
       }
 
       _showTitle(){
-        return (!this.hideHeader && this.type != 'exhibit' && this.type != 'bookplate' && this.type != 'library' && this.type !='staffprofile' && !this.template);
+        return (!this.hideHeader && !this.hidePageTitle && this.type != 'exhibit' && this.type != 'bookplate' && this.type != 'library' && this.type !='staffprofile' && !this.template);
       }
 
       _articleChanged(article) {
