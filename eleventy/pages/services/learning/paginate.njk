@@ -43,6 +43,9 @@ eleventyComputed:
 {% if l3.youtube %}
     <google-youtube fluid video-id="{{ l3.youtube }}"></google-youtube>
 {% endif %}
+{% if l3.youtubelist %}
+    <google-youtube list="{{ l3.youtubelist }}" list-type="playlist"></google-youtube>
+{% endif %}
 <div>
     <h4>{{ l3.title }}</h4>
     {{ l3.body | safe }}

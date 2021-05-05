@@ -31,8 +31,9 @@ module.exports = async function() {
           'length': _getValue(e.field_length)[0],
           'tags': _getValue(e.field_testing_taxonomy, 'target_uuid'),
           'youtube': link && link.includes('youtube') && link.includes('watch')?
-              link.replace(/.*v\=/,''): null
-          
+              link.replace(/.*v\=/,''): null,
+          'youtubelist': link && link.includes('youtube') && link.includes('list')?
+              link.replace(/.*list\=/,''): null,
       };
   })
   
