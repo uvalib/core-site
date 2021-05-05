@@ -15,6 +15,7 @@ module.exports = async function() {
   };
 
   return  json.map(e=>{
+      const link =  _getValue(e.field_link_to_learning_item, 'uri')[0];
       return {
           'uuid': _getValue(e.uuid)[0],
           'created': _getValue(e.created)[0],
@@ -23,14 +24,14 @@ module.exports = async function() {
           'promote': _getValue(e.promote)[0],
           'title': _getValue(e.title)[0],
           'body': _getValue(e.body)[0],
-          'learningItemUrl': _getValue(e.field_link_to_learning_item, 'uri')[0],
+          'learningItemUrl': link,
           'source': _getValue(e.field_source)[0],
           'category': _getValue(e.field_category)[0],
           'format': _getValue(e.field_format)[0],
           'length': _getValue(e.field_length)[0],
           'tags': _getValue(e.field_testing_taxonomy, 'target_uuid'),
-          'youtube': e.learningItemUrl && e.learningItemUrl.includes('youtube')?
-              e.learningItemUrl: null
+          'youtube': link && link.includes('youtube') && link.includes('watch')?
+              link.replace(/.*v\=/,''): null
           
       };
   })
