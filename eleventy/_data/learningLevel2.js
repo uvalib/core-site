@@ -20,6 +20,7 @@ module.exports = async function() {
           'name': _getValue(e.name)[0],
           'description': striptags(_getValue(e.description)[0]).trim(),
           'icon': _getValue(e.field_url_to_icon, 'uri').map(i=>i.replace("drupal.lib.virginia.edu/sites/default","wwwstatic.lib.virginia.edu"))[0],
+          'iconCode': _getValue(e.field_code),
           'weight': _getValue(e.weight)[0],
           'parent': _getValue(e.parent, 'target_uuid')[0]
       };
