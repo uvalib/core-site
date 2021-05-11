@@ -51,7 +51,7 @@ eleventyComputed:
     <!-- youtube thumb is {{ l3.youtubethumb }} from the first video in the playlist -->
 {% endif %}
 <div>
-    <h4>{{ l3.title }}</h4>
+    <h4><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h4>
     {{ l3.body | safe }}
 </div>
 {% endif %}{% endfor %}
