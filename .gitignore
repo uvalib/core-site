@@ -14,3 +14,4 @@ sitemap.txt
 build/
 files-ready/
 bamboo_deploy
+eleventy/_data/pages.json

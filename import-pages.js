@@ -264,7 +264,7 @@ buildPages()
 
   const { exec } = require("child_process")
 
-  return exec( "cp data/pages.json eleventy/_data/; npx @11ty/eleventy", (error, stdout, stderr)=>{
+  return exec( "cp data/pages.json eleventy/_data/", (error, stdout, stderr)=>{
     if (error) {
       console.log(`error: ${error.message}`);
       return;
@@ -274,6 +274,17 @@ buildPages()
       return;
     }
     console.log(`stdout: ${stdout}`);
-  } );
+    return exec( "npx @11ty/eleventy", (error, stdout, stderr)=>{
+      if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.log(`stdout: ${stdout}`);
+        return;
+      }
+      console.log(`stdout: ${stdout}`);
+    } )
+  } )
 
 });
