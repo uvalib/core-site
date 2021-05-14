@@ -308,7 +308,8 @@ _setInnerHTML(elm, html) {
 
   Array.from(elm.querySelectorAll("script:not([type='application/yaml'])")).forEach( oldScript => {
     oldScript.remove();
-    eval(oldScript.innerHTML);
+//    eval(oldScript.innerHTML);
+    import( 'data:text/javascript;charset=utf-8,'+encodeURIComponent(oldScript.innerHTML) )
   });
 }
 
