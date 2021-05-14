@@ -24,7 +24,7 @@ title: "Learning Hub"
     }
 </style>
 {% for tag in learningLevel1 %}
-    <h2 class="learning-header"><i class="{{ subtag.iconCode }}"></i>{{ tag.name }}</h2>
+    <h2 class="learning-header"><i class="{{ tag.iconCode }}"></i>{{ tag.name }}</h2>
     <div class="learning-container">
     
     {% for subtag in learningLevel2 %}{% if subtag.parent == tag.uuid %}
