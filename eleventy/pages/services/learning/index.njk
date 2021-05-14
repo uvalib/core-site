@@ -29,7 +29,7 @@ title: "Learning Hub"
     
     {% for subtag in learningLevel2 %}{% if subtag.parent == tag.uuid %}
         <div>
-            <h3 class="h5"><a href="/services/learning/{{ subtag.uuid }}">{{ subtag.name }}</a></h3>
+            <h3 class="h5"><a href="/services/learning/{{ subtag.name | slug }}">{{ subtag.name }}</a></h3>
             <p>{{ subtag.description | safe }}</p>
         </div>
     {% endif %}{% endfor %}

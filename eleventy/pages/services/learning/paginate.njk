@@ -4,7 +4,7 @@ pagination:
     data: learningLevel2
     size: 1
     alias: lL2Item
-permalink: "pages/services/learning/{{lL2Item.uuid}}/index.html"
+permalink: "pages/services/learning/{{lL2Item.name | slug}}/index.html"
 eleventyComputed:
     title: "Learning Resources: {{lL2Item.name}}"
 ---
@@ -39,20 +39,45 @@ eleventyComputed:
     <h3>{{ lL2Item.name }}</h3>
 </div>
 <div class="learning-container">
-{% for l3 in learningLevel3 %}{% if lL2Item.uuid in l3.tags %}
-{% if l3.youtube %}
-    <google-youtube fluid video-id="{{ l3.youtube }}"></google-youtube>
-    <!-- youtube video id of {{ l3.youtube }} -->
-    <!-- youtube thumb is {{ l3.youtubethumb }}  -->
-{% endif %}
-{% if l3.youtubelist %}
-    <google-youtube list="{{ l3.youtubelist }}" list-type="playlist"></google-youtube>
-    <!-- youtube playlist id of {{ l3.youtubelist }} -->
-    <!-- youtube thumb is {{ l3.youtubethumb }} from the first video in the playlist -->
-{% endif %}
+
+{% for l3 in learningLevel3 %}
+    {% if lL2Item.uuid in l3.tags and not l3.youtube and not l3.youtubelist %}
+        <div>
+            <h4><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h4>
+            {{ l3.body | safe }}
+        </div>
+    {% endif %}
+{% endfor %}
+
+{% for l3 in learningLevel3 %}
+    {% if lL2Item.uuid in l3.tags %}
+        {% if l3.youtube or l3.youtubelist %}
 <div>
+    <sp-theme>
+        <overlay-trigger type="modal" placement="none">
+            <sp-dialog-wrapper
+                slot="click-content"
+                dismissable
+                underlay
+                no-divider
+            >
+            <h2>content here</h2>
+                {% if l3.youtube %}<google-youtube fluid video-id="{{ l3.youtube }}" fluid></google-youtube>{% endif %}
+                {% if l3.youtubelist %}<google-youtube list="{{ l3.youtubelist }}" list-type="playlist" fluid></google-youtube>{% endif %}
+            </sp-dialog-wrapper>
+            <img slot="trigger" src="{{ l3.youtubethumb }}" alt="video thumbnail" style="cursor:pointer"></img>
+        </overlay-trigger>
+    </sp-theme>
+
+                {% if l3.youtube %}<google-youtube fluid video-id="{{ l3.youtube }}" fluid></google-youtube>{% endif %}
+                {% if l3.youtubelist %}<google-youtube list="{{ l3.youtubelist }}" list-type="playlist" fluid></google-youtube>{% endif %}
+
     <h4><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h4>
     {{ l3.body | safe }}
 </div>
-{% endif %}{% endfor %}
+
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
 </div>
