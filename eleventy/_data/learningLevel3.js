@@ -43,6 +43,7 @@ module.exports = async function() {
     };
 
     if (link && link.includes('youtube')) {
+      obj.youtubeURL = link;
       if (link.indexOf('watch')>0) {
         // youtube video
         obj.youtube = link.replace(/.*v\=/,'');
