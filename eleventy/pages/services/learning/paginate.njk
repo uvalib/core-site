@@ -9,41 +9,55 @@ eleventyComputed:
     title: "Learning Resources: {{lL2Item.name}}"
 ---
 <style>
-.learning-header {
+    .learning__h1 {
+        margin-bottom: .25em;
+    }
+    .learning__header {
+        margin-top: 3em;
         border-bottom: 2px solid var(--uvalib-grey);
     }
-.learning-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: flex-start;
-    margin-left: 3em;
-}
-.learning-container div {
-    min-width: 150px;
-    max-width: 210px;
-    margin-top: 2em;
-    margin-right: 2em;
-}</style>
+    .learning__header h2 {
+        margin-bottom: .5em;
+    }
+    .learning__header i {
+        margin-right: .5em;
+    }
+    .learning__container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: flex-start;
+        align-items: flex-start;
+        margin-left: 3em;
+    }
+    .learning__container div {
+        min-width: 150px;
+        max-width: 210px;
+        margin-top: 2em;
+        margin-right: 2em;
+    }
+    .learning__container--youtube {
+        width: 100%;
+    }
+</style>
 
 
 {% for l1 in learningLevel1 %}
     {% if lL2Item.parent == l1.uuid %}
-        <h2>{{ l1.name }}</h2>
+        <h1 class="learning__h1">{{ l1.name }}</h1>
         {{ l1.description | safe }}
     {% endif %}
 {% endfor %}
-<div class="learning-header">
-    <h3>{{ lL2Item.name }}</h3>
+<div class="learning__header">
+    <h2>{{ lL2Item.name }}</h2>
 </div>
-<div class="learning-container">
+<div class="learning__container">
 
 {% for l3 in learningLevel3 %}
     {% if lL2Item.uuid in l3.tags and not l3.youtube and not l3.youtubelist %}
         <div>
-            <h4><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h4>
+            <h3 class="h5"><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h3>
             {{ l3.body | safe }}
         </div>
     {% endif %}
@@ -65,14 +79,14 @@ eleventyComputed:
                 {% if l3.youtube %}<google-youtube fluid video-id="{{ l3.youtube }}" fluid></google-youtube>{% endif %}
                 {% if l3.youtubelist %}<google-youtube list="{{ l3.youtubelist }}" list-type="playlist" fluid></google-youtube>{% endif %}
             </sp-dialog-wrapper>
-            <img slot="trigger" src="{{ l3.youtubethumb }}" alt="video thumbnail" style="cursor:pointer"></img>
+            <img class="learning__container--youtube" slot="trigger" src="{{ l3.youtubethumb }}" alt="video thumbnail" style="cursor:pointer"></img>
         </overlay-trigger>
     </sp-theme>
 
                 {% if l3.youtube %}<google-youtube fluid video-id="{{ l3.youtube }}" fluid></google-youtube>{% endif %}
                 {% if l3.youtubelist %}<google-youtube list="{{ l3.youtubelist }}" list-type="playlist" fluid></google-youtube>{% endif %}
 
-    <h4><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h4>
+    <h3 class="h5"><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h3>
     {{ l3.body | safe }}
 </div>
 
