@@ -52,26 +52,9 @@ eleventyComputed:
 {% for l3 in learningLevel3 %}
     {% if lL2Item.uuid in l3.tags %}
         {% if l3.youtube or l3.youtubelist %}
+
 <div>
-    <sp-theme>
-        <overlay-trigger type="modal" placement="none">
-            <sp-dialog-wrapper
-                slot="click-content"
-                dismissable
-                underlay
-                no-divider
-            >
-            <h2>content here</h2>
-                {% if l3.youtube %}<google-youtube fluid video-id="{{ l3.youtube }}" fluid></google-youtube>{% endif %}
-                {% if l3.youtubelist %}<google-youtube list="{{ l3.youtubelist }}" list-type="playlist" fluid></google-youtube>{% endif %}
-            </sp-dialog-wrapper>
-            <img slot="trigger" src="{{ l3.youtubethumb }}" alt="video thumbnail" style="cursor:pointer"></img>
-        </overlay-trigger>
-    </sp-theme>
-
-                {% if l3.youtube %}<google-youtube fluid video-id="{{ l3.youtube }}" fluid></google-youtube>{% endif %}
-                {% if l3.youtubelist %}<google-youtube list="{{ l3.youtubelist }}" list-type="playlist" fluid></google-youtube>{% endif %}
-
+    <div><a href="{{ l3.learningItemUrl }}"><img slot="trigger" src="{{ l3.youtubethumb }}" alt="video thumbnail" style="cursor:pointer"></img></a></div>
     <h4><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h4>
     {{ l3.body | safe }}
 </div>

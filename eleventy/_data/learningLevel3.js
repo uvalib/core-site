@@ -47,7 +47,7 @@ module.exports = async function() {
       if (link.indexOf('watch')>0) {
         // youtube video
         obj.youtube = link.replace(/.*v\=/,'');
-        obj.youtubethumb = `https://img.youtube.com/vi/${obj.youtube}/default.jpg`;
+        obj.youtubethumb = `https://img.youtube.com/vi/${obj.youtube}/hqdefault.jpg`;
       } else if (link.includes('list')) {
         // youtube playlist
         obj.youtubelist = link.replace(/.*list\=/,'');
@@ -55,7 +55,9 @@ module.exports = async function() {
             duration: "5m", // 5 minutes
             type: "json"
         });
-        obj.youtubethumb = playlist.items[0].snippet.thumbnails.default.url;
+        obj.youtubethumb = playlist.items[0].snippet.thumbnails.standard?
+          playlist.items[0].snippet.thumbnails.standard.url:
+          playlist.items[0].snippet.thumbnails.default.url
       }
     }
 
