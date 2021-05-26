@@ -67,7 +67,7 @@ eleventyComputed:
     {% if lL2Item.uuid in l3.tags %}
         {% if l3.youtube or l3.youtubelist %}
 <div>
-    <uvalib-video-lightbox title="{{ l3.title }}" youtubeid="{{ l3.youtube }}" youtubeplaylistid="{{ l3.youtubelist }}"><img class="learning__container--youtube" src="{{ l3.youtubethumb }}" alt="video thumbnail"></img></uvalib-video-lightbox>
+    <div><a href="{{ l3.learningItemUrl }}" target="_blank"><img class="learning__container--youtube" src="{{ l3.youtubethumb }}" alt="video thumbnail"></img></a></div>
     <h3 class="h5"><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h3>
     {{ l3.body | safe }}
 </div>
