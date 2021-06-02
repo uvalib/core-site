@@ -54,13 +54,8 @@ eleventyComputed:
         {% if l3.youtube or l3.youtubelist %}
 
 <div>
-<<<<<<< HEAD
     <div><a href="{{ l3.learningItemUrl }}" target="_blank"><img class="learning__container--youtube" src="{{ l3.youtubethumb }}" alt="video thumbnail"></img></a></div>
     <h3 class="h5"><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h3>
-=======
-    <div><a href="{{ l3.learningItemUrl }}"><img slot="trigger" src="{{ l3.youtubethumb }}" alt="video thumbnail" style="cursor:pointer"></img></a></div>
-    <h4><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h4>
->>>>>>> parent of 96828c4... added in the uvalib-video-lightbox component
     {{ l3.body | safe }}
 </div>
 
