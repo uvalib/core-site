@@ -3,10 +3,28 @@ permalink: pages.json
 ---
 
 [
+  {
+    "title":"Learning Hub",
+    "time":"",
+    "author":"",
+    "category":"Pages",
+    "id":"Learning_Resources",
+    "pageId":1470,
+    "parentId":1107,
+    "link":"/services/learning/",
+    "path":"/services/learning/",
+    "sidebar":"65685915-3510-4626-a500-0b697d6fd5ee",
+    "subnav":"14584a3a-78c5-4512-ba65-6c2524cf3776",
+    "iframe":false,
+    "imgSrc":"",
+    "placeholder":"",
+    "summary":"Learning Resources",
+    "hideHeader":false
+  },
   {# add learning pages to the SPA page tree #}
   {% for lL2Item in learningLevel2 %}
     {
-        "title":"{{lL2Item.name}}",
+        "title":"Learning Hub: {{lL2Item.name}}",
         "time":"",
         "author":"",
         "category":"Pages",
@@ -19,13 +37,14 @@ permalink: pages.json
         "placeholder":"",
         "summary":"{{lL2Item.description}}",
         "contentLength":"",
-        "type":"learning",
-        "hidePageTitle": true
+        "type":"learning"
     },
   {% endfor %}
 
   {# pull in the rest of the pages created outside of 11ty #}  
   {% for page in pages %}
-    {{ page | JSONstringify | safe }}{{ '' if loop.last else ',' }}
+    {% if "/services/learning" not in page.link %}
+      {{ page | JSONstringify | safe }}{{ '' if loop.last else ',' }}
+    {% endif %}
   {% endfor  %}
 ]
