@@ -4,14 +4,10 @@ title: "Learning Hub"
 ---
     
 <style>
-   .learning__header {
-       padding-bottom: .3em;
+   .learning-header {
         border-bottom: 2px solid var(--uvalib-grey);
     }
-    .learning__header i {
-        margin-right: .5em;
-    }
-    .learning__container {
+    .learning-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -20,7 +16,7 @@ title: "Learning Hub"
         align-items: flex-start;
         margin-left: 3em;
     }
-    .learning__container div {
+    .learning-container div {
         min-width: 150px;
         max-width: 210px;
         margin-top: 2em;
@@ -28,8 +24,8 @@ title: "Learning Hub"
     }
 </style>
 {% for tag in learningLevel1 %}
-    <h2 class="learning__header"><i class="{{ tag.iconCode }}"></i>{{ tag.name }}</h2>
-    <div class="learning__container">
+    <h2 class="learning-header"><i class="{{ tag.iconCode }}"></i>{{ tag.name }}</h2>
+    <div class="learning-container">
     
     {% for subtag in learningLevel2 %}{% if subtag.parent == tag.uuid %}
         <div>

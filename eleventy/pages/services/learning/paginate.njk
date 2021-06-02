@@ -9,55 +9,41 @@ eleventyComputed:
     title: "Learning Resources: {{lL2Item.name}}"
 ---
 <style>
-    .learning__h1 {
-        margin-bottom: .25em;
-    }
-    .learning__header {
-        margin-top: 3em;
+.learning-header {
         border-bottom: 2px solid var(--uvalib-grey);
     }
-    .learning__header h2 {
-        margin-bottom: .5em;
-    }
-    .learning__header i {
-        margin-right: .5em;
-    }
-    .learning__container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-content: flex-start;
-        align-items: flex-start;
-        margin-left: 3em;
-    }
-    .learning__container div {
-        min-width: 150px;
-        max-width: 210px;
-        margin-top: 2em;
-        margin-right: 2em;
-    }
-    .learning__container--youtube {
-        width: 100%;
-    }
-</style>
+.learning-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    margin-left: 3em;
+}
+.learning-container div {
+    min-width: 150px;
+    max-width: 210px;
+    margin-top: 2em;
+    margin-right: 2em;
+}</style>
 
 
 {% for l1 in learningLevel1 %}
     {% if lL2Item.parent == l1.uuid %}
-        <h1 class="learning__h1">{{ l1.name }}</h1>
+        <h2>{{ l1.name }}</h2>
         {{ l1.description | safe }}
     {% endif %}
 {% endfor %}
-<div class="learning__header">
-    <h2>{{ lL2Item.name }}</h2>
+<div class="learning-header">
+    <h3>{{ lL2Item.name }}</h3>
 </div>
-<div class="learning__container">
+<div class="learning-container">
 
 {% for l3 in learningLevel3 %}
     {% if lL2Item.uuid in l3.tags and not l3.youtube and not l3.youtubelist %}
         <div>
-            <h3 class="h5"><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h3>
+            <h4><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h4>
             {{ l3.body | safe }}
         </div>
     {% endif %}
@@ -66,9 +52,15 @@ eleventyComputed:
 {% for l3 in learningLevel3 %}
     {% if lL2Item.uuid in l3.tags %}
         {% if l3.youtube or l3.youtubelist %}
+
 <div>
+<<<<<<< HEAD
     <div><a href="{{ l3.learningItemUrl }}" target="_blank"><img class="learning__container--youtube" src="{{ l3.youtubethumb }}" alt="video thumbnail"></img></a></div>
     <h3 class="h5"><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h3>
+=======
+    <div><a href="{{ l3.learningItemUrl }}"><img slot="trigger" src="{{ l3.youtubethumb }}" alt="video thumbnail" style="cursor:pointer"></img></a></div>
+    <h4><a href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></h4>
+>>>>>>> parent of 96828c4... added in the uvalib-video-lightbox component
     {{ l3.body | safe }}
 </div>
 
