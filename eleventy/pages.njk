@@ -18,13 +18,12 @@ permalink: pages.json
     "iframe":false,
     "imgSrc":"",
     "placeholder":"",
-    "summary":"Learning Resources",
-    "hideHeader":false
+    "summary":"Learning Resources"
   },
   {# add learning pages to the SPA page tree #}
   {% for lL2Item in learningLevel2 %}
     {
-        "title":"Learning Hub: {{lL2Item.name}}",
+        "title":"{{lL2Item.name}}",
         "time":"",
         "author":"",
         "category":"Pages",
@@ -37,7 +36,8 @@ permalink: pages.json
         "placeholder":"",
         "summary":"{{lL2Item.description}}",
         "contentLength":"",
-        "type":"learning"
+        "type":"learning",
+        "hidePageTitle":"true"
     },
   {% endfor %}
 

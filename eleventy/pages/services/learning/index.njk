@@ -27,15 +27,16 @@ title: "Learning Hub"
         margin-right: 2em;
     }
 </style>
+<p>Let us help you succeed! Learn to use Virgo, discover databases & subject guides, explore Information Literacy training, download lesson plan templates, and much more.</p>
+<h2>Learn how to…<h2>
 {% for tag in learningLevel1 %}
-    <h2 class="learning__header"><i class="{{ tag.iconCode }}"></i>{{ tag.name }}</h2>
+    <h3 class="learning__header"><i class="{{ tag.iconCode }}"></i>{{ tag.name }}</h3>
     <div class="learning__container">
-    
-    {% for subtag in learningLevel2 %}{% if subtag.parent == tag.uuid %}
-        <div>
-            <h3 class="h5"><a href="/services/learning/{{ subtag.name | slug }}">{{ subtag.name }}</a></h3>
-            <p>{{ subtag.description | safe }}</p>
-        </div>
-    {% endif %}{% endfor %}
+        {% for subtag in learningLevel2 %}{% if subtag.parent == tag.uuid %}
+            <div>
+                <h4 class="h5"><a href="/services/learning/{{ subtag.name | slug }}">{{ subtag.name }}</a></h4>
+                <p>{{ subtag.description | safe }}</p>
+            </div>
+        {% endif %}{% endfor %}
     </div>
 {% endfor %}
