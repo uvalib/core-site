@@ -31,7 +31,7 @@ title: "Learning Hub"
 <p>Let us help you succeed! Learn to use Virgo, discover databases & subject guides, explore Information Literacy training, download lesson plan templates, and much more.</p>
 <h2>Learn how to…<h2>
 {% for tag in learningLevel1 %}
-    <h2 class="learning__header"><i class="{{ tag.iconCode }}"></i>{{ tag.name }}</h2>
+    <h2 class="learning__header"><i aria-hidden="true" class="{{ tag.iconCode }}"></i>{{ tag.name }}</h2>
     <div class="learning__container">
         {% for subtag in learningLevel2 %}{% if subtag.parent == tag.uuid %}
             <div>
