@@ -319,6 +319,11 @@
             link.setAttribute('href', this.path+href);
         });
 
+        // All svg images need to have `role="img"` attribute per #TDG-70
+        template.content.querySelectorAll('svg').forEach((svg)=>{
+          svg.setAttribute('role','img');
+        });
+
         // Use figure where we have the content to support it
         template.content.querySelectorAll('img').forEach((img)=>{
           var parent = img.parentElement;

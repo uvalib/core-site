@@ -61,7 +61,6 @@
     "moment": "^2.22.2",
     "mozjpeg": "^6.0.1",
     "mustache": "^2.3.0",
-    "node-sass": "^5.0.0",
     "node-wget": "^0.4.3",
     "pngquant": "^2.0.1",
     "pngquant-bin": "^5.0.2",
