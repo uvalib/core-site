@@ -54,7 +54,7 @@ eleventyComputed:
         {% if l3.youtube or l3.youtubelist %}
 
 <div>
-    <div><a href="{{ l3.learningItemUrl }}" target="_blank"><img aria-labelledby="{{ l3.uuid }}" class="learning__container--youtube" src="{{ l3.youtubethumb }}" alt="video thumbnail"></img></a></div>
+    <div><a href="{{ l3.learningItemUrl }}" target="_blank"><img aria-labelledby="{{ l3.uuid }}" class="learning__container--youtube" src="{{ l3.youtubethumb }}"></img></a></div>
     <div class="h5"><a id="{{ l3.uuid }}" href="{{ l3.learningItemUrl }}">{{ l3.title }}</a></div>
     {{ l3.body | safe }}
 </div>
