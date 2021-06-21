@@ -11,6 +11,7 @@ Install [polymer-cli](https://github.com/Polymer/polymer-cli):
 ### Setup
 
     git clone https://github.com/uvalib/core-site.git
+    git checkout develop
     cd core-site
     npm install
     bower install 
@@ -30,6 +31,14 @@ Install [polymer-cli](https://github.com/Polymer/polymer-cli):
 
 ## Test the build
 
-Use `polymer serve` to serve a specific build preset of the app. For example:
+    polymer serve 
 
-    polymer serve build/es5-bundled
+## Deploy to testing server
+
+    git commit -am'your message' && git push
+    and then view changes https://library-legacy-dev.internal.lib.virginia.edu/
+
+## Deploy to production
+
+    git checkout master && git merge develop && git push
+    Then run the TeamCity job https://teamcity.lib.virginia.edu/buildConfiguration/UX_StaticWebsite_CoreSiteBuid
