@@ -52,7 +52,10 @@
 
     {
       "preset": "es6-unbundled",
-      "js": { "minify" : false }
+      "js": { 
+        "compile": "es2018",
+        "minify" : false 
+      }
     }
   ]
 }
