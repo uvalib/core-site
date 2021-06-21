@@ -5,7 +5,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import multiInput from 'rollup-plugin-multi-input';
 
 export default {
-  input: ['./module-build/*.js'],
+  input: ['./src/module-build/*.js'],
 
   output: [
     {
