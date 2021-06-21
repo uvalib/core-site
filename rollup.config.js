@@ -10,7 +10,7 @@ export default {
   output: [
     {
       name: 'es6-components',
-      dir: 'src/',
+      dir: './',
       format: 'esm'
     },
   ],

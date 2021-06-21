@@ -6,7 +6,7 @@ module.exports = {
     'bower_components/uva-helper-libs/polyfills.html',
     'bower_components/components-font-awesome/css/*',
     'images/*',
-    'src/module-build/*'
+    'module-build/*'
   ],
   runtimeCaching: [
     {
