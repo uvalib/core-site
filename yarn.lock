@@ -563,11 +563,6 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
-"@fortawesome/fontawesome-pro@^5.15.3":
-  version "5.15.3"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/5.15.3/fontawesome-pro-5.15.3.tgz#6d039e215b88da6c2a17475810804348993bf3d0"
-  integrity sha512-JAf7zDYGVtcJIqnWAzZ8KRqSHQ2+KnJi4K916Zxti4ONfaVw87jaUoxtfxtNsc3kgTmCmbwgPsi2nOA/1fEnzQ==
-
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -1421,21 +1416,20 @@
     "@types/events" "*"
     "@types/inquirer" "*"
 
-"@uvalib/uvalib-logos@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-logos/-/uvalib-logos-1.0.1.tgz#f0e780eef1407e924385a2f9d02b517f030735ec"
-  integrity sha512-DAmHdlrCO0qoYWBFS+9I1D5dtQ/Qmgd5StcpYu66Ue9AeyqSlvgAHCyeXJ62s9/KHC3WQmIokYzWE14OER26WA==
+"@uvalib/uvalib-logos@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-logos/-/uvalib-logos-1.0.2.tgz#f87272ad304204e15452b00e39c4da76caea1ae4"
+  integrity sha512-6qbPekepopFtmdmOOx8J1sGLWo97YVSpGKvZoh+Dkz42wrLHIYrbC1VgR6tenyv0GZtr+ieL6o14fKK7Ii5XcA==
   dependencies:
-    "@uvalib/web-styles" "^1.3.4"
+    "@uvalib/web-styles" "^1.3.5"
     lit-element "^2.5.1"
     lit-html "^1.4.1"
 
-"@uvalib/web-styles@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-1.3.4.tgz#30fa2210b555a52849e6d589ed48b2a0e587d019"
-  integrity sha512-uHDGusViRgQjD7IuWKy7M3w3AuQN4u7fzpE7/h+Niyiv00+J37kvNxCHZ7hL4BVqxpFm8xfLKi525AQhrxI/mA==
+"@uvalib/web-styles@^1.3.5":
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/@uvalib/web-styles/-/web-styles-1.3.5.tgz#5e134566aeb84d8d2ef4eeffb809bbef8ec6832f"
+  integrity sha512-MH9gigQfTbMLMu/dMsGZ6+E0Oh3HAXoawfeuppU07BVjQTh6AWL9WB1k+geiFoCCZf+1HCkHq8uDQ07Jbq0DNA==
   dependencies:
-    "@fortawesome/fontawesome-pro" "^5.15.3"
     lit-element "^2.5.1"
     serve "^11.3.2"
 
