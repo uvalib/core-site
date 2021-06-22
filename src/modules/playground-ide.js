@@ -1,1 +1,1 @@
-import('playground-elements/playground-ide.js');
+import 'playground-elements/playground-ide.js';
