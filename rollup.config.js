@@ -5,18 +5,18 @@ import commonjs from '@rollup/plugin-commonjs';
 import multiInput from 'rollup-plugin-multi-input';
 
 export default {
-  input: ['./src/module-build/*.js'],
+  input: ['src/modules/*.js'],
 
   output: [
     {
       name: 'es6-components',
-      dir: './',
+      dir: 'module-build/',
       format: 'esm'
     },
   ],
 
   plugins: [
-    multiInput(),
+    multiInput({ relative: 'src/modules/' }),
     commonjs(),
 //    postcss({
 //      extract: false,
