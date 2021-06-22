@@ -2,8 +2,6 @@
   "entrypoint": "index.html",
   "shell": "src/uvalib-app.html",
   "sources": [
-    "module-build/*",
-    "module-build/**/*",
     "src/**/*",
     "images/**/*",
     "data/*",

@@ -35,10 +35,13 @@ Install [polymer-cli](https://github.com/Polymer/polymer-cli):
 
 ## Deploy to testing server
 
-    git commit -am'your message' && git push
-    and then view changes https://library-legacy-dev.internal.lib.virginia.edu/
+    git commit -am'your message'
+    git push
+    and then view changes at https://library-legacy-dev.internal.lib.virginia.edu/
 
 ## Deploy to production
 
-    git checkout master && git merge develop && git push
+    git checkout master
+    git merge develop
+    git push
     Then run the TeamCity job https://teamcity.lib.virginia.edu/buildConfiguration/UX_StaticWebsite_CoreSiteBuid
