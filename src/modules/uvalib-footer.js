@@ -1,0 +1,1 @@
+import('@uvalib/uvalib-footer/uvalib-footer.js');
