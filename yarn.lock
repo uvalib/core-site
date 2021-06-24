@@ -1949,10 +1949,10 @@
     lit-html "^1.4.1"
     sass "^1.35.1"
 
-"@uvalib/uvalib-logos@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-logos/-/uvalib-logos-1.0.4.tgz#bee86e82091ca2a3a9842f0a8e9f6ec0394d5a26"
-  integrity sha512-fUCSf0MQNVEEQUmTUscQHe2n8WOY2Cwy1Uof4+WPP8YmhzlLx+TV1PD2Nt1rwYLB5fyEz09jUWOofTpg0akkaA==
+"@uvalib/uvalib-logos@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@uvalib/uvalib-logos/-/uvalib-logos-1.0.6.tgz#aeaf9e25116239d06b050f5bb06e34b562b47457"
+  integrity sha512-iamZKuTBA+a57CpVCwhiR6T3njANX4LVZnAa04MomUaqvGORDGVgFKMrR4gvBY5H68on5xAt6gcZdjlQz0dpWA==
   dependencies:
     "@uvalib/web-styles" "^1.3.6"
     lit-element "^2.5.1"

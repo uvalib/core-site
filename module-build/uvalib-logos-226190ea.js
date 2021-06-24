@@ -1001,7 +1001,7 @@ LitElement.render = render;
 LitElement.shadowRootOptions = { mode: 'open' };
 
 var style = css`
-@import url("https://use.typekit.net/tgy5tlj.css");:host{color:#000;display:inline-block;padding:10px}svg{max-height:100%;min-height:20px;width:100%}g#rotunda path,g#rotunda polygon,g#rotunda rect{fill:#e57200}#libletters,#sepline,#uvaletters{fill:#fff}
+@import url("https://use.typekit.net/tgy5tlj.css");:host{color:#000;display:inline-block;padding:10px}svg{height:100%;max-height:74px;min-height:20px;width:100%}g#rotunda path,g#rotunda polygon,g#rotunda rect{fill:#e57200}#sepline{fill:#fff}[dark] #sepline{fill:#141e3c}#libletters,#uvaletters{fill:#fff}[dark] #libletters,[dark] #uvaletters{fill:#141e3c}
 /*# sourceMappingURL=src/UvalibLogos.css.map */
 `;
 
@@ -1010,20 +1010,80 @@ class UvalibLogos extends LitElement {
     return [style];
   }
 
-  static get properties() {
-    return {
-      onecolor: { type: Boolean }
-    };
-  }
-
   constructor() {
     super();
     this.onecolor = false;
   }
 
+  lightOrDark(color) {
+    var r, g, b;
+    // Check the format of the color, HEX or RGB?
+    if (color.match(/^rgb/)) {
+  
+      // If HEX --> store the red, green, blue values in separate variables
+      color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+  
+      r = color[1];
+      g = color[2];
+      b = color[3];
+    } 
+    else {
+  
+      // If RGB --> Convert it to HEX: http://gist.github.com/983661
+      color = +("0x" + color.slice(1).replace( 
+        color.length < 5 && /./g, '$&$&'
+      )
+               );
+  
+      r = color >> 16;
+      g = color >> 8 & 255;
+      b = color & 255;
+    }
+  
+    // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+    let hsp = Math.sqrt(
+      0.299 * (r * r) +
+      0.587 * (g * g) +
+      0.114 * (b * b)
+    );
+  
+    // Using the HSP value, determine whether the color is light or dark
+    if (hsp>127.5) {
+  
+      return 'light';
+    } 
+    else {
+  
+      return 'dark';
+    }
+  }
+
+  realBackgroundColor(elem) {
+    var transparent = 'rgba(0, 0, 0, 0)';
+    var transparentIE11 = 'transparent';
+    if (!elem) return transparent;
+
+    var bg = getComputedStyle(elem).backgroundColor;
+    if (bg === transparent || bg === transparentIE11) {
+        return this.realBackgroundColor(elem.parentElement);
+    } else {
+        return bg;
+    }
+}
+
+  evalBackgroundColor() {
+    this._backgroundColor = this.realBackgroundColor(this);
+    this._dark = this.lightOrDark( this._backgroundColor ) != "dark";
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.evalBackgroundColor();
+  }
+
   render() {
     return html`
-    <svg ?onecolor="${this.onecolor}" role="img" id="library_logo_primary" data-name="library_logo_primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 327.42 73.89">
+    <svg ?dark="${this._dark}" role="img" id="library_logo_primary" data-name="library_logo_primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 327.42 73.89">
       <title>University of Virginia Library</title>
       <desc id="desc">"Horizontal version of the logo"</desc>
       <g>
