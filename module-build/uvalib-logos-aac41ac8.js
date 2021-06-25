@@ -1001,7 +1001,7 @@ LitElement.render = render;
 LitElement.shadowRootOptions = { mode: 'open' };
 
 var style = css`
-@import url("https://use.typekit.net/tgy5tlj.css");:host{color:#000;display:inline-block;padding:10px}svg{height:100%;max-height:74px;min-height:20px}g#rotunda path,g#rotunda polygon,g#rotunda rect{fill:#e57200}#sepline{fill:#fff}[dark] #sepline{fill:#141e3c}#libletters,#uvaletters{fill:#fff}[dark] #libletters,[dark] #uvaletters{fill:#141e3c}
+@import url("https://use.typekit.net/tgy5tlj.css");:host{color:#000;display:inline-block;height:43px;padding:10px}svg{height:100%;max-height:74px;min-height:20px}g#rotunda path,g#rotunda polygon,g#rotunda rect{fill:#e57200}#sepline{fill:#fff}[dark] #sepline{fill:#141e3c}#libletters,#uvaletters{fill:#fff}[dark] #libletters,[dark] #uvaletters{fill:#141e3c}
 /*# sourceMappingURL=src/UvalibLogos.css.map */
 `;
 
@@ -1013,6 +1013,12 @@ class UvalibLogos extends LitElement {
   constructor() {
     super();
     this.onecolor = false;
+  }
+
+  static get properties() {
+    return {
+      _dark: { type: Boolean }
+    };
   }
 
   lightOrDark(color) {
@@ -1064,8 +1070,8 @@ class UvalibLogos extends LitElement {
     if (!elem) return transparent;
 
     var bg = getComputedStyle(elem).backgroundColor;
-    if (bg === transparent || bg === transparentIE11) {
-        return this.realBackgroundColor(elem.parentElement);
+    if (bg === transparent || bg === transparentIE11) {      
+        return this.realBackgroundColor(elem.parentElement? elem.parentElement: elem.getRootNode()? elem.getRootNode().host: null);
     } else {
         return bg;
     }
@@ -1073,6 +1079,7 @@ class UvalibLogos extends LitElement {
 
   evalBackgroundColor() {
     this._backgroundColor = this.realBackgroundColor(this);
+    console.info(`Found the background of the uvalib-logos to be ${this._backgroundColor}`);
     this._dark = this.lightOrDark( this._backgroundColor ) != "dark";
   }
 
