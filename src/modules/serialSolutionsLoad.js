@@ -5,5 +5,4 @@ let loadModule = (url)=>{
     document.getElementsByTagName('head')[0].appendChild(script);
 }
 
-loadModule('https://www.library.virginia.edu/module-build/uvalib-header.js');
-loadModule('https://www.library.virginia.edu/module-build/uvalib-footer.js');
+loadModule('https://www.library.virginia.edu/module-build/uvalib-page.js');
